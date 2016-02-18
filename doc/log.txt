@@ -1,0 +1,2157 @@
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+testcase.Settings:
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_000
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_000
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterVPN======
+======Start to excute CallContactsCommon: SetPIN======
+======Start to excute CallContactsCommon: AddVPN======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterVPN======
+======Start to excute CallContactsCommon: ConnectVPN======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+Failure in test_001_003:
+junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30001
+	at framework.excute.Excute.checkObject(Excute.java:60)
+	at framework.excute.Excute.excute(Excute.java:50)
+	at framework.common.SettingCommon.ConnectBrowser(SettingCommon.java:313)
+	at testcase.Settings.test_001_003(Settings.java:84)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30001
+	at framework.excute.Excute.checkObject(Excute.java:60)
+	at framework.excute.Excute.excute(Excute.java:50)
+	at framework.common.SettingCommon.ConnectBrowser(SettingCommon.java:313)
+	at testcase.Settings.test_001_003(Settings.java:84)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterVPN======
+======Start to excute CallContactsCommon: SetPIN======
+======Start to excute CallContactsCommon: SetL2TPVPN======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterVPN======
+======Start to excute CallContactsCommon: ConnectVPN======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+Failure in test_001_005:
+junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30001
+	at framework.excute.Excute.checkObject(Excute.java:60)
+	at framework.excute.Excute.excute(Excute.java:50)
+	at framework.common.SettingCommon.ConnectBrowser(SettingCommon.java:313)
+	at testcase.Settings.test_001_005(Settings.java:115)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30001
+	at framework.excute.Excute.checkObject(Excute.java:60)
+	at framework.excute.Excute.excute(Excute.java:50)
+	at framework.common.SettingCommon.ConnectBrowser(SettingCommon.java:313)
+	at testcase.Settings.test_001_005(Settings.java:115)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_006
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMove======
+======Start to excute CallContactsCommon: Selectdate======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_006
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_007
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMove======
+======Start to excute CallContactsCommon: Selectdate======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_007
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_008
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMove======
+======Start to excute CallContactsCommon: Selectdate======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_008
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_009
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMove======
+======Start to excute CallContactsCommon: Selectdate======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_009
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_010
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMove======
+======Start to excute CallContactsCommon: Selectdate======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_010
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_011
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMove======
+======Start to excute CallContactsCommon: Selectdate======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001_011
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMoveData======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: GetMoveData======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+======Start to excute CallContactsCommon: EnterMoveData======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMoveData======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: OpenWifiData======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: EnterMoveData======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: OpenWifiData======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: OpenDaralimit======
+======Start to excute CallContactsCommon: EnterMoveData======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: CloseDaralimit======
+======Start to excute CallContactsCommon: EnterMoveData======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Daralimit have been Closed======
+======Start to excute CallContactsCommon: OpenDaralimit======
+======Start to excute CallContactsCommon: EnterMoveData======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Entersecurity======
+======Start to excute CallContactsCommon: SetPIN======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=27
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=27
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=28
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=28
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=29
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=29
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=30
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=30
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_006
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=31
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006_006
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=31
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_007_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=32
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_007_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=32
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_009_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=33
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_009_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=33
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_009_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=34
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_009_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=34
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=35
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+Failure in test_010_001:
+junit.framework.AssertionFailedError: Fail: text getting is not equal with text given
+	at framework.driver.OperationCheck.textEqualTrue(OperationCheck.java:73)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:183)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at framework.excute.Excute.check(Excute.java:44)
+	at framework.common.SettingCommon.checkWifiConnect(SettingCommon.java:972)
+	at testcase.Settings.test_010_001(Settings.java:846)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Fail: text getting is not equal with text given
+	at framework.driver.OperationCheck.textEqualTrue(OperationCheck.java:73)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:183)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at framework.excute.Excute.check(Excute.java:44)
+	at framework.common.SettingCommon.checkWifiConnect(SettingCommon.java:972)
+	at testcase.Settings.test_010_001(Settings.java:846)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: current=35
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=36
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+Failure in test_010_002:
+junit.framework.AssertionFailedError: Fail: text getting is not equal with text given
+	at framework.driver.OperationCheck.textEqualTrue(OperationCheck.java:73)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:183)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at testcase.Settings.test_010_002(Settings.java:861)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Fail: text getting is not equal with text given
+	at framework.driver.OperationCheck.textEqualTrue(OperationCheck.java:73)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:183)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at testcase.Settings.test_010_002(Settings.java:861)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: current=36
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=37
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Testteam
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=37
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=38
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Testteam
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=38
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=39
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=39
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=40
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+Failure in test_011_002:
+junit.framework.AssertionFailedError: Fail: object is not exist as expected
+	at framework.driver.OperationCheck.checkObjectExist(OperationCheck.java:13)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:195)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at framework.excute.Excute.check(Excute.java:44)
+	at testcase.Settings.test_011_002(Settings.java:940)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011_002
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Fail: object is not exist as expected
+	at framework.driver.OperationCheck.checkObjectExist(OperationCheck.java:13)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:195)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at framework.excute.Excute.check(Excute.java:44)
+	at testcase.Settings.test_011_002(Settings.java:940)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: current=40
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=41
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_001
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=41
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=42
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_003
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=42
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=43
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_004
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=43
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=44
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_005
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=44
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_006
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=45
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_006
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=45
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_007
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=46
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_007
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=46
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_008
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=47
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_008
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=47
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_009
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=48
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_009
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=48
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_010
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=49
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_010
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=49
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_011
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=50
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_011
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=50
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_012
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=51
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_012
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=51
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_013
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=52
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_013
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=52
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_014
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=53
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_014
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=53
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_015
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=54
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_015
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=54
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_016
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=55
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_016
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=55
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_017
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=56
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_017
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=56
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_018
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=57
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_018
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=57
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_019
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=58
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_019
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=58
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_020
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=59
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_020
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=59
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_021
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=60
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_021
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=60
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_022
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=61
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_022
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=61
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_023
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=62
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_023
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=62
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_024
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=63
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_024
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=63
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_025
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=64
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_025
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=64
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_026
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=65
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_026
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=65
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_027
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=66
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_027
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=66
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_028
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=67
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_028
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=67
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_029
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=68
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_029
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=68
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_030
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=69
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_030
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=69
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_031
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=70
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+Failure in test_013_031:
+junit.framework.AssertionFailedError: Fail: text getting is not equal with text given
+	at framework.driver.OperationCheck.textEqualTrue(OperationCheck.java:73)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:183)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at framework.excute.Excute.check(Excute.java:44)
+	at framework.common.SettingCommon.ConnectBrowser(SettingCommon.java:315)
+	at testcase.Settings.test_013_031(Settings.java:970)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_031
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Fail: text getting is not equal with text given
+	at framework.driver.OperationCheck.textEqualTrue(OperationCheck.java:73)
+	at framework.driver.AndroidOperation.doOperation(AndroidOperation.java:183)
+	at framework.excute.Excute.excute(Excute.java:51)
+	at framework.excute.Excute.check(Excute.java:44)
+	at framework.common.SettingCommon.ConnectBrowser(SettingCommon.java:315)
+	at testcase.Settings.test_013_031(Settings.java:970)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
+	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
+	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
+	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
+
+INSTRUMENTATION_STATUS: current=70
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_032
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=71
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_032
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=71
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_033
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=72
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_033
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=72
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_034
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=73
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: ConnectBroswer======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Enter webpage======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_034
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=73
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_035
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=74
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_035
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=74
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_036
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=75
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_036
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=75
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_037
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=76
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_037
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=76
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_038
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=77
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_038
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=77
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_039
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=78
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_039
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=78
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_040
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=79
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_040
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=79
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_041
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=80
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_041
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=80
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_042
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=81
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_042
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=81
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_043
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=82
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_043
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=82
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_044
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=83
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_044
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=83
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_045
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=84
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_045
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=84
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_046
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=85
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_046
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=85
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_047
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=86
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_047
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=86
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_048
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=87
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_048
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=87
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_049
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=88
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_049
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=88
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_050
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=89
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_050
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=89
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_051
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=90
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_051
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=90
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_052
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=91
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallContactsCommon: SIMsettings======
+======Start to excute CallContactsCommon: SIMName======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_052
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=91
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_053
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=92
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_053
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=92
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_054
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=93
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_054
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=93
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_055
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=94
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=94
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013_055
+INSTRUMENTATION_STATUS: class=testcase.Settings
+INSTRUMENTATION_STATUS: current=94
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+Test results for WatcherResultPrinter=....F..F.............................F.F....F.
+.............................F............
+............
+Time: 7815.109
+
+FAILURES!!!
+Tests run: 94,  Failures: 6,  Errors: 0
+
+
+INSTRUMENTATION_STATUS_CODE: -1
