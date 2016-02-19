@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import junit.framework.Assert;
-
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
@@ -220,29 +218,29 @@ public class SettingCommon {
 		System.out.println("======Start to excute CallContactsCommon: SetPIN======");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","PIN码");
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry","1234");
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/next_button");
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry","1234");
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/next_button");
-		Wait(500);
+//		Wait(500);
 		if((Boolean) excute(Object_Text,Operation_Exists,"完成"))
 		{
 			excute(Object_Text,Operation_ClickWait,"完成");
 		}
-		else
-			System.out.println("============");
-			Wait(500);
+//		else
+//			System.out.println("============");
+//			Wait(500);
 	}
 	
 	public static void SetVPN(String VPNName, String Servicer) throws UiObjectNotFoundException
 	{
 		System.out.println("======Start to excute CallContactsCommon: AddVPN======");
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/name",VPNName);
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/server",Servicer);
-		Wait(500);
+//		Wait(500);
 		excute(Object_Text,Operation_ClickWait,"保存");	
 		
 	}
@@ -251,21 +249,21 @@ public class SettingCommon {
 	{
 		System.out.println("======Start to excute CallContactsCommon: SetL2TPVPN======");
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/name",VPNName);
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/type");
-		Wait(500);
+//		Wait(500);
 		excute(Object_Text,Operation_ClickWait,"L2TP/IPSec PSK");
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/server",Servicer);
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/l2tp_secret",secret);
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/ipsec_identifier",identifier);
-		Wait(500);
+//		Wait(500);
 		excute(Object_Device,Operation_PressEnter);
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/ipsec_secret",ipsec);
-		Wait(500);
+//		Wait(500);
 		excute(Object_Text,Operation_ClickWait,"保存");	
 		
 	}
@@ -274,29 +272,24 @@ public class SettingCommon {
 	{
 		System.out.println("======Start to excute CallContactsCommon: ConnectVPN======");
 		excute(Object_Text,Operation_ClickWait,type);
-		Wait(500);
+//		Wait(500);
 		excute(Object_Text,Operation_SetText,"连接",VPNName);
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password",Password);
-		Wait(500);
+//		Wait(500);
 		excute(Object_Text,Operation_ClickWait,"连接");
-		Wait(5000);
+//		Wait(5000);
 	}
-	public static void ConnectBrowser(String URL) throws UiObjectNotFoundException
+	public static void ConnectBrowser(String URL) throws UiObjectNotFoundException, RemoteException
 	{
 		System.out.println("======Start to excute CallContactsCommon: ConnectBroswer======");
-		try {
-			ClearBackgroundApp();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Wait(3000);
+		ClearBackgroundApp();
+		Wait(1000);
 		DeviceCommon.enterApp("浏览器");
 		UiObject index2=new UiObject(new UiSelector().resourceId("com.android.browser:id/url"));
-		Wait(500);
+//		Wait(500);
 		excute(Object_ResourceId, Operation_SetText,"com.android.browser:id/url",URL);
-		Wait(500);	
+//		Wait(500);	
 		UiDevice.getInstance().pressEnter();
 		UiObject stop=new UiObject(new UiSelector().resourceId("com.android.browser:id/stop"));
 		OperationUiObject.WaitUntilGone(stop,"100000");
@@ -307,9 +300,9 @@ public class SettingCommon {
 		}
 		else
 			System.out.println("======Enter webpage======");
-		Wait(2000);
+//		Wait(2000);
 		UiDevice.getInstance(). pressMenu ();
-		Wait(500);
+//		Wait(500);
 		excute(Object_Text, Operation_ClickWait,"在网页上查找");
 		excute(Object_ResourceId, Operation_SetText,"android:id/edit","net::ERR_NAME_NOT_RESOLVED");
 		check(Object_ResourceId,Operation_TextEqualTrue,"android:id/matches","0/0");
@@ -460,7 +453,7 @@ public class SettingCommon {
 		excute(Object_Text,Operation_ClickWait,"流量使用情况");
 	}
 	
-	public static void GetMoveData() throws UiObjectNotFoundException
+	public static void GetMoveData() throws UiObjectNotFoundException, RemoteException
 	{
 		System.out.println("======Start to excute CallContactsCommon: GetMoveData======");
 		String Data=(String) excute(Object_ResourceId,Operation_GetText,"com.android.settings:id/cycle_summary");
@@ -616,14 +609,14 @@ public class SettingCommon {
 						e.printStackTrace();
 					}
 					DeviceCommon.enterApp(Devices_Desc_Setting);
-					Wait(500);
+//					Wait(500);
 					excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
-					Wait(500);
+//					Wait(500);
 					excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
 					if((Boolean) excute(Object_ResourceId,Operation_Exists,"com.android.settings:id/password_entry"))
 					{
 						excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry","1234");
-						Wait(500);
+//						Wait(500);
 						excute(Object_Device,Operation_PressEnter);
 					}
 					else
@@ -754,9 +747,9 @@ public class SettingCommon {
 				{
 					DeviceCommon.enterApp(Devices_Desc_FileManage);
 					excute(Object_Text,Operation_ClickWait,"APK安装文件");
-					Wait(2000);
+					excute(Object_Text,Operation_WaitForExists,"GPS.apk","10000");
 					excute(Object_Text,Operation_ClickWait,name);
-					 if((Boolean) excute(Object_Text,Operation_Exists,"禁止安装"))
+					if((Boolean) excute(Object_Text,Operation_Exists,"禁止安装"))
 						{
 							excute(Object_Text,Operation_ClickWait,"设置");
 							excute(Object_TextScroll,Operation_ClickWait,"未知来源","vertical");
@@ -766,9 +759,7 @@ public class SettingCommon {
 						}
 					Wait(2000);
 					excute(Object_Text,Operation_ClickWait,"安装");
-//					UiObject ins=new UiObject(new UiSelector().text("正在安装..."));
-//					OperationUiObject.waitUntilGone(ins,100000);
-					Wait(30000);
+					excute(Object_Text,Operation_WaitForExists,"应用安装完成。","100000");
 				}
 				
 				public static void uninstall_apk(String name) throws UiObjectNotFoundException 
@@ -791,12 +782,9 @@ public class SettingCommon {
 				{
 					excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/user_photo");
 					excute(Object_Text,Operation_ClickWait,"拍照");
-//					Wait(5000);
 					excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
-//					Wait(5000);
 					excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/done_button");
 					excute(Object_Text,Operation_ClickWait,"保存");
-//					Wait(5000);
 				}
 				
 				public static void check_user_name(String name) throws UiObjectNotFoundException 
@@ -834,7 +822,6 @@ public class SettingCommon {
 					excute(Object_Text,Operation_ClickWait,"添加用户");
 					excute(Object_Text,Operation_ClickWait,"确定");
 					excute(Object_Text,Operation_ClickWait,"立即设置");
-					Wait(15000);
 				}
 				
 				public static void add_mail_account(String mail,String info,String password,String name) throws UiObjectNotFoundException 
@@ -879,7 +866,7 @@ public class SettingCommon {
 					int x = UiDevice.getInstance().getDisplayWidth();
 					int y = UiDevice.getInstance().getDisplayHeight();
 					excute(Object_Text,Operation_ClickWait,"壁纸");
-					excute(Object_Text,Operation_ClickWait,info);
+					excute(Object_Text,Operation_ClickWait,info);	
 					Wait(2000);
 					if(info.equals("动态壁纸"))
 						{
@@ -891,19 +878,21 @@ public class SettingCommon {
 							UiDevice.getInstance().click(x/2, y/10*6);
 							Wait(2000);
 							UiDevice.getInstance().click(x/2, y/2);
-							Wait(2000);
+							excute(Object_Text,Operation_WaitForExists,"设置壁纸");
+							excute(Object_Text,Operation_WaitForExists,"设置壁纸","2000");
 							excute(Object_Text,Operation_ClickWait,"设置壁纸");
 						}
 					if(info.equals("壁纸"))
 						{
 							excute(Object_Description,Operation_ClickWait,"第1张壁纸，共1张");
-							Wait(2000);
+							excute(Object_Text,Operation_WaitForExists,"设置壁纸","2000");
 							excute(Object_Text,Operation_ClickWait,"设置壁纸");
 						}
 					if(info.equals("文件管理器"))
 						{
+						
 							excute(Object_TextScroll,Operation_ClickWait,"picture.jpg","vertical");
-							Wait(2000);
+							excute(Object_Text,Operation_WaitForExists,"保存","2000");
 							excute(Object_Text,Operation_ClickWait,"保存");
 						}
 					excute(Object_Device, Operation_PressBack);
