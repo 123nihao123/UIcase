@@ -114,6 +114,11 @@ public class AndroidObject
 					ObjectType.setParaIndex(objectIndex + 1);
 					return ObjectFind.Object_waitForExists(args[objectIndex]);
 				
+				//通过text(自己）找到父控件 ，再通过class找到兄弟控件
+				case ObjectType.Object_PeerTextClass:
+					ObjectType.setParaIndex(objectIndex + 2);
+					return ObjectFind.byPeerTextClass(args[objectIndex], args[objectIndex + 1]);
+					
 					
 				default:
 					

@@ -164,7 +164,15 @@ public class ObjectFind
 	public static UiObject Object_waitForExists(String ID) {
 		return new UiObject(new UiSelector().resourceId(ID));
 	}
-		
+	
+	
+	public static UiObject byPeerTextClass(String text, String className) throws UiObjectNotFoundException
+	{
+		UiObject selfObject  =  new UiObject(new UiSelector().text(text));
+		UiObject peerObject = selfObject.getFromParent(new UiSelector().className(className));
+		return peerObject;
+	}
+
 	
 	
 	
