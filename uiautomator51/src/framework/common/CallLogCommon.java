@@ -16,17 +16,17 @@ public class CallLogCommon {
 		
 		excute(Object_Text,Operation_ClickWait,place);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"清除通话记录");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"全选");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"删除全部选中的通话记录");
-		excute(Object_Text,Operation_ClickWait,"确定");
-		
-		if((Boolean) excute(Object_Text,Operation_Exists,"查看"))
+		if((Boolean) excute(Object_Text,Operation_Exists,"清除通话记录"))
 		{
-			excute(Object_Device, Operation_PressBack);	
-		}	
+			excute(Object_Text,Operation_ClickWait,"清除通话记录");
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text,Operation_ClickWait,"全选");
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text,Operation_ClickWait,"删除全部选中的通话记录");
+			excute(Object_Text,Operation_ClickWait,"确定");	
+		}
+		excute(Object_Device, Operation_PressBack);	
+			
 	}
 	
 	public static void deleteLog(String place, String name) throws UiObjectNotFoundException

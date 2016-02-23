@@ -30,6 +30,7 @@ public class Contact extends UiAutomatorTestCase
 		ClearBackgroundApp();
 		Wait(1000);
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.BatchDelete("所有联系人");
    }
 	     
 	@Override
@@ -445,7 +446,229 @@ public class Contact extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
 	}
+	//编辑功能验证,保存
+	public void test_044() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		check(Object_Text,Operation_checkExist,"zhanxun");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/menu_edit");
+		check(Object_Text,Operation_checkExist,"修改联系人");
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Text,Operation_SetText,"zhanxun","zhanxun01");
+		excute(Object_Text,Operation_SetText,"1234","123");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/menu_save");
+		check(Object_Text,Operation_checkExist,"zhanxun01");
+		check(Object_Text,Operation_checkExist,"123");
+	}
 	
+	//编辑功能验证,取消保存
+	public void test_045() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		check(Object_Text,Operation_checkExist,"zhanxun");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/menu_edit");
+		check(Object_Text,Operation_checkExist,"修改联系人");
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Text,Operation_SetText,"zhanxun","zhanxun01");
+		excute(Object_Text,Operation_SetText,"1234","12345");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"舍弃更改");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkExist,"zhanxun");
+		check(Object_Text,Operation_checkExist,"1234");
+	}
+	
+	//点击大头贴
+	public void test_046() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addPhoneWithPicWorkaround("zhanxun02","1234","拍照");
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun02");
+		check(Object_Text,Operation_checkExist,"zhanxun02");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/menu_edit");
+		check(Object_Text,Operation_checkExist,"修改联系人");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/photo_icon");
+		check(Object_Text,Operation_checkExist,"拍摄新照片");
+	}
+	//取消删除单一联系人
+	public void test_047() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		check(Object_Text,Operation_checkExist,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,"zhanxun");
+	}
+	//确定删除单一联系人
+	public void test_048() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		check(Object_Text,Operation_checkExist,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkNoExist,"zhanxun");
+	}
+		  
+	//批量删除联系人
+	public void test_049() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts("本机");
+		//主体
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"批量删除");
+		excute(Object_Text,Operation_ClickWait,"test1");
+		excute(Object_Text,Operation_ClickWait,"test2");
+		check(Object_PeerTextClass,Operation_CheckedTrue,"test1","android.widget.CheckBox");
+		check(Object_PeerTextClass,Operation_CheckedTrue,"test2","android.widget.CheckBox");
+		//点击选择全部
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/select_contact_cb");
+		check(Object_Text,Operation_checkExist,"取消全部");
+		//点击完成
+		excute(Object_Text,Operation_ClickWait,"完成");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,"取消全部");
+		//点击取消全部
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/select_contact_cb");
+		check(Object_Text,Operation_checkExist,"选择(0)");
+		//点击取消
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,"通讯录");
+	}
+		 
+	public void test_050() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts("本机");
+		//主体
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"批量删除");
+		excute(Object_Text,Operation_ClickWait,"test1");
+		excute(Object_Text,Operation_ClickWait,"test2");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkNoExist,"test1");
+		check(Object_Text,Operation_checkNoExist,"test2");
+		}
+	//搜索存在的联系人
+	public void test_051() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts("本机");
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/menu_search");
+		excute(Object_Text,Operation_SetText,"查找联系人","test1");
+		check(Object_ResIdText,Operation_checkExist,"com.android.contacts:id/cliv_name_textview","test1");
+		check(Object_Text,Operation_checkExist,"匹配到 1个条目");
+	}
+	//搜索不存在的联系人
+	public void test_052() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts("本机");
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/menu_search");
+		excute(Object_Text,Operation_SetText,"查找联系人","spreadtrum01");
+		check(Object_Text,Operation_checkExist,"没有联系人");
+	}
+	//通过联系人进入信息界面
+	public void test_053() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun01");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/icon_alternate");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/compose_message_text","10000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
+	}
+	//通过联系人进入拨号界面
+	public void test_054() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_Call);
+		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
+		int WideArea = ModArea.width();
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun01");
+		//拨号
+		excute(Object_Text,Operation_ClickWait,"10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/text");
+		Wait(10000);
+		UiDevice.getInstance().click(x, y);
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_Call);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"通话记录");
+		CallLogCommon.deleteAllLog("全部");
+		
+	}
+	//联系人界面查看最近拨号
+	public void test_055() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_Call);
+		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
+		int WideArea = ModArea.width();
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"通话记录");
+		CallLogCommon.deleteAllLog("全部");
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
+		//主体
+		//拨号
+		excute(Object_Text,Operation_ClickWait,"10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/text");
+		Wait(10000);
+		UiDevice.getInstance().click(x, y);
+		Wait(1000);
+		check(Object_Text,Operation_checkExist,"最近");
+	} 
+	//通过联系人进入邮箱
+	public void test_056() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun01");
+		excute(Object_Text,Operation_ClickWait,"zhanxun@spreadtrum.com");
+		check(Object_Text,Operation_checkExist,"帐户设置");
+	}
+
 	//联系人详情-本机联系人-添加至黑名单
 	public void test_066() throws UiObjectNotFoundException, RemoteException 
 	{

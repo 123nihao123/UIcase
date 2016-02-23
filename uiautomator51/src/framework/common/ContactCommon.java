@@ -750,14 +750,17 @@ public class ContactCommon {
 		check(Object_Text,Operation_checkExist,"test3");
 	}
 	
-	public static void addCommonThreeContacts(String name) throws UiObjectNotFoundException 
+	public static void addCommonThreeContacts(String position) throws UiObjectNotFoundException 
 	{
-		addNameAndTel(name,"test1","1234");
-		excute(Object_Device,Operation_PressBack);
-		addNameAndTel(name,"test2","1234");
-		excute(Object_Device,Operation_PressBack);
-		addNameAndTel(name,"test3","1234");
-		excute(Object_Device,Operation_PressBack);
+		String name[] = {"test1","test2","test3"};
+		String number[] = {"1234","12345","123456"};
+		String mail[] = {"zhanxun01@spreadtrum.com","zhanxun02@spreadtrum.com","zhanxun03@spreadtrum.com"};
+		ContactCommon.BatchDelete("所有联系人");
+		for(int i=0;i<name.length;i++)
+		{
+			addNameTelMail(position,name[i],number[i],mail[i]);
+			excute(Object_Device, Operation_PressBack);
+		}
 	}
 	
 	public static void deleteGroupMember(String Groupname, String index) throws UiObjectNotFoundException 
@@ -809,17 +812,58 @@ public class ContactCommon {
 		 }
 	
 	//add by yyy
-	public static void addmorecontact() throws UiObjectNotFoundException
+	public static void addPhoneWithPicWorkaround(String name,String number,String option) throws UiObjectNotFoundException
 	{
-		String name[] = {"zhanxun01","zhanxun02","zhanxun03"};
-		String number[] = {"1234","12345","123456"};
-		String mail[] = {"zhanxun01@spreadtrum.com","zhanxun02@spreadtrum.com","zhanxun03@spreadtrum.com"};
-		ContactCommon.BatchDelete("所有联系人");
-		for(int i=0;i<name.length;i++)
+		selectContactPosition("本机");
+		//在页面不需要滑动时使用Object_TextScroll会出错
+		excute(Object_Text,Operation_SetText,"姓名",name);
+		excute(Object_Text,Operation_SetText,"电话",number);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/photo_icon");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/text1", option);
+		if(option.equals("拍照"))
 		{
-			addNameTelMail("本机",name[i], number[i], mail[i]);
-			excute(Object_Device, Operation_PressBack);
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+			Wait(1000);
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/done_button");
+			
 		}
-	}	
+		else if(option.equals("选择照片"))
+		{
+			Wait(2000);
+			//选择图片
+			UiObject photo = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.documentsui:id/icon_mime");
+			UiObject gallery = (UiObject) excute(Object_ResIdText,Operate_ReturnObject,"android:id/title", "图库");
+			if((Boolean) excute(Object_Description,Operation_Exists,"显示根目录"))
+			{
+				excute(Object_Description,Operation_ClickWait,"显示根目录");
+			}
+			if((Boolean) excute(Object_Text,Operation_Exists,"图片"))
+			{
+				excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "图片");
+				while((Boolean) excute(Object_ResourceId,Operation_Exists,"com.android.documentsui:id/icon_mime"))
+				{
+				excute(Object_ResourceId,Operation_ClickWait,"com.android.documentsui:id/icon_mime");
+					Wait(2000);
+				}
+				while((Boolean) excute(Object_ClassInstance,Operation_Exists,"android.widget.LinearLayout","0"))
+				{
+					excute(Object_ClassInstance,Operation_ClickWait,"android.widget.LinearLayout","0");
+					Wait(2000);
+				}
+			}
+			//图库操作
+			else if(gallery.exists())
+			{
+				gallery.clickAndWaitForNewWindow();
+				UiDevice uiDevice = UiDevice.getInstance();
+				uiDevice.click(uiDevice.getDisplayWidth() / 2,uiDevice.getDisplayHeight()/2);
+				Wait(2000);
+				uiDevice.click(uiDevice.getDisplayWidth()/2,uiDevice.getDisplayHeight()/2);
+			}
+		}
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.gallery3d:id/filtershow_done", "保存");
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
+	}
+
 
 }
