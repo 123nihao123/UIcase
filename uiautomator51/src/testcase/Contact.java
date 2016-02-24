@@ -820,7 +820,7 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"zhanxun01");
 		//拨号
 		excute(Object_Text,Operation_ClickWait,"10086");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/text");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
 		UiDevice.getInstance().click(x, y);
 		ClearBackgroundApp();
@@ -849,11 +849,17 @@ public class Contact extends UiAutomatorTestCase
 		//主体
 		//拨号
 		excute(Object_Text,Operation_ClickWait,"10086");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/text");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
 		UiDevice.getInstance().click(x, y);
 		Wait(1000);
 		check(Object_Text,Operation_checkExist,"最近");
+		//清场
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_Call);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"通话记录");
+		CallLogCommon.deleteAllLog("全部");
 	} 
 	//通过联系人进入邮箱
 	public void test_056() throws UiObjectNotFoundException, RemoteException 
