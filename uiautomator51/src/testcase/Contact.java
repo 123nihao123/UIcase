@@ -669,86 +669,48 @@ public class Contact extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"帐户设置");
 	}
 
-	//联系人详情-本机联系人-添加至黑名单
-	public void test_066() throws UiObjectNotFoundException, RemoteException 
+//本机联系人详情-复制到SIM1
+	public void test_057() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		excute(Object_Text,Operation_ClickWait,"zhanxun");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"添加至黑名单");
-		DeviceCommon.enterApp("来电防火墙");
-		excute(Object_Text,Operation_ClickWait,"黑名单");
-		check(Object_Text,Operation_checkExist,"zhanxun");
-		//请现场
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"批量删除");
-		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.firewall:id/selete_all");
-		excute(Object_Text,Operation_ClickWait,"完成");
-		excute(Object_Text,Operation_ClickWait,"确定");
-		DeviceCommon.enterApp("通讯录");
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//联系人详情-从本机联系人-黑名单中删除
-	public void test_067() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		excute(Object_Text,Operation_ClickWait,"zhanxun");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"添加至黑名单");
-		DeviceCommon.enterApp("来电防火墙");
-		excute(Object_Text,Operation_ClickWait,"黑名单");
-		check(Object_Text,Operation_checkExist,"zhanxun");
-		//主体
-		DeviceCommon.enterApp("通讯录");
-		excute(Object_Text,Operation_ClickWait,"zhanxun");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"从黑名单中删除");
-		DeviceCommon.enterApp("来电防火墙");
-		check(Object_Text,Operation_checkNoExist,"zhanxun");
-		//清现场
-		DeviceCommon.enterApp("通讯录");
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//SIM1联系人详情-复制到本机
-	public void test_068() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_ClickWait,"SIM1");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"复制");
-		excute(Object_Text,Operation_ClickWait,"本机");
+		check(Object_Text,Operation_checkExist,"复制到帐户");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);	
+	}
+	
+	//本机联系人详情-复制到SIM1
+	public void test_058() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"复制");
+		excute(Object_Text,Operation_ClickWait,"SIM1");
+		excute(Object_Text,Operation_ClickWait,"确定");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
-		excute(Object_Text,Operation_ClickWait,"本机");
-		check(Object_Text,Operation_checkExist,"SIM1");
+		excute(Object_Text,Operation_ClickWait,"SIM1");
+		check(Object_Text,Operation_checkExist,"zhanxun");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");		
-	}
-	
-	
-	
-	//SIM1联系人详情-复制给SIM2
-	public void test_069() throws UiObjectNotFoundException, RemoteException 
+		excute(Object_Text,Operation_ClickWait,"所有联系人");	
+	}		
+			
+	//本机联系人详情-复制给SIM2
+	public void test_059() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		excute(Object_Text,Operation_ClickWait,"SIM1");
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"复制");
 		excute(Object_Text,Operation_ClickWait,"SIM2");
@@ -757,263 +719,431 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
 		excute(Object_Text,Operation_ClickWait,"SIM2");
-		check(Object_Text,Operation_checkExist,"SIM1");
+		check(Object_Text,Operation_checkExist,"zhanxun");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");		
-	}
-	
-	//SIM1联系人详情-分享
-	public void test_070() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"分享");
-		check(Object_Text,Operation_checkExist,"联系人分享方式");
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//SIM联系人详情-分享-电子邮件
-	public void test_071() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"分享");
-		excute(Object_Text,Operation_ClickWait,"电子邮件");
-		check(Object_Text,Operation_WaitForExists,"账户设置","2000");
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	
-	//本机联系人-分享-信息
-	public void test_072() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_ClickWait,"zhanxun");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"分享");
-		excute(Object_Text,Operation_ClickWait,"信息");
-		excute(Object_Text,Operation_ClickWait,"新消息");
-		check(Object_Text,Operation_WaitForExists,"收件人","3000");
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//SIM1联系人-分享-蓝牙
-	public void test_073() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"分享");
-		excute(Object_Text,Operation_ClickWait,"蓝牙");
-		check(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","3000");
-		excute(Object_Text,Operation_ClickWait,"取消");
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//联系人详情-SIM1-添加至黑名单
-	public void test_074() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"添加至黑名单");
-		DeviceCommon.enterApp("来电防火墙");
-		excute(Object_Text,Operation_ClickWait,"黑名单");
-		check(Object_Text,Operation_checkExist,"SIM1");
-		//清现场
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"批量删除");
-		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.firewall:id/selete_all");
-		excute(Object_Text,Operation_ClickWait,"完成");
-		excute(Object_Text,Operation_ClickWait,"确定");
-		DeviceCommon.enterApp("通讯录");
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//联系人详情-SIM1-从黑名单中删除
-	public void test_075() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"添加至黑名单");
-		DeviceCommon.enterApp("来电防火墙");
-		excute(Object_Text,Operation_ClickWait,"黑名单");
-		check(Object_Text,Operation_checkExist,"SIM1");
-		//主体
-		DeviceCommon.enterApp("通讯录");
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"从黑名单中删除");
-		DeviceCommon.enterApp("来电防火墙");
-		check(Object_Text,Operation_checkNoExist,"SIM1");
-		//清现场
-		DeviceCommon.enterApp("通讯录");
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//我的资料-进入我的资料
-	public void test_076() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.deleteMyData();
-		//主体
-		excute(Object_Text,Operation_ClickWait,"设置我的个人资料");
-		check(Object_Text,Operation_checkExist,"我的本机个人资料");
-		excute(Object_Device,Operation_PressBack);
-		
-		
-	}
-	
-	//我的资料-编辑我的资料
-	public void test_077() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.deleteMyData();	
-		//主体
-		excute(Object_Text,Operation_ClickWait,"设置我的个人资料");
-		excute(Object_Text,Operation_SetText,"姓名","test01");
-		excute(Object_Text,Operation_SetText,"电话","123456");
-		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
-		excute(Object_Device,Operation_PressBack);
-		check(Object_Text,Operation_checkExist,"test01");
-		//清现场
-		excute(Object_Text,Operation_ClickWait,"我");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"删除");
-		excute(Object_Text,Operation_ClickWait,"确定");
-	}
-	
-	//长按本机联系人
-	public void test_078() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_LongClick,"zhanxun");
-		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/selection_count_text","1");
-		check(Object_PeerTextClass,Operation_CheckedTrue,"zhanxun","android.widget.CheckBox");
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-		
-	}
-	//列表-长按SIM1联系人-验证SIM1是选中的
-	public void test_079() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_LongClick,"SIM1");
-		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/selection_count_text","1");
-		check(Object_PeerTextClass,Operation_CheckedTrue,"SIM1","android.widget.CheckBox");
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//列表-长按SIM联系人，选中两个联系人
-	public void test_080() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_LongClick,"SIM1");
-		excute(Object_Text,Operation_ClickWait,"zhanxun");
-		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/selection_count_text","2"); 
-		check(Object_PeerTextClass,Operation_CheckedTrue,"SIM1","android.widget.CheckBox");
-		check(Object_PeerTextClass,Operation_CheckedTrue,"zhanxun","android.widget.CheckBox");
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-	}
-	
-	//列表-长按SIM1联系人-合并
-	//无法验证toast文本
-	public void test_081() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_LongClick,"SIM1");
-		excute(Object_Text,Operation_ClickWait,"zhanxun");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"合并");
-		System.out.println("check toast!");
-		if ((Boolean)excute(Object_Text,Operation_WaitForExists,"USIM卡联系人不支持合并","2000"))
-		{
-			System.out.println("True");
+		excute(Object_Text,Operation_ClickWait,"所有联系人");		
 		}
-	}
 	
-	//长按SIM1联系人-删除SIM1联系人
-	public void test_082() throws UiObjectNotFoundException, RemoteException 
+		//联系人详情-本机联系人-分享
+		public void test_060() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			check(Object_ResourceId,Operation_TextContainsTrue,"android:id/title","分享");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}	
+		//联系人详情-本机联系人-分享-电子邮件
+		public void test_061() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			excute(Object_Text,Operation_ClickWait,"电子邮件");
+			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
+			{
+				excute(Object_Text,Operation_ClickWait,"仅此一次");
+			}
+			check(Object_Text,Operation_WaitForExists,"账户设置","3000");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		
+		//联系人详情-本机联系人-分享-信息
+		public void test_062() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			excute(Object_Text,Operation_ClickWait,"信息");
+			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
+			{
+				excute(Object_Text,Operation_ClickWait,"仅此一次");
+			}
+			excute(Object_Text,Operation_ClickWait,"新消息");
+			check(Object_Text,Operation_WaitForExists,"收件人","2000");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		
+		//联系人详情-本机联系人-分享-蓝牙
+		public void test_063() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			excute(Object_Text,Operation_ClickWait,"蓝牙");
+			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
+			{
+				excute(Object_Text,Operation_ClickWait,"仅此一次");
+			}
+			check(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","2000");
+			excute(Object_Text,Operation_ClickWait,"取消");
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		//联系人详情-本机联系人-设置铃声
+		public void test_064() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"设置铃声");
+			check(Object_Text,Operation_checkExist,"选择要使用的应用：");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		//联系人详情-本机联系人-放在主屏
+	public void test_065() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		excute(Object_Text,Operation_LongClick,"SIM1");
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
 		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"删除");
-		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_Text, Operation_checkNoExist,"SIM1");
-		//清现场
-        ContactCommon.BatchDelete("所有联系人");
+		excute(Object_Text,Operation_ClickWait,"放在主屏幕上");
+		excute(Object_Device, Operation_PressHome);
+		check(Object_TextScroll,Operation_checkExist,"zhanxun","horizontal");
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 	}
-	
-	//长按SIM1联系人-分享方式
-	public void test_083() throws UiObjectNotFoundException, RemoteException 
-	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
-		ContactCommon.addCommonThreeContacts();
-		//主体
-		excute(Object_Text,Operation_LongClick,"SIM1");
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"分享");
-		check(Object_Text,Operation_checkExist,"分享方式");
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Device,Operation_PressBack);
-		//清现场
-		ContactCommon.BatchDelete("所有联系人");
-	}
+		
+		//联系人详情-本机联系人-添加至黑名单
+		public void test_066() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"添加至黑名单");
+			DeviceCommon.enterApp("来电防火墙");
+			excute(Object_Text,Operation_ClickWait,"黑名单");
+			check(Object_Text,Operation_checkExist,"zhanxun");
+			//请现场
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"批量删除");
+			excute(Object_ResourceId,Operation_ClickWait,"com.sprd.firewall:id/selete_all");
+			excute(Object_Text,Operation_ClickWait,"完成");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			DeviceCommon.enterApp("通讯录");
+		}
+		
+		//联系人详情-从本机联系人-黑名单中删除
+		public void test_067() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"添加至黑名单");
+			DeviceCommon.enterApp("来电防火墙");
+			excute(Object_Text,Operation_ClickWait,"黑名单");
+			check(Object_Text,Operation_checkExist,"zhanxun");
+			//主体
+			DeviceCommon.enterApp("通讯录");
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"从黑名单中删除");
+			DeviceCommon.enterApp("来电防火墙");
+			check(Object_Text,Operation_checkNoExist,"zhanxun");
+			//清现场
+			DeviceCommon.enterApp("通讯录");
+		}
+		
+		//SIM1联系人详情-复制到本机
+		public void test_068() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"复制");
+			excute(Object_Text,Operation_ClickWait,"本机");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+			excute(Object_Text,Operation_ClickWait,"本机");
+			check(Object_Text,Operation_checkExist,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+			excute(Object_Text,Operation_ClickWait,"所有联系人");	
+		}
+		
+		
+		
+		//SIM1联系人详情-复制给SIM2
+		public void test_069() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"复制");
+			excute(Object_Text,Operation_ClickWait,"SIM2");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+			excute(Object_Text,Operation_ClickWait,"SIM2");
+			check(Object_Text,Operation_checkExist,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+			excute(Object_Text,Operation_ClickWait,"所有联系人");
+		}
+		
+		//SIM1联系人详情-分享
+		public void test_070() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			check(Object_ResourceId,Operation_TextContainsTrue,"android:id/title","分享");
+			//check(Object_Text,Operation_checkExist,"联系人分享方式");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		//SIM联系人详情-分享-电子邮件
+		public void test_071() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			excute(Object_Text,Operation_ClickWait,"电子邮件");
+			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
+			{
+				excute(Object_Text,Operation_ClickWait,"仅此一次");
+			}
+			check(Object_Text,Operation_WaitForExists,"账户设置","2000");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		
+		//本机联系人-分享-信息
+		public void test_072() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			excute(Object_Text,Operation_ClickWait,"信息");
+			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
+			{
+				excute(Object_Text,Operation_ClickWait,"仅此一次");
+			}
+			excute(Object_Text,Operation_ClickWait,"新消息");
+			check(Object_Text,Operation_WaitForExists,"收件人","3000");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		//SIM1联系人-分享-蓝牙
+		public void test_073() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			excute(Object_Text,Operation_ClickWait,"蓝牙");
+			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
+			{
+				excute(Object_Text,Operation_ClickWait,"仅此一次");
+			}
+			check(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","3000");
+			excute(Object_Text,Operation_ClickWait,"取消");
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		//联系人详情-SIM1-添加至黑名单
+		public void test_074() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"添加至黑名单");
+			DeviceCommon.enterApp("来电防火墙");
+			excute(Object_Text,Operation_ClickWait,"黑名单");
+			check(Object_Text,Operation_checkExist,"SIM1");
+			//清现场
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"批量删除");
+			excute(Object_ResourceId,Operation_ClickWait,"com.sprd.firewall:id/selete_all");
+			excute(Object_Text,Operation_ClickWait,"完成");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			DeviceCommon.enterApp("通讯录");
+		}
+		
+		//联系人详情-SIM1-从黑名单中删除
+		public void test_075() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"添加至黑名单");
+			DeviceCommon.enterApp("来电防火墙");
+			excute(Object_Text,Operation_ClickWait,"黑名单");
+			check(Object_Text,Operation_checkExist,"SIM1");
+			//主体
+			DeviceCommon.enterApp("通讯录");
+			excute(Object_Text,Operation_ClickWait,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"从黑名单中删除");
+			DeviceCommon.enterApp("来电防火墙");
+			check(Object_Text,Operation_checkNoExist,"SIM1");
+			//清现场
+			DeviceCommon.enterApp("通讯录");
+		}
+		
+		//我的资料-进入我的资料
+		public void test_076() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.deleteMyData();
+			//主体
+			excute(Object_Text,Operation_ClickWait,"设置我的个人资料");
+			check(Object_Text,Operation_checkExist,"我的本机个人资料");
+			excute(Object_Device,Operation_PressBack);
+			
+			
+		}
+		
+		//我的资料-编辑我的资料
+		public void test_077() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.deleteMyData();	
+			//主体
+			excute(Object_Text,Operation_ClickWait,"设置我的个人资料");
+			excute(Object_Text,Operation_SetText,"姓名","test01");
+			excute(Object_Text,Operation_SetText,"电话","123456");
+			excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
+			excute(Object_Device,Operation_PressBack);
+			check(Object_Text,Operation_checkExist,"test01");
+			//清现场
+			excute(Object_Text,Operation_ClickWait,"我");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"删除");
+			excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		
+		//长按本机联系人
+		public void test_078() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_LongClick,"zhanxun");
+			check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/selection_count_text","1");
+			check(Object_PeerTextClass,Operation_CheckedTrue,"zhanxun","android.widget.CheckBox");
+			excute(Object_Device,Operation_PressBack);
+			
+		}
+		//列表-长按SIM1联系人-验证SIM1是选中的
+		public void test_079() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_LongClick,"SIM1");
+			check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/selection_count_text","1");
+			check(Object_PeerTextClass,Operation_CheckedTrue,"SIM1","android.widget.CheckBox");
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		//列表-长按SIM联系人，选中两个联系人
+		public void test_080() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_LongClick,"SIM1");
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/selection_count_text","2"); 
+			check(Object_PeerTextClass,Operation_CheckedTrue,"SIM1","android.widget.CheckBox");
+			check(Object_PeerTextClass,Operation_CheckedTrue,"zhanxun","android.widget.CheckBox");
+			excute(Object_Device,Operation_PressBack);
+		}
+		
+		//列表-长按SIM1联系人-合并
+		//无法验证toast文本
+		public void test_081() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_LongClick,"SIM1");
+			excute(Object_Text,Operation_ClickWait,"zhanxun");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"合并");
+			System.out.println("check toast!");
+			if ((Boolean)excute(Object_Text,Operation_WaitForExists,"USIM卡联系人不支持合并","2000"))
+			{
+				System.out.println("True");
+			}
+		}
+		
+		//长按SIM1联系人-删除SIM1联系人
+		public void test_082() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_LongClick,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"删除");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			check(Object_Text, Operation_checkNoExist,"SIM1");
+		}
+		
+		//长按SIM1联系人-分享方式
+		public void test_083() throws UiObjectNotFoundException, RemoteException 
+		{
+			//前提
+			ContactCommon.addCommonThreeContacts();
+			//主体
+			excute(Object_Text,Operation_LongClick,"SIM1");
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"分享");
+			check(Object_ResourceId,Operation_TextContainsTrue,"android:id/title","分享");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		
 }
