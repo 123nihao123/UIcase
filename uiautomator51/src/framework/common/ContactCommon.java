@@ -235,13 +235,14 @@ public class ContactCommon {
 		
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.contacts:id/save_menu_item_button","完成");
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/save_menu_item","完成");
-		
+		/*
 		//保证数据更新
 		Wait(10000);
 		UiObject addedNum = (UiObject) excute(Object_ClassContainsText, Operate_ReturnObject,"android.widget.TextView","人来自");
 		int num2=getNum(addedNum.getText());
 		
 		Assert.assertTrue("Error: add all contact to group fail!!!",num1==num2);
+		*/
 		backContactHome();
 	}
 	public static void modifyGroup(String groupName) throws UiObjectNotFoundException{
@@ -717,6 +718,7 @@ public class ContactCommon {
 	
 	public static void checkGroup(String name, String[] member, String index) 
 	{
+		excute(Object_Text,Operation_WaitForExists,member.length+" 个联系人","10000");
 		check(Object_Text,Operation_checkExist,name);
 		excute(Object_Text,Operation_ClickWait,name);
 		for(int i=0; i<member.length;i++)

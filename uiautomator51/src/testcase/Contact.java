@@ -232,7 +232,12 @@ public class Contact extends UiAutomatorTestCase
 		//主体
 		ContactCommon.setDisplayContacts("自定义","取消");
 		excute(Object_Device,Operation_PressBack);
-		check(Object_Text,Operation_checkExist,"3 位联系人");
+		if((Boolean) excute(Object_Text,Operation_Exists,"Spreadtrum"))
+		{
+			check(Object_Text,Operation_checkExist,"4 位联系人");			
+		}
+		else
+			check(Object_Text,Operation_checkExist,"3 位联系人");	
 		check(Object_Text,Operation_checkExist,"zhanxun");
 		check(Object_Text,Operation_checkExist,"SIM1");
 		check(Object_Text,Operation_checkExist,"SIM2");
@@ -290,7 +295,12 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("SIM1", "本机","确定","取消");
-		check(Object_Text,Operation_checkExist,"3 位联系人");
+		if((Boolean) excute(Object_Text,Operation_Exists,"Spreadtrum"))
+		{
+			check(Object_Text,Operation_checkExist,"4 位联系人");			
+		}
+		else
+			check(Object_Text,Operation_checkExist,"3 位联系人");	
 	}
 	
 	//联系人导出vcf文件
@@ -511,15 +521,14 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addNameAndTel("本机", "zhanxun", "123");
 		excute(Object_Device,Operation_PressBack);
 		ContactCommon.addGroup("本机", "Test3");
-		String[] contactToGroup = {"zhanxun"};
-		ContactCommon.addContactToGroup(contactToGroup);
+		ContactCommon.addALLContactToGroup();
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
 		excute(Object_Text,Operation_ClickWait,"Test3");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "修改");
-		excute(Object_ResIdText,Operation_ClickWait,"com.android.contacts:id/select_group_member", "点击添加联系人");
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.contacts:id/select_group_member", "点击添加联系人");	
 		check(Object_Text,Operation_checkExist,"没有联系人。");
 		ContactCommon.backContactHome();
 		//清场
