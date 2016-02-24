@@ -38,38 +38,17 @@ public class Contact extends UiAutomatorTestCase
     {
     }
 	
-	//前提步骤：去除第一次进入应用弹出的权限提示，把双卡的名字改成SIM1跟SIM2
- 	public void test_000() throws UiObjectNotFoundException, RemoteException 
-	{
-		ClearBackgroundApp();
-		DeviceCommon.enterApp(Devices_Desc_Setting);
-		DeviceCommon.removePermissions();
-		ClearBackgroundApp();
-		DeviceCommon.enterApp(Devices_Desc_Setting);
-		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		SettingCommon.SIMsettings("SIM 卡插槽 1");
-		SettingCommon.SIMName("SIM 卡插槽 1","SIM1");
-		SettingCommon.SIMsettings("SIM 卡插槽 2");
-		SettingCommon.SIMName("SIM 卡插槽 2","SIM2");
-	}
-	 
  	//添加一个联系人
 	public static void test_001() throws UiObjectNotFoundException 
 	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		//主体
 		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
 		ContactCommon.checkNameTelMail("zhanxun", "1234", "zhanxun@spreadtrum.com");
-		//清场
-		ContactCommon.deleteContact("zhanxun");
 	}
 	
 	//查看添加联系人中更多字段
 	public static void test_002() throws UiObjectNotFoundException 
 	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		//主体
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/floating_action_button", "添加新联系人");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/text2","本机");
@@ -82,8 +61,6 @@ public class Contact extends UiAutomatorTestCase
 	//查看添加联系人头像选项
 	public static void test_003() throws UiObjectNotFoundException 
 	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		//主体
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/floating_action_button", "添加新联系人");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/text2","本机");
@@ -95,38 +72,29 @@ public class Contact extends UiAutomatorTestCase
 	//添加收藏和取消收藏
 	public static void test_006() throws UiObjectNotFoundException 
 	{
-		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		//主体
 		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_star","添加到收藏");
 		check(Object_ResourceId,Operation_DescEqualTrue,"com.android.contacts:id/menu_star","从收藏中移除");
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_star","从收藏中移除");
 		check(Object_ResourceId,Operation_DescEqualTrue,"com.android.contacts:id/menu_star","添加到收藏");
-		//清场
-		ContactCommon.deleteContact("zhanxun");
 	}
 	
 	//进入收藏界面检查联系人
 	public static void test_007() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
 		excute(Object_Device,Operation_PressBack);
 		//主体
 		excute(Object_Text,Operation_ClickWait,"收藏");
 		check(Object_ResourceId,Operation_TextEqualTrue,"com.android.contacts:id/contact_tile_list_empty","没有收藏。");
-		//清场
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		ContactCommon.deleteContact("zhanxun");
 	}
 	
 	//判断是否有导入导出字样
 	public static void test_008() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
 		excute(Object_Device,Operation_PressBack);
 		//主体
@@ -134,17 +102,12 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"导入/导出");
 		check(Object_ResourceId,Operation_TextEqualTrue,"android:id/alertTitle","导入/导出联系人");
-		//清场
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		ContactCommon.deleteContact("zhanxun");
 	}
 	
 	//判断有“是否清楚常用联系人”字样
 	public static void test_009() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
 		SettingCommon.endCall();
 		ClearBackgroundApp();
@@ -155,9 +118,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"清除常用联系人");
 		check(Object_Text,Operation_checkExist,"是否清除常用联系人？");
 		//清场
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		ContactCommon.deleteContact("zhanxun");
 		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -169,7 +129,6 @@ public class Contact extends UiAutomatorTestCase
 	public static void test_010() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
 		SettingCommon.endCall();
 		ClearBackgroundApp();
@@ -182,8 +141,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkNoExist,"常用联系人");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		ContactCommon.deleteContact("zhanxun");
 		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -195,7 +152,6 @@ public class Contact extends UiAutomatorTestCase
 	public static void test_011() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
 		excute(Object_Device,Operation_PressBack);
 		//主体
@@ -205,98 +161,73 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"zhanxun");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		check(Object_ResourceId,Operation_TextEqualTrue,"com.android.contacts:id/contact_tile_name","zhanxun");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//显示所有联系人
 	public static void test_012() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		check(Object_Text,Operation_checkExist,"zhanxun");
 		check(Object_Text,Operation_checkExist,"SIM1");
 		check(Object_Text,Operation_checkExist,"SIM2");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//显示本机联系人
 	public static void test_013() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.setDisplayContacts("本机");
 		ContactCommon.checkDisplayContacts("本机");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//显示SIM1联系人
 	public static void test_014() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.setDisplayContacts("SIM1");
 		ContactCommon.checkDisplayContacts("SIM1");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//显示SIM2联系人
 	public static void test_015() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.setDisplayContacts("SIM2");
 		ContactCommon.checkDisplayContacts("SIM2");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//有自定义联系人字样
 	public static void test_016() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.setDisplayContacts("自定义");
 		ContactCommon.checkDisplayContacts("自定义");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//设置自定义联系人显示
 	public static void test_017() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.setDisplayContacts("自定义","确定");
 		check(Object_Text,Operation_checkExist,"SIM1");
-		check(Object_Text,Operation_checkExist,"SIM2");
-		//清场
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//取消设置自定义联系人
 	public static void test_018() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.setDisplayContacts("自定义","取消");
@@ -305,15 +236,12 @@ public class Contact extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"zhanxun");
 		check(Object_Text,Operation_checkExist,"SIM1");
 		check(Object_Text,Operation_checkExist,"SIM2");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//显示有电话号码的联系人
 	public static void test_019() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
 		excute(Object_Device,Operation_PressBack);
 		ContactCommon.addName("SIM1","SIM1");
@@ -323,78 +251,58 @@ public class Contact extends UiAutomatorTestCase
 		//主体
 		ContactCommon.setDisplayContacts("有电话号码的联系人");
 		ContactCommon.checkDisplayContacts("有电话号码的联系人");
-		//清场
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
-		excute(Object_Text,Operation_ClickWait,"所有联系人");
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//复制联系人到SIM1
 	public static void test_020() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("zhanxun", "SIM1");
 		ContactCommon.checkCopyContact("zhanxun");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//复制联系人到SIM2
 	public static void test_021() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("zhanxun", "SIM2");
 		ContactCommon.checkCopyContact("zhanxun");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//复制联系人到本机
 	public static void test_022() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("SIM1", "本机");
 		ContactCommon.checkCopyContact("SIM1");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//取消复制到本机
 	public static void test_023() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("SIM1", "本机","确定","取消");
 		check(Object_Text,Operation_checkExist,"3 位联系人");
-		//清场
-		ContactCommon.BatchDelete("所有联系人");
 	}
 	
 	//联系人导出vcf文件
 	public static void test_024() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		DeviceCommon.deleteFile("/sdcard/Download", "contacts.vcf");
 		//主体
 		ContactCommon.exportVcf("zhanxun");
 		DeviceCommon.searchFile("/sdcard/Download", "contacts.vcf");
 		//清场
-		ContactCommon.BatchDelete("所有联系人");
-		ClearBackgroundApp();
 		DeviceCommon.deleteFile("/sdcard/Download", "contacts.vcf");
 	}
 	
@@ -402,7 +310,6 @@ public class Contact extends UiAutomatorTestCase
 	public static void test_025() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		ContactCommon.exportVcf("zhanxun");
 		ContactCommon.BatchDelete("所有联系人");
@@ -410,8 +317,6 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.importVcf("zhanxun");
 		check(Object_Text,Operation_checkExist,"zhanxun");
 		//清场
-		ContactCommon.BatchDelete("所有联系人");
-		ClearBackgroundApp();
 		DeviceCommon.deleteFile("/sdcard/Download", "contacts.vcf");
 	}
 	
@@ -419,7 +324,6 @@ public class Contact extends UiAutomatorTestCase
 	public static void test_026() throws UiObjectNotFoundException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -427,25 +331,319 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"分享所显示的联系人");
 		excute(Object_Text,Operation_ClickWait,"zhanxun");
 		excute(Object_Text,Operation_ClickWait,"完成");
-		check(Object_Text,Operation_ClickWait,"分享方式");
-		//清场
-		excute(Object_Device,Operation_PressBack);
-		ContactCommon.BatchDelete("所有联系人");
+		ContactCommon.checkShare();
 	}
 	
 	//跳转到信息发送界面
 	public static void test_027() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.sendByMsg("zhanxun");
+	}
+	
+	//本机添加联系人至群组
+	public static void test_028() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addCommonThreeContacts("本机");
+		//主体
+		String[] testmember = {"test1","test2","test3"};
+		ContactCommon.addGroup("本机","Test1",testmember);
+		excute(Object_Device,Operation_PressBack);
+		String[] member = {"test1","test2","test3"};
+		ContactCommon.checkGroup("Test1",member,"本机");
 		//清场
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//删除本机群组
+	public static void test_029() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addCommonThreeContacts("本机");
+		String[] testmember = {"test1","test2","test3"};
+		ContactCommon.addGroup("本机","Test1",testmember);
+		ContactCommon.backContactHome();
+		//主体
+		ContactCommon.deleteGroup("Test1");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"群组");
+		check(Object_Text,Operation_checkNoExist,"Test1");
+	}
+	
+	//SIM1添加群组
+	public static void test_030() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addCommonThreeContacts("SIM1");
+		//主体
+		String[] testmember = {"test1","test2","test3"};
+		ContactCommon.addGroup("SIM1","Test2",testmember);
+		excute(Object_Device,Operation_PressBack);
+		String[] member = {"test1","test2","test3"};
+		ContactCommon.checkGroup("Test2",member,"SIM卡");
+		excute(Object_Device,Operation_PressBack);
+		check(Object_Text,Operation_checkExist,"SIM1");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//删除SIM1群组
+	public static void test_031() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addCommonThreeContacts("SIM1");
+		String[] testmember = {"test1","test2","test3"};
+		ContactCommon.addGroup("SIM1","Test2",testmember);
+		ContactCommon.backContactHome();
+		//主体
+		ContactCommon.deleteGroup("all");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
+		check(Object_Text,Operation_checkNoExist,"Test2");
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	//SIM2添加群组
+	public static void test_032() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addCommonThreeContacts("SIM2");
+		//主体
+		String[] testmember = {"test1","test2","test3"};
+		ContactCommon.addGroup("SIM2","Test3",testmember);
+		excute(Object_Device,Operation_PressBack);
+		String[] member = {"test1","test2","test3"};
+		ContactCommon.checkGroup("Test3",member,"SIM卡");
+		excute(Object_Device,Operation_PressBack);
+		check(Object_Text,Operation_checkExist,"SIM2");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//删除SIM2群组
+	public static void test_033() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addCommonThreeContacts("SIM2");
+		String[] testmember = {"test1","test2","test3"};
+		ContactCommon.addGroup("SIM2","Test3",testmember);
+		ContactCommon.backContactHome();
+		//主体
+		ContactCommon.deleteGroup("all");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
+		check(Object_Text,Operation_checkNoExist,"Test3");
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	//修改群组名
+	public static void test_034() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addGroup("SIM2","Test3");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+		//主体
+		ContactCommon.modifyGroup("Test3");
+		excute(Object_ResourceId,Operation_SetText,"com.android.contacts:id/group_name","Test4");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/save_menu_item");
+		excute(Object_Device,Operation_PressBack);
+		check(Object_Text,Operation_checkNoExist,"Test3");
+		check(Object_Text,Operation_checkExist,"Test4");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//删除群组成员
+	public static void test_035() throws UiObjectNotFoundException
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addNameAndTel("本机", "zhanxun", "123");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addGroup("本机", "Test3");
+		String[] contactToGroup = {"zhanxun"};
+		ContactCommon.addContactToGroup(contactToGroup);
+		//主体
+		ContactCommon.deleteGroupMember("Test3","zhanxun","完成");
+		ContactCommon.checkGroupMember("Test3", "zhanxun", "no_exist");
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//舍弃删除群组成员
+	public static void test_036() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addNameAndTel("本机", "zhanxun", "123");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addGroup("本机", "Test3");
+		String[] contactToGroup = {"zhanxun"};
+		ContactCommon.addContactToGroup(contactToGroup);
+		//主体
+		ContactCommon.deleteGroupMember("Test3","zhanxun","舍弃更改");
+		ContactCommon.checkGroupMember("Test3", "zhanxun", "exist");
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//添加群组成员,没有多余的联系人添加
+	public static void test_037() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addNameAndTel("本机", "zhanxun", "123");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addGroup("本机", "Test3");
+		String[] contactToGroup = {"zhanxun"};
+		ContactCommon.addContactToGroup(contactToGroup);
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
+		excute(Object_Text,Operation_ClickWait,"Test3");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "修改");
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.contacts:id/select_group_member", "点击添加联系人");
+		check(Object_Text,Operation_checkExist,"没有联系人。");
+		ContactCommon.backContactHome();
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//添加群组成员
+	public static void test_037_1() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addNameAndTel("本机", "zhanxun", "123");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addNameAndTel("本机", "zhanxun1", "123");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addGroup("本机", "Test3");
+		String[] contactToGroup = {"zhanxun"};
+		ContactCommon.addContactToGroup(contactToGroup);
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
+		excute(Object_Text,Operation_ClickWait,"Test3");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "修改");
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.contacts:id/select_group_member", "点击添加联系人");
+		check(Object_Text,Operation_checkExist,"zhanxun1");
+		excute(Object_Text,Operation_ClickWait,"zhanxun1");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		ContactCommon.backContactHome();
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//在群组里群发邮件
+	public static void test_038() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addGroup("本机", "Test3");
+		String[] contactToGroup = {"zhanxun"};
+		ContactCommon.addContactToGroup(contactToGroup);
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
+		excute(Object_Text,Operation_ClickWait,"Test3");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"群发邮件");
+		excute(Object_Text,Operation_WaitForExists,"群发邮件","5000");
+		check(Object_Text,Operation_checkExist,"帐户设置");
 		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
-		ContactCommon.BatchDelete("所有联系人");
+		//清场
+		ContactCommon.deleteGroup("all");
 	}
+	
+	//在群组里群发短信
+	public static void test_040() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addGroup("本机", "Test3");
+		String[] contactToGroup = {"zhanxun"};
+		ContactCommon.addContactToGroup(contactToGroup);
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
+		excute(Object_Text,Operation_ClickWait,"Test3");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"群发信息");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/compose_message_text","5000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//查看群组成员详情
+	public static void test_041() throws UiObjectNotFoundException 
+	{
+		//前提
+		ContactCommon.deleteGroup("all");
+		ContactCommon.addName("本机","zhanxun");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addGroup("本机", "Test3");
+		String[] contactToGroup = {"zhanxun"};
+		ContactCommon.addContactToGroup(contactToGroup);
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
+		excute(Object_Text,Operation_ClickWait,"Test3");
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		check(Object_ResIdText,Operation_checkExist,"com.android.contacts:id/header","群组");
+		ContactCommon.backContactHome();
+		//清场
+		ContactCommon.deleteGroup("all");
+	}
+	
+	//查看SIM卡容量
+	public static void test_042() 
+	{
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"高级选项");
+		excute(Object_Text,Operation_ClickWait,"SIM卡容量");
+		check(Object_Text,Operation_checkExist,"SIM卡容量");
+		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/simUsage");
+	}
+	
+	//整理联系人
+	public static void test_043() 
+	{
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"高级选项");
+		check(Object_Text,Operation_checkExist,"整理联系人");
+		excute(Object_Text,Operation_ClickWait,"整理联系人");
+		check(Object_Text,Operation_checkExist,"无重复联系人");
+	}
+	
 	//编辑功能验证,保存
 	public void test_044() throws UiObjectNotFoundException, RemoteException 
 	{
