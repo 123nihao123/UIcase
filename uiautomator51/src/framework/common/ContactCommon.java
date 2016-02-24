@@ -785,6 +785,7 @@ public class ContactCommon {
 	}
 	
 	//add by shiyahui
+	//清除我的个人资料
 	public static void deleteMyData() throws UiObjectNotFoundException{
 		  if((Boolean)excute(Object_Text,Operation_Exists,"设置我的个人资料"))
 		  { 
