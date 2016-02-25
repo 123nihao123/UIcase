@@ -829,6 +829,7 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"zhanxun01");
 		//拨号
 		excute(Object_Text,Operation_ClickWait,"10086");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
 		UiDevice.getInstance().click(x, y);
@@ -858,6 +859,7 @@ public class Contact extends UiAutomatorTestCase
 		//主体
 		//拨号
 		excute(Object_Text,Operation_ClickWait,"10086");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
 		UiDevice.getInstance().click(x, y);
@@ -938,95 +940,95 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"所有联系人");		
 		}
 	
-		//联系人详情-本机联系人-分享
-		public void test_060() throws UiObjectNotFoundException, RemoteException 
+	//联系人详情-本机联系人-分享
+	public void test_060() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"分享");
+		check(Object_ResourceId,Operation_TextContainsTrue,"android:id/title","分享");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+	}	
+	//联系人详情-本机联系人-分享-电子邮件
+	public void test_061() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"分享");
+		excute(Object_Text,Operation_ClickWait,"电子邮件");
+		if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
 		{
-			//前提
-			ContactCommon.addCommonThreeContacts();
-			//主体
-			excute(Object_Text,Operation_ClickWait,"zhanxun");
-			excute(Object_Device,Operation_PressMenu);
-			excute(Object_Text,Operation_ClickWait,"分享");
-			check(Object_ResourceId,Operation_TextContainsTrue,"android:id/title","分享");
-			excute(Object_Device,Operation_PressBack);
-			excute(Object_Device,Operation_PressBack);
-		}	
-		//联系人详情-本机联系人-分享-电子邮件
-		public void test_061() throws UiObjectNotFoundException, RemoteException 
-		{
-			//前提
-			ContactCommon.addCommonThreeContacts();
-			//主体
-			excute(Object_Text,Operation_ClickWait,"zhanxun");
-			excute(Object_Device,Operation_PressMenu);
-			excute(Object_Text,Operation_ClickWait,"分享");
-			excute(Object_Text,Operation_ClickWait,"电子邮件");
-			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
-			{
-				excute(Object_Text,Operation_ClickWait,"仅此一次");
-			}
-			check(Object_Text,Operation_WaitForExists,"账户设置","3000");
-			excute(Object_Device,Operation_PressBack);
-			excute(Object_Device,Operation_PressBack);
+			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
-		
-		
-		//联系人详情-本机联系人-分享-信息
-		public void test_062() throws UiObjectNotFoundException, RemoteException 
+		check(Object_Text,Operation_WaitForExists,"账户设置","3000");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	
+	//联系人详情-本机联系人-分享-信息
+	public void test_062() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"分享");
+		excute(Object_Text,Operation_ClickWait,"信息");
+		if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
 		{
-			//前提
-			ContactCommon.addCommonThreeContacts();
-			//主体
-			excute(Object_Text,Operation_ClickWait,"zhanxun");
-			excute(Object_Device,Operation_PressMenu);
-			excute(Object_Text,Operation_ClickWait,"分享");
-			excute(Object_Text,Operation_ClickWait,"信息");
-			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
-			{
-				excute(Object_Text,Operation_ClickWait,"仅此一次");
-			}
-			excute(Object_Text,Operation_ClickWait,"新消息");
-			check(Object_Text,Operation_WaitForExists,"收件人","2000");
-			excute(Object_Device,Operation_PressBack);
-			excute(Object_Device,Operation_PressBack);
-			excute(Object_Device,Operation_PressBack);
+			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
-		
-		
-		//联系人详情-本机联系人-分享-蓝牙
-		public void test_063() throws UiObjectNotFoundException, RemoteException 
+		excute(Object_Text,Operation_ClickWait,"新消息");
+		check(Object_Text,Operation_WaitForExists,"收件人","2000");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	
+	//联系人详情-本机联系人-分享-蓝牙
+	public void test_063() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"分享");
+		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
 		{
-			//前提
-			ContactCommon.addCommonThreeContacts();
-			//主体
-			excute(Object_Text,Operation_ClickWait,"zhanxun");
-			excute(Object_Device,Operation_PressMenu);
-			excute(Object_Text,Operation_ClickWait,"分享");
-			excute(Object_Text,Operation_ClickWait,"蓝牙");
-			if((Boolean)excute(Object_Text,Operation_Exists,"仅此一次"))
-			{
-				excute(Object_Text,Operation_ClickWait,"仅此一次");
-			}
-			check(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","2000");
-			excute(Object_Text,Operation_ClickWait,"取消");
-			excute(Object_Device,Operation_PressBack);
+			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
-		
-		//联系人详情-本机联系人-设置铃声
-		public void test_064() throws UiObjectNotFoundException, RemoteException 
-		{
-			//前提
-			ContactCommon.addCommonThreeContacts();
-			//主体
-			excute(Object_Text,Operation_ClickWait,"zhanxun");
-			excute(Object_Device,Operation_PressMenu);
-			excute(Object_Text,Operation_ClickWait,"设置铃声");
-			check(Object_Text,Operation_checkExist,"选择要使用的应用：");
-			excute(Object_Device,Operation_PressBack);
-			excute(Object_Device,Operation_PressBack);
-		}
-		
-		//联系人详情-本机联系人-放在主屏
+		check(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","2000");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	//联系人详情-本机联系人-设置铃声
+	public void test_064() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		ContactCommon.addCommonThreeContacts();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"设置铃声");
+		check(Object_Text,Operation_checkExist,"选择要使用的应用：");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	//联系人详情-本机联系人-放在主屏
 	public void test_065() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提

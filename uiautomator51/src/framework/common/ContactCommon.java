@@ -736,7 +736,6 @@ public class ContactCommon {
 		String name[] = {"test1","test2","test3"};
 		String number[] = {"1234","12345","123456"};
 		String mail[] = {"zhanxun01@spreadtrum.com","zhanxun02@spreadtrum.com","zhanxun03@spreadtrum.com"};
-		ContactCommon.BatchDelete("所有联系人");
 		for(int i=0;i<name.length;i++)
 		{
 			addNameTelMail(position,name[i],number[i],mail[i]);
@@ -812,8 +811,9 @@ public class ContactCommon {
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/text1", option);
 		if(option.equals("拍照"))
 		{
+			excute(Object_ResourceId,Operation_WaitForExists,"com.android.camera2:id/shutter_button","10000");
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
-			Wait(1000);
+			excute(Object_ResourceId,Operation_WaitForExists,"com.android.camera2:id/done_button","10000");
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/done_button");
 			
 		}
