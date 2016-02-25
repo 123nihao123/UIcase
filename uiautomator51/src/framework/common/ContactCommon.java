@@ -6,9 +6,14 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import junit.framework.Assert;
 
 import com.android.uiautomator.core.UiCollection;
@@ -29,6 +34,8 @@ public class ContactCommon {
 //		}
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"com.android.contacts:id/checkbox"))
+			excute(Object_Text,Operation_ClickWait,"有电话号码的联系人");
 //		if(DeleTarget.equals("所有联系人"))
 //		{
 			excute(Object_Text,Operation_ClickWait, DeleTarget);
@@ -45,9 +52,8 @@ public class ContactCommon {
 	public static void addNameAndTel(String position, String name,String number) throws UiObjectNotFoundException{
 		selectContactPosition(position);
 		excute(Object_Text,Operation_SetText,"姓名",name);
-		excute(Object_Device, Operation_PressBack);
 		excute(Object_Text,Operation_SetText,"电话",number);
-		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/save_menu_item", "完成");
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
 	}
 	
 	public static void checkNameAndTel(String name,String number) throws UiObjectNotFoundException{
@@ -176,15 +182,29 @@ public class ContactCommon {
 	}
 	//index = "本机"或"SIM 卡"
 	public static void addGroup(String index,String name) throws UiObjectNotFoundException{
+		addGroup(index, name, null);
+	}
+	
+	public static void addGroup(String index,String name, String[] member) 
+	{
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "群组");
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_add_group", "添加群组");
 		if((Boolean) excute(Object_Text,Operation_Exists,"要在哪个帐户下创建群组？"))
 		{
-			excute(Object_ResIdText,Operation_ClickWait,"android:id/text1", index);
+			excute(Object_ResIdText,Operation_ClickWait,"android:id/text2", index);
 		}
 		excute(Object_ResourceId,Operation_SetText,"com.android.contacts:id/group_name",name);
-		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/save_menu_item","完成");
+		if(member!=null)
+		{
+			excute(Object_Text,Operation_ClickWait,"点击添加联系人");
+			for(int i=0;i<member.length;i++)
+			{
+				excute(Object_Text,Operation_ClickWait, member[i]);			
+			}
+			excute(Object_Text,Operation_ClickWait,"完成");			
+		}
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/save_menu_item");
 	}
 	
 	public static void addContactToGroup(String[] index) throws UiObjectNotFoundException{
@@ -215,13 +235,14 @@ public class ContactCommon {
 		
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.contacts:id/save_menu_item_button","完成");
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/save_menu_item","完成");
-		
+		/*
 		//保证数据更新
 		Wait(10000);
 		UiObject addedNum = (UiObject) excute(Object_ClassContainsText, Operate_ReturnObject,"android.widget.TextView","人来自");
 		int num2=getNum(addedNum.getText());
 		
 		Assert.assertTrue("Error: add all contact to group fail!!!",num1==num2);
+		*/
 		backContactHome();
 	}
 	public static void modifyGroup(String groupName) throws UiObjectNotFoundException{
@@ -290,7 +311,7 @@ public class ContactCommon {
 		}
 		else if(Deci1.equals(Devices_Text_Operator_Cancel))
 		{
-			excute(Object_ResIdText,Operation_ClickWait,"android:id/button2", Devices_Text_Operator_Cancel);
+			excute(Object_ResIdText,Operation_ClickWait,"com.android.contacts:id/cancel_menu_item_button", Devices_Text_Operator_Cancel);
 		}
 	}
 	
@@ -542,4 +563,297 @@ public class ContactCommon {
 		}
 		return result;
 	}
+	
+	//Add by konghao
+	
+	public static void addNameTelMail(String position, String name, String number, String mail) throws UiObjectNotFoundException 
+	{
+		selectContactPosition(position);
+		excute(Object_Text,Operation_SetText,"姓名",name);
+		excute(Object_Text,Operation_SetText,"电话",number);
+		excute(Object_Text,Operation_SetText,"电子邮件",mail);
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
+	}
+	
+	public static void checkNameTelMail(String name,String number,String mail) throws UiObjectNotFoundException
+	{
+		check(Object_ResourceId, Operation_TextEqualTrue,"com.android.contacts:id/large_title", name);
+		check(Object_ResIdInstance, Operation_TextEqualTrue, "com.android.contacts:id/header","0", number);
+		check(Object_ResIdInstance, Operation_TextEqualTrue, "com.android.contacts:id/header","1", mail);
+	}
+	
+	public static void addCommonThreeContacts() throws UiObjectNotFoundException
+	{
+		addNameTelMail("本机","zhanxun","1234","zhanxun@spreadtrum.com");
+		excute(Object_Device,Operation_PressBack);
+		addNameAndTel("SIM1", "SIM1", "123");
+		excute(Object_Device,Operation_PressBack);
+		addNameAndTel("SIM2", "SIM2", "234");
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	public static void deleteCommonThreeContacts() throws UiObjectNotFoundException
+	{
+		deleteContact("zhanxun");
+		deleteContact("SIM1");
+		deleteContact("SIM2");
+	}
+	
+	public static void setDisplayContacts(String name, String index)
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+		excute(Object_Text,Operation_ClickWait,name);
+		excute(Object_Text,Operation_ClickWait,"SIM1");
+		if(!(Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/checkbox","0"))
+			excute(Object_ResIdInstance,Operation_ClickWait,"android:id/checkbox","0");
+		excute(Object_Text,Operation_ClickWait,index);
+		excute(Object_Text,Operation_WaitForExists,"通讯录","5000");
+	}
+	
+	public static void setDisplayContacts(String name)
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+		excute(Object_Text,Operation_ClickWait,name);
+	}
+	
+	public static void checkDisplayContacts(String name)
+	{
+		if(name.equals("本机"))
+		{
+			check(Object_Text,Operation_checkExist,"zhanxun");
+			check(Object_Text,Operation_checkNoExist,"SIM1");
+			check(Object_Text,Operation_checkNoExist,"SIM2");
+		}
+		if(name.equals("SIM1"))
+		{
+			check(Object_Text,Operation_checkNoExist,"zhanxun");
+			check(Object_Text,Operation_checkExist,"SIM1");
+			check(Object_Text,Operation_checkNoExist,"SIM2");
+		}
+		if(name.equals("SIM2"))
+		{
+			check(Object_Text,Operation_checkNoExist,"zhanxun");
+			check(Object_Text,Operation_checkNoExist,"SIM1");
+			check(Object_Text,Operation_checkExist,"SIM2");
+		}
+		if(name.equals("自定义"))
+		{
+			check(Object_Text,Operation_checkExist,"自定义视图");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Device,Operation_PressBack);
+		}
+		if(name.equals("有电话号码的联系人"))
+		{
+			excute(Object_Device,Operation_PressBack);
+			check(Object_Text,Operation_checkExist,"zhanxun");
+		}
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"要显示的联系人");
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"com.android.contacts:id/checkbox"))
+			excute(Object_Text,Operation_ClickWait,"有电话号码的联系人");
+		excute(Object_Text,Operation_ClickWait,"所有联系人");
+	}
+	
+	public static void addName(String position, String name) throws UiObjectNotFoundException{
+		selectContactPosition(position);
+		excute(Object_Text,Operation_SetText,"姓名",name);
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
+	}
+	
+	public static void checkCopyContact(String name) 
+	{
+		excute(Object_Description,Operation_ClickWait,"搜索");
+		excute(Object_Text,Operation_SetText,"查找联系人",name);
+		check(Object_Text,Operation_checkExist,"匹配到 2个条目");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	public static void exportVcf(String name) 
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"导入/导出");
+		excute(Object_Text,Operation_ClickWait,"导出为 .vcf 文件");
+		excute(Object_Text,Operation_ClickWait,name);
+		excute(Object_Text,Operation_ClickWait,"完成");
+		if((Boolean)excute(Object_Text,Operation_Exists,"要允许文档访问您设备上的照片、媒体内容和文件吗？"))
+			{
+				excute(Object_Text,Operation_ClickWait,"允许");
+				excute(Object_Text,Operation_ClickWait,"下载");
+			}
+		if((Boolean)excute(Object_Text,Operation_Exists,"要允许通讯录允许应用访问短信附件吗？"))
+			{
+				excute(Object_Text,Operation_ClickWait,"允许");
+			}
+		excute(Object_Text,Operation_ClickWait,"保存");
+	}
+	
+	public static void importVcf(String name) 
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"导入/导出");
+		excute(Object_Text,Operation_ClickWait,"从 .vcf 文件导入");
+		excute(Object_Text,Operation_ClickWait,"contacts.vcf");
+		excute(Object_Text,Operation_WaitForExists,name,"5000");
+	}
+	
+	public static void shareContact() 
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"导入/导出");
+		excute(Object_Text,Operation_ClickWait,"分享所显示的联系人");
+		excute(Object_Text,Operation_ClickWait,"zhanxun");
+		excute(Object_Text,Operation_ClickWait,"完成");
+	}
+	
+	public static void sendByMsg(String name) 
+	{
+		excute(Object_Text,Operation_ClickWait,name);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/icon_alternate");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/compose_message_text","5000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
+	}
+	
+	public static void checkGroup(String name, String[] member, String index) 
+	{
+		excute(Object_Text,Operation_WaitForExists,member.length+" 个联系人","10000");
+		check(Object_Text,Operation_checkExist,name);
+		excute(Object_Text,Operation_ClickWait,name);
+		for(int i=0; i<member.length;i++)
+		{
+			check(Object_Text,Operation_checkExist,member[i]);
+		}
+		if(index.equals("本机"))
+			check(Object_Text,Operation_checkExist,"本机中有 "+member.length+" 个联系人");
+		if(index.equals("SIM卡"))
+			check(Object_Text,Operation_checkExist,"SIM 卡中有 "+member.length+" 个联系人");
+	}
+	
+	public static void addCommonThreeContacts(String position) throws UiObjectNotFoundException 
+	{
+		String name[] = {"test1","test2","test3"};
+		String number[] = {"1234","12345","123456"};
+		String mail[] = {"zhanxun01@spreadtrum.com","zhanxun02@spreadtrum.com","zhanxun03@spreadtrum.com"};
+		for(int i=0;i<name.length;i++)
+		{
+			addNameTelMail(position,name[i],number[i],mail[i]);
+			excute(Object_Device, Operation_PressBack);
+		}
+	}
+	
+	public static void deleteGroupMember(String Groupname, String name, String index) throws UiObjectNotFoundException 
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"群组");
+		excute(Object_Text,Operation_ClickWait,Groupname);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "修改");
+		excute(Object_PeerTextClass,Operation_ClickWait,name,"android.widget.FrameLayout");
+		if(index.equals("完成"))
+			excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/save_menu_item",index);
+		if(index.equals("舍弃更改"))
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text,Operation_ClickWait,index);
+			if((Boolean) excute(Object_Text,Operation_Exists,"要舍弃您所做的更改吗？"))
+				excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		backContactHome();
+	}
+	
+	public static void checkGroupMember(String Groupname, String name, String check) throws UiObjectNotFoundException 
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"群组");
+		excute(Object_Text,Operation_ClickWait,Groupname);
+		if(check.equals("exist"))
+			check(Object_Text,Operation_checkExist,name);
+		if(check.equals("no_exist"))
+			check(Object_Text,Operation_checkNoExist,name);
+		backContactHome();
+	}
+	
+	public static void checkShare() 
+	{
+		if((Boolean) excute(Object_Text,Operation_Exists,"分享方式"))
+			check(Object_Text,Operation_ClickWait,"分享方式");
+		if((Boolean) excute(Object_Text,Operation_Exists,"使用其他应用"))
+			check(Object_Text,Operation_ClickWait,"使用其他应用");
+	}
+	
+	//add by shiyahui
+	//清除我的个人资料
+	public static void deleteMyData() throws UiObjectNotFoundException{
+		  if((Boolean)excute(Object_Text,Operation_Exists,"设置我的个人资料"))
+		  { 
+		   System.out.println("");
+		  }
+		  else
+		  {
+		   excute(Object_Text,Operation_ClickWait,"我");
+		   excute(Object_Device,Operation_PressMenu);
+		   excute(Object_Text,Operation_ClickWait,"删除");
+		   excute(Object_Text,Operation_ClickWait,"确定");
+		   check(Object_Text,Operation_checkExist,"设置我的个人资料");
+		  }
+		 }
+	
+	//add by yyy
+	public static void addPhoneWithPicWorkaround(String name,String number,String option) throws UiObjectNotFoundException
+	{
+		selectContactPosition("本机");
+		//在页面不需要滑动时使用Object_TextScroll会出错
+		excute(Object_Text,Operation_SetText,"姓名",name);
+		excute(Object_Text,Operation_SetText,"电话",number);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/photo_icon");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/text1", option);
+		if(option.equals("拍照"))
+		{
+			excute(Object_ResourceId,Operation_WaitForExists,"com.android.camera2:id/shutter_button","10000");
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+			excute(Object_ResourceId,Operation_WaitForExists,"com.android.camera2:id/done_button","10000");
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/done_button");
+			
+		}
+		else if(option.equals("选择照片"))
+		{
+			Wait(2000);
+			//选择图片
+			UiObject photo = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.documentsui:id/icon_mime");
+			UiObject gallery = (UiObject) excute(Object_ResIdText,Operate_ReturnObject,"android:id/title", "图库");
+			if((Boolean) excute(Object_Description,Operation_Exists,"显示根目录"))
+			{
+				excute(Object_Description,Operation_ClickWait,"显示根目录");
+			}
+			if((Boolean) excute(Object_Text,Operation_Exists,"图片"))
+			{
+				excute(Object_ResIdText,Operation_ClickWait,"android:id/title", "图片");
+				while((Boolean) excute(Object_ResourceId,Operation_Exists,"com.android.documentsui:id/icon_mime"))
+				{
+				excute(Object_ResourceId,Operation_ClickWait,"com.android.documentsui:id/icon_mime");
+					Wait(2000);
+				}
+				while((Boolean) excute(Object_ClassInstance,Operation_Exists,"android.widget.LinearLayout","0"))
+				{
+					excute(Object_ClassInstance,Operation_ClickWait,"android.widget.LinearLayout","0");
+					Wait(2000);
+				}
+			}
+			//图库操作
+			else if(gallery.exists())
+			{
+				gallery.clickAndWaitForNewWindow();
+				UiDevice uiDevice = UiDevice.getInstance();
+				uiDevice.click(uiDevice.getDisplayWidth() / 2,uiDevice.getDisplayHeight()/2);
+				Wait(2000);
+				uiDevice.click(uiDevice.getDisplayWidth()/2,uiDevice.getDisplayHeight()/2);
+			}
+		}
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.gallery3d:id/filtershow_done", "保存");
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
+	}
+
+
 }

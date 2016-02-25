@@ -8,7 +8,6 @@ import android.os.RemoteException;
 import android.view.KeyEvent;
 
 import com.android.uiautomator.core.UiDevice;
-
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiSelector;
@@ -49,10 +48,24 @@ public class Settings extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
+	
 	public void test_000() throws UiObjectNotFoundException, RemoteException 
 	{
-	DeviceCommon.removePermissions();
+		DeviceCommon.removePermissions();
+		ClearBackgroundApp();
+		Wait(1000);
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		Wait(500);
+		SettingCommon.SIMsettings("SIM 卡插槽 1");
+		SettingCommon.SIMName("SIM 卡插槽 1","SIM1");
+		Wait(500);
+		SettingCommon.SIMsettings("SIM 卡插槽 2");
+		SettingCommon.SIMName("SIM 卡插槽 2","SIM2");
+		Wait(500);
 	}
+
+	
 	//设置VPN，
 	public void test_001_001() throws UiObjectNotFoundException, RemoteException 
 	{
@@ -67,7 +80,7 @@ public class Settings extends UiAutomatorTestCase
 			else{
 				SettingCommon.SetVPN("PPTP","vpn1.e2010.mobility-lab.com");
 			}	
-			Wait(500);
+//			Wait(500);
 			check(Object_Text,Operation_checkExist,"PPTP");
 			
 	}
@@ -95,13 +108,13 @@ public class Settings extends UiAutomatorTestCase
 			{
 			excute(Object_Text,Operation_ClickWait,"确定");
 			SettingCommon.SetPIN();
-			Wait(500);
+//			Wait(500);
 			SettingCommon.SetL2TPVPN("L2TP","144.188.130.240","",""," test");
 			}
 		else{
 				SettingCommon.SetL2TPVPN("L2TP","144.188.130.240","",""," test");
 			}
-		Wait(500);
+//		Wait(500);
 		check(Object_Text,Operation_Exists,"L2TP");
 			
 	}
@@ -757,13 +770,15 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_ClickWait,"显示","vertical");
 		SettingCommon.set_pic("动态壁纸");
 		excute(Object_Device, Operation_PressHome);
-		Wait(1000);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.launcher3:id/workspace","2000");		
+//		Wait(1000);
 		SettingCommon.take_temp_pic(UiDevice.getInstance(), "HomeScreen");
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll,Operation_ClickWait,"显示","vertical");
 		SettingCommon.set_pic("壁纸");
 		excute(Object_Device, Operation_PressHome);
-		Wait(1000);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.launcher3:id/workspace","2000");	
+//		Wait(1000);
 		SettingCommon.take_temp_pic(UiDevice.getInstance(), "HomeScreen_new");
 		SettingCommon.check_pic("HomeScreen","HomeScreen_new",0.8d);
 		SettingCommon.delete_pic("HomeScreen", "HomeScreen_new");
@@ -920,7 +935,7 @@ public class Settings extends UiAutomatorTestCase
 			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/edittext","test");
 			excute(Object_ResourceId,Operation_ClickWait,"android:id/button2");	
 			}
-		
+
 		//与蓝牙设备配对
 		public void test_011_002() throws UiObjectNotFoundException, RemoteException 
 		{
@@ -942,16 +957,16 @@ public class Settings extends UiAutomatorTestCase
 			Wait(6000);
 			if((Boolean)excute(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","要与1配对吗？"))
 			{
-				excute(Object_Text,Operation_ClickWait,"android:id/button1","配对");
+				excute(Object_ResIdText,Operation_ClickWait,"android:id/button1","配对");
 			}
 			else
 			{
 				Wait(5000);
-				excute(Object_Text,Operation_ClickWait,"android:id/button1","配对");
+				excute(Object_ResIdText,Operation_ClickWait,"android:id/button1","配对");
 			}	
 			
 		}
-		
+
 		//主卡为SIM1，SIM1作为移动数据浏览百度
 		public void test_013_031() throws UiObjectNotFoundException, RemoteException 
 		{

@@ -86,11 +86,12 @@ public class OperationType
 	
 	//以上未实现
 	
-	public static final int Operation_WaitForExists = ObjectOperate_Checkable_InitValue + 33; //long timeout
+	//public static final int Operation_WaitForExists = ObjectOperate_Checkable_InitValue + 33; //long timeout
 	public static final int Operation_WaitUntilGone = ObjectOperate_Checkable_InitValue + 34; //long timeout
 	//public static final int Operation_IsExists = ObjectOperate_Checkable_InitValue + 43;
 	
 	public static final int Operation_Exists = ObjectOperate_UnCheckable_InitValue + 1;
+	public static final int Operation_WaitForExists = ObjectOperate_UnCheckable_InitValue + 2; //long timeout
 	
 	
 	//Scroll

@@ -4,6 +4,14 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.data.DeviceParameter.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import junit.framework.Assert;
 
 import com.android.uiautomator.core.UiDevice;
@@ -14,7 +22,6 @@ import com.android.uiautomator.core.UiSelector;
 
 import android.graphics.Rect;
 import android.os.RemoteException;
-
 import static framework.excute.Excute.*;
 
 public class DeviceCommon 
@@ -173,7 +180,7 @@ public class DeviceCommon
 	 public static void removePermissions() throws UiObjectNotFoundException{
 	        excute(Object_TextScroll, Operation_ClickWait, "应用", "vertical");
 	        Wait(500);
-	        String[] appList = {"信息","浏览器","相机","文件管理器","电话","通讯录","日历","Launcher3"};
+	        String[] appList = {"信息","浏览器","相机","文件管理器","电话","通讯录","日历","电子邮件","Launcher3"};
 	        
 	        for(int i=0; i<appList.length; i++){
 	            excute(Object_TextScroll, Operation_ClickWait, appList[i], "vertical");
@@ -289,6 +296,69 @@ public class DeviceCommon
 			Assert.assertTrue("Error: the needed object can't find!!!",false);
 			return null;
 		}
+	}
+	
+	public static String runADBCommand(String adbCommand) throws IOException 
+	{ 
+	    String returnValue = "", line; 
+	    InputStream inStream = null; 
+	    try { 
+	        Process process = Runtime.getRuntime().exec(adbCommand); 
+	        inStream = process.getInputStream(); 
+	        BufferedReader brCleanUp = new BufferedReader( 
+	        new InputStreamReader(inStream)); 
+	        while ((line = brCleanUp.readLine()) != null) { 
+	        returnValue = returnValue + line + "\n"; 
+	    } 
+	        brCleanUp.close(); 
+	    try { 
+	        process.waitFor(); 
+	    } catch (InterruptedException e) { 
+	        e.printStackTrace(); 
+	    } 
+	    } catch (Exception e) { 
+	        e.printStackTrace(); 
+	       System.err.println("Error: " + e.getMessage()); 
+	    } 
+	//System.out.println(returnValue); 
+	        return returnValue; 
+	}
+	
+	public static void searchFile(String path, String filename) 
+	{
+		String returnValue = ""; 
+		//adb; 
+		try{ 
+		    returnValue = DeviceCommon.runADBCommand("find "+path+" -name "+filename); 
+		}catch (IOException e) 
+		{ 
+		    e.printStackTrace(); 
+		} 
+		System.out.println("The return Value is:" + returnValue); 
+		String regEx = "contacts.vcf"; 
+		Pattern pattern = Pattern.compile(regEx); 
+		Matcher matcher = pattern.matcher(returnValue); 
+		if(!matcher.find()) 
+		{ 
+		    Assert.assertTrue("Error: contacts.vcf not found!!!",false); 
+		} 
+		else 
+		{ 
+		    System.out.println("contacts.vcf is found:"); 
+		}
+	}
+	
+	public static void deleteFile(String path, String filename) 
+	{
+		String returnValue = ""; 
+		//adb; 
+		try{ 
+		    returnValue = DeviceCommon.runADBCommand("rm -f "+path+"/"+filename); 
+		}catch (IOException e) 
+		{ 
+		    e.printStackTrace(); 
+		}
+		System.out.println("The return Value is:" + returnValue); 
 	}
   
 }
