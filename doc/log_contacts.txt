@@ -9,7 +9,6 @@ INSTRUMENTATION_STATUS_CODE: 1
 Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -460,7 +459,6 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 Groups were already empty.
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -479,7 +477,6 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 Groups were already empty.
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -498,7 +495,6 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 Groups were already empty.
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -517,7 +513,6 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 Groups were already empty.
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -536,7 +531,6 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 Groups were already empty.
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -555,7 +549,6 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 Groups were already empty.
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -793,37 +786,12 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 INSTRUMENTATION_STATUS: numtests=81
-INSTRUMENTATION_STATUS: stream=
-Failure in test_046:
-junit.framework.AssertionFailedError: Not find the object with object type: 10004, opration type: 30001
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at framework.common.ContactCommon.addPhoneWithPicWorkaround(ContactCommon.java:815)
-	at testcase.Contact.test_046(Contact.java:700)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
+INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
 INSTRUMENTATION_STATUS: test=test_046
 INSTRUMENTATION_STATUS: class=testcase.Contact
-INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Not find the object with object type: 10004, opration type: 30001
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at framework.common.ContactCommon.addPhoneWithPicWorkaround(ContactCommon.java:815)
-	at testcase.Contact.test_046(Contact.java:700)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
 INSTRUMENTATION_STATUS: current=44
-INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -834,7 +802,6 @@ INSTRUMENTATION_STATUS_CODE: 1
 Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -870,7 +837,6 @@ Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
 Contacts were already empty.
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -888,7 +854,6 @@ INSTRUMENTATION_STATUS_CODE: 1
 Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -906,41 +871,13 @@ INSTRUMENTATION_STATUS_CODE: 1
 Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
-INSTRUMENTATION_STATUS: stream=
-Failure in test_051:
-junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30007
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at framework.common.ContactCommon.addNameTelMail(ContactCommon.java:574)
-	at framework.common.ContactCommon.addCommonThreeContacts(ContactCommon.java:587)
-	at testcase.Contact.test_051(Contact.java:785)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
+INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
 INSTRUMENTATION_STATUS: test=test_051
 INSTRUMENTATION_STATUS: class=testcase.Contact
-INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30007
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at framework.common.ContactCommon.addNameTelMail(ContactCommon.java:574)
-	at framework.common.ContactCommon.addCommonThreeContacts(ContactCommon.java:587)
-	at testcase.Contact.test_051(Contact.java:785)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
 INSTRUMENTATION_STATUS: current=49
-INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -951,41 +888,13 @@ INSTRUMENTATION_STATUS_CODE: 1
 Enter the setUp!!!
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
-Contacts were already empty.
 INSTRUMENTATION_STATUS: numtests=81
-INSTRUMENTATION_STATUS: stream=
-Failure in test_052:
-junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30007
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at framework.common.ContactCommon.addNameTelMail(ContactCommon.java:573)
-	at framework.common.ContactCommon.addCommonThreeContacts(ContactCommon.java:742)
-	at testcase.Contact.test_052(Contact.java:796)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
+INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
 INSTRUMENTATION_STATUS: test=test_052
 INSTRUMENTATION_STATUS: class=testcase.Contact
-INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Not find the object with object type: 10002, opration type: 30007
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at framework.common.ContactCommon.addNameTelMail(ContactCommon.java:573)
-	at framework.common.ContactCommon.addCommonThreeContacts(ContactCommon.java:742)
-	at testcase.Contact.test_052(Contact.java:796)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
 INSTRUMENTATION_STATUS: current=50
-INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -1042,36 +951,16 @@ Clear Background
 ======Start to excute CallLogCommon: deleteAllLog======
 Clear Background
 ======Start to excute DeviceCommon: enterApp======
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute CallLogCommon: deleteAllLog======
 INSTRUMENTATION_STATUS: numtests=81
-INSTRUMENTATION_STATUS: stream=
-Failure in test_055:
-junit.framework.AssertionFailedError: Not find the object with object type: 10004, opration type: 30001
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at testcase.Contact.test_055(Contact.java:861)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
+INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
 INSTRUMENTATION_STATUS: test=test_055
 INSTRUMENTATION_STATUS: class=testcase.Contact
-INSTRUMENTATION_STATUS: stack=junit.framework.AssertionFailedError: Not find the object with object type: 10004, opration type: 30001
-	at framework.excute.Excute.checkObject(Excute.java:60)
-	at framework.excute.Excute.excute(Excute.java:50)
-	at testcase.Contact.test_055(Contact.java:861)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.start(UiAutomatorTestRunner.java:160)
-	at com.android.uiautomator.testrunner.UiAutomatorTestRunner.run(UiAutomatorTestRunner.java:96)
-	at com.android.commands.uiautomator.RunTestCommand.run(RunTestCommand.java:91)
-	at com.android.commands.uiautomator.Launcher.main(Launcher.java:83)
-	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
-	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:306)
-
 INSTRUMENTATION_STATUS: current=53
-INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_STATUS: numtests=81
 INSTRUMENTATION_STATUS: stream=
 INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
@@ -1568,11 +1457,10 @@ INSTRUMENTATION_STATUS: current=81
 INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_STATUS: stream=
 Test results for WatcherResultPrinter=.........................................
-...F.....F.F...F............................
-Time: 6185.056
+........................................
+Time: 6248.615
 
-FAILURES!!!
-Tests run: 81,  Failures: 4,  Errors: 0
+OK (81 tests)
 
 
 INSTRUMENTATION_STATUS_CODE: -1
