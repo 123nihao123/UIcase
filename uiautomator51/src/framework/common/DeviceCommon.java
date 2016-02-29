@@ -20,6 +20,9 @@ import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import android.graphics.Rect;
 import android.os.RemoteException;
 import static framework.excute.Excute.*;
@@ -359,6 +362,62 @@ public class DeviceCommon
 		    e.printStackTrace(); 
 		}
 		System.out.println("The return Value is:" + returnValue); 
+	}
+	
+	/**
+	 * 打开数据库。注意数据库所有操作结束后要调用closeDatabase（）关闭数据库。
+	 * @param dbPath
+	 * @return
+	 */
+	public static SQLiteDatabase openDatabase(String dbPath)
+	{ 
+		SQLiteDatabase database = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+		return database;
+	}
+	
+	/**
+	 * 关闭数据库
+	 * @param db
+	 */
+	public static void closeDatabase(SQLiteDatabase db)
+	{ 
+		if( db != null )
+		{
+			db.close();
+		}
+	}
+	
+	/**
+	 * 插入一条记录到数据库。注意数据库所有操作结束后要调用closeDatabase（）关闭数据库。
+	 * @param db
+	 * @param tableName
+	 * @param fieldList
+	 * @param valueList
+	 */
+	public static void insertToDatabase(SQLiteDatabase db,String tableName, String fieldList, String valueList)
+	{ 
+		//String sql = "INSERT INTO calls (number,date,duration,type) VALUES ('3331476008',1456560265000,120,3)";
+		String sql= "INSERT INTO " + tableName +" ("+fieldList+") VALUES ("+ valueList+")";
+		System.out.println("SQL is: "+ sql);
+		db.execSQL(sql);
+	}
+	
+	/**
+	 * 获取记录总数。注意数据库所有操作结束后要调用closeDatabase（）关闭数据库。
+	 * @param db
+	 * @param tableName
+	 * @return
+	 */
+	public static int getRecordCountInDatabase(SQLiteDatabase db,String tableName)
+	{ 
+		//String sql ="SELECT * FROM calls";
+		String sql ="SELECT * FROM "+tableName;
+		System.out.println("SQL is: "+ sql);
+		Cursor cursor = db.rawQuery(sql, null);
+		int total = cursor.getCount();
+		cursor.close();
+		return total;
+		
 	}
   
 }
