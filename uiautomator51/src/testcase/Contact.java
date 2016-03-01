@@ -180,7 +180,7 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		ContactCommon.setDisplayContacts("本机");
+		ContactCommon.selectDisplayContact("本机");
 		ContactCommon.checkDisplayContacts("本机");
 	}
 	
@@ -190,7 +190,7 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		ContactCommon.setDisplayContacts("SIM1");
+		ContactCommon.selectDisplayContact("SIM1");
 		ContactCommon.checkDisplayContacts("SIM1");
 	}
 	
@@ -200,7 +200,7 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		ContactCommon.setDisplayContacts("SIM2");
+		ContactCommon.selectDisplayContact("SIM2");
 		ContactCommon.checkDisplayContacts("SIM2");
 	}
 	
@@ -210,7 +210,7 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		ContactCommon.setDisplayContacts("自定义");
+		ContactCommon.selectDisplayContact("自定义");
 		ContactCommon.checkDisplayContacts("自定义");
 	}
 	
@@ -220,7 +220,7 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		ContactCommon.setDisplayContacts("自定义","确定");
+		ContactCommon.selectDisplayContact("SIM1","确定");
 		check(Object_Text,Operation_checkExist,"SIM1");
 	}
 	
@@ -230,7 +230,7 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addCommonThreeContacts();
 		//主体
-		ContactCommon.setDisplayContacts("自定义","取消");
+		ContactCommon.selectDisplayContact("SIM1","取消");
 		excute(Object_Device,Operation_PressBack);
 		if((Boolean) excute(Object_Text,Operation_Exists,"Spreadtrum"))
 		{
@@ -254,7 +254,7 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addName("SIM2","SIM2");
 		excute(Object_Device,Operation_PressBack);
 		//主体
-		ContactCommon.setDisplayContacts("有电话号码的联系人");
+		ContactCommon.selectDisplayContact("有电话号码的联系人");
 		ContactCommon.checkDisplayContacts("有电话号码的联系人");
 	}
 	
@@ -265,7 +265,7 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("zhanxun", "SIM1");
-		ContactCommon.checkCopyContact("zhanxun");
+		ContactCommon.checkCopyContact("zhanxun",2);
 	}
 	
 	//复制联系人到SIM2
@@ -275,7 +275,7 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("zhanxun", "SIM2");
-		ContactCommon.checkCopyContact("zhanxun");
+		ContactCommon.checkCopyContact("zhanxun",2);
 	}
 	
 	//复制联系人到本机
@@ -285,7 +285,7 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addCommonThreeContacts();
 		//主体
 		ContactCommon.copyContactTo("SIM1", "本机");
-		ContactCommon.checkCopyContact("SIM1");
+		ContactCommon.checkCopyContact("SIM1",2);
 	}
 	
 	//取消复制到本机
@@ -324,7 +324,7 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.exportVcf("zhanxun");
 		ContactCommon.BatchDelete("所有联系人");
 		//主体
-		ContactCommon.importVcf("zhanxun");
+		ContactCommon.importVcf("zhanxun","contacts.vcf");
 		check(Object_Text,Operation_checkExist,"zhanxun");
 		//清场
 		DeviceCommon.deleteFile("/sdcard/Download", "contacts.vcf");
@@ -491,7 +491,7 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addContactToGroup(contactToGroup);
 		//主体
 		ContactCommon.deleteGroupMember("Test3","zhanxun","完成");
-		ContactCommon.checkGroupMember("Test3", "zhanxun", "no_exist");
+		ContactCommon.checkGroupMember("Test3", "zhanxun", "不存在");
 		//清场
 		ContactCommon.deleteGroup("all");
 	}
@@ -508,7 +508,7 @@ public class Contact extends UiAutomatorTestCase
 		ContactCommon.addContactToGroup(contactToGroup);
 		//主体
 		ContactCommon.deleteGroupMember("Test3","zhanxun","舍弃更改");
-		ContactCommon.checkGroupMember("Test3", "zhanxun", "exist");
+		ContactCommon.checkGroupMember("Test3", "zhanxun", "存在");
 		//清场
 		ContactCommon.deleteGroup("all");
 	}
