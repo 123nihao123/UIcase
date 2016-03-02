@@ -115,5 +115,21 @@ public class CallLogCommon {
 		}
 		return 0;
 	}
+	public static void addIPCall() throws UiObjectNotFoundException{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"设置");
+		excute(Object_Text,Operation_ClickWait,"IP 拨号设置");
+		excute(Object_Text,Operation_ClickWait,"新建");
+		excute(Object_ResourceId,Operation_SetText,"com.android.phone:id/ip_editor","86");
+		excute(Object_Text,Operation_ClickWait,"完成");
+	}
+	public static void removeIPCall() throws UiObjectNotFoundException{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"设置");
+		excute(Object_Text,Operation_ClickWait,"IP 拨号设置");
+		excute(Object_Text,Operation_ClickWait,"移除");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.phone:id/checkbox_select_all");
+		excute(Object_Text,Operation_ClickWait,"完成");
+	}
 	
 }
