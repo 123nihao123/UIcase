@@ -6,6 +6,8 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class CallLogCommon {
@@ -60,4 +62,58 @@ public class CallLogCommon {
 		excute(Object_Text,Operation_ClickWait,"查看");
 		excute(Object_Text,Operation_ClickWait,type);
 	}
+	
+	
+	/**
+	 * Description:添加case中所需的数据4条数据，SIM1包含一条未接，一条已接，一条已拨，SIM卡信息，归属地 ，SIM2一条已拨记录
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void fillCallLogData() throws UiObjectNotFoundException{
+		String dbPath = "/data/data/com.android.providers.contacts/databases/contacts2.db"; 
+		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,geocoded_location,subscription_component_name","'10086',"+getDate("今天")+",158,3,'89860060101550262647','江苏省南京市','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'10001',"+getDate("昨天")+",158,1,'89860060101550262647','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'10010',1456560265000,168,2,'89860060101550262647','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'10000',"+getDate("昨天")+",59,2,'898600f0101550115010','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'111111',"+getDate("今天")+",59,1,'898600f0101550115010','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'222222',1456560265000,59,3,'898600f0101550115010','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'333333',"+getDate("今天")+",59,2,'898600f0101550115010','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'444444',1456560265000,59,1,'898600f0101550115010','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'555555',"+getDate("昨天")+",59,3,'898600f0101550115010','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
+		//int total = DeviceCommon.getRecordCountInDatabase(database,"calls"); 
+		//System.out.println("call log'count : " + total); 
+		database.close();
+		
+	}
+	
+	
+	
+	/**
+	 * Description: 根据fillCallLogData()中的时间毫秒转换为以秒来计算
+	 * @param day 前天  昨天  今天
+	 * @return Beforeyesterdaytime，Yesterdaytime，Todaytime;
+	 */
+	public static long getDate(String day) 
+	{
+		if (day.equals("前天"))
+		{
+			long Beforeyesterdaytime = System.currentTimeMillis()-2*24*3600*1000;
+			System.out.println(Beforeyesterdaytime);
+			return Beforeyesterdaytime;
+		}
+		else if(day.equals("昨天"))
+		{
+			long Yesterdaytime = System.currentTimeMillis()-1*24*3600*1000;
+			System.out.println(Yesterdaytime);
+			return Yesterdaytime;
+		} 
+		else if(day.equals("今天"))
+		{
+			long Todaytime = System.currentTimeMillis()-0*24*3600*1000;
+			System.out.println(Todaytime);
+			return Todaytime;
+		}
+		return 0;
+	}
+	
 }
