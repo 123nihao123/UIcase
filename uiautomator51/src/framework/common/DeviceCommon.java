@@ -432,6 +432,18 @@ public class DeviceCommon
 		return total;
 		
 	}
+	/**
+	 * 删除所有记录
+	 * @param db
+	 * @param tableName
+	 */
+	public static void deleteAllFromDatabase(SQLiteDatabase db,String tableName)
+	{ 
+		//String sql ="DELETE * FROM calls";
+		String sql ="DELETE FROM "+tableName;
+		System.out.println("SQL is: "+ sql);
+		db.execSQL(sql);		
+	}
 
 	/**
 	 * 获得SIM ICC_ID

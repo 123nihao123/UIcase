@@ -1,5 +1,9 @@
 package testcase;
 
+
+//import org.junit.AfterClass;  
+//import org.junit.BeforeClass;
+
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
@@ -21,6 +25,36 @@ import framework.common.SettingCommon;
 
 public class CallLog extends UiAutomatorTestCase
 {
+	/*
+	@BeforeClass 
+    public static void beforeClass()
+	{  
+        System.out.println("Fill CallLog Data in BeforeClass");
+        CallLogCommon.fillCallLogData();
+    }
+	
+	@AfterClass  
+    public static void afterClass()
+	{  
+        System.out.println("Delete CallLog data AfterAlass");  
+        CallLogCommon.deleteAllFromCallLog();
+    }  
+	*/
+	
+	/**
+	 * Workaround of  not working @BeforeClass @AfterClass
+	 * Compile is ok but @BeforeClass @AfterClass can not be recognized because of extending UiAutomatorTestCase
+	 */
+	public void test_0000(){  
+        System.out.println("before class!!!!!!!!!!!!!!!!!!!!!!!!");
+        CallLogCommon.fillCallLogData();
+    }
+	
+	public void test_9999(){  
+        System.out.println("after class...");
+        CallLogCommon.deleteAllFromCallLog();
+    }
+	
 	@Override
 	protected void setUp() throws UiObjectNotFoundException, RemoteException 
     {			
