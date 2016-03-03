@@ -39,6 +39,336 @@ public class CallLog extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
+	
+	
+	/**
+	 * Description: 全部-筛选-所有联系人
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM1 SIM2
+	 */
+    
+	public static void test_026() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"所有通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+	/**
+	 * Description: 全部-筛选-SIM1 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM1 
+	 */
+	public static void test_027() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM1 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+	}
+	
+	/**
+	 * Description: 全部-筛选-SIM2 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM2 
+	 */
+	public static void test_028() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM2 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+	/**
+	 * Description: 未接-筛选-所有通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM2 SIM1
+	 */
+	public static void test_029() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"未接电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"所有通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+	/**
+	 * Description: 未接-筛选-SIM1 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM1
+	 */
+	public static void test_030() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"未接电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM1 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+	}
+	
+	/**
+	 * Description: 未接-筛选-SIM2 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM2
+	 */
+	public static void test_031() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"未接电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM2 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+	/**
+	 * Description: 已拨-筛选-所有通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param 
+	 */
+	public static void test_032() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"已拨电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"所有通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+
+	/**
+	 * Description: 已拨-筛选-SIM1 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM1
+	 */
+	public static void test_033() throws UiObjectNotFoundException , RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"已拨电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM1 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+	}
+	
+	/**
+	 * Description: 已拨-筛选-SIM2 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM2
+	 */
+	public static void test_034() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"已拨电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM2 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+	/**
+	 * Description: 已接-筛选-所有通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param 
+	 */
+	public static void test_035() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"已接电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"所有通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+
+	/**
+	 * Description: 已接-筛选-SIM1 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM1
+	 */
+	public static void test_036() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"已接电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM1 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM1");
+	}
+	
+	/**
+	 * Description: 已接-筛选-SIM2 通话记录
+	 * @throws UiObjectNotFoundException, RemoteException
+	 * @param SIM2
+	 */
+	public static void test_037() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","3000");
+		excute(Object_Text,Operation_ClickWait,"已接电话");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"查看");
+		excute(Object_Text,Operation_ClickWait,"SIM2 通话记录");
+		check(Object_ClassContainsText,Operation_checkExist,"android.widget.TextView","SIM2");
+	}
+	
+	/**
+	 * Description:展开详情页面，展开的页面上有text“新建联系人”“添加到联系人”“发送信息”“通话详情”“添加至黑名单”
+	 * @throws UiObjectNotFoundException, RemoteException
+	 */
+	public static void test_038() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","4000");
+		excute(Object_Text,Operation_ClickWait,"全部");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		check(Object_Description,Operation_checkExist,"为333333创建联系人信息");
+		check(Object_Description,Operation_checkExist,"将333333添加到现有联系人");
+		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/send_message_action");
+		check(Object_Description,Operation_checkExist,"与333333的通话详情");
+		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/add_to_blacklist_action");
+	}
+		
+	
+	
+	/**
+	 * Description:从通话记录中增加联系人
+	 * @throws UiObjectNotFoundException, RemoteException
+	 */
+	public static void test_039() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","4000");
+		excute(Object_Text,Operation_ClickWait,"全部");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		excute(Object_Description,Operation_ClickWait,"为333333创建联系人信息");
+		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/add_account_button","添加新帐户");
+	}
+	
+	/**
+	 * Description:从通话记录添加到联系人
+	 * @throws UiObjectNotFoundException, RemoteException
+	 */
+	public static void test_040() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","4000");
+		excute(Object_Text,Operation_ClickWait,"全部");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		excute(Object_Description,Operation_ClickWait,"将333333添加到现有联系人");
+		check(Object_Text,Operation_checkExist,"选择联系人");
+	}
+	
+	/**
+	 * Description:选择一条记录跳转到短信界面
+	 * @throws UiObjectNotFoundException, RemoteException
+	 */
+	public static void test_041() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","4000");
+		excute(Object_Text,Operation_ClickWait,"全部");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/send_message_action");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/conversation_title","5000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/conversation_title","333333");
+	}
+	
+	
+	/**
+	 * Description:选择一条记录进入通话详情
+	 * @throws UiObjectNotFoundException, RemoteException
+	 */
+	public static void test_042() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","4000");
+		excute(Object_Text,Operation_ClickWait,"全部");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		excute(Object_Description,Operation_ClickWait,"与333333的通话详情");
+		check(Object_Text,Operation_checkExist,"通话详情");
+	}
+	
+	/**
+	 * Description:选择一条记录跳转到添加到黑名单
+	 * @throws UiObjectNotFoundException, RemoteException
+	 */
+	public static void test_043() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","4000");
+		excute(Object_Text,Operation_ClickWait,"全部");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/add_to_blacklist_action");
+		check(Object_Text,Operation_checkExist,"拦截类型");
+	}
+	
+	/**
+	 * Description:选择一条记录展开，再收起
+	 * @throws UiObjectNotFoundException, RemoteException
+	 */
+	public static void test_044() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text,Operation_WaitForExists,"今天","4000");
+		excute(Object_Text,Operation_ClickWait,"全部");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		excute(Object_Text,Operation_ClickWait,"333333");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.dialer:id/create_new_contact_action");
+	}
+	
+	/**
+	  * 通话记录-从卡1打出电话
+	  * @throws UiObjectNotFoundException
+	  * @throws RemoteException
+	  */
+	 public static void test_045() throws UiObjectNotFoundException, RemoteException 
+	 { 
+	  //前提
+	  ClearBackgroundApp();
+	  DeviceCommon.enterApp(Devices_Desc_Call);
+	  Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
+	  int WideArea = ModArea.width();
+	  int x = ModArea.centerX();
+	  int y = ModArea.centerY();
+	  //主体
+	  excute(Object_Description,Operation_ClickWait,"更多选项");
+	  excute(Object_Text,Operation_ClickWait,"通话记录");
+	  excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/primary_action_button");
+	  excute(Object_ResourceId, Operation_WaitForExists, "android:id/select_dialog_listview","10000");
+	  excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
+	  Wait(10000);
+	  UiDevice.getInstance().click(x, y);
+	  
+	 }
+	
+	
+	
 	/**
 	 * 通话记录-从卡2打出电话
 	 * @throws UiObjectNotFoundException
