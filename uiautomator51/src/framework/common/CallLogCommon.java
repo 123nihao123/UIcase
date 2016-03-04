@@ -65,7 +65,7 @@ public class CallLogCommon {
 	}
 
 	/**
-	 * Description:添加case中所需的数据.
+	 * Description:添加case中所需的数据，添加case中所需的数据.3条SIM1，6条SIM2，SIM1包含今天（此条包含归属地），昨天，更早通话记录，SIM2包含已接，未接，已拨通话记录，
 	 */
 	public static void fillCallLogData(){
 		String dbPath = "/data/data/com.android.providers.contacts/databases/contacts2.db"; 
