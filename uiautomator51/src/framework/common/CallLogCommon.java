@@ -65,11 +65,12 @@ public class CallLogCommon {
 	}
 
 	/**
-	 * Description:添加case中所需的数据4条数据，SIM1包含一条未接，一条已接，一条已拨，SIM卡信息，归属地 ，SIM2一条已拨记录
+	 * Description:添加case中所需的数据.
 	 */
 	public static void fillCallLogData(){
 		String dbPath = "/data/data/com.android.providers.contacts/databases/contacts2.db"; 
 		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
+		DeviceCommon.deleteAllFromDatabase(database,"calls");
 		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,geocoded_location,subscription_component_name","'10086',"+getDate("今天")+",158,3,'"+DeviceCommon.getSIMID("SIM1")+"','江苏省南京市','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
 		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'10001',"+getDate("昨天")+",158,1,'"+DeviceCommon.getSIMID("SIM1")+"','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 
 		DeviceCommon.insertToDatabase(database,"calls","number,date,duration,type,subscription_id,subscription_component_name","'10010',1456560265000,168,2,'"+DeviceCommon.getSIMID("SIM1")+"','com.android.phone/com.android.services.telephony.TelephonyConnectionService'"); 

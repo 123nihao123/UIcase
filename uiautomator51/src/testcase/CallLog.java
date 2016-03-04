@@ -51,7 +51,24 @@ public class CallLog extends UiAutomatorTestCase
         System.out.println("after class...");
         CallLogCommon.deleteAllFromCallLog();
     }
-	
+	@Override
+	protected void setUp() throws UiObjectNotFoundException, RemoteException 
+    {			
+		System.out.println("Enter the setUp!!!");	
+		excute(Object_Device, Operation_WakeUp);
+		DeviceCommon.unLock();	
+		ClearBackgroundApp();
+		Wait(1000);
+		DeviceCommon.enterApp(Devices_Desc_Call);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"通话记录");
+		excute(Object_Text,Operation_ClickWait,"全部");
+   }
+	     
+	@Override
+	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
+    {
+    }
 	/**
 	 * 检查通话记录字样
 	 */
@@ -863,6 +880,8 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_057() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+		excute(Object_Text,Operation_ClickWait,"通话详情");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/quick_contact_photo");
 		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/third_icon");
 	}
@@ -871,7 +890,7 @@ public class CallLog extends UiAutomatorTestCase
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
-	public static void test_058() throws UiObjectNotFoundException, RemoteException 
+	public static void test_158() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
@@ -1059,7 +1078,7 @@ public class CallLog extends UiAutomatorTestCase
  	 * 清除一条所选的通话记录
  	 * @throws UiObjectNotFoundException
  	 */
-	public static void test_071() throws UiObjectNotFoundException 
+	public static void test_171() throws UiObjectNotFoundException 
 	{	
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -1069,6 +1088,6 @@ public class CallLog extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除全部选中的通话记录");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_Text, Operation_checkExist, Number);
+		check(Object_Text, Operation_checkNoExist, Number);
 	}	
 }
