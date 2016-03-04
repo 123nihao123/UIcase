@@ -5,6 +5,7 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+import android.database.sqlite.SQLiteDatabase;
 
 import android.database.sqlite.SQLiteDatabase;
 
@@ -62,8 +63,7 @@ public class CallLogCommon {
 		excute(Object_Text,Operation_ClickWait,"查看");
 		excute(Object_Text,Operation_ClickWait,type);
 	}
-	
-	
+
 	/**
 	 * Description:添加case中所需的数据4条数据，SIM1包含一条未接，一条已接，一条已拨，SIM卡信息，归属地 ，SIM2一条已拨记录
 	 */

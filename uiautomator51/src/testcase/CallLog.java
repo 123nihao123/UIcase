@@ -1,6 +1,5 @@
 package testcase;
 
-
 //import org.junit.AfterClass;  
 //import org.junit.BeforeClass;
 
@@ -11,12 +10,10 @@ import static framework.excute.Excute.*;
 import junit.framework.Assert;
 import android.graphics.Rect;
 import android.os.RemoteException;
-
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
-
 import framework.common.CallCommon;
 import framework.common.CallLogCommon;
 import framework.common.ContactCommon;
@@ -55,25 +52,260 @@ public class CallLog extends UiAutomatorTestCase
         CallLogCommon.deleteAllFromCallLog();
     }
 	
-	@Override
-	protected void setUp() throws UiObjectNotFoundException, RemoteException 
-    {			
-		System.out.println("Enter the setUp!!!");	
-		excute(Object_Device, Operation_WakeUp);
-		DeviceCommon.unLock();	
+	/**
+	 * 检查通话记录字样
+	 */
+	public static void test_001() 
+	{
+		//主体
+		check(Object_Text,Operation_checkExist,"通话记录");
+	}
+	
+	/**
+	 * 检查通话记录中全部，未接来电，已拨电话，已接电话字样
+	 */
+	public static void test_002() 
+	{
+		//主体
+		check(Object_Text,Operation_checkExist,"未接电话");
+		check(Object_Text,Operation_checkExist,"已拨电话");
+		check(Object_Text,Operation_checkExist,"已接电话");
+	}
+	
+	/**
+	 * 查看通话记录中不是联系人的通话记录
+	 */
+	public static void test_003() 
+	{
+		//主体
+		check(Object_TextScroll,Operation_checkExist,"10086","vertical");
+	}
+	
+	/**
+	 * 查看联系人的通话记录
+	 * @throws RemoteException
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_004() throws RemoteException, UiObjectNotFoundException 
+	{
+		//前提
 		ClearBackgroundApp();
-		Wait(1000);
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.addNameAndTel("本机", "zhanxun", "10086");
+		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
 		excute(Object_Text,Operation_ClickWait,"全部");
-   }
-	     
-	@Override
-	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
-    {
-    }
+		check(Object_TextScroll,Operation_checkExist,"zhanxun","vertical");
+		//清场
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.BatchDelete("所有联系人");
+	}
 	
+	/**
+	 * 查看通话记录中显示的时间
+	 */
+	public static void test_005() 
+	{
+		//主体
+		check(Object_Text,Operation_checkExist,"今天");
+		check(Object_Text,Operation_checkExist,"昨天");
+		check(Object_TextScroll,Operation_checkExist,"更早","vertical");
+	}
+	
+	/**
+	 * 查看通话记录的号码是中国移动的号码
+	 */
+	public static void test_006() 
+	{
+		//主体
+		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/call_account_label","中国移动");
+	}
+	
+	/**
+	 * 查看通话记录的号码是SIM1进行的
+	 */
+	public static void test_007() 
+	{
+		//主体
+		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/call_account_label","SIM1");
+	}
+	
+	/**
+	 * 查看通话记录号码有归属地
+	 */
+	public static void test_008() 
+	{
+		//主体
+		check(Object_ResIdInstance,Operation_TextContainsTrue,"com.android.dialer:id/call_location_and_date","2","江苏省南京市");
+	}
+	
+	/**
+	 * 选中全部通话记录条目
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_010() throws UiObjectNotFoundException 
+	{
+		//主体
+		UiObject a = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.dialer:id/recycler_view");
+		Assert.assertTrue(a.getChildCount()==5);
+	}
+	
+	/**
+	 * 选中未接电话条目，查看条目
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_011() throws UiObjectNotFoundException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"未接电话");
+		UiObject a = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.dialer:id/recycler_view");
+		Assert.assertTrue(a.getChildCount()==3);
+	}
+	
+	/**
+	 * 选中已拨电话电话条目，查看条目
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_012() throws UiObjectNotFoundException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已拨电话");
+		UiObject a = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.dialer:id/recycler_view");
+		Assert.assertTrue(a.getChildCount()==3);
+	}
+	
+	/**
+	 * 选中已接电话电话条目，查看条目
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_013() throws UiObjectNotFoundException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已接电话");
+		UiObject a = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.dialer:id/recycler_view");
+		Assert.assertTrue(a.getChildCount()==3);
+	}
+	
+	/**
+	 * 全部通话记录中查看“今天”字样
+	 */
+	public static void test_014() 
+	{
+		//主体
+		check(Object_TextScroll,Operation_checkExist,"今天","vertical");
+	}
+	
+	/**
+	 * 全部通话记录中查看“昨天”字样
+	 */
+	public static void test_015() 
+	{
+		//主体
+		check(Object_TextScroll,Operation_checkExist,"昨天","vertical");
+	}
+	
+	/**
+	 * 全部通话记录中查看“更早”字样
+	 */
+	public static void test_016() 
+	{
+		//主体
+		check(Object_TextScroll,Operation_checkExist,"更早","vertical");
+	}
+	
+	/**
+	 * 未接通话记录中查看“今天”字样
+	 */
+	public static void test_017() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"未接电话");
+		check(Object_TextScroll,Operation_checkExist,"今天","vertical");
+	}
+	
+	/**
+	 * 未接通话记录中查看“昨天”字样
+	 */
+	public static void test_018() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"未接电话");
+		check(Object_TextScroll,Operation_checkExist,"昨天","vertical");
+	}
+	
+	/**
+	 * 未接通话记录中查看“更早”字样
+	 */
+	public static void test_019() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"未接电话");
+		check(Object_TextScroll,Operation_checkExist,"更早","vertical");
+	}
+	
+	/**
+	 * 已拨通话记录中查看“今天”字样
+	 */
+	public static void test_020() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已拨电话");
+		check(Object_TextScroll,Operation_checkExist,"今天","vertical");
+	}
+	
+	/**
+	 * 已拨通话记录中查看“昨天”字样
+	 */
+	public static void test_021() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已拨电话");
+		check(Object_TextScroll,Operation_checkExist,"昨天","vertical");
+	}
+	
+	/**
+	 * 已拨通话记录中查看“更早”字样
+	 */
+	public static void test_022() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已拨电话");
+		check(Object_TextScroll,Operation_checkExist,"更早","vertical");
+	}
+	
+	/**
+	 * 已接通话记录中查看“今天”字样
+	 */
+	public static void test_023() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已接电话");
+		check(Object_TextScroll,Operation_checkExist,"今天","vertical");
+	}
+	
+	/**
+	 * 已接通话记录中查看“昨天”字样
+	 */
+	public static void test_024() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已接电话");
+		check(Object_TextScroll,Operation_checkExist,"昨天","vertical");
+	}
+	
+	/**
+	 * 已接通话记录中查看“更早”字样
+	 */
+	public static void test_025() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"已接电话");
+		check(Object_TextScroll,Operation_checkExist,"更早","vertical");
+	}
 	
 	/**
 	 * Description: 全部-筛选-所有联系人
