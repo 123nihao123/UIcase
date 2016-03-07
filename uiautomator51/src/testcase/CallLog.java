@@ -545,96 +545,96 @@ public class CallLog extends UiAutomatorTestCase
 	}
 	
 	/**
-	 * Description:展开详情页面，展开的页面上有text“新建联系人”“添加到联系人”“发送信息”“通话详情”“添加至黑名单”
-	 * @throws UiObjectNotFoundException, RemoteException
-	 */
-	public static void test_038() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"333333");
-		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/create_new_contact_action");
-		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/add_to_existing_contact_action");
-		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/send_message_action");
-		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/details_action");
-		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/add_to_blacklist_action");
-	}
-		
-	
-	
-	/**
-	 * Description:从通话记录中增加联系人
-	 * @throws UiObjectNotFoundException, RemoteException
-	 */
-	public static void test_039() throws UiObjectNotFoundException, RemoteException
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"333333");
-		excute(Object_Description,Operation_ClickWait,"为333333创建联系人信息");
-		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/add_account_button","添加新帐户");
-	}
-	
-	/**
-	 * Description:从通话记录添加到联系人
-	 * @throws UiObjectNotFoundException, RemoteException
-	 */
-	public static void test_040() throws UiObjectNotFoundException, RemoteException
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"333333");
-		excute(Object_Description,Operation_ClickWait,"将333333添加到现有联系人");
-		check(Object_Text,Operation_checkExist,"选择联系人");
-	}
-	
-	/**
-	 * Description:选择一条记录跳转到短信界面
-	 * @throws UiObjectNotFoundException, RemoteException
-	 */
-	public static void test_041() throws UiObjectNotFoundException, RemoteException
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"333333");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/send_message_action");
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/conversation_title","5000");
-		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/conversation_title","333333");
-	}
-	
-	
-	/**
-	 * Description:选择一条记录进入通话详情
-	 * @throws UiObjectNotFoundException, RemoteException
-	 */
-	public static void test_042() throws UiObjectNotFoundException, RemoteException
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"333333");
-		excute(Object_Description,Operation_ClickWait,"与333333的通话详情");
-		check(Object_Text,Operation_checkExist,"通话详情");
-	}
-	
-	/**
-	 * Description:选择一条记录跳转到添加到黑名单
-	 * @throws UiObjectNotFoundException, RemoteException
-	 */
-	public static void test_043() throws UiObjectNotFoundException, RemoteException
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"333333");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/add_to_blacklist_action");
-		check(Object_Text,Operation_checkExist,"拦截类型");
-	}
-	
-	/**
-	 * Description:选择一条记录展开，再收起
-	 * @throws UiObjectNotFoundException, RemoteException
-	 */
-	public static void test_044() throws UiObjectNotFoundException, RemoteException
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"333333");
-		excute(Object_Text,Operation_ClickWait,"333333");
-		check(Object_ResourceId,Operation_checkNoExist,"com.android.dialer:id/create_new_contact_action");
-	}
-	
+	  * Description:展开详情页面，展开的页面上有text“新建联系人”“添加到联系人”“发送信息”“通话详情”“添加至黑名单”
+	  * @throws UiObjectNotFoundException, RemoteException
+	  */
+	 public static void test_038() throws UiObjectNotFoundException, RemoteException 
+	 {
+	  //主体
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/create_new_contact_action");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/add_to_existing_contact_action");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/send_message_action");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/details_action");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/add_to_blacklist_action");
+	 }
+	  
+	 
+	 
+	 /**
+	  * Description:从通话记录中增加联系人
+	  * @throws UiObjectNotFoundException, RemoteException
+	  */
+	 public static void test_039() throws UiObjectNotFoundException, RemoteException
+	 {
+	  //主体
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  excute(Object_Text,Operation_ClickWait,"新建联系人");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/add_account_button","添加新帐户");
+	 }
+	 
+	 /**
+	  * Description:从通话记录添加到联系人
+	  * @throws UiObjectNotFoundException, RemoteException
+	  */
+	 public static void test_040() throws UiObjectNotFoundException, RemoteException
+	 {
+	  //主体
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  excute(Object_Text,Operation_ClickWait,"添加到联系人");
+	  check(Object_Text,Operation_checkExist,"选择联系人");
+	 }
+	 
+	 /**
+	  * Description:选择一条记录跳转到短信界面
+	  * @throws UiObjectNotFoundException, RemoteException
+	  */
+	 public static void test_041() throws UiObjectNotFoundException, RemoteException
+	 {
+	  //主体
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  String Number=(String) excute(Object_ResourceId,Operation_GetText,"com.android.dialer:id/name");
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/send_message_action");
+	  excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/conversation_title","5000");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/conversation_title",Number);
+	 }
+	 
+	 
+	 /**
+	  * Description:选择一条记录进入通话详情
+	  * @throws UiObjectNotFoundException, RemoteException
+	  */
+	 public static void test_042() throws UiObjectNotFoundException, RemoteException
+	 {
+	  //主体
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  excute(Object_Text,Operation_ClickWait,"通话详情");
+	  check(Object_Text,Operation_checkExist,"通话详情");
+	 }
+	 
+	 /**
+	  * Description:选择一条记录跳转到添加到黑名单
+	  * @throws UiObjectNotFoundException, RemoteException
+	  */
+	 public static void test_043() throws UiObjectNotFoundException, RemoteException
+	 {
+	  //主体
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/add_to_blacklist_action");
+	  check(Object_Text,Operation_checkExist,"拦截类型");
+	 }
+	 
+	 /**
+	  * Description:选择一条记录展开，再收起
+	  * @throws UiObjectNotFoundException, RemoteException
+	  */
+	 public static void test_044() throws UiObjectNotFoundException, RemoteException
+	 {
+	  //主体
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  check(Object_ResourceId,Operation_checkNoExist,"com.android.dialer:id/create_new_contact_action");
+	 }
 	/**
 	  * 通话记录-从卡1打出电话
 	  * @throws UiObjectNotFoundException
@@ -903,8 +903,8 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_158() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
-		excute(Object_Text,Operation_ClickWait,"通话详情");
+		excute(Object_TextScroll,Operation_ClickWait,"222222","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"通话详情","vertical");
 		String Number=(String) excute(Object_ResourceId,Operation_GetText,"com.android.dialer:id/caller_name");
 		System.out.println(Number);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/menu_remove_from_call_log");
@@ -1094,11 +1094,10 @@ public class CallLog extends UiAutomatorTestCase
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"清除通话记录");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/call_icon");
-		String Number= (String)excute(Object_ResourceId, Operation_GetText, "com.android.dialer:id/line1");
+		excute(Object_TextScroll,Operation_ClickWait,"444444","vertical");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除全部选中的通话记录");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_Text, Operation_checkNoExist, Number);
+		check(Object_Text, Operation_checkNoExist, "444444");
 	}	
 }
