@@ -371,7 +371,20 @@ public class DeviceCommon
 	 */
 	public static SQLiteDatabase openDatabase(String dbPath)
 	{ 
-		SQLiteDatabase database = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
+		SQLiteDatabase database = openDatabase(dbPath,SQLiteDatabase.OPEN_READWRITE);
+		return database;
+	}
+
+
+	/**
+	 * 打开数据库。注意数据库所有操作结束后要调用closeDatabase（）关闭数据库。
+	 * @param dbPath
+	 * @param flag - to control database access mode. OPEN_READWRITE, OPEN_READONLY, CREATE_IF_NECESSARY, and/or NO_LOCALIZED_COLLATORS.
+	 * @return
+	 */
+	public static SQLiteDatabase openDatabase(String dbPath, int flag)
+	{
+		SQLiteDatabase database = SQLiteDatabase.openDatabase(dbPath, null, flag);
 		return database;
 	}
 	
@@ -380,7 +393,7 @@ public class DeviceCommon
 	 * @param db
 	 */
 	public static void closeDatabase(SQLiteDatabase db)
-	{ 
+	{
 		if( db != null )
 		{
 			db.close();
@@ -418,6 +431,53 @@ public class DeviceCommon
 		cursor.close();
 		return total;
 		
+	}
+	/**
+	 * 删除所有记录
+	 * @param db
+	 * @param tableName
+	 */
+	public static void deleteAllFromDatabase(SQLiteDatabase db,String tableName)
+	{ 
+		//String sql ="DELETE * FROM calls";
+		String sql ="DELETE FROM "+tableName;
+		System.out.println("SQL is: "+ sql);
+		db.execSQL(sql);		
+	}
+
+	/**
+	 * 获得SIM ICC_ID
+	 * @param simSlot - "SIM1" for slot1, "SIM2" for slot2
+	 * @return
+	 */
+	public static String getSIMID(String simSlot)
+	{
+		//SIM_SLOT
+		String dbPath = "/data/data/com.android.providers.telephony/databases/telephony.db";
+		SQLiteDatabase database = openDatabase(dbPath,SQLiteDatabase.OPEN_READONLY);
+		String iccID="";
+		String id="";
+		if(simSlot=="SIM1")
+		{
+			id ="0";
+		}
+		else if(simSlot=="SIM2")
+		{
+			id="1";
+		}
+		else
+		{
+			Assert.assertFalse("SIM slot error",false);
+		}
+		//System.out.println("simSlot is: "+ simSlot );
+		Cursor cursor = database.query("siminfo",new String[]{"icc_id"},"sim_id=?",new String[]{id},null,null,null,null);
+		while (cursor.moveToNext()) {
+			iccID = cursor.getString(0);
+			System.out.println("iccID is: "+ iccID );
+		}
+
+		cursor.close();
+		return iccID;
 	}
   
 }
