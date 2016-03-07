@@ -1016,13 +1016,14 @@ public class CallLog extends UiAutomatorTestCase
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
-	public static void test_167() throws UiObjectNotFoundException, RemoteException 
+	public static void test_267() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
 		CallLogCommon.deleteAllLog("全部");
+		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
-		excute(Object_Text,Operation_ClickWait,"全部");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkNoExist,"清除通话记录");
 	}
