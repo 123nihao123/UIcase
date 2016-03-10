@@ -173,8 +173,12 @@ public class ObjectFind
 		return peerObject;
 	}
 
-	
-	
+	public static UiObject byPeerTextID(String text, String id) throws UiObjectNotFoundException
+	{
+		UiObject selfObject  =  new UiObject(new UiSelector().text(text));
+		UiObject peerObject = selfObject.getFromParent(new UiSelector().resourceId(id));
+		return peerObject;
+	}
 	
 	
 	

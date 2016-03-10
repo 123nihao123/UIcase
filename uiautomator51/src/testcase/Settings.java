@@ -46,6 +46,134 @@ public class Settings extends UiAutomatorTestCase
     {
     }
 	
+		/**
+	 * 检查“设置”字样
+	 */
+	public static void test_001() 
+	{
+		//主体
+		check(Object_Text,Operation_checkExist,"设置");
+	}
+	
+	/**
+	 * 检查设置中四大项的字样
+	 */
+	public static void test_002() 
+	{
+		//主体
+		check(Object_TextScroll,Operation_checkExist,"无线和网络","vertical");
+		check(Object_TextScroll,Operation_checkExist,"设备","vertical");
+		check(Object_TextScroll,Operation_checkExist,"个人","vertical");
+		check(Object_TextScroll,Operation_checkExist,"系统","vertical");
+	}
+	
+	/**
+	 * 检查搜索图标
+	 */
+	public static void test_003() 
+	{
+		//主体
+		check(Object_ResIdDesc,Operation_checkExist,"com.android.settings:id/search","搜索设置");
+	}
+	
+	/**
+	 * 检查“搜索...”字样
+	 */
+	public static void test_004() 
+	{
+		//主体
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		check(Object_Text,Operation_checkExist,"搜索…");
+	}
+	
+	/**
+	 * 查看搜索内容
+	 */
+	public static void test_005() 
+	{
+		//主体
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		excute(Object_ResourceId,Operation_SetText,"android:id/search_src_text","t");
+		check(Object_Text,Operation_checkExist,"搜索结果");
+		check(Object_TextInstance,Operation_checkExist,"文字转语音 (TTS) 输出","1");
+	}
+	
+	/**
+	 * 点击进入搜索内容
+	 * @throws IOException 
+	 */
+	public static void test_007() throws IOException 
+	{
+		//主体
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		excute(Object_ResourceId,Operation_SetText,"android:id/search_src_text","t");
+		excute(Object_Text,Operation_ClickWait,"文字转语音 (TTS) 输出");
+		check(Object_Text,Operation_checkExist,"语言和输入法");
+		//清场
+		DeviceCommon.runADBCommand("pm clear com.android.settings");
+	}
+	
+	/**
+	 * 查看最近执行的搜索
+	 * @throws IOException 
+	 */
+	public static void test_008() throws IOException 
+	{
+		//前提
+		SettingCommon.setSearchRecord("t");
+		//主体
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		check(Object_Text,Operation_checkExist,"最近执行的搜索");
+		check(Object_Text,Operation_checkExist,"t");
+		//清场
+		DeviceCommon.runADBCommand("pm clear com.android.settings");
+	}
+	
+	/**
+	 * 检查搜索界面向上的小箭头
+	 * @throws IOException
+	 */
+	public static void test_009() throws IOException 
+	{
+		//前提
+		SettingCommon.setSearchRecord("t");
+		//主体
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/icon");
+		//清场
+		DeviceCommon.runADBCommand("pm clear com.android.settings");
+	}
+	
+	
+	/**
+	 * 点击最近执行的搜索
+	 * @throws IOException 
+	 */
+	public static void test_010() throws IOException 
+	{
+		//前提
+		SettingCommon.setSearchRecord("t");
+		//主体
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/icon");
+		check(Object_Text,Operation_checkExist,"搜索结果");
+		check(Object_TextInstance,Operation_checkExist,"文字转语音 (TTS) 输出","1");
+		//清场
+		DeviceCommon.runADBCommand("pm clear com.android.settings");
+	}
+	
+	/**
+	 * 删除搜索内容
+	 */
+	public static void test_011() 
+	{
+		//主体
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		excute(Object_ResourceId,Operation_SetText,"android:id/search_src_text","t");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/search_close_btn");
+		check(Object_Text,Operation_checkNoExist,"t");
+	}
+	
 	
 	/**
 	 * 进入WLAN
@@ -711,7 +839,463 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");
 	}				
-		
+	
+	/**
+	 * 检查“显示”字样
+	 */
+	public static void test_099() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		check(Object_Text,Operation_checkExist,"显示");
+	}
+	
+	/**
+	 * 检查“屏幕亮度”字样
+	 */
+	public static void test_100() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"亮度");
+		check(Object_Text,Operation_checkExist,"屏幕亮度");
+	}
+	
+	/**
+	 * 设置屏幕亮度为最小
+	 * @throws IOException
+	 */
+	public static void test_101() throws IOException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+		SettingCommon.setScreenBrightness("最小");
+		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+		Assert.assertTrue(i.equals("10"+"\n"));
+		//清场
+		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+	}
+	
+	/**
+	 * 设置屏幕亮度为最大
+	 * @throws UiObjectNotFoundException
+	 * @throws IOException
+	 */
+	public static void test_102() throws UiObjectNotFoundException, IOException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+		SettingCommon.setScreenBrightness("最大");
+		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+		Assert.assertTrue(i.equals("255"+"\n"));
+		//清场
+		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+	}
+	
+	/**
+	 * 打开自动调节亮度开关
+	 */
+	public static void test_103() 
+	{
+		//前提
+		excute(Object_Text,Operation_ClickWait,"显示");
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+		Assert.assertTrue("开启".equals(excute(Object_ResourceId,Operation_GetText,"android:id/switchWidget")));
+		//清场
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+	}
+	
+	/**
+	 * 检查壁纸中“选择壁纸来源”字样
+	 */
+	public static void test_104() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"壁纸");
+		check(Object_Text,Operation_checkExist,"选择壁纸来源");
+	}
+	
+	/**
+	 * 检查动态壁纸中“光环螺旋”字样
+	 */
+	public static void test_105() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"壁纸");
+		excute(Object_Text,Operation_ClickWait,"动态壁纸");
+		check(Object_Text,Operation_checkExist,"光环螺旋");
+	}
+	
+	/**
+	 * 检查壁纸中图库
+	 */
+	public static void test_106() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"壁纸");
+		excute(Object_Text,Operation_ClickWait,"图库");
+		check(Object_ResourceId,Operation_checkExist,"com.android.gallery3d:id/gl_root_view");
+	}
+	
+	/**
+	 * 检查壁纸中文件管理器
+	 */
+	public static void test_107() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"壁纸");
+		excute(Object_Text,Operation_ClickWait,"文件管理器");
+		check(Object_ResourceId,Operation_checkExist,"com.sprd.fileexplorer:id/list_paste");
+	}
+	
+	/**
+	 * 检查“休眠”字样
+	 */
+	public static void test_108() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","休眠");
+	}
+	
+	/**
+	 * 设置休眠时间为15秒
+	 */
+	public static void test_109() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"15秒");
+		check(Object_Text,Operation_checkExist,"无操作15秒后");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+	}
+	
+	/**
+	 * 设置休眠时间为30秒
+	 */
+	public static void test_110() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30秒");
+		check(Object_Text,Operation_checkExist,"无操作30秒后");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+	}
+	
+	/**
+	 * 设置休眠时间为1分钟
+	 */
+	public static void test_111() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"1分钟");
+		check(Object_Text,Operation_checkExist,"无操作1分钟后");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+	}
+	
+	/**
+	 * 设置休眠时间为2分钟
+	 */
+	public static void test_112() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"2分钟");
+		check(Object_Text,Operation_checkExist,"无操作2分钟后");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+	}
+	
+	/**
+	 * 设置休眠时间为5分钟
+	 */
+	public static void test_113() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"5分钟");
+		check(Object_Text,Operation_checkExist,"无操作5分钟后");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+	}
+	
+	/**
+	 * 设置休眠时间为10分钟
+	 */
+	public static void test_114() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"10分钟");
+		check(Object_Text,Operation_checkExist,"无操作10分钟后");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+	}
+	
+	/**
+	 * 设置休眠时间为30分钟
+	 */
+	public static void test_115() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+		check(Object_Text,Operation_checkExist,"无操作30分钟后");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"休眠");
+		excute(Object_Text,Operation_ClickWait,"30分钟");
+	}
+	
+	/**
+	 * 查看“互动屏保”字样
+	 */
+	public static void test_117() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"互动屏保");
+		check(Object_Text,Operation_checkExist,"互动屏保");
+	}
+	
+	/**
+	 * 查看互动屏保开关状态
+	 */
+	public static void test_118() 
+	{
+		//前提
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"互动屏保");
+		if(!(Boolean) excute(Object_ResourceId,Operation_IsChecked,"com.android.settings:id/switch_widget"))
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		//主体
+		check(Object_ResourceId,Operation_CheckedTrue,"com.android.settings:id/switch_widget");
+	}
+	
+	/**
+	 * 检查互动屏保关闭时字样
+	 */
+	public static void test_119() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		check(Object_Text,Operation_checkExist,"要控制手机在插入基座时和/或休眠状态下的行为，请启用“互动屏保”。");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+	}
+	
+	/**
+	 * 选中互动屏保中万花筒
+	 */
+	public static void test_120() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"万花筒");
+		excute(Object_Device,Operation_PressBack);
+		check(Object_Text,Operation_checkExist,"万花筒");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"互动屏保");
+		excute(Object_Text,Operation_ClickWait,"时钟");
+	}
+	/**
+	 * 选中互动屏保中时钟
+	 */
+	public static void test_121() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"时钟");
+		excute(Object_Device,Operation_PressBack);
+		check(Object_Text,Operation_checkExist,"时钟");
+	}
+	
+	/**
+	 * 选中互动屏保中照片桌面
+	 */
+	public static void test_122() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"照片桌面");
+		excute(Object_Device,Operation_PressBack);
+		check(Object_Text,Operation_checkExist,"照片桌面");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"互动屏保");
+		excute(Object_Text,Operation_ClickWait,"时钟");
+	}
+	
+	/**
+	 * 选中互动屏保中相框
+	 */
+	public static void test_123() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_Text,Operation_ClickWait,"相框");
+		excute(Object_Device,Operation_PressBack);
+		check(Object_Text,Operation_checkExist,"相框");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"互动屏保");
+		excute(Object_Text,Operation_ClickWait,"时钟");
+	}
+	
+	/**
+	 * 检查互动屏保中“立即启动”和“何时启动”字样
+	 */
+	public static void test_124() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"立即启动");
+		check(Object_Text,Operation_checkExist,"何时启动");
+	}
+	
+	/**
+	 * 互动屏保中选择立即启动
+	 */
+	public static void test_125() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"立即启动");
+		check(Object_ResourceId,Operation_checkExist,"com.android.deskclock:id/digital_clock");
+	}
+	
+	/**
+	 * 互动屏保中选择何时启动
+	 */
+	public static void test_126() 
+	{
+		//前提
+		SettingCommon.setDefaultScreensavers();
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"何时启动");
+		check(Object_Text,Operation_checkExist,"插入基座时");
+		check(Object_Text,Operation_checkExist,"充电时");
+		check(Object_Text,Operation_checkExist,"以上任一情况");
+	}
+	
+	/**
+	 * 查看“字体大小”字样
+	 */
+	public static void test_127() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		check(Object_ResourceId,Operation_checkExist,"android:id/parentPanel");
+	}
+	
+	/**
+	 * 设置字体大小为小
+	 */
+	public static void test128() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		excute(Object_Text,Operation_ClickWait,"小");
+		check(Object_PeerTextID,Operation_checkExist,"字体大小","android:id/summary","小");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		excute(Object_Text,Operation_ClickWait,"正常");
+	}
+	
+	/**
+	 * 设置字体大小为正常
+	 */
+	public static void test_129() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		excute(Object_Text,Operation_ClickWait,"正常");
+		check(Object_PeerTextID,Operation_checkExist,"字体大小","android:id/summary","正常");
+	}
+	
+	/**
+	 * 设置字体大小为大
+	 */
+	public static void test_130() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		excute(Object_Text,Operation_ClickWait,"大");
+		check(Object_PeerTextID,Operation_checkExist,"字体大小","android:id/summary","大");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		excute(Object_Text,Operation_ClickWait,"正常");
+	}
+	
+	/**
+	 * 设置字体大小为超大
+	 */
+	public static void test_131() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		excute(Object_Text,Operation_ClickWait,"超大");
+		check(Object_PeerTextID,Operation_checkExist,"字体大小","android:id/summary","超大");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"字体大小");
+		excute(Object_Text,Operation_ClickWait,"正常");
+	}
+	
+	/**
+	 * 检查设备旋转时“旋转屏幕内容方向”和“保持纵向”字样
+	 */
+	public static void test_132() 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"设备旋转时");
+		check(Object_Text,Operation_checkExist,"旋转屏幕内容方向");
+		check(Object_Text,Operation_checkExist,"保持纵向");
+	}
+	
 	/**
 	 * 进入提示音和通知
 	 * @throws UiObjectNotFoundException
@@ -1740,13 +2324,5 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_ResIdInstance, Operation_CheckedFalse, "com.android.settings:id/audio_profile_radiobutton", "2");
 		check(Object_ResIdInstance, Operation_CheckedFalse, "com.android.settings:id/audio_profile_radiobutton", "3");
 	}	
-		
-		
-		
-		
-		
-		
-		
-		
-	
+
 }

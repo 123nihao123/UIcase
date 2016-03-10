@@ -118,6 +118,10 @@ public class AndroidObject
 				case ObjectType.Object_PeerTextClass:
 					ObjectType.setParaIndex(objectIndex + 2);
 					return ObjectFind.byPeerTextClass(args[objectIndex], args[objectIndex + 1]);
+				
+				case ObjectType.Object_PeerTextID:
+					ObjectType.setParaIndex(objectIndex + 2);
+					return ObjectFind.byPeerTextID(args[objectIndex], args[objectIndex + 1]);
 					
 					
 				default:

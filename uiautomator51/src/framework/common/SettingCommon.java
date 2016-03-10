@@ -1055,6 +1055,47 @@ public class SettingCommon {
 		}
 	}
 
+	/**
+	 * 设置一个搜索历史记录
+	 * @param name：搜索内容
+	 */
+	public static void setSearchRecord(String name) 
+	{
+		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
+		excute(Object_ResourceId,Operation_SetText,"android:id/search_src_text",name);
+		excute(Object_Device,Operation_PressEnter);
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
+	}
+	
+	
+	/**
+	 * 通过UI设置最大或最小的屏幕亮度
+	 * @param name：最大，最小
+	 */
+	public static void setScreenBrightness(String name) 
+	{
+		excute(Object_Text,Operation_ClickWait,"亮度");
+		Rect ModArea = (Rect) excute(Object_Text,Operation_GetBounds,"屏幕亮度");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		if(name.equals("最小"))
+			UiDevice.getInstance().click(x/3, y);
+		if(name.equals("最大"))
+			UiDevice.getInstance().click(x/3*5, y);
+	}
+	
+	/**
+	 * 前提：默认打开互动屏保
+	 */
+	public static void setDefaultScreensavers() 
+	{
+		excute(Object_Text,Operation_ClickWait,"显示");
+		excute(Object_Text,Operation_ClickWait,"互动屏保");
+		if(!(Boolean) excute(Object_ResourceId,Operation_IsChecked,"com.android.settings:id/switch_widget"))
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+	}
+
 	public static void checkWifiConnect(String wifiname)
 			throws UiObjectNotFoundException {
 		check(Object_ResourceId, Operation_TextEqualTrue, "android:id/title",
