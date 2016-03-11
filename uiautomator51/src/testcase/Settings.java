@@ -1077,7 +1077,20 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"手机套餐");
 		check(Object_Text, Operation_checkExist, "确定");
 	}
-
+	/**
+	 * 便携式WLAN热点默认为关闭，蓝牙网络共享默认为关闭，显示WLAN热点设置及用户管理字样
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_070() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","0");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","1");
+		check(Object_Text, Operation_checkExist, "WLAN热点设置及用户管理");
+	}
 	
 	/**
 	 * 便携式WLAN热点被打开  通过页面开关判断
