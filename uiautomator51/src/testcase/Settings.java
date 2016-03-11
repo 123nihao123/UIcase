@@ -184,28 +184,20 @@ public class Settings extends UiAutomatorTestCase
 	public void test_012() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/title","WLAN");
+		excute(Object_Text,Operation_ClickWait,"WLAN");
 		check(Object_Text,Operation_checkExist,"WLAN");
 	}
 	
 	/**
-	 * 验证WLAN开关是关闭的
+	 * 验证第一次进入WLAN开关是关闭的
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
 	public void test_013() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/title","WLAN");
-		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
-		{	
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
-		}
-		else
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_text","开启");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
-		}
+		excute(Object_Text,Operation_ClickWait,"WLAN");
+		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
 	}
 	
 	/**
@@ -217,20 +209,18 @@ public class Settings extends UiAutomatorTestCase
 	public void test_014() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/title","WLAN");
+		excute(Object_Text,Operation_ClickWait,"WLAN");
 		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
-		else
-		{
-			excute(Object_ResourceId, Operation_Exists,"com.android.settings:id/switch_text","开启");
-		}
 		check(Object_ResourceId, Operation_checkExist,"com.android.settings:id/switch_text","开启");
-		String Num = DeviceCommon.runADBCommand("settings get global wifi_on");
-		String num = "1\n";
-		Assert.assertEquals(Num, num);
-		
+		String num = DeviceCommon.runADBCommand("settings get global wifi_on");
+		String num1 = num.substring(0, 1);
+		String num2 = "1";
+		Assert.assertEquals(num1, num2);
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 	}
 	
 	
@@ -242,18 +232,16 @@ public class Settings extends UiAutomatorTestCase
 	public void test_016() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/title","WLAN");
+		excute(Object_Text,Operation_ClickWait,"WLAN");
 		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
-		else
-		{
-			excute(Object_ResourceId, Operation_Exists,"com.android.settings:id/switch_text","开启");
-		}
 		check(Object_Text,Operation_checkExist,"Testteam");
 		check(Object_Text,Operation_checkExist,"TSTest23");
 		check(Object_Text,Operation_checkExist,"ThunderSoft23");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		
 	}	
 	
@@ -265,7 +253,7 @@ public class Settings extends UiAutomatorTestCase
 	public void test_017() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/title","WLAN");
+		excute(Object_Text,Operation_ClickWait,"WLAN");
 		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
@@ -274,8 +262,10 @@ public class Settings extends UiAutomatorTestCase
 		{
 			excute(Object_ResourceId, Operation_Exists,"com.android.settings:id/switch_text","开启");
 		}
-		SettingCommon.addWifi("Testteam", "WPA/WPA2 PSK", "test12345678");
+		SettingCommon.connectWifi("Testteam", "WPA/WPA2 PSK", "test12345678");
 		//清场
+		SettingCommon.deleteWifi("Testteam");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		
 	}
 	
@@ -287,11 +277,11 @@ public class Settings extends UiAutomatorTestCase
 	public void test_018() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/title","WLAN");
+		excute(Object_Text,Operation_ClickWait,"WLAN");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		check(Object_ResourceId,Operation_checkExist,"android:id/title","添加网络");
-		check(Object_ResourceId,Operation_checkExist,"android:id/title","刷新");
-		check(Object_ResourceId,Operation_checkExist,"android:id/title","高级");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","添加网络");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","刷新");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","高级");
 	}
 	
 	/**
@@ -302,7 +292,7 @@ public class Settings extends UiAutomatorTestCase
 	public void test_019() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/title","WLAN");
+		excute(Object_Text,Operation_ClickWait,"WLAN");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"高级");
 		check(Object_Text,Operation_checkExist,"高级WLAN");
@@ -312,20 +302,20 @@ public class Settings extends UiAutomatorTestCase
 	 * 关闭WIFI
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
+	 * @throws IOException 
 	 */
-	public void test_020() throws UiObjectNotFoundException, RemoteException 
+	public void test_020() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/title","WLAN");
-		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
+		excute(Object_Text,Operation_ClickWait,"WLAN");
+		if((Boolean) excute(Object_Text,Operation_Exists,"开启"))
 		{	
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
-		else
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_text","开启");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
-		}
+			String num = DeviceCommon.runADBCommand("settings get global wifi_on");
+			String num1 = num.substring(0, 1);
+			String num2 = "0";
+			Assert.assertEquals(num1, num2);
 	}
 	
 	/**
@@ -350,40 +340,29 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
-		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.settings:id/switch_text","关闭"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
-		}
-		else
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
-		}
+		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 	}
 	
 	/**
 	 * 开启蓝牙按钮	
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
+	 * @throws IOException 
 	 */
-	public void test_023() throws UiObjectNotFoundException, RemoteException 
+	public void test_023() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
 	    if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
 		{	
 		    excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-		    check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
 		}
-		else
-		{
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
-		}   
+	    String num = DeviceCommon.runADBCommand("settings get global bluetooth_on");
+		String num1 = num.substring(0, 1);
+		String num2 = "1";
+		Assert.assertEquals(num1, num2);  
 	    //清场
 	    excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 	}
 	
 	/**
@@ -399,12 +378,8 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
-		}
-		else
-		{
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
-		}  	
-		check(Object_Text,Operation_WaitForExists,"1","5000");
+		} 	
+		check(Object_Text,Operation_WaitForExists,"SupportBT","5000");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
@@ -414,8 +389,9 @@ public class Settings extends UiAutomatorTestCase
 	 * 关闭蓝牙按钮
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
+	 * @throws IOException 
 	 */
-	public void test_026() throws UiObjectNotFoundException, RemoteException 
+	public void test_026() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
@@ -423,13 +399,17 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			excute(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
+			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 		}
 		else
 		{
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 		}  	
+		String num = DeviceCommon.runADBCommand("settings get global bluetooth_on");
+		String num1 = num.substring(0, 1);
+		String num2 = "0";
+		Assert.assertEquals(num1, num2);  
 	}
 	
 	/**
@@ -441,10 +421,15 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
+		{	
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		}
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		check(Object_ResourceId,Operation_checkExist,"android:id/title","刷新");
-		check(Object_ResourceId,Operation_checkExist,"android:id/title","重命名此设备");
-		check(Object_ResourceId,Operation_checkExist,"android:id/title","显示收到的文件");
+		
+		check(Object_Text,Operation_WaitForExists,"刷新","15000");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","重命名此设备");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","显示收到的文件");
 	}
 	
 	/**
@@ -481,13 +466,28 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
-		excute(Object_Text,Operation_ClickWait,"确定");
-		excute(Object_Text,Operation_WaitForExists,"未启用","5000");
+		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");
+		if(simname.equals("SIM1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"注意","3000000");
+			excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		else
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"未启用","3000000");
+		}
+		
 		check(Object_ResIdInstance,Operation_CheckedFalse,"com.android.settings:id/universal_switch","0");
 		//清场
+		String name = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","0");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		excute(Object_Text,Operation_WaitForExists,"SIM 卡","3000000");
+		
 	}
 	
 	/**
@@ -500,7 +500,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
-		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle","SIM 卡插槽 1");
+		check(Object_Text,Operation_checkExist,"SIM 卡插槽 1");
 	}
 	
 	/**
@@ -512,10 +512,11 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
+//		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
+		SettingCommon.editSIMName("SIM 卡插槽 1");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM1");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_ResourceId,Operation_checkExist,"android:id/summary","SIM1");
+		check(Object_Text,Operation_checkExist,"SIM1");
 		
 		
 	}
@@ -534,7 +535,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/color_text");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/color_text","粉红色");
+		check(Object_Text,Operation_checkExist,"粉红色");
 		//清场
 		excute(Object_Text,Operation_ClickWait,"青色");
 		excute(Object_Text,Operation_ClickWait,"确定");
@@ -550,9 +551,11 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
+		SettingCommon.editSIMNumber("SIM 卡插槽 1");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/display_number","123");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_ResourceId,Operation_checkExist,"android:id/summary","123");
+		check(Object_PeerTextID,Operation_TextContainsTrue,"SIM 卡插槽 1","android:id/summary","123");
+
 	}
 	
 	
@@ -563,15 +566,29 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_035() throws UiObjectNotFoundException, RemoteException 
 	{
-		//主体
+			//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
-		excute(Object_Text,Operation_ClickWait,"确定");
-		excute(Object_Text,Operation_WaitForExists,"未启用","40000");
+		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");
+		if(simname.equals("SIM2"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"注意","3000000");
+			excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		else
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"未启用","3000000");
+		}
+			
 		check(Object_ResIdInstance,Operation_CheckedFalse,"com.android.settings:id/universal_switch","1");
 		//清场
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		excute(Object_Text,Operation_WaitForExists,"SIM 卡","3000000");
+		
 	}
 	
 	/**
@@ -584,7 +601,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
-		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle","SIM 卡插槽 2");
+		check(Object_Text,Operation_checkExist,"SIM 卡插槽 2");
 	}
 	
 	/**
@@ -596,10 +613,10 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
+		SettingCommon.editSIMName("SIM 卡插槽 2");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM2");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_ResourceId,Operation_checkExist,"android:id/summary","SIM2");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","SIM2");
 	}
 	
 	/**
@@ -616,7 +633,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/color_text");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/color_text","紫色");
+		check(Object_Text,Operation_checkExist,"紫色");
 		//清场
 		excute(Object_Text,Operation_ClickWait,"青色");
 		excute(Object_Text,Operation_ClickWait,"确定");
@@ -632,9 +649,10 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
-		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/display_number","123");
+		SettingCommon.editSIMNumber("SIM 卡插槽 2");
+		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/display_number","456");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_ResourceId,Operation_checkExist,"android:id/summary","123");
+		check(Object_PeerTextID,Operation_TextContainsTrue,"SIM 卡插槽 2","android:id/summary","456");
 	}
 	
 	/**
@@ -648,9 +666,10 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
-		String Num = DeviceCommon.runADBCommand("settings get global data_remain_unchanged");
-		String num = "0\n";
-		Assert.assertEquals(Num, num);
+		String num0 = DeviceCommon.runADBCommand("settings get global data_remain_unchanged");
+		String num1 = num0.substring(0, 1);
+		String num2 = "0";
+		Assert.assertEquals(num1, num2);
 		//清场
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
 	}
@@ -708,7 +727,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_Text,Operation_ClickWait,"通话");
-		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle","选择用于通话的 SIM 卡");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","选择用于通话的 SIM 卡");
 	}
 		
 	/**
@@ -807,7 +826,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_Text,Operation_ClickWait,"主卡选择");
-		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle","主卡选择");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","主卡选择");
 	}	
 		
 	/**
@@ -838,6 +857,71 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"SIM2");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");
+	}				
+		
+	/**
+	 * 进入流量使用情况界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public void test_054() throws UiObjectNotFoundException, RemoteException 
+	{
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		check(Object_Text,Operation_checkExist,"流量使用情况");	
+	}
+
+	/**
+	 * 进入流量使用情况界面，验证菜单上有text"限制后台流量“”显示wlan流量”“网络限制”“移动网络”
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public void test_055() throws UiObjectNotFoundException, RemoteException 
+	{
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","限制后台流量");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","显示WLAN流量");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","网络限制");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","移动网络");
+	}
+	
+	/**
+	 * 进入流量使用情况界面，跳转到“网络限制”页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public void test_056() throws UiObjectNotFoundException, RemoteException 
+	{
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"网络限制");
+		check(Object_Text,Operation_checkExist,"网络限制");
+	}
+	
+	/**
+	 * 进入流量使用情况界面，跳转到“显示WLAN流量”页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public void test_057() throws UiObjectNotFoundException, RemoteException 
+	{
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"显示WLAN流量");
+		check(Object_Text,Operation_checkExist,"显示WLAN流量");
+	}
+	
+	/**
+	 * 进入流量使用情况界面，跳转到“移动网络”页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public void test_058() throws UiObjectNotFoundException, RemoteException 
+	{
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"移动网络");
+		check(Object_Text,Operation_checkExist,"移动网络设置");
 	}
 
 	/**
@@ -994,20 +1078,7 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "确定");
 	}
 
-	/**
-	 * 便携式WLAN热点默认为关闭，蓝牙网络共享默认为关闭，显示WLAN热点设置及用户管理字样
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_070() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_Text, Operation_ClickWait, "更多");
-		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
-		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","0");
-		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","1");
-		check(Object_Text, Operation_checkExist, "WLAN热点设置及用户管理");
-	}
+	
 	/**
 	 * 便携式WLAN热点被打开  通过页面开关判断
 	 * @throws UiObjectNotFoundException

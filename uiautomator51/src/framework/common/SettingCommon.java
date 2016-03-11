@@ -985,7 +985,7 @@ public class SettingCommon {
 	}
 
 	// 以上为石亚辉*******************************************************************************************************
-	public static void addWifi(String wifiname, String type, String password)
+	public static void connectWifi(String wifiname, String type, String password)
 			throws UiObjectNotFoundException {
 		if ((Boolean) excute(Object_Text, Operation_Exists, wifiname)) {
 			excute(Object_Text, Operation_ClickWait, wifiname);
@@ -993,7 +993,7 @@ public class SettingCommon {
 					"com.android.settings:id/password", password);
 			excute(Object_ResourceId, Operation_ClickWait,
 					"android:id/button1", "连接");
-			check(Object_ResourceId, Operation_WaitForExists, "已连接", "4000");
+			check(Object_ResourceId, Operation_WaitForExists, "已连接", "10000");
 		} else {
 			excute(Object_Description, Operation_ClickWait, "更多选项");
 			excute(Object_Text, Operation_ClickWait, "添加网络");
@@ -1006,7 +1006,31 @@ public class SettingCommon {
 					"com.android.settings:id/password", password);
 			excute(Object_ResourceId, Operation_ClickWait,
 					"android:id/button1", "保存");
-			check(Object_ResourceId, Operation_WaitForExists, "已连接", "4000");
+			check(Object_ResourceId, Operation_WaitForExists, "已连接", "10000");
+		}
+	}
+	
+	 /* 删除当前连接的WIFI
+	 * @param wifiname
+	 * @param type
+	 * @param password
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void deleteWifi(String wifiname)throws UiObjectNotFoundException {
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		if((Boolean)excute(Object_Text,Operation_Exists,"已保存的网络")){
+			excute(Object_Text,Operation_ClickWait,"已保存的网络");
+			excute(Object_Text,Operation_ClickWait,wifiname);
+			excute(Object_Text,Operation_ClickWait,"取消保存");
+			excute(Object_Device, Operation_PressBack);
+			check(Object_Text, Operation_checkNoExist,"已连接");
+			
+		}else
+		{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_Text, Operation_ClickWait,"已连接");
+			excute(Object_Text, Operation_ClickWait,"取消保存");
+			check(Object_Text, Operation_checkNoExist,"已连接");
 		}
 	}
 
@@ -1104,4 +1128,39 @@ public class SettingCommon {
 		Wait(500);
 	}
 
+	/**
+	 * 删除默认的SIM卡号码
+	 * @param SIMName
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void editSIMNumber(String SIMName)
+			throws UiObjectNotFoundException {
+		System.out
+				.println("======Start to excute CallContactsCommon: SIMsettings======");
+
+		excute(Object_Text, Operation_ClickWait, SIMName);
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/display_number", "");
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/display_number", "");
+	}
+	
+	/**
+	 * 删除默认的SIM卡名称
+	 * @param SIMName
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void editSIMName(String SIMName)
+			throws UiObjectNotFoundException {
+		System.out
+				.println("======Start to excute CallContactsCommon: SIMsettings======");
+
+		excute(Object_Text, Operation_ClickWait, SIMName);
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/sim_name", "");
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/sim_name", "");
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/sim_name", "");
+	}
 }
