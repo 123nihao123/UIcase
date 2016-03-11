@@ -838,7 +838,457 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"SIM2");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");
-	}				
+	}
+
+	/**
+	 * 便携式WLAN热点默认为关闭，蓝牙网络共享默认为关闭，显示WLAN热点设置及用户管理字样
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_070() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","0");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","1");
+		check(Object_Text, Operation_checkExist, "WLAN热点设置及用户管理");
+	}
+	/**
+	 * 便携式WLAN热点被打开  通过页面开关判断
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_071() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		if((Boolean) excute(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","0"))
+		{
+			excute(Object_Text, Operation_ClickWait, "便携式WLAN热点");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","0");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "便携式WLAN热点");	
+	}
+	/**
+	 * 便携式WLAN热点被打开，通过开关的真实状态进行判断
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_072() throws UiObjectNotFoundException, RemoteException ,IOException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","0");
+		String num1 = DeviceCommon.runADBCommand("settings get global softap_enabling_or_enabled");
+		String num2 = num1.substring(0, 1);
+		String num3 = "1";
+		Assert.assertEquals(num2, num3);
+		//清场
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","0");	
+	}
+	/**
+	 * 蓝牙网络热点被打开
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_073() throws UiObjectNotFoundException,RemoteException,IOException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		if((Boolean) check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","1"))
+		{
+			excute(Object_Text, Operation_ClickWait, "蓝牙网络共享");
+		}
+		
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","1");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "蓝牙网络共享");
+		new Settings().setUp();
+		excute(Object_Text, Operation_ClickWait, "蓝牙");
+		excute(Object_Text, Operation_ClickWait, "开启");
+	}
+	/**
+	 * WLAN 热点设置及用户管理界面判断
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */ 
+	public static void test_074() throws UiObjectNotFoundException,RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		check(Object_Text, Operation_checkExist, "WLAN热点设置及用户管理");
+	}
+	/**
+	 * WLAN上热点被打开
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_075() throws UiObjectNotFoundException,RemoteException,IOException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		excute(Object_ResIdText, Operation_ClickWait ,"com.android.settings:id/switch_widget","关闭");
+		check(Object_ResIdText, Operation_CheckedTrue ,"com.android.settings:id/switch_widget","开启");//页面开关判断
+		String num1 = DeviceCommon.runADBCommand("settings get global softap_enabling_or_enabled");//底层真实状态判断
+		String num2 = num1.substring(0, 1);
+		String num3 = "1";
+		Assert.assertEquals(num2, num3);
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait ,"com.android.settings:id/switch_widget","开启");
+	}
+	/**
+	 * 弹出“WLAN热点开启”的对话框
+	 * @throws UiObjectNotFoundException
+	 * 
+	 * @throws RemoteException
+	 */
+	public static void test_076() throws UiObjectNotFoundException,RemoteException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle","保持WLAN热点开启");
+	}
+	/**
+	 * 点击保持WLAN热点开启，选中总是选项
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_077() throws UiObjectNotFoundException,RemoteException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		excute(Object_Text, Operation_ClickWait, "总是");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		check(Object_Text, Operation_CheckedTrue, "总是");
+	}
+	/**
+	 * 点击保持WLAN热点开启，选中空闲5分钟后关闭选项
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_078() throws UiObjectNotFoundException,RemoteException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		excute(Object_Text, Operation_ClickWait, "空闲5分钟后关闭");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		check(Object_Text, Operation_CheckedTrue, "空闲5分钟后关闭");
+	}
+	/**
+	 * 点击保持WLAN热点开启，选中空闲10分钟后关闭选项
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_079() throws UiObjectNotFoundException,RemoteException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		excute(Object_Text, Operation_ClickWait, "空闲10分钟后关闭");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		check(Object_Text, Operation_CheckedTrue, "空闲10分钟后关闭");
+	}
+	/**
+	 * 保持WLAN热点开启对话框，点击取消后消失
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_080() throws UiObjectNotFoundException,RemoteException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		excute(Object_Text, Operation_ClickWait, "保持WLAN热点开启");
+		excute(Object_Text, Operation_ClickWait, "取消");
+		check(Object_Text, Operation_checkNoExist, "取消");
+		
+	}
+	/**
+	 * 点击设置WLAN热点，弹出对话框
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_081() throws UiObjectNotFoundException,RemoteException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
+		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
+		excute(Object_Text, Operation_ClickWait, "设置WLAN热点");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle","设置WLAN热点");
+	}
+	/**
+	 * 新建vpn
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_082() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterVPN();
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/vpn_create");
+		if ((Boolean) excute(Object_Text, Operation_Exists, "注意")) {
+			excute(Object_Text, Operation_ClickWait, "确定");
+			SettingCommon.SetPIN();
+		}
+		SettingCommon.SetVPN("VPN_Spreadtrum", "www.spreadtrum.com");
+		excute(Object_Text,Operation_WaitForExists,"VPN_Spreadtrum", "10000");
+		check(Object_Text, Operation_checkExist, "VPN_Spreadtrum");
+		//清场
+		SettingCommon.RemovePIN();
+	}
+	/**
+	 * 连接vpn
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_084() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		SettingCommon.EnterVPN();
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/vpn_create");
+		if ((Boolean) excute(Object_Text, Operation_Exists, "注意")) {
+			excute(Object_Text, Operation_ClickWait, "确定");
+			SettingCommon.SetPIN();
+		}
+		SettingCommon.SetVPN("VPN_Spreadtrum", "www.spreadtrum.com");
+		excute(Object_Text,Operation_WaitForExists,"VPN_Spreadtrum", "10000");
+		//主体
+		excute(Object_Text, Operation_ClickWait, "VPN_Spreadtrum");
+		check(Object_Text, Operation_checkExist, "连接到VPN_Spreadtrum");
+		//清场
+		SettingCommon.RemovePIN();
+	}
+	/**
+	 * 连接vpn,无法获取控件信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	/*public static void test085() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		SettingCommon.EnterVPN();
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/vpn_create");
+		if ((Boolean) excute(Object_Text, Operation_Exists, "注意")) {
+			excute(Object_Text, Operation_ClickWait, "确定");
+			SettingCommon.SetPIN();
+		}
+		SettingCommon.SetVPN("VPN_Spreadtrum", "www.spreadtrum.com");
+		excute(Object_Text,Operation_WaitForExists,"VPN_Spreadtrum", "10000");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/pref_right_button");
+		check(Object_Text, Operation_checkExist, "编辑VPN配置文件");
+		//清场
+		SettingCommon.RemovePIN();
+	}*/
+	/**
+	 * 进入移动网络界面，移动数据网络漫游默认关闭
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_086() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		check(Object_ResIdText, Operation_CheckedFalse, "android:id/switchWidget","关闭");
+	}
+	/**
+	 * 进入移动网络界面，点击偏好设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_087() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "偏好设置");
+		check(Object_Text, Operation_checkExist, "偏好设置");
+	}
+	/**
+	 * 默认首选网络模式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_088() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "首选网络类型");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle","首选网络类型");
+	}
+	/**
+	 * 默认首选网络模式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_089() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "首选网络类型");
+		check(Object_ResIdText, Operation_CheckedTrue, "android:id/text1","自动");
+	}
+	/**
+	 * 默认首选网络模式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_090() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "首选网络类型");
+		excute(Object_Text, Operation_ClickWait, "仅限 WCDMA");
+		excute(Object_Text, Operation_ClickWait, "首选网络类型");
+		check(Object_ResIdText, Operation_CheckedTrue, "android:id/text1","仅限 WCDMA");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "自动");
+	}
+	/**
+	 * 默认首选网络模式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_091() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "首选网络类型");
+		excute(Object_Text, Operation_ClickWait, "仅限 GSM");
+		excute(Object_Text, Operation_ClickWait, "首选网络类型");
+		check(Object_ResIdText, Operation_CheckedTrue, "android:id/text1","仅限 GSM");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "自动");
+	}
+	/**
+	 * 进入APN
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_092() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "接入点名称 (APN)");
+		check(Object_Text, Operation_checkExist, "APN");
+	}
+	/**
+	 * 默认APN数量
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_093() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "接入点名称 (APN)");
+		int Num = ((Integer)(excute(Object_ResourceId, Operation_GetChildCount, "android:id/list"))).intValue();
+		Assert.assertEquals(Num , 3);
+	}
+	/**
+	 * 进入添加APN界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_094() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "接入点名称 (APN)");
+		excute(Object_Description, Operation_ClickWait, "新建 APN");
+		check(Object_Text, Operation_checkExist, "修改接入点");
+	}
+	/**
+	 * 舍弃添加APN
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_095() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "接入点名称 (APN)");
+		excute(Object_Description, Operation_ClickWait, "新建 APN");
+		excute(Object_ResIdText, Operation_ClickWait, "android:id/title", "名称");
+		excute(Object_ResourceId, Operation_SetText, "android:id/edit", "VPN_Spreadtrum");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/button1");
+		excute(Object_Text, Operation_ClickWait, "APN");
+		excute(Object_ResourceId, Operation_SetText, "android:id/edit", "cmwep");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/button1");
+		excute(Object_Description, Operation_ClickWait,"更多选项");
+		excute(Object_Text, Operation_ClickWait, "放弃");
+		check(Object_Text, Operation_checkNoExist, "VPN_Spreadtrum");
+	}
+	/**
+	 * 重置apn
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_096() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "接入点名称 (APN)");
+		excute(Object_Description, Operation_ClickWait, "新建 APN");
+		excute(Object_ResIdText, Operation_ClickWait, "android:id/title", "名称");
+		excute(Object_ResourceId, Operation_SetText, "android:id/edit", "VPN_Spreadtrum");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/button1");
+		excute(Object_Text, Operation_ClickWait, "APN");
+		excute(Object_ResourceId, Operation_SetText, "android:id/edit", "cmwep");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/button1");
+		excute(Object_Device, Operation_PressBack);
+		//主体
+		excute(Object_Description, Operation_ClickWait,"更多选项");
+		excute(Object_Text, Operation_ClickWait, "重置为默认设置");
+		excute(Object_Text, Operation_WaitForExists, "APN", "10000");
+		check(Object_Text, Operation_checkNoExist, "VPN_Spreadtrum");
+	}
+	/**
+	 * 网络运营商
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_098() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "更多");
+		excute(Object_Text, Operation_ClickWait, "移动网络");
+		excute(Object_Text, Operation_ClickWait, "网络运营商");
+		check(Object_Text, Operation_checkExist, "搜索网络");
+		check(Object_Text, Operation_checkExist, "自动选择");
+	}	
 	
 	/**
 	 * 检查“显示”字样
@@ -1296,6 +1746,7 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"保持纵向");
 	}
 	
+
 	/**
 	 * 进入提示音和通知
 	 * @throws UiObjectNotFoundException

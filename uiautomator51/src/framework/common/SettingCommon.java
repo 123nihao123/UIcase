@@ -230,77 +230,47 @@ public class SettingCommon {
 	}
 
 	public static void EnterVPN() throws UiObjectNotFoundException {
-		System.out
-				.println("======Start to excute CallContactsCommon: EnterVPN======");
+		System.out.println("======Start to excute CallContactsCommon: EnterVPN======");
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "VPN");
 	}
 
 	public static void SetPIN() throws UiObjectNotFoundException {
-		System.out
-				.println("======Start to excute CallContactsCommon: SetPIN======");
-		excute(Object_ResIdText, Operation_ClickWait, "android:id/title",
-				"PIN码");
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/password_entry", "1234");
-		// Wait(500);
-		excute(Object_ResourceId, Operation_ClickWait,
-				"com.android.settings:id/next_button");
-		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/password_entry", "1234");
-		// Wait(500);
-		excute(Object_ResourceId, Operation_ClickWait,
-				"com.android.settings:id/next_button");
-		// Wait(500);
+		System.out.println("======Start to excute CallContactsCommon: SetPIN======");
+		excute(Object_ResIdText, Operation_ClickWait, "android:id/title","PIN码");
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry", "1234");
+		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/next_button");
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry", "1234");
+		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/next_button");
 		if ((Boolean) excute(Object_Text, Operation_Exists, "完成")) {
 			excute(Object_Text, Operation_ClickWait, "完成");
 		}
-		// else
-		// System.out.println("============");
-		// Wait(500);
 	}
 
-	public static void SetVPN(String VPNName, String Servicer)
-			throws UiObjectNotFoundException {
-		System.out
-				.println("======Start to excute CallContactsCommon: AddVPN======");
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/name", VPNName);
-		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/server", Servicer);
-		// Wait(500);
+	public static void SetVPN(String VPNName, String Servicer)throws UiObjectNotFoundException {
+		System.out.println("======Start to excute CallContactsCommon: AddVPN======");
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/name", VPNName);
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/server", Servicer);
 		excute(Object_Text, Operation_ClickWait, "保存");
-
 	}
 
-	public static void SetL2TPVPN(String VPNName, String Servicer,
-			String secret, String identifier, String ipsec)
-			throws UiObjectNotFoundException {
-		System.out
-				.println("======Start to excute CallContactsCommon: SetL2TPVPN======");
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/name", VPNName);
+	public static void SetL2TPVPN(String VPNName, String Servicer,String secret, String identifier, String ipsec)throws UiObjectNotFoundException {
+		System.out.println("======Start to excute CallContactsCommon: SetL2TPVPN======");
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/name", VPNName);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_ClickWait,
-				"com.android.settings:id/type");
+		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/type");
 		// Wait(500);
 		excute(Object_Text, Operation_ClickWait, "L2TP/IPSec PSK");
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/server", Servicer);
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/server", Servicer);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/l2tp_secret", secret);
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/l2tp_secret", secret);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/ipsec_identifier", identifier);
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/ipsec_identifier", identifier);
 		// Wait(500);
 		excute(Object_Device, Operation_PressEnter);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/ipsec_secret", ipsec);
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/ipsec_secret", ipsec);
 		// Wait(500);
 		excute(Object_Text, Operation_ClickWait, "保存");
 
@@ -683,35 +653,20 @@ public class SettingCommon {
 	}
 
 	// 移除PIN锁
-	public static void RemovePIN() throws UiObjectNotFoundException {
-		try {
-			ClearBackgroundApp();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public static void RemovePIN() throws UiObjectNotFoundException, RemoteException {
+		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Setting);
-		// Wait(500);
 		excute(Object_TextScroll, Operation_ClickWait, "安全", "vertical");
-		// Wait(500);
 		excute(Object_Text, Operation_ClickWait, "屏幕锁定方式");
-		if ((Boolean) excute(Object_ResourceId, Operation_Exists,
-				"com.android.settings:id/password_entry")) {
-			excute(Object_ResourceId, Operation_SetText,
-					"com.android.settings:id/password_entry", "1234");
-			// Wait(500);
+		if ((Boolean) excute(Object_ResourceId, Operation_Exists,"com.android.settings:id/password_entry")) {
+			excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry", "1234");
 			excute(Object_Device, Operation_PressEnter);
-		} else {
-			System.out.println("======Entersecurity======");
 		}
-		Wait(500);
+		excute(Object_Text, Operation_WaitForExists, "滑动", "10000");
 		excute(Object_Text, Operation_ClickWait, "滑动");
 		if ((Boolean) excute(Object_Text, Operation_Exists, "是，移除")) {
 			excute(Object_Text, Operation_ClickWait, "是，移除");
-		} else {
-			System.out.println("======RemovePIN Success======");
-		}
-
+		} 
 	}
 
 	// 以下为孔皓*******************************************************************************************************
