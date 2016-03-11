@@ -841,6 +841,160 @@ public class Settings extends UiAutomatorTestCase
 	}
 
 	/**
+	 * 隐藏WLAN流量
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_059() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		excute(Object_Device,Operation_PressMenu);
+		if((Boolean) excute(Object_Text, Operation_Exists, "显示WLAN流量"))
+		{
+			excute(Object_Text,Operation_ClickWait,"显示WLAN流量");
+			excute(Object_Device,Operation_PressMenu);
+		}
+		//主体
+		excute(Object_Text,Operation_ClickWait,"隐藏WLAN流量");
+		check(Object_Text, Operation_checkNoExist, "WLAN");
+	}
+	/**
+	 * 显示WLAN流量
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_060() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		excute(Object_Device,Operation_PressMenu);
+		if((Boolean) excute(Object_Text, Operation_Exists, "显示WLAN流量"))
+		{
+			excute(Object_Text,Operation_ClickWait,"显示WLAN流量");
+		}else{
+			excute(Object_Device,Operation_PressBack);
+		}
+		check(Object_Text, Operation_checkExist, "WLAN");
+		//清场
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"隐藏WLAN流量");
+	}
+	/**
+	 * 关闭移动数据网络
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_061() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		if((Boolean) excute(Object_ClassInstance, Operation_IsChecked, "android.widget.Switch", "0"))
+		{
+			excute(Object_Text,Operation_ClickWait,"移动数据网络");
+		}
+		if((Boolean) excute(Object_Text,Operation_Exists,"确定"))
+		{
+			excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		check(Object_ClassInstance, Operation_CheckedFalse, "android.widget.Switch", "0");
+	}
+	/**
+	 * 进入更多
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_062() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"更多");
+		check(Object_Text, Operation_checkExist, "更多");
+	}
+	/**
+	 * 进入更多，打开飞行模式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_063() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"更多");
+		if(!(Boolean) excute(Object_ResourceId, Operation_IsChecked, "android:id/switchWidget"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
+		}
+		check(Object_ResourceId, Operation_CheckedTrue, "android:id/switchWidget");
+		
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
+	}
+	/**
+	 * 进入更多，关闭飞行模式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_064() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_Text,Operation_ClickWait,"更多");
+		if(!(Boolean) excute(Object_ResourceId, Operation_IsChecked, "android:id/switchWidget"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
+		}
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
+		check(Object_ResourceId, Operation_CheckedFalse, "android:id/switchWidget");
+	}
+	/**
+	 * 网络共享与便携式热点
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_065() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"更多");
+		excute(Object_Text,Operation_ClickWait,"网络共享与便携式热点");
+		check(Object_Text, Operation_checkExist, "便携式WLAN热点");
+	}
+	/**
+	 * 进入VPN
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_067() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"更多");
+		excute(Object_Text,Operation_ClickWait,"VPN");
+		check(Object_Text, Operation_checkExist, "VPN");
+	}
+	/**
+	 * 进入移动网络
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_068() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"更多");
+		excute(Object_Text,Operation_ClickWait,"移动网络");
+		check(Object_Text, Operation_checkExist, "移动网络设置");
+	}
+	/**
+	 * 进入移动网络
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_069() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"更多");
+		excute(Object_Text,Operation_ClickWait,"手机套餐");
+		check(Object_Text, Operation_checkExist, "确定");
+	}
+
+	/**
 	 * 便携式WLAN热点默认为关闭，蓝牙网络共享默认为关闭，显示WLAN热点设置及用户管理字样
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
