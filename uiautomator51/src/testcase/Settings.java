@@ -614,7 +614,7 @@ public class Settings extends UiAutomatorTestCase
 		SettingCommon.editSIMName("SIM 卡插槽 2");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM2");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_ResIdText,Operation_checkExist,"android:id/summary","SIM2");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/sim_name","SIM2");
 	}
 	
 	/**
@@ -922,6 +922,7 @@ public class Settings extends UiAutomatorTestCase
 		  excute(Object_Text,Operation_ClickWait,"显示WLAN流量");
 		  check(Object_Text, Operation_checkExist, "WLAN");
 		  //清场
+		  excute(Object_Device,Operation_PressMenu);
 		  excute(Object_Text,Operation_ClickWait,"隐藏WLAN流量");
 	}
 	
