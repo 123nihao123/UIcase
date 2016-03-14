@@ -517,6 +517,7 @@ public class Settings extends UiAutomatorTestCase
 		SettingCommon.editSIMName("SIM 卡插槽 1");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM1");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		excute(Object_Text,Operation_ClickWait,"SIM 卡插槽 1");
 		check(Object_Text,Operation_checkExist,"SIM1");
 		
 		
