@@ -171,7 +171,9 @@ public class CallLog extends UiAutomatorTestCase
 	{
 		//主体
 		UiObject a = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.dialer:id/recycler_view");
-		Assert.assertTrue(a.getChildCount()==5);
+		String [] list = {"111111","222222","333333","444444","555555","10000","10001","10010","10086"};
+		for(int i=0;i<list.length;i++)
+			check(Object_TextScroll,Operation_checkExist,list[i],"vertical");
 	}
 	
 	/**

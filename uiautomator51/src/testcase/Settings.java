@@ -1579,42 +1579,42 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"屏幕亮度");
 	}
 	
-	 /**
-	  * 设置屏幕亮度为最小
-	  * @throws IOException
-	  */
-	 public static void test101() throws IOException 
-	 {
-	  //主体
-	  excute(Object_Text,Operation_ClickWait,"显示");
-	  if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
-	   excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-	  SettingCommon.setScreenBrightness("最小");
-	  String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
-	  String actual[] = i.split("\n"); 
-	  Assert.assertEquals("Brightness value is not correct", "10", actual[0]);
-	  //清场
-	  DeviceCommon.runADBCommand("settings put system screen_brightness 25");
-	 }
-	 
-	 /**
-	  * 设置屏幕亮度为最大
-	  * @throws UiObjectNotFoundException
-	  * @throws IOException
-	  */
-	 public static void test102() throws UiObjectNotFoundException, IOException 
-	 {
-	  //主体
-	  excute(Object_Text,Operation_ClickWait,"显示");
-	  if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
-	   excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-	  SettingCommon.setScreenBrightness("最大");
-	  String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
-	  String actual[] = i.split("\n"); 
-	  Assert.assertEquals("Brightness value is not correct", "255", actual[0]);
-	  //清场
-	  DeviceCommon.runADBCommand("settings put system screen_brightness 25");
-	 }
+	/**
+	 * 设置屏幕亮度为最小
+	 * @throws IOException
+	 */
+	public static void test_101() throws IOException
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+		SettingCommon.setScreenBrightness("最小");
+		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+		String actual[] = i.split("\n");
+		Assert.assertEquals("Brightness value is not correct", "10", actual[0]);
+		//清场
+		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+	}
+	
+	/**
+	 * 设置屏幕亮度为最大
+	 * @throws UiObjectNotFoundException
+	 * @throws IOException
+	 */
+	public static void test_102() throws UiObjectNotFoundException, IOException 
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"显示");
+		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+		SettingCommon.setScreenBrightness("最大");
+		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+		String actual[] = i.split("\n");
+		Assert.assertEquals("Brightness value is not correct", "255", actual[0]);
+		//清场
+		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+	}
 	
 	/**
 	 * 打开自动调节亮度开关
