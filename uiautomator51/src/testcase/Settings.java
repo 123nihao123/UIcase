@@ -1120,6 +1120,7 @@ public class Settings extends UiAutomatorTestCase
 		{
 			excute(Object_Text, Operation_ClickWait, "便携式WLAN热点");
 		}
+		excute(Object_Text, Operation_WaitForExists, "便携式热点“AndroidAP”已激活","10000");
 		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","0");
 		//清场
 		excute(Object_Text, Operation_ClickWait, "便携式WLAN热点");	
@@ -1131,10 +1132,15 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_072() throws UiObjectNotFoundException, RemoteException ,IOException
 	{	
-		//主体
+		//前提
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
-		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","0");
+		if(!(Boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","0"))
+		{
+			excute(Object_Text, Operation_ClickWait, "便携式WLAN热点");
+		}
+		excute(Object_Text, Operation_WaitForExists, "便携式热点“AndroidAP”已激活","10000");
+		//主体
 		String num1 = DeviceCommon.runADBCommand("settings get global softap_enabling_or_enabled");
 		String num2 = num1.substring(0, 1);
 		String num3 = "1";
