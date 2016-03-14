@@ -428,6 +428,9 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text,Operation_WaitForExists,"刷新","15000");
 		check(Object_ResIdText,Operation_checkExist,"android:id/title","重命名此设备");
 		check(Object_ResIdText,Operation_checkExist,"android:id/title","显示收到的文件");
+		//清场
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 	}
 	
 	/**
