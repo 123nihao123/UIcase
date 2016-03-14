@@ -27,15 +27,21 @@ public class PreSetup extends UiAutomatorTestCase
     {
 		
     }
-	
-	public void test_001() throws UiObjectNotFoundException, RemoteException 
+	public void test_000() throws UiObjectNotFoundException, RemoteException 
 	{
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		DeviceCommon.removePermissions();
 		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		SettingCommon.SIMsettings("SIM 卡插槽 1");
+		SettingCommon.SIMNames("SIM 卡插槽 1","SIM1");
+		SettingCommon.SIMsettings("SIM 卡插槽 2");
+		SettingCommon.SIMNames("SIM 卡插槽 2","SIM2");
+		excute(Object_Device, Operation_PressBack);
 		excute(Object_TextScroll, Operation_ClickWait, "显示", "vertical");
 		excute(Object_Text, Operation_ClickWait, "休眠");
 		excute(Object_Text, Operation_ClickWait, "30分钟");
-		
 	}
 	
 	

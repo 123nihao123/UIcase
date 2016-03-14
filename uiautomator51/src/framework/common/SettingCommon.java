@@ -230,47 +230,67 @@ public class SettingCommon {
 	}
 
 	public static void EnterVPN() throws UiObjectNotFoundException {
-		System.out.println("======Start to excute CallContactsCommon: EnterVPN======");
+		System.out
+				.println("======Start to excute CallContactsCommon: EnterVPN======");
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "VPN");
 	}
 
 	public static void SetPIN() throws UiObjectNotFoundException {
-		System.out.println("======Start to excute CallContactsCommon: SetPIN======");
-		excute(Object_ResIdText, Operation_ClickWait, "android:id/title","PIN码");
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry", "1234");
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/next_button");
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry", "1234");
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/next_button");
+		System.out
+				.println("======Start to excute CallContactsCommon: SetPIN======");
+		excute(Object_ResIdText, Operation_ClickWait, "android:id/title",
+				"PIN码");
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/password_entry", "1234");
+		excute(Object_ResourceId, Operation_ClickWait,
+				"com.android.settings:id/next_button");
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/password_entry", "1234");
+		excute(Object_ResourceId, Operation_ClickWait,
+				"com.android.settings:id/next_button");
 		if ((Boolean) excute(Object_Text, Operation_Exists, "完成")) {
 			excute(Object_Text, Operation_ClickWait, "完成");
 		}
 	}
 
-	public static void SetVPN(String VPNName, String Servicer)throws UiObjectNotFoundException {
-		System.out.println("======Start to excute CallContactsCommon: AddVPN======");
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/name", VPNName);
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/server", Servicer);
+	public static void SetVPN(String VPNName, String Servicer)
+			throws UiObjectNotFoundException {
+		System.out
+				.println("======Start to excute CallContactsCommon: AddVPN======");
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/name", VPNName);
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/server", Servicer);
 		excute(Object_Text, Operation_ClickWait, "保存");
 	}
 
-	public static void SetL2TPVPN(String VPNName, String Servicer,String secret, String identifier, String ipsec)throws UiObjectNotFoundException {
-		System.out.println("======Start to excute CallContactsCommon: SetL2TPVPN======");
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/name", VPNName);
+	public static void SetL2TPVPN(String VPNName, String Servicer,
+			String secret, String identifier, String ipsec)
+			throws UiObjectNotFoundException {
+		System.out
+				.println("======Start to excute CallContactsCommon: SetL2TPVPN======");
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/name", VPNName);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_ClickWait,"com.android.settings:id/type");
+		excute(Object_ResourceId, Operation_ClickWait,
+				"com.android.settings:id/type");
 		// Wait(500);
 		excute(Object_Text, Operation_ClickWait, "L2TP/IPSec PSK");
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/server", Servicer);
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/server", Servicer);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/l2tp_secret", secret);
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/l2tp_secret", secret);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/ipsec_identifier", identifier);
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/ipsec_identifier", identifier);
 		// Wait(500);
 		excute(Object_Device, Operation_PressEnter);
 		// Wait(500);
-		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/ipsec_secret", ipsec);
+		excute(Object_ResourceId, Operation_SetText,
+				"com.android.settings:id/ipsec_secret", ipsec);
 		// Wait(500);
 		excute(Object_Text, Operation_ClickWait, "保存");
 
@@ -653,20 +673,23 @@ public class SettingCommon {
 	}
 
 	// 移除PIN锁
-	public static void RemovePIN() throws UiObjectNotFoundException, RemoteException {
+	public static void RemovePIN() throws UiObjectNotFoundException,
+			RemoteException {
 		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll, Operation_ClickWait, "安全", "vertical");
 		excute(Object_Text, Operation_ClickWait, "屏幕锁定方式");
-		if ((Boolean) excute(Object_ResourceId, Operation_Exists,"com.android.settings:id/password_entry")) {
-			excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password_entry", "1234");
+		if ((Boolean) excute(Object_ResourceId, Operation_Exists,
+				"com.android.settings:id/password_entry")) {
+			excute(Object_ResourceId, Operation_SetText,
+					"com.android.settings:id/password_entry", "1234");
 			excute(Object_Device, Operation_PressEnter);
 		}
 		excute(Object_Text, Operation_WaitForExists, "滑动", "10000");
 		excute(Object_Text, Operation_ClickWait, "滑动");
 		if ((Boolean) excute(Object_Text, Operation_Exists, "是，移除")) {
 			excute(Object_Text, Operation_ClickWait, "是，移除");
-		} 
+		}
 	}
 
 	// 以下为孔皓*******************************************************************************************************
@@ -1009,70 +1032,79 @@ public class SettingCommon {
 			check(Object_ResourceId, Operation_WaitForExists, "已连接", "10000");
 		}
 	}
-	
-	 /* 删除当前连接的WIFI
+
+	/*
+	 * 删除当前连接的WIFI
+	 * 
 	 * @param wifiname
+	 * 
 	 * @param type
+	 * 
 	 * @param password
+	 * 
 	 * @throws UiObjectNotFoundException
 	 */
-	public static void deleteWifi(String wifiname)throws UiObjectNotFoundException {
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		if((Boolean)excute(Object_Text,Operation_Exists,"已保存的网络")){
-			excute(Object_Text,Operation_ClickWait,"已保存的网络");
-			excute(Object_Text,Operation_ClickWait,wifiname);
-			excute(Object_Text,Operation_ClickWait,"取消保存");
+	public static void deleteWifi(String wifiname)
+			throws UiObjectNotFoundException {
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		if ((Boolean) excute(Object_Text, Operation_Exists, "已保存的网络")) {
+			excute(Object_Text, Operation_ClickWait, "已保存的网络");
+			excute(Object_Text, Operation_ClickWait, wifiname);
+			excute(Object_Text, Operation_ClickWait, "取消保存");
 			excute(Object_Device, Operation_PressBack);
-			check(Object_Text, Operation_checkNoExist,"已连接");
-			
-		}else
-		{
+			check(Object_Text, Operation_checkNoExist, "已连接");
+
+		} else {
 			excute(Object_Device, Operation_PressBack);
-			excute(Object_Text, Operation_ClickWait,"已连接");
-			excute(Object_Text, Operation_ClickWait,"取消保存");
-			check(Object_Text, Operation_checkNoExist,"已连接");
+			excute(Object_Text, Operation_ClickWait, "已连接");
+			excute(Object_Text, Operation_ClickWait, "取消保存");
+			check(Object_Text, Operation_checkNoExist, "已连接");
 		}
 	}
 
 	/**
 	 * 设置一个搜索历史记录
-	 * @param name：搜索内容
+	 * 
+	 * @param name
+	 *            ：搜索内容
 	 */
-	public static void setSearchRecord(String name) 
-	{
-		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.settings:id/search","搜索设置");
-		excute(Object_ResourceId,Operation_SetText,"android:id/search_src_text",name);
-		excute(Object_Device,Operation_PressEnter);
-		excute(Object_Device,Operation_PressBack);
-		excute(Object_Device,Operation_PressBack);
+	public static void setSearchRecord(String name) {
+		excute(Object_ResIdDesc, Operation_ClickWait,
+				"com.android.settings:id/search", "搜索设置");
+		excute(Object_ResourceId, Operation_SetText,
+				"android:id/search_src_text", name);
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
 	}
-	
-	
+
 	/**
 	 * 通过UI设置最大或最小的屏幕亮度
-	 * @param name：最大，最小
+	 * 
+	 * @param name
+	 *            ：最大，最小
 	 */
-	public static void setScreenBrightness(String name) 
-	{
-		excute(Object_Text,Operation_ClickWait,"亮度");
-		Rect ModArea = (Rect) excute(Object_Text,Operation_GetBounds,"屏幕亮度");
+	public static void setScreenBrightness(String name) {
+		excute(Object_Text, Operation_ClickWait, "亮度");
+		Rect ModArea = (Rect) excute(Object_Text, Operation_GetBounds, "屏幕亮度");
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
-		if(name.equals("最小"))
-			UiDevice.getInstance().click(x/3, y);
-		if(name.equals("最大"))
-			UiDevice.getInstance().click(x/3*5, y);
+		if (name.equals("最小"))
+			UiDevice.getInstance().click(x / 3, y);
+		if (name.equals("最大"))
+			UiDevice.getInstance().click(x / 3 * 5, y);
 	}
-	
+
 	/**
 	 * 前提：默认打开互动屏保
 	 */
-	public static void setDefaultScreensavers() 
-	{
-		excute(Object_Text,Operation_ClickWait,"显示");
-		excute(Object_Text,Operation_ClickWait,"互动屏保");
-		if(!(Boolean) excute(Object_ResourceId,Operation_IsChecked,"com.android.settings:id/switch_widget"))
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+	public static void setDefaultScreensavers() {
+		excute(Object_Text, Operation_ClickWait, "显示");
+		excute(Object_Text, Operation_ClickWait, "互动屏保");
+		if (!(Boolean) excute(Object_ResourceId, Operation_IsChecked,
+				"com.android.settings:id/switch_widget"))
+			excute(Object_ResourceId, Operation_ClickWait,
+					"com.android.settings:id/switch_widget");
 	}
 
 	public static void checkWifiConnect(String wifiname)
@@ -1130,6 +1162,7 @@ public class SettingCommon {
 
 	/**
 	 * 删除默认的SIM卡号码
+	 * 
 	 * @param SIMName
 	 * @throws UiObjectNotFoundException
 	 */
@@ -1144,9 +1177,10 @@ public class SettingCommon {
 		excute(Object_ResourceId, Operation_SetText,
 				"com.android.settings:id/display_number", "");
 	}
-	
+
 	/**
 	 * 删除默认的SIM卡名称
+	 * 
 	 * @param SIMName
 	 * @throws UiObjectNotFoundException
 	 */

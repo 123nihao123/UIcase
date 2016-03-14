@@ -238,8 +238,6 @@ public class Settings extends UiAutomatorTestCase
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
 		check(Object_Text,Operation_checkExist,"Testteam");
-		check(Object_Text,Operation_checkExist,"TSTest23");
-		check(Object_Text,Operation_checkExist,"ThunderSoft23");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		
@@ -840,6 +838,10 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_Text,Operation_ClickWait,"主卡选择");
 		excute(Object_Text,Operation_ClickWait,"SIM1");
+		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
+		  {
+		   excute(Object_Text,Operation_ClickWait,"确定");
+		  }
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM1");
 	}		
 		
@@ -855,7 +857,10 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_Text,Operation_ClickWait,"主卡选择");
 		excute(Object_Text,Operation_ClickWait,"SIM2");
-		excute(Object_Text,Operation_ClickWait,"确定");
+		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
+		  {
+		   excute(Object_Text,Operation_ClickWait,"确定");
+		  }
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");
 	}				
 		
@@ -905,10 +910,19 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_057() throws UiObjectNotFoundException, RemoteException 
 	{
-		excute(Object_Text,Operation_ClickWait,"流量使用情况");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"显示WLAN流量");
-		check(Object_Text,Operation_checkExist,"显示WLAN流量");
+		//前提
+		  excute(Object_Text,Operation_ClickWait,"流量使用情况");
+		  excute(Object_Device,Operation_PressMenu);
+		  if((Boolean) excute(Object_Text, Operation_Exists, "隐藏WLAN流量"))
+		  {
+		   excute(Object_Text,Operation_ClickWait,"隐藏WLAN流量");
+		   excute(Object_Device,Operation_PressMenu);
+		  }
+		  //主体
+		  excute(Object_Text,Operation_ClickWait,"显示WLAN流量");
+		  check(Object_Text, Operation_checkExist, "WLAN");
+		  //清场
+		  excute(Object_Text,Operation_ClickWait,"隐藏WLAN流量");
 	}
 	
 	/**
@@ -1102,7 +1116,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
-		if((Boolean) excute(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","0"))
+		if(!(Boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","0"))
 		{
 			excute(Object_Text, Operation_ClickWait, "便携式WLAN热点");
 		}
@@ -1375,6 +1389,10 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "移动网络");
+		if (!(Boolean) excute(Object_Text, Operation_Exists, "首选网络类型"))
+		{
+			excute(Object_Text, Operation_ClickWait, "SIM2");
+		}
 		excute(Object_Text, Operation_ClickWait, "首选网络类型");
 		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle","首选网络类型");
 	}
@@ -1388,6 +1406,10 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "移动网络");
+		if (!(Boolean) excute(Object_Text, Operation_Exists, "首选网络类型"))
+		{
+			excute(Object_Text, Operation_ClickWait, "SIM2");
+		}
 		excute(Object_Text, Operation_ClickWait, "首选网络类型");
 		check(Object_ResIdText, Operation_CheckedTrue, "android:id/text1","自动");
 	}
@@ -1401,6 +1423,10 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "移动网络");
+		if (!(Boolean) excute(Object_Text, Operation_Exists, "首选网络类型"))
+		{
+			excute(Object_Text, Operation_ClickWait, "SIM2");
+		}
 		excute(Object_Text, Operation_ClickWait, "首选网络类型");
 		excute(Object_Text, Operation_ClickWait, "仅限 WCDMA");
 		excute(Object_Text, Operation_ClickWait, "首选网络类型");
@@ -1418,6 +1444,10 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "移动网络");
+		if (!(Boolean) excute(Object_Text, Operation_Exists, "首选网络类型"))
+		{
+			excute(Object_Text, Operation_ClickWait, "SIM2");
+		}
 		excute(Object_Text, Operation_ClickWait, "首选网络类型");
 		excute(Object_Text, Operation_ClickWait, "仅限 GSM");
 		excute(Object_Text, Operation_ClickWait, "首选网络类型");
@@ -1549,40 +1579,42 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"屏幕亮度");
 	}
 	
-	/**
-	 * 设置屏幕亮度为最小
-	 * @throws IOException
-	 */
-	public static void test_101() throws IOException 
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"显示");
-		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
-			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-		SettingCommon.setScreenBrightness("最小");
-		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
-		Assert.assertTrue(i.equals("10"+"\n"));
-		//清场
-		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
-	}
-	
-	/**
-	 * 设置屏幕亮度为最大
-	 * @throws UiObjectNotFoundException
-	 * @throws IOException
-	 */
-	public static void test_102() throws UiObjectNotFoundException, IOException 
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"显示");
-		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
-			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-		SettingCommon.setScreenBrightness("最大");
-		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
-		Assert.assertTrue(i.equals("255"+"\n"));
-		//清场
-		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
-	}
+	 /**
+	  * 设置屏幕亮度为最小
+	  * @throws IOException
+	  */
+	 public static void test101() throws IOException 
+	 {
+	  //主体
+	  excute(Object_Text,Operation_ClickWait,"显示");
+	  if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+	   excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+	  SettingCommon.setScreenBrightness("最小");
+	  String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+	  String actual[] = i.split("\n"); 
+	  Assert.assertEquals("Brightness value is not correct", "10", actual[0]);
+	  //清场
+	  DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+	 }
+	 
+	 /**
+	  * 设置屏幕亮度为最大
+	  * @throws UiObjectNotFoundException
+	  * @throws IOException
+	  */
+	 public static void test102() throws UiObjectNotFoundException, IOException 
+	 {
+	  //主体
+	  excute(Object_Text,Operation_ClickWait,"显示");
+	  if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+	   excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+	  SettingCommon.setScreenBrightness("最大");
+	  String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+	  String actual[] = i.split("\n"); 
+	  Assert.assertEquals("Brightness value is not correct", "255", actual[0]);
+	  //清场
+	  DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+	 }
 	
 	/**
 	 * 打开自动调节亮度开关
@@ -1918,7 +1950,7 @@ public class Settings extends UiAutomatorTestCase
 	/**
 	 * 设置字体大小为小
 	 */
-	public static void test128() 
+	public static void test_128() 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
