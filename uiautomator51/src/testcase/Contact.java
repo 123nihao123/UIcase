@@ -21,6 +21,7 @@ import framework.common.SettingCommon;
 
 public class Contact extends UiAutomatorTestCase
 {
+	/*
 	@Override
 	protected void setUp() throws UiObjectNotFoundException, RemoteException 
     {			
@@ -32,7 +33,7 @@ public class Contact extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
    }
-	     
+	    */ 
 	@Override
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
@@ -816,6 +817,15 @@ public class Contact extends UiAutomatorTestCase
 	public void test_054() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll,Operation_ClickWait,"提示和通知","vertical");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","应用通知");
+		excute(Object_TextScrollWithResId,Operation_ClickWait,"android:id/list","信息","vertical");
+		if((Boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","1"))
+		{
+			excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","1");
+		}
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
 		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
@@ -838,6 +848,12 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
 		CallLogCommon.deleteAllLog("全部");
+		//清场
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll,Operation_ClickWait,"提示和通知","vertical");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","应用通知");
+		excute(Object_TextScrollWithResId,Operation_ClickWait,"android:id/list","信息","vertical");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","1");
 		
 	}
 	//联系人界面查看最近拨号
@@ -845,6 +861,14 @@ public class Contact extends UiAutomatorTestCase
 	{
 		//前提
 		ClearBackgroundApp();
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll,Operation_ClickWait,"提示和通知","vertical");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","应用通知");
+		excute(Object_TextScrollWithResId,Operation_ClickWait,"android:id/list","信息","vertical");
+		if((Boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","1"))
+		{
+			excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","1");
+		}
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
 		int WideArea = ModArea.width();
@@ -871,6 +895,11 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
 		CallLogCommon.deleteAllLog("全部");
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll,Operation_ClickWait,"提示和通知","vertical");
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","应用通知");
+		excute(Object_TextScrollWithResId,Operation_ClickWait,"android:id/list","信息","vertical");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","1");
 	} 
 	//通过联系人进入邮箱
 	public void test_056() throws UiObjectNotFoundException, RemoteException 
