@@ -262,7 +262,7 @@ public class Settings extends UiAutomatorTestCase
 		}
 		SettingCommon.connectWifi("Testteam", "WPA/WPA2 PSK", "test12345678");
 		//清场
-		SettingCommon.deleteWifi("Testteam");
+		SettingCommon.disConnectWifi("Testteam");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		
 	}

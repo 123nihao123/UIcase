@@ -1016,7 +1016,7 @@ public class SettingCommon {
 					"com.android.settings:id/password", password);
 			excute(Object_ResourceId, Operation_ClickWait,
 					"android:id/button1", "连接");
-			check(Object_ResourceId, Operation_WaitForExists, "已连接", "10000");
+			check(Object_ResIdText, Operation_WaitForExists,"android:id/summary", "已连接", "15000");
 		} else {
 			excute(Object_Description, Operation_ClickWait, "更多选项");
 			excute(Object_Text, Operation_ClickWait, "添加网络");
@@ -1029,7 +1029,7 @@ public class SettingCommon {
 					"com.android.settings:id/password", password);
 			excute(Object_ResourceId, Operation_ClickWait,
 					"android:id/button1", "保存");
-			check(Object_ResourceId, Operation_WaitForExists, "已连接", "10000");
+			check(Object_ResIdText, Operation_WaitForExists, "android:id/summary","已连接", "15000");
 		}
 	}
 
@@ -1044,7 +1044,7 @@ public class SettingCommon {
 	 * 
 	 * @throws UiObjectNotFoundException
 	 */
-	public static void deleteWifi(String wifiname)
+	public static void disConnectWifi(String wifiname)
 			throws UiObjectNotFoundException {
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		if ((Boolean) excute(Object_Text, Operation_Exists, "已保存的网络")) {
@@ -1056,7 +1056,7 @@ public class SettingCommon {
 
 		} else {
 			excute(Object_Device, Operation_PressBack);
-			excute(Object_Text, Operation_ClickWait, "已连接");
+			excute(Object_Text, Operation_ClickWait, wifiname);
 			excute(Object_Text, Operation_ClickWait, "取消保存");
 			check(Object_Text, Operation_checkNoExist, "已连接");
 		}
