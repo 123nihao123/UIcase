@@ -111,7 +111,6 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
 		SettingCommon.endCall();
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		//主体
 		excute(Object_Text,Operation_ClickWait,"收藏");
@@ -119,7 +118,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"清除常用联系人");
 		check(Object_Text,Operation_checkExist,"是否清除常用联系人？");
 		//清场
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
@@ -132,7 +130,6 @@ public class Contact extends UiAutomatorTestCase
 		//前提
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
 		SettingCommon.endCall();
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		//主体
 		excute(Object_Text,Operation_ClickWait,"收藏");
@@ -142,7 +139,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkNoExist,"常用联系人");
 		//清场
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
@@ -581,7 +577,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"群发邮件");
 		excute(Object_Text,Operation_WaitForExists,"群发邮件","5000");
 		check(Object_Text,Operation_checkExist,"帐户设置");
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		//清场
 		ContactCommon.deleteGroup("all");
@@ -605,7 +600,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"群发信息");
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/compose_message_text","5000");
 		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		//清场
 		ContactCommon.deleteGroup("all");
@@ -827,13 +821,12 @@ public class Contact extends UiAutomatorTestCase
 		}
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
-		ClearBackgroundApp();
+		excute(Object_Device, Operation_PressBack);
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
 		int WideArea = ModArea.width();
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		//主体
 		excute(Object_Text,Operation_ClickWait,"zhanxun01");
@@ -843,7 +836,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
 		UiDevice.getInstance().click(x, y);
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
@@ -860,7 +852,6 @@ public class Contact extends UiAutomatorTestCase
 	public void test_055() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll,Operation_ClickWait,"提示和通知","vertical");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","应用通知");
@@ -877,7 +868,6 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
 		CallLogCommon.deleteAllLog("全部");
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
 		//主体
@@ -890,7 +880,6 @@ public class Contact extends UiAutomatorTestCase
 		Wait(1000);
 		check(Object_Text,Operation_checkExist,"最近");
 		//清场
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
