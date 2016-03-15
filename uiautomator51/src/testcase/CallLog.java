@@ -106,13 +106,9 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_004() throws RemoteException, UiObjectNotFoundException 
 	{
 		//前提
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
-		ClearBackgroundApp();
-		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.addNameAndTel("本机", "zhanxun", "10086");
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -120,7 +116,6 @@ public class CallLog extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"全部");
 		check(Object_TextScroll,Operation_checkExist,"zhanxun","vertical");
 		//清场
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
 	}
@@ -171,7 +166,9 @@ public class CallLog extends UiAutomatorTestCase
 	{
 		//主体
 		UiObject a = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.dialer:id/recycler_view");
-		Assert.assertTrue(a.getChildCount()==5);
+		String [] list = {"111111","222222","333333","444444","555555","10000","10001","10010","10086"};
+		for(int i=0;i<list.length;i++)
+			check(Object_TextScroll,Operation_checkExist,list[i],"vertical");
 	}
 	
 	/**
@@ -643,7 +640,6 @@ public class CallLog extends UiAutomatorTestCase
 	 public static void test_045() throws UiObjectNotFoundException, RemoteException 
 	 {
 	  //前提
-	  ClearBackgroundApp();
 	  DeviceCommon.enterApp(Devices_Desc_Call);
 	  Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
 	  int WideArea = ModArea.width();
@@ -670,7 +666,6 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_046() throws UiObjectNotFoundException, RemoteException 
 	{	
 		//前提
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
 		int WideArea = ModArea.width();
@@ -708,7 +703,6 @@ public class CallLog extends UiAutomatorTestCase
 	 */
 	public static void test_048() throws UiObjectNotFoundException, RemoteException 
 	{	
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"最近");
 		check(Object_TextScroll, Operation_checkExist, "查看全部通话记录","vertical");
@@ -761,8 +755,6 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_052() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ClearBackgroundApp();
-		Wait(1000);
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
 		int WideArea = ModArea.width();
@@ -794,8 +786,9 @@ public class CallLog extends UiAutomatorTestCase
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
 		CallLogCommon.addIPCall();
-		ClearBackgroundApp();
-		DeviceCommon.enterApp(Devices_Desc_Call);
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		//DeviceCommon.enterApp(Devices_Desc_Call);
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
@@ -803,12 +796,11 @@ public class CallLog extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_back_button");
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
+		if((Boolean) excute(Object_ResourceId,Operation_Exists, "com.android.dialer:id/label"))
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
 		UiDevice.getInstance().click(x, y);
 		//清场
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		CallLogCommon.removeIPCall();
 	}
@@ -835,10 +827,8 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_055() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -858,10 +848,8 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_056() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
@@ -878,7 +866,6 @@ public class CallLog extends UiAutomatorTestCase
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
 		check(Object_ResourceId,Operation_checkNoExist,"com.android.dialer:id/add_contact_icon");
 		//清场
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
 	}
@@ -1020,7 +1007,6 @@ public class CallLog extends UiAutomatorTestCase
 	{
 		//主体
 		CallLogCommon.deleteAllLog("全部");
-		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
