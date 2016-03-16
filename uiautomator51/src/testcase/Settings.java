@@ -3516,5 +3516,316 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "修改系统设置");
 		check(Object_TextScroll, Operation_checkExist, "可修改系统设置");
 	}
+	
+	/**
+	 * 跳转到“安全”界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_279() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		check(Object_Text, Operation_checkExist, "安全");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：“无”“滑动”“图案”“PIN码”“密码”
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_280() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		check(Object_Text, Operation_checkExist, "无");
+		check(Object_Text, Operation_checkExist, "滑动");
+		check(Object_Text, Operation_checkExist, "图案");
+		check(Object_Text, Operation_checkExist, "PIN码");
+		check(Object_Text, Operation_checkExist, "密码");
+	}
+	
+	/**
+	 *  安全-验证屏幕锁定方式：无
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_281() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"无");
+		check(Object_PeerTextID,Operation_TextEqualTrue,"屏幕锁定方式","android:id/summary","无");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：滑动
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_282() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"滑动");
+		check(Object_PeerTextID,Operation_TextEqualTrue,"屏幕锁定方式","android:id/summary","滑动");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"无");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：图案
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_283() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"图案");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/headerText","绘制解锁图案");
+		excute(Object_Text,Operation_ClickWait,"取消");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：Pin码
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_284() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"PIN码");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/headerText","PIN码至少应为4位");
+		excute(Object_Text,Operation_ClickWait,"取消");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：密码
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_285() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"密码");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/headerText","密码至少应包含4个字符");
+		excute(Object_Text,Operation_ClickWait,"取消");
+	}
+	
+	/**
+	 * 安全-锁定屏幕消息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_286() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"滑动");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"锁定屏幕消息");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","锁定屏幕消息");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"无");
+	}
+	
+	/**
+	 *  安全-加密手机
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_287() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"加密手机");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/initiate_encrypt","加密手机");
+		
+	}
+	
+	/**
+	 * 安全-设置SIM卡锁定方式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_288() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"设置SIM卡锁定方式");
+		check(Object_ResIdText,Operation_checkExist,"android:id/switchWidget","关闭");
+	}
+	
+	/**
+	 * 安全-设备管理器
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_289() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"设备管理器");
+		check(Object_Text,Operation_ClickWait,"设备管理器");
+	}
+	
+	/**
+	 * 安全-信任的凭据
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_290() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"信任的凭据","vertical");
+		check(Object_ResIdText,Operation_WaitForExists,"com.android.settings:id/trusted_credential_status","开启","1500");
+	}
+	
+	/**
+	 * 安全-从SD卡安装
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_291() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"从SD卡安装","vertical");
+		check(Object_Text,Operation_WaitForExists,"打开文件","1500");
+	}
+	
+	/**
+	 * 安全-清除凭证 默认置灰
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_292() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		check(Object_TextScroll,Operation_EnabledFalse,"清除凭据","vertical");
+	}
+	
+	/**
+	 * 安全-信任的代理 默认置灰
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_293() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		check(Object_TextScroll,Operation_EnabledFalse,"信任的代理","vertical");
+	}
+	
+	/**
+	 * 安全-屏幕固定
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_294() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"屏幕固定","vertical");
+		check(Object_Text,Operation_checkExist,"屏幕固定");
+	}
+	
+	/**
+	 * 安全-权查看使用情况的应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_295() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"有权查看使用情况的应用","vertical");
+		check(Object_Text,Operation_checkExist,"有权查看使用情况的应用");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"显示系统进程");
+		check(Object_Text,Operation_checkExist,"重置应用偏好设置");
+	}
+	
+	/**
+	 * 进入账户界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_296() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"帐户","vertical");
+		check(Object_Text,Operation_checkExist,"帐户");
+	}
+	
+	/**
+	 * 账户-添加账户界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_297() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"帐户","vertical");
+		excute(Object_Text,Operation_ClickWait,"添加帐户");
+		check(Object_Text,Operation_checkExist,"添加帐户");
+	}
+	
+	/**
+	 * 账户-添加账户界面-菜单
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_298() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"帐户","vertical");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"自动同步数据");
+	}
+	
+	/**
+	 * 进入 语言与输入法 界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_299() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		check(Object_Text,Operation_checkExist,"语言和输入法");
+	}
+	
+	/**
+	 * 进入 语言与输入法 --点击语言,中文（繁体）”、“中文（简体）”、“english”三个条目
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_300() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"中文 (繁體)");
+		check(Object_Text,Operation_checkExist,"中文 (简体)");
+		check(Object_Text,Operation_checkExist,"English");
+	}
+	
+	
 
 }
