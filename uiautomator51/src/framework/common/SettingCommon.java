@@ -1197,4 +1197,16 @@ public class SettingCommon {
 		excute(Object_ResourceId, Operation_SetText,
 				"com.android.settings:id/sim_name", "");
 	}
+	/**
+	 *进入权限
+	 * 
+	 * @param SIMName
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void EnterPermission(String Permission) throws UiObjectNotFoundException {
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "应用权限");
+		excute(Object_TextScroll, Operation_ClickWait, Permission, "vertical");
+	}
 }
