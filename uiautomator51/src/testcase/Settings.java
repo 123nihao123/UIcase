@@ -3516,7 +3516,322 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "修改系统设置");
 		check(Object_TextScroll, Operation_checkExist, "可修改系统设置");
 	}
-	
+	/**
+	 *修改系统设置点击电话
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_236() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_Text, Operation_ClickWait, "电话");
+		check(Object_Text, Operation_checkExist, "修改系统设置");
+	}
+	/**
+	 *修改系统设置点击电话
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_237() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_Text, Operation_ClickWait, "电话");
+		if((Boolean)excute(Object_ResourceId, Operation_IsChecked, "android:id/switchWidget"))
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/switchWidget");
+			check(Object_ResourceId, Operation_CheckedFalse, "android:id/switchWidget");
+		}else{
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/switchWidget");
+			check(Object_ResourceId, Operation_CheckedTrue, "android:id/switchWidget");
+		}
+	}
+	/**
+	 *应用信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_238() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_Text, Operation_ClickWait, "电话");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/app_settings");
+		check(Object_Text, Operation_checkExist, "应用信息");
+	}
+	/**
+	 *应用信息点击菜单
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_239() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "显示系统进程");
+		check(Object_Text, Operation_checkExist, "重置应用偏好设置");
+	}
+	/**
+	 *电池优化
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_240() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		check(Object_Text, Operation_checkExist, "电池优化");
+	}
+	/**
+	 *电池优化未优化
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_241() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		check(Object_Text, Operation_checkExist, "未优化");
+		check(Object_Text, Operation_checkExist, "所有应用");
+	}
+	/**
+	 *电池优化所有应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_242() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		excute(Object_Text, Operation_ClickWait, "所有应用");
+		check(Object_Text, Operation_checkExist, "所有应用");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		excute(Object_Text, Operation_ClickWait, "未优化");
+	}
+	/**
+	 *打印处理服务
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_243() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		excute(Object_Text, Operation_ClickWait, "所有应用");
+		excute(Object_Text, Operation_ClickWait, "打印处理服务");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle", "打印处理服务");
+	}
+	/**
+	 *重置应用偏好设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_244() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "重置应用偏好设置");
+	}
+	/**
+	 *存储设备和 USB
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_245() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
+		check(Object_Text, Operation_checkExist, "内部存储设备");
+	}
+	/**
+	 *电池
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_248() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		check(Object_Text, Operation_checkExist, "电池");
+	}
+	/**
+	 *省电管理
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_249() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Text, Operation_ClickWait, "省电管理");
+		check(Object_Text, Operation_checkExist, "您还没有安装第三方应用");
+	}
+	/**
+	 *省电管理
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_250() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Description, Operation_ClickWait, "刷新");
+	}
+	/**
+	 *省电菜单
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_252() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "节电助手");
+		check(Object_Text, Operation_checkExist, "电池优化");
+	}
+	/**
+	 *节电助手
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_253() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		check(Object_Text, Operation_checkExist, "节电助手");
+	}
+	/**
+	 *节电助手
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_254() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		check(Object_ResourceId, Operation_CheckedFalse, "com.android.settings:id/switch_widget");
+	}
+	/**
+	 *打开节电助手
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_255() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		if(!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget"))
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//check(Object_ResourceId, Operation_CheckedFalse, "com.android.settings:id/switch_widget");
+	}
+	/**
+	 *点击自动开启
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_256() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		check(Object_Text, Operation_checkExist, "一律不");
+		check(Object_Text, Operation_checkExist, "电量剩余5%时");
+		check(Object_Text, Operation_checkExist, "电量剩余15%时");
+	}
+	/**
+	 *一律不
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_258() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		excute(Object_Text, Operation_ClickWait, "一律不");
+		check(Object_Text, Operation_checkExist, "一律不");
+	}
+	/**
+	 *电量剩余5%时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_259() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		excute(Object_Text, Operation_ClickWait, "电量剩余5%时");
+		check(Object_Text, Operation_checkExist, "电量剩余5%时");
+	}
+	/**
+	 *电量剩余15%时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_260() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		excute(Object_Text, Operation_ClickWait, "电量剩余15%时");
+		check(Object_Text, Operation_checkExist, "电量剩余15%时");
+	}
+	/**
+	 *电池优化
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_261() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		check(Object_Text, Operation_checkExist, "电池优化");
+	}
 	/**
 	 * 跳转到“安全”界面
 	 * @throws UiObjectNotFoundException
@@ -3827,5 +4142,8 @@ public class Settings extends UiAutomatorTestCase
 	}
 	
 	
+
+	
+
 
 }
