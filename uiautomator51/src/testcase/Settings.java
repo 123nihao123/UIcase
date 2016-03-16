@@ -2842,7 +2842,8 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait,"情景模式", "vertical");
 		excute(Object_Text, Operation_ClickWait,"标准");
 		excute(Object_Text, Operation_ClickWait,"编辑");
-		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/title", "7");
+		excute(Object_TextScroll, Operation_ClickWait, "SIM1 SIM1 信息铃声", "vertical");
+		//excute(Object_ResIdInstance, Operation_ClickWait, "android:id/title", "7");
 		if((Boolean)excute(Object_Text,Operation_Exists,"媒体存储"))
 		{
 			excute(Object_Text,Operation_ClickWait,"媒体存储");
@@ -2864,7 +2865,8 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait,"情景模式", "vertical");
 		excute(Object_Text, Operation_ClickWait,"标准");
 		excute(Object_Text, Operation_ClickWait,"编辑");
-		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/title", "8");
+		excute(Object_TextScroll, Operation_ClickWait, "SIM2 SIM2 信息铃声", "vertical");
+		//excute(Object_ResIdInstance, Operation_ClickWait, "android:id/title", "8");
 		if((Boolean)excute(Object_Text,Operation_Exists,"媒体存储"))
 		{
 			excute(Object_Text,Operation_ClickWait,"媒体存储");
@@ -3056,6 +3058,463 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_ResIdInstance, Operation_CheckedFalse, "com.android.settings:id/audio_profile_radiobutton", "1");
 		check(Object_ResIdInstance, Operation_CheckedFalse, "com.android.settings:id/audio_profile_radiobutton", "2");
 		check(Object_ResIdInstance, Operation_CheckedFalse, "com.android.settings:id/audio_profile_radiobutton", "3");
-	}	
+	}
+	/**
+	 *进入应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_199() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		check(Object_Text, Operation_checkExist, "应用");
+	}
+	/**
+	 *进入应用设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_200() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		check(Object_Text, Operation_checkExist, "配置应用");
+	}
+	/**
+	 *进入应用权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_201() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "应用权限");
+		check(Object_Text, Operation_checkExist, "应用权限");
+	}
+	/**
+	 *进入位置权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_202() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("位置信息");
+		check(Object_Text, Operation_checkExist, "位置信息权限");
+	}
+	/**
+	 *进入存储权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_203() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("存储空间");
+		check(Object_Text, Operation_checkExist, "存储空间权限");
+	}
+	/**
+	 *进入日历权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_204() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("日历");
+		check(Object_Text, Operation_checkExist, "日历权限");
+	}
+	/**
+	 *进入日历权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_205() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("电话");
+		check(Object_Text, Operation_checkExist, "电话权限");
+	}
+	/**
+	 *进入相机权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_206() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("相机");
+		check(Object_Text, Operation_checkExist, "相机权限");
+	}
+	/**
+	 *进入短信权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_207() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("短信");
+		check(Object_Text, Operation_checkExist, "短信权限");
+	}
+	/**
+	 *进入身体传感器权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_208() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("身体传感器");
+		check(Object_Text, Operation_checkExist, "身体传感器权限");
+	}
+	/**
+	 *进入通讯录权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_209() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("通讯录");
+		check(Object_Text, Operation_checkExist, "通讯录权限");
+	}
+	/**
+	 *进入麦克风权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_210() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("麦克风");
+		check(Object_Text, Operation_checkExist, "麦克风权限");
+	}
+	/**
+	 *进入其他权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_211() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		check(Object_Text, Operation_checkExist, "其他权限");
+	}
+	/**
+	 *进入访问短信附件权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_212() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		excute(Object_Text, Operation_ClickWait, "访问短信附件");
+		check(Object_Text, Operation_checkExist, "访问短信附件权限");
+	}
+	/**
+	 *进入读取电子邮件附件权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_213() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		excute(Object_Text, Operation_ClickWait, "读取电子邮件附件");
+		check(Object_Text, Operation_checkExist, "读取电子邮件附件权限");
+	}
+	/**
+	 *开关读取电子邮件附件权限
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_214() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		excute(Object_Text, Operation_ClickWait, "读取电子邮件附件");
+		if((Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "com.android.packageinstaller:id/switchWidget", "0"))
+		{
+			excute(Object_ResIdInstance, Operation_ClickWait, "com.android.packageinstaller:id/switchWidget", "0");
+			check(Object_ResIdInstance, Operation_CheckedFalse, "com.android.packageinstaller:id/switchWidget", "0");
+		}else{
+			excute(Object_ResIdInstance, Operation_ClickWait, "com.android.packageinstaller:id/switchWidget", "0");
+			check(Object_ResIdInstance, Operation_CheckedTrue, "com.android.packageinstaller:id/switchWidget", "0");
+		}
+	}
+	/**
+	 *显示系统应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_215() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		excute(Object_Text, Operation_ClickWait, "读取电子邮件附件");
+		excute(Object_Device, Operation_PressMenu);
+		if(!(Boolean)excute(Object_Text, Operation_Exists, "显示系统应用"))
+		{
+			excute(Object_Text, Operation_ClickWait, "隐藏系统应用");
+			excute(Object_Device, Operation_PressMenu);
+		}
+		check(Object_Text, Operation_checkExist, "显示系统应用");
+	}
+	/**
+	 *点击显示系统应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_216() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		excute(Object_Text, Operation_ClickWait, "读取电子邮件附件");
+		excute(Object_Device, Operation_PressMenu);
+		if((Boolean)excute(Object_Text, Operation_Exists, "显示系统应用"))
+		{
+			excute(Object_Text, Operation_ClickWait, "显示系统应用");
+		}
+		check(Object_Text, Operation_checkExist, "Exchange服务");
+		//清场
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "隐藏系统应用");
+	}
+	/**
+	 *隐藏系统应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_217() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		excute(Object_Text, Operation_ClickWait, "读取电子邮件附件");
+		excute(Object_Device, Operation_PressMenu);
+		if((Boolean)excute(Object_Text, Operation_Exists, "显示系统应用"))
+		{
+			excute(Object_Text, Operation_ClickWait, "显示系统应用");
+			excute(Object_Device, Operation_PressMenu);
+		}
+		check(Object_Text, Operation_checkExist, "隐藏系统应用");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "隐藏系统应用");
+	}
+	/**
+	 *点击隐藏系统应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_218() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		SettingCommon.EnterPermission("其他权限");
+		excute(Object_Text, Operation_ClickWait, "读取电子邮件附件");
+		excute(Object_Device, Operation_PressMenu);
+		if((Boolean)excute(Object_Text, Operation_Exists, "显示系统应用"))
+		{
+			excute(Object_Text, Operation_ClickWait, "显示系统应用");
+			excute(Object_Device, Operation_PressMenu);
+		}
+		excute(Object_Text, Operation_ClickWait, "隐藏系统应用");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "com.android.packageinstaller:id/switchWidget", "0");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "com.android.packageinstaller:id/switchWidget", "1");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "com.android.packageinstaller:id/switchWidget", "2");
+	}
+	/**
+	 *点击应用链接
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_220() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "应用链接");
+		check(Object_Text, Operation_checkExist, "应用链接");
+	}
+	/**
+	 *点击浏览器应用链接
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_221() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "应用链接");
+		excute(Object_Text, Operation_ClickWait, "浏览器");
+		check(Object_Text, Operation_checkExist, "应用链接");
+		check(Object_Text, Operation_checkExist, "其他默认设置");
+	}
+	/**
+	 *点击默认应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_222() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "默认应用");
+		check(Object_Text, Operation_checkExist, "默认应用");
+	}
+	/**
+	 *辅助应用和语音输入
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_224() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "默认应用");
+		excute(Object_Text, Operation_ClickWait, "辅助应用和语音输入");
+		check(Object_Text, Operation_checkExist, "辅助应用和语音输入");
+	}
+	/**
+	 *浏览器应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_225() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "默认应用");
+		excute(Object_Text, Operation_ClickWait, "浏览器应用");
+		check(Object_ResourceId, Operation_checkExist, "android:id/select_dialog_listview");
+	}
+	/**
+	 *电话应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_226() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "默认应用");
+		excute(Object_Text, Operation_ClickWait, "“电话”应用");
+		check(Object_ResourceId, Operation_checkExist, "android:id/select_dialog_listview");
+	}
+	/**
+	 *短信应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_227() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "默认应用");
+		excute(Object_Text, Operation_ClickWait, "短信应用");
+		check(Object_ResourceId, Operation_checkExist, "android:id/select_dialog_listview");
+	}
+	/**
+	 *在其他应用的上层显示
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_228() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
+		check(Object_Text, Operation_checkExist, "在其他应用的上层显示");
+	}
+	/**
+	 *在其他应用的上层显示点击图库
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_230() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
+		excute(Object_Text, Operation_ClickWait, "图库");
+		check(Object_Text, Operation_checkExist, "图库");
+	}
+	/**
+	 *在其他应用的上层显示点击菜单键
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_231() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "显示系统进程");
+		check(Object_Text, Operation_checkExist, "重置应用偏好设置");
+	}
+	/**
+	 *在其他应用的上层显示点击显示系统进程
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_233() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
+		excute(Object_Device, Operation_PressMenu);
+		if((Boolean)excute(Object_Text, Operation_Exists, "显示系统进程"))
+		{
+			excute(Object_Text, Operation_ClickWait, "显示系统进程");
+		}
+		check(Object_TextScroll, Operation_checkExist, "电话");
+		check(Object_TextScroll, Operation_checkExist, "工厂测试工具");
+		//清场
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "隐藏系统进程");
+	}
+	/**
+	 *在其他应用的上层显示点击重置偏好设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_234() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "重置应用偏好设置");
+		check(Object_TextScroll, Operation_checkExist, "要重置应用偏好设置吗？");
+	}
+	/**
+	 *修改系统设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_235() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		check(Object_TextScroll, Operation_checkExist, "可修改系统设置");
+	}
 
 }

@@ -21,7 +21,7 @@ import framework.common.SettingCommon;
 
 public class Contact extends UiAutomatorTestCase
 {
-	/*
+	
 	@Override
 	protected void setUp() throws UiObjectNotFoundException, RemoteException 
     {			
@@ -33,7 +33,7 @@ public class Contact extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
    }
-	    */ 
+	    
 	@Override
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
