@@ -4426,113 +4426,7 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"中文 (简体)");
 		check(Object_Text,Operation_checkExist,"English");
 	}
-	/**
-	 * 关于手机
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_359() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
-		check(Object_Text,Operation_checkExist,"系统软件更新");
-	}
-	/**
-	 * 系统软件更新
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_360() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
-		excute(Object_Text,Operation_ClickWait,"系统软件更新");
-		check(Object_Text,Operation_checkExist,"系统软件更新");
-	}
-	/**
-	 * 状态信息
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_361() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
-		excute(Object_Text,Operation_ClickWait,"状态信息");
-		check(Object_Text,Operation_checkExist,"电池状态");
-	}
-	/**
-	 * 状态信息
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_362() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
-		excute(Object_Text, Operation_ClickWait, "状态信息");
-		excute(Object_Text, Operation_ClickWait, "SIM卡状态");
-		check(Object_TextScroll, Operation_checkExist, "网络", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "信号强度", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "移动网络类型", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "服务状态", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "漫游", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "移动网络状态", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "IMEI", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "IMEI SV", "vertical");
-	}
-	/**
-	 * 点击IMEI
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_363() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
-		excute(Object_Text, Operation_ClickWait, "状态信息");
-		excute(Object_Text, Operation_ClickWait, "SIM卡状态");
-		excute(Object_TextScroll, Operation_ClickWait, "IMEI", "vertical");
-		check(Object_TextScroll, Operation_checkExist, "IMEI", "vertical");
-	}
-	/**
-	 * 法律信息
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_364() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
-		excute(Object_Text, Operation_ClickWait, "法律信息");
-		check(Object_Text, Operation_checkExist, "开放源代码许可");
-	}
-	/**
-	 * 开放源代码许可
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_365() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
-		excute(Object_Text, Operation_ClickWait, "法律信息");
-		excute(Object_Text, Operation_ClickWait, "开放源代码许可");
-		check(Object_Text, Operation_checkExist, "开放源代码许可");
-	}
-	/**
-	 * 系统 WebView 许可
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
-	 */
-	public static void test_366() throws UiObjectNotFoundException, RemoteException 
-	{
-		//主体
-		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
-		excute(Object_Text, Operation_ClickWait, "法律信息");
-		excute(Object_Text, Operation_ClickWait, "系统 WebView 许可");
-		check(Object_Text, Operation_checkExist, "系统 WebView 许可");
-	}
+	
 	
 	/** 
 	 *  进入 语言与输入法 --点击语言--切换为 中文（繁体）
@@ -5139,6 +5033,113 @@ public class Settings extends UiAutomatorTestCase
 		Assert.assertTrue(!time.contains("上午")&&!time.contains("下午"));
 		//清场
 		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
+	}
+	/**
+	 * 关于手机
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_359() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
+		check(Object_Text,Operation_checkExist,"系统软件更新");
+	}
+	/**
+	 * 系统软件更新
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_360() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
+		excute(Object_Text,Operation_ClickWait,"系统软件更新");
+		check(Object_Text,Operation_checkExist,"系统软件更新");
+	}
+	/**
+	 * 状态信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_361() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
+		excute(Object_Text,Operation_ClickWait,"状态信息");
+		check(Object_Text,Operation_checkExist,"电池状态");
+	}
+	/**
+	 * 状态信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_362() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "状态信息");
+		excute(Object_Text, Operation_ClickWait, "SIM卡状态");
+		check(Object_TextScroll, Operation_checkExist, "网络", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "信号强度", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "移动网络类型", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "服务状态", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "漫游", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "移动网络状态", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "IMEI", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "IMEI SV", "vertical");
+	}
+	/**
+	 * 点击IMEI
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_363() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "状态信息");
+		excute(Object_Text, Operation_ClickWait, "SIM卡状态");
+		excute(Object_TextScroll, Operation_ClickWait, "IMEI", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "IMEI", "vertical");
+	}
+	/**
+	 * 法律信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_364() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "法律信息");
+		check(Object_Text, Operation_checkExist, "开放源代码许可");
+	}
+	/**
+	 * 开放源代码许可
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_365() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "法律信息");
+		excute(Object_Text, Operation_ClickWait, "开放源代码许可");
+		check(Object_Text, Operation_checkExist, "开放源代码许可");
+	}
+	/**
+	 * 系统 WebView 许可
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_366() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "法律信息");
+		excute(Object_Text, Operation_ClickWait, "系统 WebView 许可");
+		check(Object_Text, Operation_checkExist, "系统 WebView 许可");
 	}
 
 
