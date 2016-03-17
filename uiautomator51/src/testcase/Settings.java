@@ -1,6 +1,8 @@
 package testcase;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import junit.framework.Assert;
 import android.graphics.Rect;
