@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
@@ -4856,7 +4857,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
 		//主体
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","0","开启");
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","1","关闭");
@@ -4872,7 +4872,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
 		//主体
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
@@ -4890,7 +4889,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -4905,23 +4903,29 @@ public class Settings extends UiAutomatorTestCase
 	/**
 	 * 设置日期为2015年1月1日
 	 */
-	public static void test_333() 
+	public static void test_333() throws UiObjectNotFoundException
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
 		excute(Object_Text,Operation_ClickWait,"设置日期");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/date_picker_header_year");
-		excute(Object_Text,Operation_ClickWait,"2015");
+		//Object_TextScroll和scrollTextIntoView接口有个未名原因的bug,在年列表中只能滑动一屏
+		excute(Object_TextScroll,Operation_ClickWait,"2015","vertical");
+		/*UiScrollable yearList = new UiScrollable(new UiSelector().scrollable(true));
+		while(!(Boolean) excute(Object_ResIdText, Operation_Exists, "android:id/text1","2015"))
+		{
+			yearList.scrollTextIntoView("2015");
+		}
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/text1","2015");*/
+		
 		String date = (String) excute(Object_ResourceId,Operation_GetText,"android:id/date_picker_header_date");
 		String actual[] = date.split("月");
 		int month=Integer.valueOf(actual[0]).intValue();
-		if(month!=1)
-			while(month-->1)
-			excute(Object_Description,Operation_ClickWait,"上个月");
+		while(month-->1)
+			excute(Object_Description,Operation_ClickWait,"上个月");	
 		excute(Object_Text,Operation_ClickWait,"1");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkExist,"2015年1月1日");
@@ -4937,7 +4941,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -5016,8 +5019,6 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_ClickWait,"香港", "vertical");
 		check(Object_Text,Operation_checkExist,"GMT+08:00 香港标准时间");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"选择时区");
-		excute(Object_TextScroll,Operation_ClickWait,"中国标准时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"自动确定时区");
 	}
 	
