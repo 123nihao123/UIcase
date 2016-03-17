@@ -1209,4 +1209,34 @@ public class SettingCommon {
 		excute(Object_Text, Operation_ClickWait, "应用权限");
 		excute(Object_TextScroll, Operation_ClickWait, Permission, "vertical");
 	}
+	
+	/**
+	 * 进入日期和时间中，自动确定时区和使用24小时制开关状态
+	 * @param index1：开启，关闭（自动确定时区）
+	 * @param index2：开启，关闭（使用24小时制）
+	 */
+	public static void setDefaultTime(String index1,String index2) 
+	{
+		if(index1.equals("开启"))
+		{
+			if(!(Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","0"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","0");			
+		}
+		else
+		{
+			if((Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","0"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","0");			
+		}
+		if(index2.equals("开启"))
+		{
+			if(!(Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","1"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","1");			
+		}
+		else
+		{
+			if((Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","1"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","1");			
+		}
+	}
+	
 }

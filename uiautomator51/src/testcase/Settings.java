@@ -4143,7 +4143,204 @@ public class Settings extends UiAutomatorTestCase
 	
 	
 
+	/**
+	 * 检查“日期和时间”字样
+	 */
+	public static void test_329() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		check(Object_Text,Operation_checkExist,"日期和时间");
+	}
 	
+	/**
+	 * 查看日期和时间中默认按钮开关状态，部分区域置灰
+	 */
+	public static void test_330() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		//主体
+		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","0","开启");
+		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","1","关闭");
+		check(Object_Text,Operation_EnabledFalse,"设置日期");
+		check(Object_Text,Operation_EnabledFalse,"设置时间");
+		check(Object_Text,Operation_EnabledFalse,"选择时区");
+	}
+	
+	/**
+	 * 关闭自动确定日期和时间，检查设置日期和设置时间为可用
+	 */
+	public static void test_331() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		check(Object_Text,Operation_EnabledTrue,"设置日期");
+		check(Object_Text,Operation_EnabledTrue,"设置时间");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 关闭自动确定日期和时间，进入设置日期界面
+	 */
+	public static void test_332() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置日期");
+		check(Object_ResourceId,Operation_checkExist,"android:id/datePicker");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 设置日期为2015年1月1日
+	 */
+	public static void test_333() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置日期");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/date_picker_header_year");
+		excute(Object_Text,Operation_ClickWait,"2015");
+		String date = (String) excute(Object_ResourceId,Operation_GetText,"android:id/date_picker_header_date");
+		String actual[] = date.split("月");
+		int month=Integer.valueOf(actual[0]).intValue();
+		if(month!=1)
+			while(month-->1)
+			excute(Object_Description,Operation_ClickWait,"上个月");
+		excute(Object_Text,Operation_ClickWait,"1");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkExist,"2015年1月1日");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 关闭自动确定日期和时间，进入设置时间界面
+	 */
+	public static void test_334() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置时间");
+		check(Object_ResourceId,Operation_checkExist,"android:id/timePicker");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 设置时间为上午8点30分
+	 */
+	public static void test_335() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置时间");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/am_label");
+		excute(Object_Description,Operation_ClickWait,"8");
+		excute(Object_Description,Operation_ClickWait,"30");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkExist,"上午8:30");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 关闭自动确定时区
+	 */
+	public static void test_336() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+		check(Object_ResIdInstance,Operation_CheckedFalse,"android:id/switchWidget","0");
+		check(Object_Text,Operation_EnabledTrue,"选择时区");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+	}
+	
+	/**
+	 * 进入选择时区界面
+	 */
+	public static void test_337() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("关闭", "关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"选择时区");
+		check(Object_Text,Operation_checkExist,"选择时区");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+	}
+	
+	/**
+	 * 设置时区为香港
+	 */
+	public static void test_338() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("关闭", "关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"选择时区");
+		excute(Object_TextScroll,Operation_ClickWait,"香港", "vertical");
+		check(Object_Text,Operation_checkExist,"GMT+08:00 香港标准时间");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"选择时区");
+		excute(Object_TextScroll,Operation_ClickWait,"中国标准时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+	}
+	
+	/**
+	 * 设置时间为24小时制
+	 */
+	public static void test_339() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setDefaultTime("开启", "关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
+		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","1");
+		String time = (String) excute(Object_PeerTextID,Operation_GetText,"使用 24 小时制","android:id/summary");
+		Assert.assertTrue(!time.contains("上午")&&!time.contains("下午"));
+		//清场
+		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
+	}
 
 
 }
