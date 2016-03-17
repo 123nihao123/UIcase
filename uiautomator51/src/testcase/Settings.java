@@ -469,12 +469,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");
+		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");//读取数据网络在哪张卡上
 		if(simname.equals("SIM1"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"注意","3000000");
+			excute(Object_Text,Operation_WaitForExists,"注意","3000000");//如果数据在SIM1上，会多弹出一个提示窗口
 			excute(Object_Text,Operation_ClickWait,"确定");
 		}
 		else
@@ -572,12 +572,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 			//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");
+		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");//读取数据网络在哪张卡上
 		if(simname.equals("SIM2"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"注意","3000000");
+			excute(Object_Text,Operation_WaitForExists,"注意","3000000");//如果数据在SIM2上，会多弹出一个提示窗口
 			excute(Object_Text,Operation_ClickWait,"确定");
 		}
 		else
@@ -670,7 +670,10 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+		if((Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+		}
 		String num0 = DeviceCommon.runADBCommand("settings get global data_remain_unchanged");
 		String num1 = num0.substring(0, 1);
 		String num2 = "0";
