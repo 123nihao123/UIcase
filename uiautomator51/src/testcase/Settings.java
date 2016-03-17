@@ -3833,6 +3833,286 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "电池优化");
 	}
 	/**
+	 * 跳转到内存页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_262() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		check(Object_Text, Operation_checkExist, "平均内存使用量");
+	}
+	
+	/**
+	 * 下拉框有“3小时” “6小时” “12小时” “1天”字样
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_263() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		check(Object_Text, Operation_checkExist, "3小时");
+		check(Object_Text, Operation_checkExist, "6小时");
+		check(Object_Text, Operation_checkExist, "12小时");
+		check(Object_Text, Operation_checkExist, "1天");
+		
+	}
+	/**
+	 * 选定3小时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_264() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		check(Object_Text, Operation_checkExist, "3小时");
+	}
+	/**
+	 * 选定6小时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_265() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "6小时");
+		check(Object_Text, Operation_checkExist, "6小时");
+	}
+	/**
+	 * 选定12小时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_266() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "12小时");
+		check(Object_Text, Operation_checkExist, "12小时");
+	}
+	/**
+	 * 选定一天
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_267() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "1天");
+		check(Object_Text, Operation_checkExist, "1天");
+	}
+	
+	/**
+	 * 点击各个应用使用的内存
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_268() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		check(Object_Text, Operation_checkExist, "应用的内存使用量");
+		
+	}
+	
+	/**
+	 * 按最高内存使用量排序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_269() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		List<Integer> list=new ArrayList<Integer>();
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "按最高使用量排序");
+		int count=(Integer)excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		for (int i = 0; i < count-1; i++){
+		String str1=(String)excute(Object_ResIdInstance, Operation_GetText, "android:id/summary",String.valueOf(i));
+		String str2[]=str1.split(" ");
+		int j=Integer.parseInt(str2[0]);
+		list.add(j);
+		}
+		
+		for(int k=0;k<count-2;k++){
+		boolean boo=list.get(k)>=list.get(k+1);
+		Assert.assertEquals(true, boo);
+		}
+	}
+	/**
+	 * 按平均内存使用量排序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_270() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		List<Integer> list=new ArrayList<Integer>();
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "按最高使用量排序");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "按平均使用量排序");
+		int count=(Integer)excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		for (int i = 0; i < count-1; i++){
+		String str1=(String)excute(Object_ResIdInstance, Operation_GetText, "android:id/summary",String.valueOf(i));
+		String str2[]=str1.split(" ");
+		int j=Integer.parseInt(str2[0]);
+		list.add(j);
+		}
+		
+		for(int k=0;k<count-2;k++){
+		boolean boo=list.get(k)>=list.get(k+1);
+		Assert.assertEquals(true, boo);
+		}
+	}
+	/**
+	 * 任意应用实际使用页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_271() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		excute(Object_Text, Operation_ClickWait, "Android 操作系统");
+		check(Object_Text, Operation_checkExist, "平均内存使用量");
+		check(Object_Text, Operation_checkExist, "频率");
+		check(Object_Text, Operation_checkExist, "最高使用量");
+	}
+	/**
+	 * 点击用户页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_272() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "用户","vertical");
+		check(Object_Text, Operation_checkExist, "添加用户");
+	}
+	/**
+	 * 点击页面上位置信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_273() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		check(Object_Text, Operation_checkExist, "最近的位置信息请求");
+	}
+	/**
+	 * 位置信息默认开关状态
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_274() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		check(Object_ResIdText, Operation_CheckedFalse, "com.android.settings:id/switch_widget","关闭");
+	}
+	/**
+	 *打开位置信息开关 
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_275() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) {
+			excute(Object_Text, Operation_ClickWait, "关闭");
+		}
+		check(Object_ResIdText, Operation_CheckedTrue, "com.android.settings:id/switch_widget","开启");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "开启");
+		
+	}
+	
+	/**
+	 * 打开位置信息里的模式选项
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_276() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) 
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//主体
+		excute(Object_Text, Operation_ClickWait, "模式");
+		check(Object_Text, Operation_checkExist, "位置信息模式");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		
+	}
+	/**
+	 * 节电模式被选中
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_277() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) 
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//主体
+		excute(Object_Text, Operation_ClickWait, "模式");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox","1");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/checkbox","1");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		
+	}
+	/**
+	 * 仅限设备被选中
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_278() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) 
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//主体
+		excute(Object_Text, Operation_ClickWait, "模式");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox","2");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/checkbox","2");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		
+	}
+	/**
 	 * 跳转到“安全”界面
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
