@@ -4141,8 +4141,414 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"English");
 	}
 	
+	/** 
+	 *  进入 语言与输入法 --点击语言--切换为 中文（繁体）
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_301() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"中文 (繁體)");
+		check(Object_Text,Operation_checkExist,"語言");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"語言");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+	}
+	
+	/** 
+	 *  进入 语言与输入法 --点击语言--切换为 中文 (简体)
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_302() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+		check(Object_Text,Operation_checkExist,"语言");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+	}
+	
+	/** 
+	 *  进入 语言与输入法 --点击语言--切换为 English"
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_303() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"English");
+		check(Object_Text,Operation_checkExist,"Language");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"Language");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_304() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		check(Object_Text,Operation_checkExist,"拼写检查工具");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--验证默认按钮是开启的
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */	
+	public static void test_305() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--关闭按钮
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */	
+	public static void test_306() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+		//清场
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--点击语言
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_307() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"使用系统语言");
+		check(Object_Text,Operation_checkExist,"英文");
+		check(Object_Text,Operation_checkExist,"英文 (美国)");
+		check(Object_Text,Operation_checkExist,"英文 (英国)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--"Android拼写检查工具''
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_308() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		check(Object_ResIdContainsText,Operation_checkExist,"android:id/title","Android 拼写检查工具 ");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--"Android拼写检查工具'--验证按钮默认为开启状态
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_309() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/pref_right_button");
+		check(Object_ResourceId,Operation_CheckedTrue,"android:id/switchWidget");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_310() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"所有语言");
+		check(Object_Text,Operation_checkExist,"个人字典");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典-添加
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_311() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"所有语言");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"输入字词");	
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--英文（美国）页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_312() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"英文 (美国)");
+		check(Object_Text,Operation_checkExist,"个人字典");
+		check(Object_Text,Operation_checkExist,"英文 (美国)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--英文（美国）页面--添加
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_313() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"英文 (美国)");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"输入字词");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--中文 (中国)页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_314() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"中文 (中国)");
+		check(Object_Text,Operation_checkExist,"个人字典");
+		check(Object_Text,Operation_checkExist,"中文 (中国)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--中文 (中国)页面--添加
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_315() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"中文 (中国)");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"输入字词");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--中文 (中国)页面--添加1后删除
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_316() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"中文 (中国)");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/user_dictionary_add_word_text","1");
+		excute(Object_Description,Operation_ClickWait,"向上导航");
+		excute(Object_Text,Operation_ClickWait,"1");
+		excute(Object_Description,Operation_ClickWait,"删除");
+		check(Object_Text,Operation_checkNoExist,"1");
+	}
+	
+	/**
+	 * 进入 语言与输入法--当前输入法-弹出更改键盘
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_317() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"当前输入法");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","更改键盘");
+		
+	}
 	
 
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_318() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		check(Object_Text,Operation_checkExist,"Android 键盘设置 (AOSP)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击语言
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_319() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"使用系统语言");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击外观和布局
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_320() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"外观和布局");
+		check(Object_Text,Operation_checkExist,"主题背景");
+		check(Object_Text,Operation_checkExist,"自定义输入样式");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击文字更正
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_321() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"文字更正");
+		check(Object_Text,Operation_checkExist,"附加字典");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击高级
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_322() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"高级");
+		check(Object_Text,Operation_checkExist,"弹出字符隐藏延迟");
+		check(Object_Text,Operation_checkExist,"按键振动时长");
+	}
+	
+	/**
+	 * 进入 语言与输入法--文字转语音 (TTS) 输出
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_323() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"文字转语音 (TTS) 输出");
+		check(Object_Text,Operation_checkExist,"首选引擎");
+	}
+	
+	/**
+	 * 进入 语言与输入法--指针速度
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_324() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"指针速度","vertical");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","指针速度");
+	}
+	
+	/**
+	 * 进入 备份和重置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_325() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"备份和重置","vertical");
+		check(Object_Text,Operation_checkExist,"备份和重置");
+	}
+	
+	/**
+	 * 进入 备份和重置--重置网络设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_326() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"备份和重置","vertical");
+		excute(Object_Text,Operation_ClickWait,"重置网络设置");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/initiate_reset_network","重置设置");
+	}
+	
+	/**
+	 * 进入 备份和重置--恢复出厂设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_327() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"备份和重置","vertical");
+		excute(Object_Text,Operation_ClickWait,"恢复出厂设置");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/initiate_master_clear","恢复手机出厂设置");
+	}
+	
+	/**
+	 * 
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_328() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"定时开关机","vertical");
+		check(Object_Text,Operation_checkExist,"定时开关机");
+	}
+	
 	/**
 	 * 检查“日期和时间”字样
 	 */
