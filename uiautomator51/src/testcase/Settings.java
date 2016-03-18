@@ -3730,7 +3730,31 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
-		check(Object_Text, Operation_checkExist, "内部存储设备");
+		check(Object_Text, Operation_checkExist, "存储设备和 USB");
+	}
+	/**
+	 *页面存储设备
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_246() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
+		excute(Object_Text, Operation_ClickWait,"页面存储设备");
+		check(Object_Text, Operation_checkExist, "页面存储设备");
+	}
+	/**
+	 *SD卡存储
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_247() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
+		excute(Object_Text, Operation_ClickWait,"SD卡");
+		check(Object_Text, Operation_checkExist, "SD卡");
 	}
 	/**
 	 *电池
