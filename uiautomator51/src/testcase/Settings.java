@@ -503,6 +503,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
 		check(Object_Text,Operation_checkExist,"SIM 卡插槽 1");
 	}
@@ -516,7 +522,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-//		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		SettingCommon.editSIMName("SIM 卡插槽 1");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM1");
 		excute(Object_Text,Operation_ClickWait,"确定");
@@ -534,6 +545,12 @@ public class Settings extends UiAutomatorTestCase
 	public void test_033() throws UiObjectNotFoundException, RemoteException 
 	{
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/color_text");
 		excute(Object_Text,Operation_ClickWait,"粉红色");
@@ -555,6 +572,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
 		SettingCommon.editSIMNumber("SIM 卡插槽 1");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/display_number","123");
@@ -605,6 +628,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
 		check(Object_Text,Operation_checkExist,"SIM 卡插槽 2");
 	}
@@ -618,6 +647,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		SettingCommon.editSIMName("SIM 卡插槽 2");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM2");
 		excute(Object_Text,Operation_ClickWait,"确定");
@@ -633,6 +668,12 @@ public class Settings extends UiAutomatorTestCase
 	public void test_038() throws UiObjectNotFoundException, RemoteException 
 	{
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/color_text");
 		excute(Object_Text,Operation_ClickWait,"紫色");
@@ -654,6 +695,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
 		SettingCommon.editSIMNumber("SIM 卡插槽 2");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/display_number","456");
@@ -5038,6 +5085,186 @@ public class Settings extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
 	}
+	
+	/**
+	 * 进入无障碍界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_340() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		check(Object_Text,Operation_checkExist,"无障碍");
+	}
+	
+	/**
+	 * 进入无障碍界面-显示未安装任何服务
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_341() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","未安装任何服务");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_342() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		check(Object_Text,Operation_checkExist,"字幕");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮关闭，语言等置灰
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_343() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+		check(Object_Text,Operation_EnabledFalse,"语言");
+		check(Object_Text,Operation_EnabledFalse,"文字大小");
+		check(Object_Text,Operation_EnabledFalse,"字幕样式");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，语言等可设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_344() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
+		check(Object_Text,Operation_EnabledTrue,"语言");
+		check(Object_Text,Operation_EnabledTrue,"文字大小");
+		check(Object_Text,Operation_EnabledTrue,"字幕样式");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，点击语言
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_345() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		excute(Object_Text, Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"English");
+		check(Object_Text,Operation_checkExist,"中文 (繁體)");
+		check(Object_Text,Operation_checkExist,"中文 (简体)");
+		excute(Object_Text, Operation_ClickWait,"取消");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，点击文字大小
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_346() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		excute(Object_Text, Operation_ClickWait,"文字大小");
+		check(Object_Text,Operation_checkExist,"小");
+		check(Object_Text,Operation_checkExist,"正常");
+		check(Object_Text,Operation_checkExist,"大");
+		excute(Object_Text, Operation_ClickWait,"取消");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，点击字幕样式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_347() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		excute(Object_Text, Operation_ClickWait,"字幕样式");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","字幕样式");
+		excute(Object_Text, Operation_ClickWait,"取消");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--放大手势
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_348() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"放大手势");
+		check(Object_Text,Operation_checkExist,"放大手势");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+	}
+	
+	/**
+	 * 进入无障碍界面--大号字体
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_349() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		if((Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","0"))
+		{
+			excute(Object_Text, Operation_ClickWait,"大号字体");
+		}
+		Rect bound = (Rect) excute(Object_Text,Operation_GetBounds,"大号字体");
+		excute(Object_Text, Operation_ClickWait,"大号字体");
+		check(Object_ResIdText,Operation_checkExist,"android:id/switchWidget","开启");
+		Rect bound1 = (Rect) excute(Object_Text,Operation_GetBounds,"大号字体");
+		Assert.assertNotSame(bound, bound1);
+		//清场
+		excute(Object_Text, Operation_ClickWait,"大号字体");
+	}
+	
+	
 	/**
 	 * 关于手机
 	 * @throws UiObjectNotFoundException

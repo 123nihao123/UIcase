@@ -1172,6 +1172,7 @@ public class SettingCommon {
 				.println("======Start to excute CallContactsCommon: SIMsettings======");
 
 		excute(Object_Text, Operation_ClickWait, SIMName);
+		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_SetText,
 				"com.android.settings:id/display_number", "");
 		excute(Object_ResourceId, Operation_SetText,
