@@ -4909,10 +4909,8 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_330() 
 	{
-		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","0","开启");
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","1","关闭");
 		check(Object_Text,Operation_EnabledFalse,"设置日期");
@@ -4927,10 +4925,8 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_331() 
 	{
-		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		check(Object_Text,Operation_EnabledTrue,"设置日期");
@@ -4947,7 +4943,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -4966,7 +4961,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -5001,7 +4995,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -5020,7 +5013,6 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -5040,10 +5032,8 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_336() 
 	{
-		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"自动确定时区");
 		check(Object_ResIdInstance,Operation_CheckedFalse,"android:id/switchWidget","0");
 		check(Object_Text,Operation_EnabledTrue,"选择时区");
@@ -5056,10 +5046,8 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_337() 
 	{
-		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("关闭", "关闭");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"选择时区");
 		check(Object_Text,Operation_checkExist,"选择时区");
 		excute(Object_Device,Operation_PressBack);
@@ -5072,10 +5060,8 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_338() 
 	{
-		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("关闭", "关闭");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"选择时区");
 		excute(Object_TextScroll,Operation_ClickWait,"香港", "vertical");
 		check(Object_Text,Operation_checkExist,"GMT+08:00 香港标准时间");
@@ -5088,10 +5074,8 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_339() 
 	{
-		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
 		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","1");
 		String time = (String) excute(Object_PeerTextID,Operation_GetText,"使用 24 小时制","android:id/summary");
