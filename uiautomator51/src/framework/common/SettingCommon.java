@@ -1216,7 +1216,7 @@ public class SettingCommon {
 	 * @param index1：开启，关闭（自动确定时区）
 	 * @param index2：开启，关闭（使用24小时制）
 	 */
-	public static void setDefaultTime(String index1,String index2) 
+	public static void setTimeZoneTimeFormatSwitch(String index1,String index2) 
 	{
 		if(index1.equals("开启"))
 		{

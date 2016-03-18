@@ -1654,32 +1654,39 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"显示");
 		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
 			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-		SettingCommon.setScreenBrightness("最小");
+		excute(Object_Text, Operation_ClickWait, "亮度");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.systemui:id/slider");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x / 2, y);
 		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
 		String actual[] = i.split("\n");
-		Assert.assertEquals("Brightness value is not correct", "10", actual[0]);
+		UiDevice.getInstance().click(x / 3, y);
+		String j = DeviceCommon.runADBCommand("settings get system screen_brightness");
+		String actua[] = j.split("\n");
+		Assert.assertNotSame(i, j);
 		//清场
 		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
 	}
 	
-	/**
-	 * 设置屏幕亮度为最大
-	 * @throws UiObjectNotFoundException
-	 * @throws IOException
-	 */
-	public static void test_102() throws UiObjectNotFoundException, IOException 
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"显示");
-		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
-			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-		SettingCommon.setScreenBrightness("最大");
-		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
-		String actual[] = i.split("\n");
-		Assert.assertEquals("Brightness value is not correct", "255", actual[0]);
-		//清场
-		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
-	}
+//	/**
+//	 * 设置屏幕亮度为最大
+//	 * @throws UiObjectNotFoundException
+//	 * @throws IOException
+//	 */
+//	public static void test_102() throws UiObjectNotFoundException, IOException 
+//	{
+//		//主体
+//		excute(Object_Text,Operation_ClickWait,"显示");
+//		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+//			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+//		SettingCommon.setScreenBrightness("最大");
+//		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+//		String actual[] = i.split("\n");
+//		Assert.assertEquals("Brightness value is not correct", "255", actual[0]);
+//		//清场
+//		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+//	}
 	
 	/**
 	 * 打开自动调节亮度开关
@@ -4904,12 +4911,15 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","0","开启");
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","1","关闭");
 		check(Object_Text,Operation_EnabledFalse,"设置日期");
 		check(Object_Text,Operation_EnabledFalse,"设置时间");
 		check(Object_Text,Operation_EnabledFalse,"选择时区");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		check(Object_Text,Operation_CheckedTrue,"使用网络提供时间");
 	}
 	
 	/**
@@ -4919,6 +4929,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
@@ -4936,6 +4947,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -4954,6 +4966,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -4988,6 +5001,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -5006,7 +5020,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
 		excute(Object_Text,Operation_ClickWait,"关闭");
 		//主体
@@ -5028,7 +5042,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
 		excute(Object_Text,Operation_ClickWait,"自动确定时区");
 		check(Object_ResIdInstance,Operation_CheckedFalse,"android:id/switchWidget","0");
@@ -5044,7 +5058,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("关闭", "关闭");
+		SettingCommon.setTimeZoneTimeFormatSwitch("关闭", "关闭");
 		//主体
 		excute(Object_Text,Operation_ClickWait,"选择时区");
 		check(Object_Text,Operation_checkExist,"选择时区");
@@ -5060,7 +5074,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("关闭", "关闭");
+		SettingCommon.setTimeZoneTimeFormatSwitch("关闭", "关闭");
 		//主体
 		excute(Object_Text,Operation_ClickWait,"选择时区");
 		excute(Object_TextScroll,Operation_ClickWait,"香港", "vertical");
@@ -5076,7 +5090,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		SettingCommon.setDefaultTime("开启", "关闭");
+		SettingCommon.setTimeZoneTimeFormatSwitch("开启", "关闭");
 		//主体
 		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
 		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","1");
@@ -5265,6 +5279,143 @@ public class Settings extends UiAutomatorTestCase
 	}
 	
 	
+	/**
+	 * 高对比度文字
+	 */
+	public static void test_350() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "高对比度文字", "vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "1")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "高对比度文字", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "1");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "高对比度文字", "vertical");
+	}
+	/**
+	 * 按电源按钮结束通话
+	 */
+	public static void test_351() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "按电源按钮结束通话", "vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "2")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "按电源按钮结束通话", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "2");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "按电源按钮结束通话", "vertical");
+	}
+	/**
+	 * 自动旋转屏幕
+	 */
+	public static void test_352() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "自动旋转屏幕", "vertical");
+		if ((Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "3")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "自动旋转屏幕", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget", "3");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "自动旋转屏幕", "vertical");
+	}
+	/**
+	 * 说出密码
+	 */
+	public static void test_353() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "说出密码", "vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "4")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "4");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
+	}
+	/**
+	 * 文字转语音（TTS)输出
+	 */
+	public static void test_354() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_ClickWait, "文字转语音 (TTS) 输出", "vertical");
+		check(Object_Text, Operation_checkExist, "首选引擎");
+	}
+	/**
+	 * 触摸和按住延迟
+	 */
+	public static void test_355() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_ClickWait, "触摸和按住延迟", "vertical");
+		check(Object_Text, Operation_checkExist, "短");
+		check(Object_Text, Operation_checkExist, "中");
+		check(Object_Text, Operation_checkExist, "长");
+	}
+	/**
+	 * 颜色反转
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public void test_356() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"无障碍","vertical");
+		excute(Object_TextScroll,Operation_Exists,"颜色反转","vertical");
+		SettingCommon.take_temp_pic(getUiDevice(), "1");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "3")) 
+		{
+			excute(Object_TextScroll,Operation_ClickWait,"颜色反转","vertical");
+		}
+//		ClearBackgroundApp();
+//		Wait(1000);
+//		DeviceCommon.enterApp(Devices_Desc_Setting);
+//		excute(Object_TextScroll,Operation_ClickWait,"无障碍","vertical");
+//		excute(Object_TextScroll,Operation_Exists,"颜色反转","vertical");
+//		SettingCommon.take_temp_pic(getUiDevice(), "2");
+	    check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "3");//验证开关
+//		SettingCommon.check_pic("1", "2", 0.8);//验证颜色不同
+		//清场
+//		SettingCommon.delete_pic("1", "2");
+		excute(Object_TextScroll,Operation_ClickWait,"颜色反转","vertical");
+	}
+	/**
+	 * 色彩校正
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_357() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"无障碍","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"色彩校正","vertical");
+		check(Object_Text,Operation_checkExist,"校正模式");
+		check(Object_Text,Operation_checkExist,"关闭");
+	}
+	/**
+	 * 打印
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_358() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"打印","vertical");
+		check(Object_Text,Operation_checkExist,"打印");
+	}
 	/**
 	 * 关于手机
 	 * @throws UiObjectNotFoundException
