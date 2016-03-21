@@ -200,7 +200,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"WLAN");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
 	}
 	
 	/**
@@ -217,7 +217,7 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
-		check(Object_ResourceId, Operation_checkExist,"com.android.settings:id/switch_text","开启");
+		check(Object_ResIdText, Operation_checkExist,"com.android.settings:id/switch_text","开启");
 		String num = DeviceCommon.runADBCommand("settings get global wifi_on");
 		String num1 = num.substring(0, 1);
 		String num2 = "1";
@@ -261,7 +261,7 @@ public class Settings extends UiAutomatorTestCase
 		}
 		else
 		{
-			excute(Object_ResourceId, Operation_Exists,"com.android.settings:id/switch_text","开启");
+			excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_text","开启");
 		}
 		SettingCommon.connectWifi("Testteam", "WPA/WPA2 PSK", "test12345678");
 		//清场
@@ -341,7 +341,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 	}
 	
 	/**
@@ -378,12 +378,10 @@ public class Settings extends UiAutomatorTestCase
 		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
 		} 	
 		check(Object_Text,Operation_WaitForExists,"SupportBT","5000");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 	}
 	
 	/**
@@ -400,12 +398,12 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+			check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 		}
 		else
 		{
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+			check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 		}  	
 		String num = DeviceCommon.runADBCommand("settings get global bluetooth_on");
 		String num1 = num.substring(0, 1);
