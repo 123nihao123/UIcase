@@ -470,26 +470,28 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");//读取数据网络在哪张卡上
-		if(simname.equals("SIM1"))
+//		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
+//		{
+//			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+//		}
+		if(simname.equals("SIM1")&&(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"注意","3000000");//如果数据在SIM1上，会多弹出一个提示窗口
+			excute(Object_Text,Operation_WaitForExists,"注意", "300000");
 			excute(Object_Text,Operation_ClickWait,"确定");
 		}
 		else
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"未启用","3000000");
+			excute(Object_Text,Operation_WaitForExists,"未启用","300000");
 		}
-		
 		check(Object_ResIdInstance,Operation_CheckedFalse,"com.android.settings:id/universal_switch","0");
 		//清场
-		String name = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","0");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		excute(Object_Text,Operation_WaitForExists,"SIM 卡","3000000");
+		excute(Object_Text,Operation_WaitForExists,"SIM 卡","300000");
 		
 	}
 	
@@ -596,25 +598,25 @@ public class Settings extends UiAutomatorTestCase
 			//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");//读取数据网络在哪张卡上
-		if(simname.equals("SIM2"))
+		if(simname.equals("SIM2")&&(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"注意","3000000");//如果数据在SIM2上，会多弹出一个提示窗口
+			excute(Object_Text,Operation_WaitForExists,"注意","300000");//如果数据在SIM2上，会多弹出一个提示窗口
 			excute(Object_Text,Operation_ClickWait,"确定");
 		}
 		else
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"未启用","3000000");
+			excute(Object_Text,Operation_WaitForExists,"未启用","300000");
 		}
 			
 		check(Object_ResIdInstance,Operation_CheckedFalse,"com.android.settings:id/universal_switch","1");
 		//清场
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		excute(Object_Text,Operation_WaitForExists,"SIM 卡","3000000");
+		excute(Object_Text,Operation_WaitForExists,"SIM 卡","300000");
 		
 	}
 	
@@ -3755,7 +3757,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
 		excute(Object_ResIdContainsText, Operation_ClickWait, "android:id/title","SD");
-		check(Object_ResourceId, Operation_checkExist, "com.android.documentsui:id/menu_sort");
+		check(Object_ResourceId, Operation_checkExist, "com.android.documentsui:id/menu_sort");//SD卡界面排序按钮
 	}
 	/**
 	 *电池
@@ -3828,7 +3830,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait, "节电助手");
-		check(Object_ResourceId, Operation_CheckedFalse, "com.android.settings:id/switch_widget");
+		check(Object_ResourceId, Operation_CheckedFalse, "com.android.settings:id/switch_widget");//开关
 	}
 	/**
 	 *打开节电助手
@@ -3846,6 +3848,7 @@ public class Settings extends UiAutomatorTestCase
 			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
 		}
 		//check(Object_ResourceId, Operation_CheckedFalse, "com.android.settings:id/switch_widget");
+		//连接USB时无法打开节电助手
 	}
 	/**
 	 *点击自动开启
