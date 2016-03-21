@@ -1748,6 +1748,8 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"显示");
 		excute(Object_Text,Operation_ClickWait,"壁纸");
 		excute(Object_Text,Operation_ClickWait,"文件管理器");
+		if((Boolean)excute(Object_Text,Operation_Exists,"选择存储位置"))
+			excute(Object_Text,Operation_ClickWait,"手机");
 		check(Object_ResourceId,Operation_checkExist,"com.sprd.fileexplorer:id/list_paste");
 	}
 	
@@ -3732,7 +3734,7 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "存储设备和 USB");
 	}
 	/**
-	 *页面存储设备
+	 *内部存储设备
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -3740,8 +3742,8 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
-		excute(Object_Text, Operation_ClickWait,"页面存储设备");
-		check(Object_Text, Operation_checkExist, "页面存储设备");
+		excute(Object_Text, Operation_ClickWait,"内部存储设备");
+		check(Object_Text, Operation_checkExist, "内部存储设备");
 	}
 	/**
 	 *SD卡存储
