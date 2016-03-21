@@ -379,7 +379,8 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		} 	
-		check(Object_Text,Operation_WaitForExists,"SupportBT","5000");
+		excute(Object_Text,Operation_WaitForExists,"SupportBT","7000");
+		check(Object_Text,Operation_checkExist,"SupportBT");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 	}
