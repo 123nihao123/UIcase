@@ -3754,8 +3754,8 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
-		excute(Object_Text, Operation_ClickWait,"SD卡");
-		check(Object_Text, Operation_checkExist, "SD卡");
+		excute(Object_ResIdContainsText, Operation_ClickWait, "android:id/title","SD");
+		check(Object_ResourceId, Operation_checkExist, "com.android.documentsui:id/menu_sort");
 	}
 	/**
 	 *电池
