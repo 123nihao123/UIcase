@@ -5070,8 +5070,10 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_337() 
 	{
-		//主体
+		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+		//主体
 		excute(Object_Text,Operation_ClickWait,"选择时区");
 		check(Object_Text,Operation_checkExist,"选择时区");
 		excute(Object_Device,Operation_PressBack);
@@ -5084,8 +5086,10 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public static void test_338() 
 	{
-		//主体
+		//前提
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+		//主体
 		excute(Object_Text,Operation_ClickWait,"选择时区");
 		excute(Object_TextScroll,Operation_ClickWait,"香港", "vertical");
 		check(Object_Text,Operation_checkExist,"GMT+08:00 香港标准时间");
