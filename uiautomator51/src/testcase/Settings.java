@@ -832,6 +832,7 @@ public class Settings extends UiAutomatorTestCase
 		
 	/**
 	 * 选择用于信息的SIM卡界面--选择每次都询问
+	 * 暂无此选项
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -4392,7 +4393,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
 		excute(Object_TextScroll,Operation_ClickWait,"从SD卡安装","vertical");
-		check(Object_Text,Operation_WaitForExists,"打开文件","1500");
+		check(Object_Text,Operation_WaitForExists,"打开文件","3000");
 	}
 	
 	/**
