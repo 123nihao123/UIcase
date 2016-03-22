@@ -1240,4 +1240,27 @@ public class SettingCommon {
 		}
 	}
 	
+	/**
+	 * 选择主副卡，前提是已经进入SIM卡界面
+	 * @param simCard
+	 */
+	public static void selectPrimaryCard(String simCard)
+	{
+		System.out.println("enter selectPrimaryCard");
+		excute(Object_Text,Operation_ClickWait,"主卡选择");
+		excute(Object_Text,Operation_ClickWait,simCard);
+		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
+		{
+		   excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		int count=60; //about 5 minutes
+		while(!(Boolean)excute(Object_ResIdInstance,Operation_IsEnabled,"android:id/summary","5")&&count-->0)
+		{
+			Wait(5000);
+		}
+		
+		Assert.assertTrue("Change primary Sim card fail", count > 0);
+			
+	}
+	
 }

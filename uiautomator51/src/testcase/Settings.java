@@ -897,16 +897,8 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_Text,Operation_ClickWait,"主卡选择");
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
-		  {
-		   excute(Object_Text,Operation_ClickWait,"确定");
-		  }
 		
-		while(!(Boolean)excute(Object_ResIdInstance,Operation_IsEnabled,"android:id/summary","5"))
-		{
-			Wait(1000);
-		}
+		SettingCommon.selectPrimaryCard("SIM1");
 		
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM1");
 	}		
@@ -921,19 +913,13 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_Text,Operation_ClickWait,"主卡选择");
-		excute(Object_Text,Operation_ClickWait,"SIM2");
-		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
-		{
-		   excute(Object_Text,Operation_ClickWait,"确定");
-		}
+		SettingCommon.selectPrimaryCard("SIM2");
 		
-		while(!(Boolean)excute(Object_ResIdInstance,Operation_IsEnabled,"android:id/summary","5"))
-		{
-			Wait(1000);
-		}
+		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");
 		
-		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");	
+		//清场
+		SettingCommon.selectPrimaryCard("SIM1");
+
 	}				
 		
 	/**
