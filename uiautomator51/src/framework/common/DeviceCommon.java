@@ -180,12 +180,17 @@ public class DeviceCommon
 	        }
 	    }
 	 
-	 public static void removePermissions() throws UiObjectNotFoundException{
-	        excute(Object_TextScroll, Operation_ClickWait, "应用", "vertical");
-	        Wait(500);
-	        String[] appList = {"信息","浏览器","相机","文件管理器","电话","通讯录","日历","电子邮件","Launcher3"};
+	 public static void removePermissions() throws UiObjectNotFoundException, RemoteException
+	 {
+		 	excute(Object_TextScroll, Operation_ClickWait, "应用", "vertical");
+	        String[] appList = {"信息","浏览器","相机","文件管理器","电话","通讯录","日历","电子邮件","Launcher3","HTML 查看程序","文档"};
 	        
 	        for(int i=0; i<appList.length; i++){
+	        	excute(Object_Device, Operation_PressMenu);
+		        if((Boolean)excute(Object_Text, Operation_Exists, "显示系统进程"))
+		        {
+		        	excute(Object_Text, Operation_ClickWait, "显示系统进程");
+		        }
 	            excute(Object_TextScroll, Operation_ClickWait, appList[i], "vertical");
 	            excute(Object_Text, Operation_ClickWait, "权限");
 	            int Num = ((Integer)(excute(Object_ResourceId, Operation_GetChildCount, "com.android.packageinstaller:id/list"))).intValue();
@@ -200,13 +205,6 @@ public class DeviceCommon
 	            	
 	            closeSwitch(Num);
 	            }
-	            try {
-					ClearBackgroundApp();
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	    		Wait(1000);
 	    		DeviceCommon.enterApp(Devices_Desc_Setting);
 	            excute(Object_TextScroll, Operation_ClickWait, "应用", "vertical");
 	        }

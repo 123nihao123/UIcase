@@ -1172,6 +1172,7 @@ public class SettingCommon {
 				.println("======Start to excute CallContactsCommon: SIMsettings======");
 
 		excute(Object_Text, Operation_ClickWait, SIMName);
+		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_SetText,
 				"com.android.settings:id/display_number", "");
 		excute(Object_ResourceId, Operation_SetText,
@@ -1209,4 +1210,57 @@ public class SettingCommon {
 		excute(Object_Text, Operation_ClickWait, "应用权限");
 		excute(Object_TextScroll, Operation_ClickWait, Permission, "vertical");
 	}
+	
+	/**
+	 * 进入日期和时间中，自动确定时区和使用24小时制开关状态
+	 * @param index1：开启，关闭（自动确定时区）
+	 * @param index2：开启，关闭（使用24小时制）
+	 */
+	public static void setTimeZoneTimeFormatSwitch(String index1,String index2) 
+	{
+		if(index1.equals("开启"))
+		{
+			if(!(Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","0"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","0");			
+		}
+		else
+		{
+			if((Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","0"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","0");			
+		}
+		if(index2.equals("开启"))
+		{
+			if(!(Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","1"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","1");			
+		}
+		else
+		{
+			if((Boolean) excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","1"))
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","1");			
+		}
+	}
+	
+	/**
+	 * 选择主副卡，前提是已经进入SIM卡界面
+	 * @param simCard
+	 */
+	public static void selectPrimaryCard(String simCard)
+	{
+		System.out.println("enter selectPrimaryCard");
+		excute(Object_Text,Operation_ClickWait,"主卡选择");
+		excute(Object_Text,Operation_ClickWait,simCard);
+		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
+		{
+		   excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		int count=60; //about 5 minutes
+		while(!(Boolean)excute(Object_ResIdInstance,Operation_IsEnabled,"android:id/summary","5")&&count-->0)
+		{
+			Wait(5000);
+		}
+		
+		Assert.assertTrue("Change primary Sim card fail", count > 0);
+			
+	}
+	
 }

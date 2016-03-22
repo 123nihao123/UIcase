@@ -1,6 +1,8 @@
 package testcase;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import junit.framework.Assert;
 import android.graphics.Rect;
@@ -10,6 +12,7 @@ import android.view.KeyEvent;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
@@ -197,7 +200,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"WLAN");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_text","关闭");
 	}
 	
 	/**
@@ -214,7 +217,7 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
-		check(Object_ResourceId, Operation_checkExist,"com.android.settings:id/switch_text","开启");
+		check(Object_ResIdText, Operation_checkExist,"com.android.settings:id/switch_text","开启");
 		String num = DeviceCommon.runADBCommand("settings get global wifi_on");
 		String num1 = num.substring(0, 1);
 		String num2 = "1";
@@ -258,7 +261,7 @@ public class Settings extends UiAutomatorTestCase
 		}
 		else
 		{
-			excute(Object_ResourceId, Operation_Exists,"com.android.settings:id/switch_text","开启");
+			excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_text","开启");
 		}
 		SettingCommon.connectWifi("Testteam", "WPA/WPA2 PSK", "test12345678");
 		//清场
@@ -338,7 +341,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 	}
 	
 	/**
@@ -375,12 +378,11 @@ public class Settings extends UiAutomatorTestCase
 		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
 		} 	
-		check(Object_Text,Operation_WaitForExists,"SupportBT","5000");
+		excute(Object_Text,Operation_WaitForExists,"SupportBT","7000");
+		check(Object_Text,Operation_checkExist,"SupportBT");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-		check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 	}
 	
 	/**
@@ -397,12 +399,12 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+			check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 		}
 		else
 		{
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-			check(Object_ResourceId,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+			check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 		}  	
 		String num = DeviceCommon.runADBCommand("settings get global bluetooth_on");
 		String num1 = num.substring(0, 1);
@@ -467,27 +469,29 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");
-		if(simname.equals("SIM1"))
+		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");//读取数据网络在哪张卡上
+//		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
+//		{
+//			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+//		}
+		if(simname.equals("SIM1")&&(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"注意","3000000");
+			excute(Object_Text,Operation_WaitForExists,"注意", "300000");
 			excute(Object_Text,Operation_ClickWait,"确定");
 		}
 		else
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"未启用","3000000");
+			excute(Object_Text,Operation_WaitForExists,"未启用","300000");
 		}
-		
 		check(Object_ResIdInstance,Operation_CheckedFalse,"com.android.settings:id/universal_switch","0");
 		//清场
-		String name = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","0");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		excute(Object_Text,Operation_WaitForExists,"SIM 卡","3000000");
+		excute(Object_Text,Operation_WaitForExists,"SIM 卡","300000");
 		
 	}
 	
@@ -500,6 +504,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
 		check(Object_Text,Operation_checkExist,"SIM 卡插槽 1");
 	}
@@ -513,7 +523,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-//		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		SettingCommon.editSIMName("SIM 卡插槽 1");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM1");
 		excute(Object_Text,Operation_ClickWait,"确定");
@@ -531,6 +546,12 @@ public class Settings extends UiAutomatorTestCase
 	public void test_033() throws UiObjectNotFoundException, RemoteException 
 	{
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/color_text");
 		excute(Object_Text,Operation_ClickWait,"粉红色");
@@ -552,6 +573,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","0");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","0");
 		SettingCommon.editSIMNumber("SIM 卡插槽 1");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/display_number","123");
@@ -570,26 +597,26 @@ public class Settings extends UiAutomatorTestCase
 	{
 			//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");
-		if(simname.equals("SIM2"))
+		String simname = (String) excute(Object_ResIdInstance,Operation_GetText,"android:id/summary","2");//读取数据网络在哪张卡上
+		if(simname.equals("SIM2")&&(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"注意","3000000");
+			excute(Object_Text,Operation_WaitForExists,"注意","300000");//如果数据在SIM2上，会多弹出一个提示窗口
 			excute(Object_Text,Operation_ClickWait,"确定");
 		}
 		else
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			excute(Object_Text,Operation_WaitForExists,"未启用","3000000");
+			excute(Object_Text,Operation_WaitForExists,"未启用","300000");
 		}
 			
 		check(Object_ResIdInstance,Operation_CheckedFalse,"com.android.settings:id/universal_switch","1");
 		//清场
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		excute(Object_Text,Operation_WaitForExists,"SIM 卡","3000000");
+		excute(Object_Text,Operation_WaitForExists,"SIM 卡","300000");
 		
 	}
 	
@@ -602,6 +629,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
 		check(Object_Text,Operation_checkExist,"SIM 卡插槽 2");
 	}
@@ -615,6 +648,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		SettingCommon.editSIMName("SIM 卡插槽 2");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/sim_name","SIM2");
 		excute(Object_Text,Operation_ClickWait,"确定");
@@ -630,6 +669,12 @@ public class Settings extends UiAutomatorTestCase
 	public void test_038() throws UiObjectNotFoundException, RemoteException 
 	{
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/color_text");
 		excute(Object_Text,Operation_ClickWait,"紫色");
@@ -651,6 +696,12 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
+		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			excute(Object_Text,Operation_WaitForExists,"SIM 卡插槽 1","10000");
+		}
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/summary","1");
 		SettingCommon.editSIMNumber("SIM 卡插槽 2");
 		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/display_number","456");
@@ -668,7 +719,10 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+		if((Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","2"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+		}
 		String num0 = DeviceCommon.runADBCommand("settings get global data_remain_unchanged");
 		String num1 = num0.substring(0, 1);
 		String num2 = "0";
@@ -778,6 +832,7 @@ public class Settings extends UiAutomatorTestCase
 		
 	/**
 	 * 选择用于信息的SIM卡界面--选择每次都询问
+	 * 暂无此选项
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -842,11 +897,9 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_Text,Operation_ClickWait,"主卡选择");
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
-		  {
-		   excute(Object_Text,Operation_ClickWait,"确定");
-		  }
+		
+		SettingCommon.selectPrimaryCard("SIM1");
+		
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM1");
 	}		
 		
@@ -860,13 +913,13 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_Text,Operation_ClickWait,"主卡选择");
-		excute(Object_Text,Operation_ClickWait,"SIM2");
-		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
-		  {
-		   excute(Object_Text,Operation_ClickWait,"确定");
-		  }
+		SettingCommon.selectPrimaryCard("SIM2");
+		
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");
+		
+		//清场
+		SettingCommon.selectPrimaryCard("SIM1");
+
 	}				
 		
 	/**
@@ -1601,32 +1654,39 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"显示");
 		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
 			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-		SettingCommon.setScreenBrightness("最小");
+		excute(Object_Text, Operation_ClickWait, "亮度");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.systemui:id/slider");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x / 2, y);
 		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
 		String actual[] = i.split("\n");
-		Assert.assertEquals("Brightness value is not correct", "10", actual[0]);
+		UiDevice.getInstance().click(x / 3, y);
+		String j = DeviceCommon.runADBCommand("settings get system screen_brightness");
+		String actua[] = j.split("\n");
+		Assert.assertNotSame(i, j);
 		//清场
 		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
 	}
 	
-	/**
-	 * 设置屏幕亮度为最大
-	 * @throws UiObjectNotFoundException
-	 * @throws IOException
-	 */
-	public static void test_102() throws UiObjectNotFoundException, IOException 
-	{
-		//主体
-		excute(Object_Text,Operation_ClickWait,"显示");
-		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
-			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
-		SettingCommon.setScreenBrightness("最大");
-		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
-		String actual[] = i.split("\n");
-		Assert.assertEquals("Brightness value is not correct", "255", actual[0]);
-		//清场
-		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
-	}
+//	/**
+//	 * 设置屏幕亮度为最大
+//	 * @throws UiObjectNotFoundException
+//	 * @throws IOException
+//	 */
+//	public static void test_102() throws UiObjectNotFoundException, IOException 
+//	{
+//		//主体
+//		excute(Object_Text,Operation_ClickWait,"显示");
+//		if((Boolean) excute(Object_ResourceId,Operation_IsChecked,"android:id/switchWidget"))
+//			excute(Object_Text,Operation_ClickWait,"自动调节亮度");
+//		SettingCommon.setScreenBrightness("最大");
+//		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
+//		String actual[] = i.split("\n");
+//		Assert.assertEquals("Brightness value is not correct", "255", actual[0]);
+//		//清场
+//		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
+//	}
 	
 	/**
 	 * 打开自动调节亮度开关
@@ -1689,6 +1749,8 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"显示");
 		excute(Object_Text,Operation_ClickWait,"壁纸");
 		excute(Object_Text,Operation_ClickWait,"文件管理器");
+		if((Boolean)excute(Object_Text,Operation_Exists,"选择存储位置"))
+			excute(Object_Text,Operation_ClickWait,"手机");
 		check(Object_ResourceId,Operation_checkExist,"com.sprd.fileexplorer:id/list_paste");
 	}
 	
@@ -3316,6 +3378,10 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		SettingCommon.EnterPermission("其他权限");
 		excute(Object_Text, Operation_ClickWait, "读取电子邮件附件");
+		if((Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "com.android.packageinstaller:id/switchWidget", "0"))
+		{
+			excute(Object_ResIdInstance, Operation_ClickWait, "com.android.packageinstaller:id/switchWidget", "0");
+		}
 		excute(Object_Device, Operation_PressMenu);
 		if((Boolean)excute(Object_Text, Operation_Exists, "显示系统应用"))
 		{
@@ -3482,8 +3548,8 @@ public class Settings extends UiAutomatorTestCase
 		{
 			excute(Object_Text, Operation_ClickWait, "显示系统进程");
 		}
-		check(Object_TextScroll, Operation_checkExist, "电话");
-		check(Object_TextScroll, Operation_checkExist, "工厂测试工具");
+		check(Object_TextScroll, Operation_checkExist, "电话", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "工厂测试工具", "vertical");
 		//清场
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait, "隐藏系统进程");
@@ -3501,7 +3567,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait, "重置应用偏好设置");
-		check(Object_TextScroll, Operation_checkExist, "要重置应用偏好设置吗？");
+		check(Object_Text, Operation_checkExist, "要重置应用偏好设置吗？");
 	}
 	/**
 	 *修改系统设置
@@ -3514,7 +3580,1964 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
 		excute(Object_Text, Operation_ClickWait, "修改系统设置");
-		check(Object_TextScroll, Operation_checkExist, "可修改系统设置");
+		check(Object_Text, Operation_checkExist, "可修改系统设置");
 	}
+	/**
+	 *修改系统设置点击电话
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_236() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_TextScroll, Operation_ClickWait, "电话", "vertical");
+		check(Object_Text, Operation_checkExist, "修改系统设置");
+	}
+	/**
+	 *修改系统设置点击电话
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_237() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_TextScroll, Operation_ClickWait, "电话", "vertical");
+		if((Boolean)excute(Object_ResourceId, Operation_IsChecked, "android:id/switchWidget"))
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/switchWidget");
+			check(Object_ResourceId, Operation_CheckedFalse, "android:id/switchWidget");
+		}else{
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/switchWidget");
+			check(Object_ResourceId, Operation_CheckedTrue, "android:id/switchWidget");
+		}
+	}
+	/**
+	 *应用信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_238() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_TextScroll, Operation_ClickWait, "电话", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/app_settings");
+		check(Object_Text, Operation_checkExist, "应用信息");
+	}
+	/**
+	 *应用信息点击菜单
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_239() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "修改系统设置");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "显示系统进程");
+		check(Object_Text, Operation_checkExist, "重置应用偏好设置");
+	}
+	/**
+	 *电池优化
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_240() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		check(Object_Text, Operation_checkExist, "电池优化");
+	}
+	/**
+	 *电池优化未优化
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_241() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		check(Object_Text, Operation_checkExist, "未优化");
+		check(Object_Text, Operation_checkExist, "所有应用");
+	}
+	/**
+	 *电池优化所有应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_242() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		excute(Object_Text, Operation_ClickWait, "所有应用");
+		check(Object_Text, Operation_checkExist, "所有应用");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		excute(Object_Text, Operation_ClickWait, "未优化");
+	}
+	/**
+	 *打印处理服务
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_243() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");
+		excute(Object_Text, Operation_ClickWait, "所有应用");
+		excute(Object_Text, Operation_ClickWait, "打印处理服务");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle", "打印处理服务");
+	}
+	/**
+	 *重置应用偏好设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_244() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "重置应用偏好设置");
+	}
+	/**
+	 *存储设备和 USB
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_245() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
+		check(Object_Text, Operation_checkExist, "存储设备和 USB");
+	}
+	/**
+	 *内部存储设备
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_246() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
+		excute(Object_Text, Operation_ClickWait,"内部存储设备");
+		check(Object_Text, Operation_checkExist, "内部存储设备");
+	}
+	/**
+	 *SD卡存储
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_247() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"存储设备和 USB", "vertical");
+		excute(Object_ResIdContainsText, Operation_ClickWait, "android:id/title","SD");
+		check(Object_ResourceId, Operation_checkExist, "com.android.documentsui:id/menu_sort");//SD卡界面排序按钮
+	}
+	/**
+	 *电池
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_248() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		check(Object_Text, Operation_checkExist, "电池");
+	}
+	/**
+	 *省电管理
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_249() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Text, Operation_ClickWait, "省电管理");
+		check(Object_Text, Operation_checkExist, "您还没有安装第三方应用");
+	}
+	/**
+	 *省电管理
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_250() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Description, Operation_ClickWait, "刷新");
+	}
+	/**
+	 *省电菜单
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_252() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "节电助手");
+		check(Object_Text, Operation_checkExist, "电池优化");
+	}
+	/**
+	 *节电助手
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_253() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		check(Object_Text, Operation_checkExist, "节电助手");
+	}
+	/**
+	 *节电助手
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_254() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		check(Object_ResourceId, Operation_CheckedFalse, "com.android.settings:id/switch_widget");//开关
+	}
+	/**
+	 *打开节电助手
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_255() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		if(!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget"))
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//check(Object_ResourceId, Operation_CheckedFalse, "com.android.settings:id/switch_widget");
+		//连接USB时无法打开节电助手
+	}
+	/**
+	 *点击自动开启
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_256() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		check(Object_Text, Operation_checkExist, "一律不");
+		check(Object_Text, Operation_checkExist, "电量剩余5%时");
+		check(Object_Text, Operation_checkExist, "电量剩余15%时");
+	}
+	/**
+	 *一律不
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_258() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		excute(Object_Text, Operation_ClickWait, "一律不");
+		check(Object_Text, Operation_checkExist, "一律不");
+	}
+	/**
+	 *电量剩余5%时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_259() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		excute(Object_Text, Operation_ClickWait, "电量剩余5%时");
+		check(Object_Text, Operation_checkExist, "电量剩余5%时");
+	}
+	/**
+	 *电量剩余15%时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_260() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "节电助手");
+		excute(Object_Text, Operation_ClickWait, "自动开启");
+		excute(Object_Text, Operation_ClickWait, "电量剩余15%时");
+		check(Object_Text, Operation_checkExist, "电量剩余15%时");
+	}
+	/**
+	 *电池优化
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_261() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"电池", "vertical");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "电池优化");
+		check(Object_Text, Operation_checkExist, "电池优化");
+	}
+	/**
+	 * 跳转到内存页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_262() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		check(Object_Text, Operation_checkExist, "平均内存使用量");
+	}
+	
+	/**
+	 * 下拉框有“3小时” “6小时” “12小时” “1天”字样
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_263() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		check(Object_Text, Operation_checkExist, "3小时");
+		check(Object_Text, Operation_checkExist, "6小时");
+		check(Object_Text, Operation_checkExist, "12小时");
+		check(Object_Text, Operation_checkExist, "1天");
+		
+	}
+	/**
+	 * 选定3小时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_264() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		check(Object_Text, Operation_checkExist, "3小时");
+	}
+	/**
+	 * 选定6小时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_265() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "6小时");
+		check(Object_Text, Operation_checkExist, "6小时");
+	}
+	/**
+	 * 选定12小时
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_266() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "12小时");
+		check(Object_Text, Operation_checkExist, "12小时");
+	}
+	/**
+	 * 选定一天
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_267() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");	
+		excute(Object_Text, Operation_ClickWait, "3小时");
+		excute(Object_Text, Operation_ClickWait, "1天");
+		check(Object_Text, Operation_checkExist, "1天");
+	}
+	
+	/**
+	 * 点击各个应用使用的内存
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_268() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		check(Object_Text, Operation_checkExist, "应用的内存使用量");
+		
+	}
+	
+	/**
+	 * 按最高内存使用量排序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_269() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		List<Integer> list=new ArrayList<Integer>();
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "按最高使用量排序");
+		int count=(Integer)excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		for (int i = 0; i < count-1; i++){
+		String str1=(String)excute(Object_ResIdInstance, Operation_GetText, "android:id/summary",String.valueOf(i));
+		String str2[]=str1.split(" ");
+		int j=Integer.parseInt(str2[0]);
+		list.add(j);
+		}
+		
+		for(int k=0;k<count-2;k++){
+		boolean boo=list.get(k)>=list.get(k+1);
+		Assert.assertEquals(true, boo);
+		}
+	}
+	/**
+	 * 按平均内存使用量排序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_270() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		List<Integer> list=new ArrayList<Integer>();
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "按最高使用量排序");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "按平均使用量排序");
+		int count=(Integer)excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		for (int i = 0; i < count-1; i++){
+		String str1=(String)excute(Object_ResIdInstance, Operation_GetText, "android:id/summary",String.valueOf(i));
+		String str2[]=str1.split(" ");
+		int j=Integer.parseInt(str2[0]);
+		list.add(j);
+		}
+		
+		for(int k=0;k<count-2;k++){
+		boolean boo=list.get(k)>=list.get(k+1);
+		Assert.assertEquals(true, boo);
+		}
+	}
+	/**
+	 * 任意应用实际使用页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_271() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
+		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
+		excute(Object_Text, Operation_ClickWait, "Android 操作系统");
+		check(Object_Text, Operation_checkExist, "平均内存使用量");
+		check(Object_Text, Operation_checkExist, "频率");
+		check(Object_Text, Operation_checkExist, "最高使用量");
+	}
+	/**
+	 * 点击用户页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_272() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "用户","vertical");
+		check(Object_Text, Operation_checkExist, "添加用户");
+	}
+	/**
+	 * 点击页面上位置信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_273() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		check(Object_Text, Operation_checkExist, "最近的位置信息请求");
+	}
+	/**
+	 * 位置信息默认开关状态
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_274() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		check(Object_ResIdText, Operation_CheckedFalse, "com.android.settings:id/switch_widget","关闭");
+	}
+	/**
+	 *打开位置信息开关 
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_275() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) {
+			excute(Object_Text, Operation_ClickWait, "关闭");
+		}
+		check(Object_ResIdText, Operation_CheckedTrue, "com.android.settings:id/switch_widget","开启");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "开启");
+		
+	}
+	
+	/**
+	 * 打开位置信息里的模式选项
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_276() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) 
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//主体
+		excute(Object_Text, Operation_ClickWait, "模式");
+		check(Object_Text, Operation_checkExist, "位置信息模式");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		
+	}
+	/**
+	 * 节电模式被选中
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_277() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) 
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//主体
+		excute(Object_Text, Operation_ClickWait, "模式");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox","1");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/checkbox","1");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		
+	}
+	/**
+	 * 仅限设备被选中
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_278() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait, "位置信息","vertical");
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget")) 
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		}
+		//主体
+		excute(Object_Text, Operation_ClickWait, "模式");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox","2");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/checkbox","2");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/switch_widget");
+		
+	}
+	/**
+	 * 跳转到“安全”界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_279() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		check(Object_Text, Operation_checkExist, "安全");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：“无”“滑动”“图案”“PIN码”“密码”
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_280() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		check(Object_Text, Operation_checkExist, "无");
+		check(Object_Text, Operation_checkExist, "滑动");
+		check(Object_Text, Operation_checkExist, "图案");
+		check(Object_Text, Operation_checkExist, "PIN码");
+		check(Object_Text, Operation_checkExist, "密码");
+	}
+	
+	/**
+	 *  安全-验证屏幕锁定方式：无
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_281() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"无");
+		check(Object_PeerTextID,Operation_TextEqualTrue,"屏幕锁定方式","android:id/summary","无");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：滑动
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_282() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"滑动");
+		check(Object_PeerTextID,Operation_TextEqualTrue,"屏幕锁定方式","android:id/summary","滑动");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"无");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：图案
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_283() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"图案");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/headerText","绘制解锁图案");
+		excute(Object_Text,Operation_ClickWait,"取消");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：Pin码
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_284() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"PIN码");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/headerText","PIN码至少应为4位");
+		excute(Object_Text,Operation_ClickWait,"取消");
+	}
+	
+	/**
+	 * 安全-验证屏幕锁定方式：密码
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_285() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"密码");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/headerText","密码至少应包含4个字符");
+		excute(Object_Text,Operation_ClickWait,"取消");
+	}
+	
+	/**
+	 * 安全-锁定屏幕消息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_286() throws UiObjectNotFoundException, RemoteException 
+	{
+		//前提
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"滑动");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"锁定屏幕消息");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","锁定屏幕消息");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
+		excute(Object_Text,Operation_ClickWait,"无");
+	}
+	
+	/**
+	 *  安全-加密手机
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_287() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"加密手机");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/initiate_encrypt","加密手机");
+		
+	}
+	
+	/**
+	 * 安全-设置SIM卡锁定方式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_288() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"设置SIM卡锁定方式");
+		check(Object_ResIdText,Operation_checkExist,"android:id/switchWidget","关闭");
+	}
+	
+	/**
+	 * 安全-设备管理器
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_289() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_Text,Operation_ClickWait,"设备管理器");
+		check(Object_Text,Operation_ClickWait,"设备管理器");
+	}
+	
+	/**
+	 * 安全-信任的凭据
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_290() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"信任的凭据","vertical");
+		check(Object_ResIdText,Operation_WaitForExists,"com.android.settings:id/trusted_credential_status","开启","1500");
+	}
+	
+	/**
+	 * 安全-从SD卡安装
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_291() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"从SD卡安装","vertical");
+		check(Object_Text,Operation_WaitForExists,"打开文件","3000");
+	}
+	
+	/**
+	 * 安全-清除凭证 默认置灰
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_292() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		check(Object_TextScroll,Operation_EnabledFalse,"清除凭据","vertical");
+	}
+	
+	/**
+	 * 安全-信任的代理 默认置灰
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_293() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		check(Object_TextScroll,Operation_EnabledFalse,"信任的代理","vertical");
+	}
+	
+	/**
+	 * 安全-屏幕固定
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_294() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"屏幕固定","vertical");
+		check(Object_Text,Operation_checkExist,"屏幕固定");
+	}
+	
+	/**
+	 * 安全-权查看使用情况的应用
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_295() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"有权查看使用情况的应用","vertical");
+		check(Object_Text,Operation_checkExist,"有权查看使用情况的应用");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"显示系统进程");
+		check(Object_Text,Operation_checkExist,"重置应用偏好设置");
+	}
+	
+	/**
+	 * 进入账户界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_296() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"帐户","vertical");
+		check(Object_Text,Operation_checkExist,"帐户");
+	}
+	
+	/**
+	 * 账户-添加账户界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_297() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"帐户","vertical");
+		excute(Object_Text,Operation_ClickWait,"添加帐户");
+		check(Object_Text,Operation_checkExist,"添加帐户");
+	}
+	
+	/**
+	 * 账户-添加账户界面-菜单
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_298() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"帐户","vertical");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"自动同步数据");
+	}
+	
+	/**
+	 * 进入 语言与输入法 界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_299() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		check(Object_Text,Operation_checkExist,"语言和输入法");
+	}
+	
+	/**
+	 * 进入 语言与输入法 --点击语言,中文（繁体）”、“中文（简体）”、“english”三个条目
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_300() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"中文 (繁體)");
+		check(Object_Text,Operation_checkExist,"中文 (简体)");
+		check(Object_Text,Operation_checkExist,"English");
+	}
+	
+	
+	/** 
+	 *  进入 语言与输入法 --点击语言--切换为 中文（繁体）
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_301() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"中文 (繁體)");
+		check(Object_Text,Operation_checkExist,"語言");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"語言");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+	}
+	
+	/** 
+	 *  进入 语言与输入法 --点击语言--切换为 中文 (简体)
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_302() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+		check(Object_Text,Operation_checkExist,"语言");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+	}
+	
+	/** 
+	 *  进入 语言与输入法 --点击语言--切换为 English"
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_303() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		excute(Object_Text,Operation_ClickWait,"English");
+		check(Object_Text,Operation_checkExist,"Language");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"Language");
+		excute(Object_Text,Operation_ClickWait,"中文 (简体)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_304() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		check(Object_Text,Operation_checkExist,"拼写检查工具");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--验证默认按钮是开启的
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */	
+	public static void test_305() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--关闭按钮
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */	
+	public static void test_306() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+		//清场
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--点击语言
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_307() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"使用系统语言");
+		check(Object_Text,Operation_checkExist,"英文");
+		check(Object_Text,Operation_checkExist,"英文 (美国)");
+		check(Object_Text,Operation_checkExist,"英文 (英国)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--"Android拼写检查工具''
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_308() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		check(Object_ResIdContainsText,Operation_checkExist,"android:id/title","Android 拼写检查工具 ");
+	}
+	
+	/**
+	 * 进入 语言与输入法--拼写和检查--"Android拼写检查工具'--验证按钮默认为开启状态
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_309() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/pref_right_button");
+		check(Object_ResourceId,Operation_CheckedTrue,"android:id/switchWidget");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_310() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"所有语言");
+		check(Object_Text,Operation_checkExist,"个人字典");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典-添加
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_311() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"所有语言");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"输入字词");	
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--英文（美国）页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_312() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"英文 (美国)");
+		check(Object_Text,Operation_checkExist,"个人字典");
+		check(Object_Text,Operation_checkExist,"英文 (美国)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--英文（美国）页面--添加
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_313() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"英文 (美国)");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"输入字词");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--中文 (中国)页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_314() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"中文 (中国)");
+		check(Object_Text,Operation_checkExist,"个人字典");
+		check(Object_Text,Operation_checkExist,"中文 (中国)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--中文 (中国)页面--添加
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_315() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"中文 (中国)");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"输入字词");
+	}
+	
+	/**
+	 * 进入 语言与输入法--个人字典--中文 (中国)页面--添加1后删除
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_316() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"个人字典");
+		excute(Object_Text,Operation_ClickWait,"中文 (中国)");
+		excute(Object_Description,Operation_ClickWait,"添加");
+		excute(Object_ResourceId,Operation_SetText,"com.android.settings:id/user_dictionary_add_word_text","1");
+		excute(Object_Description,Operation_ClickWait,"向上导航");
+		excute(Object_Text,Operation_ClickWait,"1");
+		excute(Object_Description,Operation_ClickWait,"删除");
+		check(Object_Text,Operation_checkNoExist,"1");
+	}
+	
+	/**
+	 * 进入 语言与输入法--当前输入法-弹出更改键盘
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_317() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"当前输入法");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","更改键盘");
+		
+	}
+	
+
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_318() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		check(Object_Text,Operation_checkExist,"Android 键盘设置 (AOSP)");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击语言
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_319() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"使用系统语言");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击外观和布局
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_320() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"外观和布局");
+		check(Object_Text,Operation_checkExist,"主题背景");
+		check(Object_Text,Operation_checkExist,"自定义输入样式");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击文字更正
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_321() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"文字更正");
+		check(Object_Text,Operation_checkExist,"附加字典");
+	}
+	
+	/**
+	 * 进入 语言与输入法--Android 键盘 (AOSP)--点击高级
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_322() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"Android 键盘 (AOSP)");
+		excute(Object_Text,Operation_ClickWait,"高级");
+		check(Object_Text,Operation_checkExist,"弹出字符隐藏延迟");
+		check(Object_Text,Operation_checkExist,"按键振动时长");
+	}
+	
+	/**
+	 * 进入 语言与输入法--文字转语音 (TTS) 输出
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_323() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_Text,Operation_ClickWait,"文字转语音 (TTS) 输出");
+		check(Object_Text,Operation_checkExist,"首选引擎");
+	}
+	
+	/**
+	 * 进入 语言与输入法--指针速度
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_324() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"指针速度","vertical");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","指针速度");
+	}
+	
+	/**
+	 * 进入 备份和重置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_325() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"备份和重置","vertical");
+		check(Object_Text,Operation_checkExist,"备份和重置");
+	}
+	
+	/**
+	 * 进入 备份和重置--重置网络设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_326() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"备份和重置","vertical");
+		excute(Object_Text,Operation_ClickWait,"重置网络设置");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/initiate_reset_network","重置设置");
+	}
+	
+	/**
+	 * 进入 备份和重置--恢复出厂设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_327() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"备份和重置","vertical");
+		excute(Object_Text,Operation_ClickWait,"恢复出厂设置");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/initiate_master_clear","恢复手机出厂设置");
+	}
+	
+	/**
+	 * 
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_328() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"定时开关机","vertical");
+		check(Object_Text,Operation_checkExist,"定时开关机");
+	}
+	
+	/**
+	 * 检查“日期和时间”字样
+	 */
+	public static void test_329() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		check(Object_Text,Operation_checkExist,"日期和时间");
+	}
+	
+	/**
+	 * 查看日期和时间中默认按钮开关状态，部分区域置灰
+	 */
+	public static void test_330() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","0","开启");
+		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/switchWidget","1","关闭");
+		check(Object_Text,Operation_EnabledFalse,"设置日期");
+		check(Object_Text,Operation_EnabledFalse,"设置时间");
+		check(Object_Text,Operation_EnabledFalse,"选择时区");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		check(Object_Text,Operation_CheckedTrue,"使用网络提供时间");
+	}
+	
+	/**
+	 * 关闭自动确定日期和时间，检查设置日期和设置时间为可用
+	 */
+	public static void test_331() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		check(Object_Text,Operation_EnabledTrue,"设置日期");
+		check(Object_Text,Operation_EnabledTrue,"设置时间");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 关闭自动确定日期和时间，进入设置日期界面
+	 */
+	public static void test_332() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置日期");
+		check(Object_ResourceId,Operation_checkExist,"android:id/datePicker");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 设置日期为2015年1月1日
+	 */
+	public static void test_333() throws UiObjectNotFoundException
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置日期");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/date_picker_header_year");
+		//Object_TextScroll和scrollTextIntoView接口有个未名原因的bug,在年列表中只能滑动一屏
+		excute(Object_TextScroll,Operation_ClickWait,"2015","vertical");
+		/*UiScrollable yearList = new UiScrollable(new UiSelector().scrollable(true));
+		while(!(Boolean) excute(Object_ResIdText, Operation_Exists, "android:id/text1","2015"))
+		{
+			yearList.scrollTextIntoView("2015");
+		}
+		excute(Object_ResIdText,Operation_ClickWait,"android:id/text1","2015");*/
+		
+		String date = (String) excute(Object_ResourceId,Operation_GetText,"android:id/date_picker_header_date");
+		String actual[] = date.split("月");
+		int month=Integer.valueOf(actual[0]).intValue();
+		while(month-->1)
+			excute(Object_Description,Operation_ClickWait,"上个月");	
+		excute(Object_Text,Operation_ClickWait,"1");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkExist,"2015年1月1日");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 关闭自动确定日期和时间，进入设置时间界面
+	 */
+	public static void test_334() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置时间");
+		check(Object_ResourceId,Operation_checkExist,"android:id/timePicker");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 设置时间为上午8点30分
+	 */
+	public static void test_335() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"关闭");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"设置时间");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/am_label");
+		excute(Object_Description,Operation_ClickWait,"8");
+		excute(Object_Description,Operation_ClickWait,"30");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkExist,"上午8:30");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
+		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+	}
+	
+	/**
+	 * 关闭自动确定时区
+	 */
+	public static void test_336() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+		check(Object_ResIdInstance,Operation_CheckedFalse,"android:id/switchWidget","0");
+		check(Object_Text,Operation_EnabledTrue,"选择时区");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+	}
+	
+	/**
+	 * 进入选择时区界面
+	 */
+	public static void test_337() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"选择时区");
+		check(Object_Text,Operation_checkExist,"选择时区");
+		excute(Object_Device,Operation_PressBack);
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+	}
+	
+	/**
+	 * 设置时区为香港
+	 */
+	public static void test_338() 
+	{
+		//前提
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+		//主体
+		excute(Object_Text,Operation_ClickWait,"选择时区");
+		excute(Object_TextScroll,Operation_ClickWait,"香港", "vertical");
+		check(Object_Text,Operation_checkExist,"GMT+08:00 香港标准时间");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"自动确定时区");
+	}
+	
+	/**
+	 * 设置时间为24小时制
+	 */
+	public static void test_339() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
+		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
+		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","1");
+		String time = (String) excute(Object_PeerTextID,Operation_GetText,"使用 24 小时制","android:id/summary");
+		Assert.assertTrue(!time.contains("上午")&&!time.contains("下午"));
+		//清场
+		excute(Object_Text,Operation_ClickWait,"使用 24 小时制");
+	}
+	
+	/**
+	 * 进入无障碍界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_340() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		check(Object_Text,Operation_checkExist,"无障碍");
+	}
+	
+	/**
+	 * 进入无障碍界面-显示未安装任何服务
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_341() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","未安装任何服务");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_342() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		check(Object_Text,Operation_checkExist,"字幕");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮关闭，语言等置灰
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_343() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+		check(Object_Text,Operation_EnabledFalse,"语言");
+		check(Object_Text,Operation_EnabledFalse,"文字大小");
+		check(Object_Text,Operation_EnabledFalse,"字幕样式");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，语言等可设置
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_344() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","开启");
+		check(Object_Text,Operation_EnabledTrue,"语言");
+		check(Object_Text,Operation_EnabledTrue,"文字大小");
+		check(Object_Text,Operation_EnabledTrue,"字幕样式");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，点击语言
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_345() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		excute(Object_Text, Operation_ClickWait,"语言");
+		check(Object_Text,Operation_checkExist,"English");
+		check(Object_Text,Operation_checkExist,"中文 (繁體)");
+		check(Object_Text,Operation_checkExist,"中文 (简体)");
+		excute(Object_Text, Operation_ClickWait,"取消");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，点击文字大小
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_346() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		excute(Object_Text, Operation_ClickWait,"文字大小");
+		check(Object_Text,Operation_checkExist,"小");
+		check(Object_Text,Operation_checkExist,"正常");
+		check(Object_Text,Operation_checkExist,"大");
+		excute(Object_Text, Operation_ClickWait,"取消");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--字幕--按钮开启，点击字幕样式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_347() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"字幕");
+		if((Boolean)excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","关闭");
+		}
+		excute(Object_Text, Operation_ClickWait,"字幕样式");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","字幕样式");
+		excute(Object_Text, Operation_ClickWait,"取消");
+		//清场
+		excute(Object_ResIdText, Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
+	}
+	
+	/**
+	 * 进入无障碍界面--放大手势
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_348() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		excute(Object_Text, Operation_ClickWait,"放大手势");
+		check(Object_Text,Operation_checkExist,"放大手势");
+		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
+	}
+	
+	/**
+	 * 进入无障碍界面--大号字体
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_349() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"无障碍", "vertical");
+		if((Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"android:id/switchWidget","0"))
+		{
+			excute(Object_Text, Operation_ClickWait,"大号字体");
+		}
+		Rect bound = (Rect) excute(Object_Text,Operation_GetBounds,"大号字体");
+		excute(Object_Text, Operation_ClickWait,"大号字体");
+		check(Object_ResIdText,Operation_checkExist,"android:id/switchWidget","开启");
+		Rect bound1 = (Rect) excute(Object_Text,Operation_GetBounds,"大号字体");
+		Assert.assertNotSame(bound, bound1);
+		//清场
+		excute(Object_Text, Operation_ClickWait,"大号字体");
+	}
+	
+	
+	/**
+	 * 高对比度文字
+	 */
+	public static void test_350() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "高对比度文字", "vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "1")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "高对比度文字", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "1");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "高对比度文字", "vertical");
+	}
+	/**
+	 * 按电源按钮结束通话
+	 */
+	public static void test_351() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "按电源按钮结束通话", "vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "2")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "按电源按钮结束通话", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "2");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "按电源按钮结束通话", "vertical");
+	}
+	/**
+	 * 自动旋转屏幕
+	 */
+	public static void test_352() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "自动旋转屏幕", "vertical");
+		if ((Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "3")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "自动旋转屏幕", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget", "3");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "自动旋转屏幕", "vertical");
+	}
+	/**
+	 * 说出密码
+	 */
+	public static void test_353() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_Exists, "说出密码", "vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "4")) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "4");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
+	}
+	/**
+	 * 文字转语音（TTS)输出
+	 */
+	public static void test_354() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_ClickWait, "文字转语音 (TTS) 输出", "vertical");
+		check(Object_Text, Operation_checkExist, "首选引擎");
+	}
+	/**
+	 * 触摸和按住延迟
+	 */
+	public static void test_355() 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
+		excute(Object_TextScroll, Operation_ClickWait, "触摸和按住延迟", "vertical");
+		check(Object_Text, Operation_checkExist, "短");
+		check(Object_Text, Operation_checkExist, "中");
+		check(Object_Text, Operation_checkExist, "长");
+	}
+	/**
+	 * 颜色反转
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public void test_356() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"无障碍","vertical");
+		excute(Object_TextScroll,Operation_Exists,"颜色反转","vertical");
+		SettingCommon.take_temp_pic(getUiDevice(), "1");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "3")) 
+		{
+			excute(Object_TextScroll,Operation_ClickWait,"颜色反转","vertical");
+		}
+//		ClearBackgroundApp();
+//		Wait(1000);
+//		DeviceCommon.enterApp(Devices_Desc_Setting);
+//		excute(Object_TextScroll,Operation_ClickWait,"无障碍","vertical");
+//		excute(Object_TextScroll,Operation_Exists,"颜色反转","vertical");
+//		SettingCommon.take_temp_pic(getUiDevice(), "2");
+	    check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "3");//验证开关
+//		SettingCommon.check_pic("1", "2", 0.8);//验证颜色不同
+		//清场
+//		SettingCommon.delete_pic("1", "2");
+		excute(Object_TextScroll,Operation_ClickWait,"颜色反转","vertical");
+	}
+	/**
+	 * 色彩校正
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_357() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"无障碍","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"色彩校正","vertical");
+		check(Object_Text,Operation_checkExist,"校正模式");
+		check(Object_Text,Operation_checkExist,"关闭");
+	}
+	/**
+	 * 打印
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_358() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"打印","vertical");
+		check(Object_Text,Operation_checkExist,"打印");
+	}
+	/**
+	 * 关于手机
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_359() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
+		check(Object_Text,Operation_checkExist,"系统软件更新");
+	}
+	/**
+	 * 系统软件更新
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_360() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
+		excute(Object_Text,Operation_ClickWait,"系统软件更新");
+		check(Object_Text,Operation_checkExist,"系统软件更新");
+	}
+	/**
+	 * 状态信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_361() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll,Operation_ClickWait,"关于手机","vertical");
+		excute(Object_Text,Operation_ClickWait,"状态信息");
+		check(Object_Text,Operation_checkExist,"电池状态");
+	}
+	/**
+	 * 状态信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_362() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "状态信息");
+		excute(Object_Text, Operation_ClickWait, "SIM卡状态");
+		check(Object_TextScroll, Operation_checkExist, "网络", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "信号强度", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "移动网络类型", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "服务状态", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "漫游", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "移动网络状态", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "IMEI", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "IMEI SV", "vertical");
+	}
+	/**
+	 * 点击IMEI
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_363() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "状态信息");
+		excute(Object_Text, Operation_ClickWait, "SIM卡状态");
+		excute(Object_TextScroll, Operation_ClickWait, "IMEI", "vertical");
+		check(Object_TextScroll, Operation_checkExist, "IMEI", "vertical");
+	}
+	/**
+	 * 法律信息
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_364() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "法律信息");
+		check(Object_Text, Operation_checkExist, "开放源代码许可");
+	}
+	/**
+	 * 开放源代码许可
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_365() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "法律信息");
+		excute(Object_Text, Operation_ClickWait, "开放源代码许可");
+		check(Object_Text, Operation_checkExist, "开放源代码许可");
+	}
+	/**
+	 * 系统 WebView 许可
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_366() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_TextScroll, Operation_ClickWait, "关于手机", "vertical");
+		excute(Object_Text, Operation_ClickWait, "法律信息");
+		excute(Object_Text, Operation_ClickWait, "系统 WebView 许可");
+		check(Object_Text, Operation_checkExist, "系统 WebView 许可");
+	}
+
 
 }
