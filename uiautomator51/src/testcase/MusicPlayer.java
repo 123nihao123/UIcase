@@ -41,10 +41,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_001() throws UiObjectNotFoundException, RemoteException 
+	public static void test_001() 
 	{
 		//主体
 		check(Object_Text,Operation_checkExist,"音乐");
@@ -52,10 +50,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -存在音乐人，专辑，歌曲，播放列表4个tab
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_002() throws UiObjectNotFoundException, RemoteException 
+	public static void test_002() 
 	{
 		//主体
 		check(Object_ResIdText,Operation_checkExist,"com.android.music:id/artisttab","音乐人");
@@ -66,10 +62,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面-存在搜索图标
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_003() throws UiObjectNotFoundException, RemoteException 
+	public static void test_003()
 	{
 		//主体
 		check(Object_ResIdDesc,Operation_checkExist,"com.android.music:id/search","搜索");
@@ -77,10 +71,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面--菜单-“派对随机播放”“全部随机播放”“退出”功能
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_004() throws UiObjectNotFoundException, RemoteException 
+	public static void test_004() 
 	{
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -90,11 +82,21 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	
 	/**
-	 * 进入音乐界面 -专辑-点击一个专辑展开
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
+	 * 进入音乐界面 -专辑-按专辑排序
 	 */
-	public static void test_032() throws UiObjectNotFoundException, RemoteException 
+	public static void test_031() 
+	{
+		//主体
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.music:id/line1","0");
+		check(Object_TextScroll,Operation_checkExist,"Test");
+		check(Object_TextScroll,Operation_checkExist,"Test1");
+	}
+	
+	/**
+	 * 进入音乐界面 -专辑-点击一个专辑展开
+	 */
+	public static void test_032() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -105,10 +107,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-长按一个专辑，出现“播放”“添加到播放列表””删除”等字样
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_033() throws UiObjectNotFoundException, RemoteException 
+	public static void test_033() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -120,10 +120,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-长按一个专辑，点击播放跳转到播放界面
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_034() throws UiObjectNotFoundException, RemoteException 
+	public static void test_034() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -136,10 +134,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-长按一个专辑，点击添加到播放列表
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_035() throws UiObjectNotFoundException, RemoteException 
+	public static void test_035()
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -150,10 +146,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-长按一个专辑，点击删除，取消删除
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_036() throws UiObjectNotFoundException, RemoteException 
+	public static void test_036() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -166,10 +160,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-长按一个专辑，点击删除该专辑
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_037() throws UiObjectNotFoundException, RemoteException 
+	public static void test_037() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -182,10 +174,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 		
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑，长按一首歌，出现此功能对话框上有“播放”“添加播放列表”“删除”“搜索”
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_039() throws UiObjectNotFoundException, RemoteException 
+	public static void test_039() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -198,10 +188,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑，长按一首歌，点击播放
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_040() throws UiObjectNotFoundException, RemoteException 
+	public static void test_040()
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -215,10 +203,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑，长按一首歌，点击添加到播放列表
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_041() throws UiObjectNotFoundException, RemoteException 
+	public static void test_041() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -230,10 +216,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑，长按一首歌，点击删除
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_042() throws UiObjectNotFoundException, RemoteException 
+	public static void test_042()  
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -245,10 +229,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑，长按一首歌，点击删除，取消删除
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_043() throws UiObjectNotFoundException, RemoteException 
+	public static void test_043()
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -258,14 +240,12 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"删除");
 		excute(Object_Text,Operation_ClickWait,"取消");
 		check(Object_Text,Operation_checkExist,music);
-	}
+	}	
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑，长按一首歌，点击删除该歌曲
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_045() throws UiObjectNotFoundException, RemoteException 
+	public static void test_045()
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -279,10 +259,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑，长按一首歌，点击搜索
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_046() throws UiObjectNotFoundException, RemoteException 
+	public static void test_046() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -294,33 +272,32 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑-菜单-派对随机播放
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_047() throws UiObjectNotFoundException, RemoteException 
+	public static void test_047()
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.music:id/line1","0");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		 if((Boolean)excute(Object_Text, Operation_Exists, "派对随机播放"))
-		  {
-		   excute(Object_Text, Operation_ClickWait, "派对随机播放");
-		   excute(Object_Description,Operation_ClickWait,"更多选项");
-		  }
-		  check(Object_Text, Operation_checkExist, "关闭派对随机播放");
-		  //清场
-		   excute(Object_Text, Operation_ClickWait, "关闭派对随机播放");
-		   excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/nowplaying");
-		   excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+		if((Boolean)excute(Object_Text, Operation_Exists, "派对随机播放"))
+		{
+			excute(Object_Text, Operation_ClickWait, "派对随机播放");
+			excute(Object_Device, Operation_PressMenu);
+			check(Object_Text, Operation_checkExist, "关闭派对随机播放");
+			//清场
+			excute(Object_Text, Operation_ClickWait, "关闭派对随机播放");
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/nowplaying");
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+		}else{
+			check(Object_Text, Operation_checkExist, "关闭派对随机播放");
+			excute(Object_Text, Operation_ClickWait, "关闭派对随机播放");
+		}
 	}
 	
 	/**
 	 * 进入音乐界面 -专辑-点击一个专辑-菜单-全部随机播放
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_048() throws UiObjectNotFoundException, RemoteException 
+	public static void test_048() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -335,10 +312,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -专辑-退出音乐播放器
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_049() throws UiObjectNotFoundException, RemoteException 
+	public static void test_049() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -348,11 +323,19 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	
 	/**
-	 * 进入音乐界面 -歌曲-选择一首歌曲播放
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
+	 * 进入音乐界面 -歌曲
 	 */
-	public static void test_051() throws UiObjectNotFoundException, RemoteException 
+	public static void test_050()
+	{
+		//主体
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
+		excute(Object_TextScroll,Operation_checkExist,"test","vertical");
+		excute(Object_TextScroll,Operation_checkExist,"test1","vertical");
+	}
+	/**
+	 * 进入音乐界面 -歌曲-选择一首歌曲播放
+	 */
+	public static void test_051() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
@@ -364,10 +347,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -歌曲-选择长按一首歌曲，对话框上有“播放”“添加到播放列表”“用作手机铃声”“删除”“搜索”等功能项
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_052() throws UiObjectNotFoundException, RemoteException 
+	public static void test_052() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
@@ -379,10 +360,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -歌曲-选择长按一首歌曲，点击“播放”
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_053() throws UiObjectNotFoundException, RemoteException 
+	public static void test_053()
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
@@ -396,10 +375,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -歌曲-选择长按一首歌曲，点击“添加到播放列表”
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_054() throws UiObjectNotFoundException, RemoteException 
+	public static void test_054() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
@@ -411,10 +388,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -歌曲-选择长按一首歌曲，点击删除
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_055() throws UiObjectNotFoundException, RemoteException 
+	public static void test_055() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
@@ -425,10 +400,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -歌曲-选择长按一首歌曲，点击删除后取消
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_056() throws UiObjectNotFoundException, RemoteException 
+	public static void test_056() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
@@ -442,10 +415,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -歌曲-长按一首歌，点击删除该歌曲
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_058() throws UiObjectNotFoundException, RemoteException 
+	public static void test_058() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
@@ -458,16 +429,75 @@ public class MusicPlayer extends UiAutomatorTestCase
 	
 	/**
 	 * 进入音乐界面 -歌曲-长按一首歌，点击搜索
-	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException
 	 */
-	public static void test_059() throws UiObjectNotFoundException, RemoteException 
+	public static void test_059() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
 		excute(Object_ResIdInstance,Operation_LongClick,"com.android.music:id/line1","0");
 		excute(Object_Text,Operation_ClickWait,"搜索");
 		check(Object_ResourceId,Operation_TextContainsTrue,"android:id/title","使用以下工具");
+	}
+	
+	/**
+	 * 进入音乐界面 -歌曲-长按一首歌，用作手机铃声
+	 */
+	public static void test_060()
+	{
+		//主体
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.android.music:id/line1","0");
+		excute(Object_Text,Operation_ClickWait,"用作手机铃声");
+		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","用作铃声");
+	}
+	
+	/**
+	 * 进入音乐界面 -歌曲-随机派对播放
+	 */
+	public static void test_062() 
+	{
+		//主体
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
+		excute(Object_Device, Operation_PressMenu);
+		if((Boolean)excute(Object_Text, Operation_Exists, "派对随机播放"))
+		{
+			excute(Object_Text, Operation_ClickWait, "派对随机播放");
+			excute(Object_Device, Operation_PressMenu);
+			check(Object_Text, Operation_checkExist, "关闭派对随机播放");
+			//清场
+			excute(Object_Text, Operation_ClickWait, "关闭派对随机播放");
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/nowplaying");
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+		}else{
+			check(Object_Text, Operation_checkExist, "关闭派对随机播放");
+			excute(Object_Text, Operation_ClickWait, "关闭派对随机播放");
+		}
+	}
+	
+	/**
+	 * 进入音乐界面 -歌曲-菜单-全部随机播放
+	 */
+	public static void test_064() 
+	{
+		//主体
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text, Operation_ClickWait, "全部随机播放");
+		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/pause");
+	    //清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	
+	/**
+	 * 进入音乐界面 -歌曲-退出音乐播放器
+	 */
+	public static void test_065()
+	{
+		//主体
+		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"退出");
+		check(Object_Text,Operation_checkNoExist,"专辑");
 	}
 	
 	/**

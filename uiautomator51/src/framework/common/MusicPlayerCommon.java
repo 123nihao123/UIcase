@@ -48,7 +48,6 @@ public class MusicPlayerCommon
 		{
 			excute(Object_ResIdInstance, Operation_LongClick, "com.android.music:id/icon", "1");
 			excute(Object_Text, Operation_ClickWait, "删除");
-			excute(Object_Text, Operation_ClickWait, "确定");
 		}
 		
 	}
