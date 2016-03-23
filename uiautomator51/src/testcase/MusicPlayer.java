@@ -25,8 +25,10 @@ import framework.common.MusicPlayerCommon;
 public class MusicPlayer extends UiAutomatorTestCase
 {
 	@Override
-	protected void setUp() throws UiObjectNotFoundException, RemoteException 
-    {	
+
+	protected void setUp() throws UiObjectNotFoundException, RemoteException
+    {			
+
 		System.out.println("Enter the setUp!!!");	
 		excute(Object_Device, Operation_WakeUp);
 		DeviceCommon.unLock();	
@@ -80,7 +82,71 @@ public class MusicPlayer extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"全部随机播放");
 		check(Object_Text,Operation_checkExist,"退出");
 	}
+	/**
+	 * 点击页面上搜索按钮,进入搜索界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_006()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.music:id/search");
+		check(Object_ResIdText,Operation_checkExist,"android:id/search_src_text","   音乐人，歌曲或者专辑");
+	}
 	
+	/**
+	 * 搜索框输入内容并点击进入
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_007() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.music:id/search");
+		excute(Object_ResourceId,Operation_SetText,"android:id/search_src_text","m");
+		
+			
+	}
+	
+	/**
+	 * 删除搜索内容
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_008() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.music:id/search");
+		excute(Object_ResourceId,Operation_SetText,"android:id/search_src_text","m");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/search_close_btn");
+		check(Object_Text,Operation_checkNoExist,"m");
+	}
+	
+	/**
+	 * 进入音乐人界面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_009() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.music:id/artisttab");
+		check(Object_Text,Operation_checkExist,"未知音乐人");
+	}
+	
+	/**
+	 * 点击进入一个音乐人分类
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_010() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.music:id/artisttab");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		check(Object_ResourceId,Operation_checkExist, "com.android.music:id/icon");
+
+	}
 	/**
 	 * 进入音乐界面 -专辑-按专辑排序
 	 */
