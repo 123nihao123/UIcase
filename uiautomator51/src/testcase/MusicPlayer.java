@@ -88,7 +88,6 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.music:id/line1","0");
 		check(Object_TextScroll,Operation_checkExist,"Test");
 		check(Object_TextScroll,Operation_checkExist,"Test1");
 	}
@@ -253,7 +252,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.music:id/line1","0");
 		excute(Object_ResIdInstance,Operation_LongClick,"com.android.music:id/line1","0");
 		excute(Object_Text,Operation_ClickWait,"删除");
-		excute(Object_Text,Operation_ClickWait,"去掉");
+		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkNoExist,music);
 	}
 	
