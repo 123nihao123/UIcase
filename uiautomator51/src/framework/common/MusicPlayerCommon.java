@@ -6,6 +6,14 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+//import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
+
+//import javax.imageio.ImageIO;
+
+import android.graphics.Rect;
+
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiSelector;
@@ -51,5 +59,17 @@ public class MusicPlayerCommon
 		}
 		
 	}
+//	public static void screenshort(String Name) {
+//		try {
+//		//从特定文件载入
+//		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.music:id/shuffle");
+//		int x = ModArea.right-ModArea.left;
+//		int y = ModArea.bottom-ModArea.top;
+//		BufferedImage bi = ImageIO.read(new File("/sdcard/Temp/"+Name+".png"));
+//		bi.getSubimage(ModArea.left, ModArea.top, x, y);//前两个值是坐标位置X、Y，后两个是长和宽
+//		} catch (IOException e) {
+//		e.printStackTrace();
+//		}
+//		}
 	
 }

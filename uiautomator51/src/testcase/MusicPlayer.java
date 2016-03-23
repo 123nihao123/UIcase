@@ -776,7 +776,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
-		check(Object_ResourceId, Operation_ClickWait, "com.android.music:id/next");//上一首
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/next");//上一首
 		check(Object_Text, Operation_checkNoExist, trackname);
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
@@ -798,12 +798,17 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 随机播放
 	 */
-	public  void test_087() 
+	public void test_087() 
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+//		SettingCommon.take_temp_pic(getUiDevice(), "1");
+//		MusicPlayerCommon.screenshort("1");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/shuffle");
+//		SettingCommon.take_temp_pic(getUiDevice(), "2");
+//		MusicPlayerCommon.screenshort("2");
+//		SettingCommon.check_pic("1", "2", 0.8);
 		//check(Object_ResourceId, Operation_CheckedTrue, "com.android.music:id/shuffle");
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
@@ -811,7 +816,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 关闭随机播放
 	 */
-	public  void test_088() 
+	public void test_088() 
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
@@ -824,7 +829,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 重复全部播放
 	 */
-	public  void test_089() 
+	public void test_089() 
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
@@ -837,7 +842,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 搜索
 	 */
-	public  void test_091() 
+	public void test_091() 
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
@@ -851,7 +856,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 播放界面点击菜单
 	 */
-	public  void test_092() 
+	public void test_092() 
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
@@ -870,17 +875,142 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 播放界面点击音乐库
 	 */
-	public  void test_093() 
+	public void test_093() 
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
-		excute(Object_Description, Operation_ClickWait, "音乐库");
-		check(Object_Text, Operation_checkNoExist, "com.android.music:id/pause");
+		excute(Object_Text, Operation_ClickWait, "音乐库");
+		check(Object_ResourceId, Operation_checkNoExist, "com.android.music:id/pause");
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/nowplaying");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 	}
+	/**
+	 * 播放界面点击派对随机播放
+	 */
+	public void test_094() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "派对随机播放");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_Text, Operation_checkExist, "关闭派对随机播放");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "关闭派对随机播放");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	/**
+	 * 播放界面点击添加到播放列表
+	 */
+	public void test_095() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
+		check(Object_Text, Operation_checkExist, "新建播放列表");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	/**
+	 * 播放界面点击删除
+	 */
+	public void test_096() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "删除");
+		check(Object_ResIdContainsText, Operation_checkExist, "android:id/message", "要从设备中永久删除");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	/**
+	 * 播放界面点击取消删除
+	 */
+	public void test_097() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "删除");
+		excute(Object_Text, Operation_ClickWait, "取消");
+		check(Object_Text, Operation_checkExist, trackname);
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	/**
+	 * 播放界面点击确定删除
+	 */
+	public void test_198() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "删除");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkNoExist, trackname);
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	/**
+	 * 播放界面点击均衡器
+	 */
+	public void test_099() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "均衡器");
+		check(Object_Text, Operation_checkExist, "平调");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	/**
+	 * 播放界面点击用作铃声
+	 */
+	public void test_100() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "用作铃声");
+		check(Object_ResIdContainsText, Operation_checkExist, "android:id/text1", "手机铃声");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+	}
+	/**
+	 * 播放界面点击退出
+	 */
+	public void test_101() 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "歌曲");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "退出");
+		check(Object_ResourceId, Operation_checkNoExist, "com.android.music:id/pause");
+	}
+	
 
 }
