@@ -324,7 +324,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "音乐人");
 		String name =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","0");
 		excute(Object_Text, Operation_ClickWait, name);
-		String name2 =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/icon","0");
+		String name2 =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","1");
 		excute(Object_Text, Operation_LongClick, name2);
 		excute(Object_Text, Operation_ClickWait, "删除");
 		excute(Object_Text, Operation_ClickWait, "确定");
