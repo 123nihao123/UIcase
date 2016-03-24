@@ -147,6 +147,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		check(Object_ResourceId,Operation_checkExist, "com.android.music:id/icon");
 
 	}
+	
 	/**
 	 * 进入音乐界面 -专辑-按专辑排序
 	 */
@@ -154,8 +155,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
-		check(Object_TextScroll,Operation_checkExist,"Test");
-		check(Object_TextScroll,Operation_checkExist,"Test1");
+		check(Object_TextScroll,Operation_checkExist,"Test","vertical");
+		check(Object_TextScroll,Operation_checkExist,"Test1","vertical");
 	}
 	
 	/**
@@ -319,7 +320,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_ResIdInstance,Operation_LongClick,"com.android.music:id/line1","0");
 		excute(Object_Text,Operation_ClickWait,"删除");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_Text,Operation_checkNoExist,music);
+		excute(Object_Device,Operation_PressBack);
+		check(Object_TextScroll,Operation_checkNoExist,music,"vertical");
 	}
 	
 	/**
