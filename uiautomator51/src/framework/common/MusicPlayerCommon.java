@@ -91,7 +91,7 @@ public class MusicPlayerCommon
 					break;
 			}
 			catch (Exception e) {
-		        //e.printStackTrace();
+				//e.printStackTrace();
 				System.out.println("meet with exception but do nothing");
 			}
 		}
