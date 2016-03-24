@@ -654,9 +654,18 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
-		excute(Object_TextScroll,Operation_checkExist,"test","vertical");
-		excute(Object_TextScroll,Operation_checkExist,"test1","vertical");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"test"))
+		{
+			check(Object_Text,Operation_checkExist,"test");
+			check(Object_Text,Operation_checkExist,"test1");
+		}
+		else
+		{
+			check(Object_TextScroll,Operation_checkExist,"test","vertical");
+			check(Object_TextScroll,Operation_checkExist,"test1","vertical");
+		}
 	}
+	
 	/**
 	 * 进入音乐界面 -歌曲-选择一首歌曲播放
 	 */
