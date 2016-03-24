@@ -13,6 +13,7 @@ import android.os.RemoteException;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import framework.common.CallCommon;
 import framework.common.CallLogCommon;
@@ -1067,15 +1068,22 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 暂停播放按钮
 	 */
-	public static void test_083() 
+	public static void test_083() throws UiObjectNotFoundException
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		//donn't known why Clicking "pause" button action is delayed
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
-//		String starttime = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
-//		String stoptime = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
-//		Assert.assertEquals(starttime, stoptime);
+
+		String starttime = MusicPlayerCommon.getTimeInPause();
+		System.out.println("starttime: "+starttime);
+		Assert.assertTrue("Get time fail in pause state",starttime!="");
+		Wait(5000);
+		String stoptime = MusicPlayerCommon.getTimeInPause();
+		System.out.println("stoptime: "+stoptime);
+		Assert.assertTrue("Get time fail in pause state",stoptime!="");
+		Assert.assertEquals(starttime, stoptime);
 		
 	}
 	/**

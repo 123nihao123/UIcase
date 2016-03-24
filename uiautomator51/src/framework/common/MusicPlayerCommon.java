@@ -60,6 +60,7 @@ public class MusicPlayerCommon
 		}
 		
 	}
+
 //	public static void screenshort(String Name) {
 //		try {
 //		//从特定文件载入
@@ -72,5 +73,34 @@ public class MusicPlayerCommon
 //		e.printStackTrace();
 //		}
 //		}
-	
+
+	/**
+	 * 获得暂停状态播放的时间
+	 */
+	public static String getTimeInPause()
+	{
+		UiObject uiObject=null;
+		String curTime="";
+
+		int count = 600;
+		while( count-->0 )
+		{
+			try{
+					uiObject = (UiObject ) excute(Object_ResourceId,Operate_ReturnObject,"com.android.music:id/currenttime");
+					curTime = uiObject.getText();
+					break;
+			}
+			catch (Exception e) {
+		        //e.printStackTrace();
+				System.out.println("meet with exception but do nothing");
+			}
+		}
+		//System.out.println("count"+count);
+		/*System.out.println("Start wait");
+		uiObject.waitForExists(50000);
+		curTime = uiObject.getText();*/
+		return curTime;
+		//System.out.println("curTime"+curTime);
+	}
+
 }
