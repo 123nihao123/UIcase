@@ -149,6 +149,263 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	
 	/**
+	 * 长按音乐人选项
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_011() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
+		check(Object_Text, Operation_checkExist, "播放");
+		check(Object_Text, Operation_checkExist, "添加到播放列表");
+		check(Object_Text, Operation_checkExist, "删除");
+	}
+	
+	/**
+	 * 选择音乐人播放歌曲
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_012() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
+		excute(Object_Text, Operation_ClickWait, "播放");
+		String time1 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
+		Wait(1000);
+		String time2 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
+		boolean boo=!(time1.equals(time2));
+		Assert.assertEquals(true, boo);
+		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/next");
+		
+	}
+	/**
+	 * 选择音乐人添加到播放列表
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_013() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
+		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle","添加到播放列表");
+	
+	}
+	/**
+	 * 删除操作被取消
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_014() throws UiObjectNotFoundException, RemoteException
+	{	
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		String name =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","0");
+		excute(Object_Text, Operation_LongClick, name);
+		excute(Object_Text, Operation_ClickWait, "删除");
+		excute(Object_Text, Operation_ClickWait, "取消");
+		check(Object_Text, Operation_checkExist, name);
+		
+	}
+	/**
+	 * 删除音乐人
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_215() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		String name =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","0");
+		excute(Object_Text, Operation_LongClick, name);
+		excute(Object_Text, Operation_ClickWait, "删除");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkNoExist, name);
+	
+	}
+	/**
+	 * 选择音乐人里的某一歌曲长按
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_017() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
+		check(Object_Text, Operation_checkExist, "播放");
+		check(Object_Text, Operation_checkExist, "添加到播放列表");
+		check(Object_Text, Operation_checkExist, "删除");
+		check(Object_Text, Operation_checkExist, "搜索");
+	}
+	
+	/**
+	 * 选择音乐人里的某一歌曲播放
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_018() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
+		excute(Object_Text, Operation_ClickWait, "播放");
+		String time1 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
+		Wait(1000);
+		String time2 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
+		boolean boo=!(time1.equals(time2));
+		Assert.assertEquals(true, boo);
+		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/next");
+		
+		
+	}
+	
+	/**
+	 * 选择音乐人里的某一歌曲添加到播放列表
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_019() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
+		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
+		check(Object_Text, Operation_checkExist, "添加到播放列表");
+	}	
+	/**
+	 * 选择音乐人里的某一歌曲选择删除弹出对话框
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_021() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
+		excute(Object_Text, Operation_ClickWait, "删除");
+		check(Object_Text, Operation_checkExist, "确定");
+	}	
+	
+	/**\
+	 *取消删除音乐人里的歌曲 
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_022() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
+		excute(Object_Text, Operation_ClickWait, "删除");
+		check(Object_Text, Operation_checkExist, "确定");
+		excute(Object_Text, Operation_ClickWait, "取消");
+		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/icon");
+	}
+	/**
+	 * 删除音乐人里的某一歌曲
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_224() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		String name =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","0");
+		excute(Object_Text, Operation_ClickWait, name);
+		String name2 =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/icon","0");
+		excute(Object_Text, Operation_LongClick, name2);
+		excute(Object_Text, Operation_ClickWait, "删除");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkNoExist,name2 );
+	}
+	/**
+	 * 选择音乐人里的歌曲点击搜索
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_025() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
+		excute(Object_Text, Operation_ClickWait, "搜索");
+		check(Object_Text, Operation_checkExist, "音乐");
+		check(Object_Text, Operation_checkExist, "浏览器");
+	}
+	/**
+	 * 验证菜单项
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_026() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_Text, Operation_checkExist, "派对随机播放");
+		check(Object_Text, Operation_checkExist, "全部随机播放");
+		check(Object_Text, Operation_checkExist, "退出");
+	}
+	/**
+	 * 选择派对随机播放
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_028() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "派对随机播放");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_Text, Operation_checkExist, "关闭派对随机播放");
+	}
+	/**
+	 * 选择全部随机播放
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_029() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "全部随机播放");
+		
+	}
+	/**
+	 * 选择退出
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_030() throws UiObjectNotFoundException, RemoteException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "音乐人");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "退出");
+		check(Object_ResIdText, Operation_checkNoExist, "com.android.music:id/artisttab","音乐人");
+	}
+	
+	
+	
+	/**
 	 * 进入音乐界面 -专辑-按专辑排序
 	 */
 	public static void test_031() 
