@@ -3514,8 +3514,9 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
 		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
-		excute(Object_Text, Operation_ClickWait, "图库");
-		check(Object_Text, Operation_checkExist, "图库");
+		String appname = (String)excute(Object_ResIdInstance, Operation_GetText, "android:id/title", "0");
+		excute(Object_Text, Operation_ClickWait, appname);
+		check(Object_Text, Operation_checkExist, "允许在其他应用的上层显示");
 	}
 	/**
 	 *在其他应用的上层显示点击菜单键
