@@ -639,20 +639,11 @@ public class CallLog extends UiAutomatorTestCase
 	  */
 	 public static void test_045() throws UiObjectNotFoundException, RemoteException 
 	 {
-	  //前提
-	  DeviceCommon.enterApp(Devices_Desc_Call);
-	  Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
-	  int WideArea = ModArea.width();
-	  int x = ModArea.centerX();
-	  int y = ModArea.centerY();
-	  //主体
-	  excute(Object_Description,Operation_ClickWait,"更多选项");
-	  excute(Object_Text,Operation_ClickWait,"通话记录");
 	  excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/primary_action_button");
 	  excute(Object_ResourceId, Operation_WaitForExists, "android:id/select_dialog_listview","10000");
 	  excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
 	  Wait(10000);
-	  UiDevice.getInstance().click(x, y);
+	  CallCommon.endCall();
 	  
 	 }
 	
@@ -666,20 +657,11 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_046() throws UiObjectNotFoundException, RemoteException 
 	{	
 		//前提
-		DeviceCommon.enterApp(Devices_Desc_Call);
-		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
-		int WideArea = ModArea.width();
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"通话记录");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/primary_action_button");
 		excute(Object_ResourceId, Operation_WaitForExists, "android:id/select_dialog_listview","10000");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","1");
 		Wait(10000);
-		UiDevice.getInstance().click(x, y);
-		
+		CallCommon.endCall();
 	}
 	
 	/**
@@ -755,22 +737,13 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_052() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
-		DeviceCommon.enterApp(Devices_Desc_Call);
-		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
-		int WideArea = ModArea.width();
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"通话记录");
-		excute(Object_Text,Operation_ClickWait,"全部");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_back_button");
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
-		UiDevice.getInstance().click(x, y);
+		CallCommon.endCall();
 	}
 	/**
 	 * 查看通话记录详情拨打IP电话
@@ -781,10 +754,6 @@ public class CallLog extends UiAutomatorTestCase
 	{
 		//前提
 		DeviceCommon.enterApp(Devices_Desc_Call);
-		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
-		int WideArea = ModArea.width();
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
 		CallLogCommon.addIPCall();
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
@@ -799,7 +768,7 @@ public class CallLog extends UiAutomatorTestCase
 		if((Boolean) excute(Object_ResourceId,Operation_Exists, "com.android.dialer:id/label"))
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
-		UiDevice.getInstance().click(x, y);
+		CallCommon.endCall();
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		CallLogCommon.removeIPCall();

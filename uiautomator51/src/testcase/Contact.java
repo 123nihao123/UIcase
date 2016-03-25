@@ -110,7 +110,7 @@ public class Contact extends UiAutomatorTestCase
 	{
 		//前提
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
-		SettingCommon.endCall();
+		CallCommon.dailandendCall();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		//主体
 		excute(Object_Text,Operation_ClickWait,"收藏");
@@ -129,7 +129,7 @@ public class Contact extends UiAutomatorTestCase
 	{
 		//前提
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
-		SettingCommon.endCall();
+		CallCommon.dailandendCall();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		//主体
 		excute(Object_Text,Operation_ClickWait,"收藏");
@@ -822,12 +822,7 @@ public class Contact extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.addNameTelMail("本机","zhanxun01","10086","zhanxun@spreadtrum.com");
 		excute(Object_Device, Operation_PressBack);
-		DeviceCommon.enterApp(Devices_Desc_Call);
-		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
-		int WideArea = ModArea.width();
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		
 		//主体
 		excute(Object_Text,Operation_ClickWait,"zhanxun01");
 		//拨号
@@ -835,7 +830,7 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
-		UiDevice.getInstance().click(x, y);
+		CallCommon.endCall();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
@@ -861,10 +856,6 @@ public class Contact extends UiAutomatorTestCase
 			excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","1");
 		}
 		DeviceCommon.enterApp(Devices_Desc_Call);
-		Rect ModArea = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.dialer:id/floating_action_button");
-		int WideArea = ModArea.width();
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"通话记录");
 		CallLogCommon.deleteAllLog("全部");
@@ -876,7 +867,7 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
 		Wait(10000);
-		UiDevice.getInstance().click(x, y);
+		CallCommon.endCall();
 		Wait(1000);
 		check(Object_Text,Operation_checkExist,"最近");
 		//清场

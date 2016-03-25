@@ -4365,7 +4365,7 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
-		excute(Object_Text,Operation_ClickWait,"设备管理器");
+		excute(Object_TextScroll,Operation_ClickWait,"设备管理器","vertical");
 		check(Object_Text,Operation_ClickWait,"设备管理器");
 	}
 	

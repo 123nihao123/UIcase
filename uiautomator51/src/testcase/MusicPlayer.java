@@ -9,6 +9,7 @@ import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 import junit.framework.Assert;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.RemoteException;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
@@ -1152,12 +1153,10 @@ public class MusicPlayer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
-//		SettingCommon.take_temp_pic(getUiDevice(), "1");
-//		MusicPlayerCommon.screenshort("1");
+		
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/shuffle");
-//		SettingCommon.take_temp_pic(getUiDevice(), "2");
-//		MusicPlayerCommon.screenshort("2");
-//		SettingCommon.check_pic("1", "2", 0.8);
+		
+//		Assert.assertFalse(background.equals(background1));
 		//check(Object_ResourceId, Operation_CheckedTrue, "com.android.music:id/shuffle");
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
