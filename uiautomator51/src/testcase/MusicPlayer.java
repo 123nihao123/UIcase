@@ -485,7 +485,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	/**
 	 * 进入音乐界面 -专辑-长按一个专辑，点击删除该专辑
 	 */
-	public static void test_037() 
+	public static void test_137() 
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
@@ -654,17 +654,25 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/songtab","歌曲");
-		if ((Boolean)excute(Object_Text,Operation_Exists,"test"))
+		if ((Boolean)excute(Object_Text,Operation_Exists,"music"))
 		{
-			check(Object_Text,Operation_checkExist,"test");
-			check(Object_Text,Operation_checkExist,"test1");
+			check(Object_Text,Operation_checkExist,"music");
 		}
 		else
 		{
-			check(Object_TextScroll,Operation_checkExist,"test","vertical");
-			check(Object_TextScroll,Operation_checkExist,"test1","vertical");
+			check(Object_TextScroll,Operation_checkExist,"music","vertical");
+		}
+		
+		if ((Boolean)excute(Object_Text,Operation_Exists,"music1"))
+		{
+			check(Object_Text,Operation_checkExist,"music1");
+		}
+		else
+		{
+			check(Object_TextScroll,Operation_checkExist,"music1","vertical");
 		}
 	}
+	
 	
 	/**
 	 * 进入音乐界面 -歌曲-选择一首歌曲播放
