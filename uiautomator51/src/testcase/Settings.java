@@ -897,16 +897,8 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		excute(Object_Text,Operation_ClickWait,"主卡选择");
-		excute(Object_Text,Operation_ClickWait,"SIM1");
-		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
-		  {
-		   excute(Object_Text,Operation_ClickWait,"确定");
-		  }
 		
-		while(!(Boolean)excute(Object_ResIdInstance,Operation_IsEnabled,"android:id/summary","5"))
-		{
-			Wait(1000);
-		}
+		SettingCommon.selectPrimaryCard("SIM1");
 		
 		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM1");
 	}		
@@ -921,19 +913,13 @@ public class Settings extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_Text,Operation_ClickWait,"主卡选择");
-		excute(Object_Text,Operation_ClickWait,"SIM2");
-		if((Boolean)excute(Object_Text,Operation_Exists,"注意"))
-		{
-		   excute(Object_Text,Operation_ClickWait,"确定");
-		}
+		SettingCommon.selectPrimaryCard("SIM2");
 		
-		while(!(Boolean)excute(Object_ResIdInstance,Operation_IsEnabled,"android:id/summary","5"))
-		{
-			Wait(1000);
-		}
+		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");
 		
-		check(Object_ResIdInstance,Operation_TextEqualTrue,"android:id/summary","5","SIM2");	
+		//清场
+		SettingCommon.selectPrimaryCard("SIM1");
+
 	}				
 		
 	/**
@@ -3528,8 +3514,9 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait,"应用", "vertical");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/advanced");
 		excute(Object_Text, Operation_ClickWait, "在其他应用的上层显示");
-		excute(Object_Text, Operation_ClickWait, "图库");
-		check(Object_Text, Operation_checkExist, "图库");
+		String appname = (String)excute(Object_ResIdInstance, Operation_GetText, "android:id/title", "0");
+		excute(Object_Text, Operation_ClickWait, appname);
+		check(Object_Text, Operation_checkExist, "允许在其他应用的上层显示");
 	}
 	/**
 	 *在其他应用的上层显示点击菜单键
@@ -5364,11 +5351,20 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
 		excute(Object_TextScroll, Operation_Exists, "说出密码", "vertical");
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "4")) 
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "说出密码");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 1)
+                break;
+            i++;
+        }
+        while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
 		{
 			excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
 		}
-		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "4");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
 		//清场
 		excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
 	}
