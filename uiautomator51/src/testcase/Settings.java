@@ -5351,11 +5351,20 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll, Operation_ClickWait, "无障碍", "vertical");
 		excute(Object_TextScroll, Operation_Exists, "说出密码", "vertical");
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "4")) 
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "说出密码");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 1)
+                break;
+            i++;
+        }
+        while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
 		{
 			excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
 		}
-		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", "4");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
 		//清场
 		excute(Object_TextScroll, Operation_ClickWait, "说出密码", "vertical");
 	}
