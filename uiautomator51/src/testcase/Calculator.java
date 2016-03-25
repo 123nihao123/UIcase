@@ -35,11 +35,17 @@ public class Calculator extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
+	/**
+	 *进入计算器
+	 */
 	public static void test_001()
 	{
 		check(Object_ResourceId,Operation_checkExist,"com.android.calculator2:id/pad_operator");
 		//通过判断页面的加减乘除的ID判断
 	}
+	/**
+	 *查看按键以及显示
+	 */
 	public static void test_002()
 	{
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_0");
@@ -55,6 +61,9 @@ public class Calculator extends UiAutomatorTestCase
 		String number = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("0123456789", number);
 	}
+	/**
+	 *判断1+1=2
+	 */
 	public static void test_003()
 	{
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -63,9 +72,10 @@ public class Calculator extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/eq");
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("2", result);
-		
-		
 	}
+	/**
+	 *判断1-1=0
+	 */
 	public static void test_004()
 	{
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -75,6 +85,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("0", result);
 	}
+	/**
+	 *判断1*1=1
+	 */
 	public static void test_008()
 	{
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -84,6 +97,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("1", result);
 	}
+	/**
+	 *判断1/1=1
+	 */
 	public static void test_005()
 	{
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -93,6 +109,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("1", result);
 	}
+	/**
+	 *输入1234，然后删除4
+	 */
 	public static void test_007()
 	{
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -103,6 +122,9 @@ public class Calculator extends UiAutomatorTestCase
 		String number = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("123", number);
 	}
+	/**
+	 *进入高级计算页面
+	 */
 	public static void test_009()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -112,7 +134,11 @@ public class Calculator extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"sin");
 		check(Object_Text,Operation_checkExist,"cos");
 		check(Object_Text,Operation_checkExist,"tan");
+		//需要通过滑动进入高级界面
 	}
+	/**
+	 *计算sin90  注：这个计算器算得是弧度！
+	 */
 	public static void test_010_1()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -126,11 +152,14 @@ public class Calculator extends UiAutomatorTestCase
 		excute(Object_Device, Operation_DiviceDrag, x1, y1,"480" , y1, "10");//480最大
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_9");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_0");
-		//excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/eq");
+		
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/eq");
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("0.8939966636", result);
 	}
+	/**
+	 *计算cos0 = 1
+	 */
 	public static void test_010_2()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -148,6 +177,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("1", result);
 	}
+	/**
+	 *计算tan 0 = 0
+	 */
 	public static void test_011()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -165,6 +197,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("0", result);
 	}
+	/**
+	 *计算ln1= 0
+	 */
 	public static void test_012()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -182,6 +217,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("0", result);
 	}
+	/**
+	 *计算log10=1
+	 */
 	public static void test_013()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -200,6 +238,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("1", result);
 	}
+	/**
+	 *计算π=3.1415926536
+	 */
 	public static void test_014()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -210,6 +251,9 @@ public class Calculator extends UiAutomatorTestCase
 		String number = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/result");
 		Assert.assertEquals("3.1415926536", number);
 	}
+	/**
+	 *计算e^2的结果
+	 */
 	public static void test_015()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -228,6 +272,9 @@ public class Calculator extends UiAutomatorTestCase
 		String result = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/formula");
 		Assert.assertEquals("7.3890560989", result);
 	}
+	/**
+	 *输入"（）"并判断
+	 */
 	public static void test_016()
 	{
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
