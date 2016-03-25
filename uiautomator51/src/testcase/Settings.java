@@ -1402,7 +1402,7 @@ public class Settings extends UiAutomatorTestCase
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
-	/*public static void test085() throws UiObjectNotFoundException, RemoteException 
+	public static void test_085() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
 		SettingCommon.EnterVPN();
@@ -1414,11 +1414,11 @@ public class Settings extends UiAutomatorTestCase
 		SettingCommon.SetVPN("VPN_Spreadtrum", "www.spreadtrum.com");
 		excute(Object_Text,Operation_WaitForExists,"VPN_Spreadtrum", "10000");
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/pref_right_button");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.settings:id/manage");
 		check(Object_Text, Operation_checkExist, "编辑VPN配置文件");
 		//清场
 		SettingCommon.RemovePIN();
-	}*/
+	}
 	/**
 	 * 进入移动网络界面，移动数据网络漫游默认关闭
 	 * @throws UiObjectNotFoundException
