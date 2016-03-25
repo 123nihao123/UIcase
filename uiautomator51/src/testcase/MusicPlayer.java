@@ -260,7 +260,6 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
 		excute(Object_Text, Operation_ClickWait, "播放");
 		String time1 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
-		Wait(1000);
 		String time2 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
 		Assert.assertFalse(time1.equals(time2));
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/next");
@@ -307,12 +306,12 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "音乐人");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
-		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1","0");
+		String name =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","1");
+		excute(Object_Text, Operation_LongClick, name);
 		excute(Object_Text, Operation_ClickWait, "删除");
-		check(Object_Text, Operation_checkExist, "确定");
 		excute(Object_Text, Operation_ClickWait, "取消");
-		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/icon");
+		check(Object_Text, Operation_checkExist, name);
 	}
 	/**
 	 * 删除音乐人里的某一条目
@@ -342,8 +341,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/icon");
 		excute(Object_Text, Operation_ClickWait, "搜索");
-		check(Object_Text, Operation_checkExist, "音乐");
-		check(Object_Text, Operation_checkExist, "浏览器");
+		check(Object_ResourceId,Operation_TextContainsTrue,"android:id/title","使用以下工具");
+		
 	}
 	/**
 	 * 验证菜单项
@@ -374,6 +373,10 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "派对随机播放");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		check(Object_Text, Operation_checkExist, "关闭派对随机播放");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "关闭派对随机播放");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/title");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 	}
 	/**
 	 * 选择全部随机播放
@@ -387,6 +390,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 		//excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "全部随机播放");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 		
 	}
 	/**
