@@ -176,11 +176,11 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
 		excute(Object_Text, Operation_ClickWait, "播放");
 		String time1 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
-		Wait(1000);
 		String time2 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
-		boolean boo=!(time1.equals(time2));
-		Assert.assertEquals(true, boo);
+		Assert.assertFalse(time1.equals(time2));
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/next");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 		
 	}
 	/**
@@ -261,10 +261,10 @@ public class MusicPlayer extends UiAutomatorTestCase
 		String time1 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
 		Wait(1000);
 		String time2 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
-		boolean boo=!(time1.equals(time2));
-		Assert.assertEquals(true, boo);
+		Assert.assertFalse(time1.equals(time2));
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/next");
-		
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 		
 	}
 	
@@ -298,7 +298,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}	
 	
 	/**\
-	 *取消删除音乐人里的歌曲 
+	 *取消删除音乐人里的条目
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -314,7 +314,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/icon");
 	}
 	/**
-	 * 删除音乐人里的某一歌曲
+	 * 删除音乐人里的某一条目
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -322,13 +322,12 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "音乐人");
-		String name =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","0");
-		excute(Object_Text, Operation_ClickWait, name);
-		String name2 =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","1");
-		excute(Object_Text, Operation_LongClick, name2);
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.music:id/line1","0");
+		String name =(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1","1");
+		excute(Object_Text, Operation_LongClick, name);
 		excute(Object_Text, Operation_ClickWait, "删除");
 		excute(Object_Text, Operation_ClickWait, "确定");
-		check(Object_Text, Operation_checkNoExist,name2 );
+		check(Object_Text, Operation_checkNoExist,name );
 	}
 	/**
 	 * 选择音乐人里的歌曲点击搜索
@@ -354,7 +353,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "音乐人");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		//excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		check(Object_Text, Operation_checkExist, "派对随机播放");
 		check(Object_Text, Operation_checkExist, "全部随机播放");
@@ -369,7 +368,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "音乐人");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		//excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "派对随机播放");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
@@ -384,7 +383,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "音乐人");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		//excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "全部随机播放");
 		
@@ -398,7 +397,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "音乐人");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
+		//excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "退出");
 		check(Object_ResIdText, Operation_checkNoExist, "com.android.music:id/artisttab","音乐人");
@@ -1095,11 +1094,11 @@ public class MusicPlayer extends UiAutomatorTestCase
 
 		String starttime = MusicPlayerCommon.getTimeInPause();
 		System.out.println("starttime: "+starttime);
-		Assert.assertTrue("Get time fail in pause state",starttime!="");
+		Assert.assertFalse("Get time fail in pause state",starttime.equals(""));
 		Wait(5000);
 		String stoptime = MusicPlayerCommon.getTimeInPause();
 		System.out.println("stoptime: "+stoptime);
-		Assert.assertTrue("Get time fail in pause state",stoptime!="");
+		Assert.assertFalse("Get time fail in pause state",starttime.equals(""));
 		Assert.assertEquals(starttime, stoptime);
 		
 	}
@@ -1113,7 +1112,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		String starttime = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
 		String stoptime = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
-		Assert.assertNotSame(starttime, stoptime);
+		Assert.assertFalse(starttime.equals(stoptime));
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 	}
