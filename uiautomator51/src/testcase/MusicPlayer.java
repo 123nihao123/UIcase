@@ -573,12 +573,11 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.music:id/albumtab","专辑");
-		String music = (String) excute(Object_ResIdInstance,Operation_GetText,"com.android.music:id/line1","0");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.music:id/line1","0");
+		String music = (String) excute(Object_ResIdInstance,Operation_GetText,"com.android.music:id/line1","0");
 		excute(Object_ResIdInstance,Operation_LongClick,"com.android.music:id/line1","0");
 		excute(Object_Text,Operation_ClickWait,"删除");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		excute(Object_Device,Operation_PressBack);
 		check(Object_Text,Operation_checkNoExist,music);
 	}
 	
