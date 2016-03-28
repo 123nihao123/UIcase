@@ -26,6 +26,8 @@ import framework.common.MusicPlayerCommon;
 
 public class MusicPlayer extends UiAutomatorTestCase
 {
+	static private String playlistName = "zhanxun";
+	
 	@Override
 
 	protected void setUp() throws UiObjectNotFoundException, RemoteException
@@ -392,6 +394,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "全部随机播放");
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/shuffle");
 		
 	}
 	/**
@@ -635,6 +638,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "全部随机播放");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/pause");
 	    //清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/shuffle");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 	}
 	
@@ -831,6 +835,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "全部随机播放");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/pause");
 	    //清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/shuffle");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 	}
 	
@@ -907,8 +912,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	public static void test_072() 
 	{
 		//前提
-		MusicPlayerCommon.addandlongclicknewplaylist();
+		MusicPlayerCommon.addnewplaylist(playlistName);
 		//主体
+		MusicPlayerCommon.longclickplaylist(playlistName);
 		check(Object_Text, Operation_checkExist, "播放");
 		check(Object_Text, Operation_checkExist, "重命名");
 		check(Object_Text, Operation_checkExist, "删除");
@@ -922,14 +928,15 @@ public class MusicPlayer extends UiAutomatorTestCase
 	public static void test_073() 
 	{
 		//前提
-		MusicPlayerCommon.addandlongclicknewplaylist();
+		MusicPlayerCommon.addnewplaylist(playlistName);
 		//主体
+		MusicPlayerCommon.longclickplaylist(playlistName);
 		excute(Object_Text, Operation_ClickWait, "播放");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/pause");
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 		excute(Object_Device, Operation_PressBack);
-		MusicPlayerCommon.deleteallplaylist();
+		MusicPlayerCommon.deleteplaylist(playlistName);
 	}
 	/**
 	 * 删除新建播放列表
@@ -937,7 +944,8 @@ public class MusicPlayer extends UiAutomatorTestCase
 	public static void test_074() 
 	{
 		//主体
-		MusicPlayerCommon.addandlongclicknewplaylist();
+		MusicPlayerCommon.addnewplaylist(playlistName);
+		MusicPlayerCommon.longclickplaylist(playlistName);
 		excute(Object_Text, Operation_ClickWait, "删除");
 		check(Object_Text, Operation_checkExist, "确定");
 		//清场
@@ -948,21 +956,14 @@ public class MusicPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_075() 
 	{
-		//前提
-		excute(Object_Text, Operation_ClickWait, "歌曲");
-		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
-		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
-		excute(Object_Text, Operation_ClickWait, "新建播放列表");
-		String playlistName = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/playlist");
-		excute(Object_Text, Operation_ClickWait, "保存");
 		//主体
-		excute(Object_Text, Operation_ClickWait, "播放列表");
-		excute(Object_Text, Operation_LongClick, playlistName);
+		MusicPlayerCommon.addnewplaylist(playlistName);
+		MusicPlayerCommon.longclickplaylist(playlistName);
 		excute(Object_Text, Operation_ClickWait, "删除");
 		excute(Object_Text, Operation_ClickWait, "取消");
-		check(Object_Text, Operation_checkExist, playlistName);
+		check(Object_Text, Operation_checkExist, "zhanxun");
 		//清场
-		MusicPlayerCommon.deleteallplaylist();
+		MusicPlayerCommon.deleteplaylist("zhanxun");
 	}
 	/**
 	 * 确定删除新建播放列表
@@ -970,18 +971,12 @@ public class MusicPlayer extends UiAutomatorTestCase
 	public static void test_076() 
 	{
 		//前提
-		excute(Object_Text, Operation_ClickWait, "歌曲");
-		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
-		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
-		excute(Object_Text, Operation_ClickWait, "新建播放列表");
-		String playlistName = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/playlist");
-		excute(Object_Text, Operation_ClickWait, "保存");
+		MusicPlayerCommon.addnewplaylist(playlistName);
 		//主体
-		excute(Object_Text, Operation_ClickWait, "播放列表");
-		excute(Object_Text, Operation_LongClick, playlistName);
+		MusicPlayerCommon.longclickplaylist(playlistName);
 		excute(Object_Text, Operation_ClickWait, "删除");
 		excute(Object_Text, Operation_ClickWait, "确定");
-		check(Object_Text, Operation_checkNoExist, playlistName);
+		check(Object_Text, Operation_checkNoExist, "zhanxun");
 	}
 	/**
 	 * 重命名新建播放列表
@@ -989,21 +984,15 @@ public class MusicPlayer extends UiAutomatorTestCase
 	public static void test_077() 
 	{
 		//前提
-		excute(Object_Text, Operation_ClickWait, "歌曲");
-		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
-		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
-		excute(Object_Text, Operation_ClickWait, "新建播放列表");
-		String playlistName = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/playlist");
-		excute(Object_Text, Operation_ClickWait, "保存");
+		MusicPlayerCommon.addnewplaylist(playlistName);	
 		//主体
-		excute(Object_Text, Operation_ClickWait, "播放列表");
-		excute(Object_Text, Operation_LongClick, playlistName);
+		MusicPlayerCommon.longclickplaylist(playlistName);
 		excute(Object_Text, Operation_ClickWait, "重命名");
 		excute(Object_ResourceId, Operation_SetText, "com.android.music:id/playlist", "playlistName");
 		excute(Object_Text, Operation_ClickWait, "保存");
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.music:id/line1", "playlistName");
 		//清场
-		MusicPlayerCommon.deleteallplaylist();
+		MusicPlayerCommon.deleteplaylist("playlistName");
 	}
 	/**
 	 * 派对播放
@@ -1034,14 +1023,11 @@ public class MusicPlayer extends UiAutomatorTestCase
 	public static void test_079() 
 	{
 		//主体
+		MusicPlayerCommon.addnewplaylist(playlistName);
 		excute(Object_Text, Operation_ClickWait, "播放列表");
-		excute(Object_Device, Operation_PressMenu);
-		excute(Object_Text, Operation_ClickWait, "新建播放列表");
-		String playlistName = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/playlist");
-		excute(Object_Text, Operation_ClickWait, "保存");
-		check(Object_Text, Operation_checkExist, playlistName);
+		check(Object_Text, Operation_checkExist, "zhanxun");
 		//清场
-		MusicPlayerCommon.deleteallplaylist();
+		MusicPlayerCommon.deleteplaylist("zhanxun");
 	}
 	/**
 	 * 退出
@@ -1079,10 +1065,11 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
-		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
-		check(Object_ResourceId, Operation_ClickWait, "com.android.music:id/prev");//上一首
-		check(Object_Text, Operation_checkNoExist, trackname);
+		String trackname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1", "0");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.music:id/line1", "1");
+		//String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/prev");//上一首
+		check(Object_Text, Operation_checkExist, trackname);
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 	}
@@ -1128,10 +1115,10 @@ public class MusicPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
-		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/next");//上一首
-		check(Object_Text, Operation_checkNoExist, trackname);
+		String trackname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.android.music:id/line1", "1");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.music:id/line1", "0");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/next");//下一首
+		check(Object_Text, Operation_checkExist, trackname);
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
 	}
@@ -1358,7 +1345,6 @@ public class MusicPlayer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
-		String trackname = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/trackname");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "退出");
 		check(Object_ResourceId, Operation_checkNoExist, "com.android.music:id/pause");

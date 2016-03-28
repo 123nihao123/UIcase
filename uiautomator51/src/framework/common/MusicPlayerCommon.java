@@ -25,24 +25,51 @@ import framework.driver.AndroidObject;
 public class MusicPlayerCommon 
 {
 	/**
-	 * 新建并长按播放列表
+	 * 新建播放列表
 	 */
-	public static void addandlongclicknewplaylist()
+	public static void addnewplaylist(String playlistName)
 	{
+		excute(Object_Text, Operation_ClickWait, "播放列表");
+		if((Boolean) excute(Object_Text, Operation_Exists, playlistName))
+		{
+			excute(Object_Text, Operation_LongClick, playlistName);
+			excute(Object_Text, Operation_ClickWait, "删除");
+			excute(Object_Text, Operation_ClickWait, "确定");
+		}
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
 		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
 		excute(Object_Text, Operation_ClickWait, "新建播放列表");
-		String playlistName = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/playlist");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/playlist");
+		for (int i=0; i<7; i++)
+			excute(Object_Device, Operation_PressDelete);	
+		excute(Object_ResourceId, Operation_SetText, "com.android.music:id/playlist", playlistName);
 		excute(Object_Text, Operation_ClickWait, "保存");
+	}
+	/**
+	 * 长按播放列表
+	 */
+	public static void longclickplaylist(String Name)
+	{
 		excute(Object_Text, Operation_ClickWait, "播放列表");
-		excute(Object_Text, Operation_LongClick, playlistName);
+		excute(Object_Text, Operation_LongClick, Name);
+	}
+	/**
+	 * 删除播放列表
+	 */
+	public static void deleteplaylist(String PlaylistName)
+	{
+		excute(Object_Text, Operation_ClickWait, "播放列表");
+		excute(Object_Text, Operation_LongClick, PlaylistName);
+		excute(Object_Text, Operation_ClickWait, "删除");
+		excute(Object_Text, Operation_ClickWait, "确定");
 	}
 	/**
 	 * 删除所有播放列表
 	 */
 	public static void deleteallplaylist()
 	{
+		excute(Object_Text, Operation_ClickWait, "播放列表");
 		int num = (Integer) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
 		for (int i=1; i<num; i++)
 		{
