@@ -1,0 +1,72 @@
+package framework.common;
+
+import static framework.data.DeviceParameter.*;
+import static framework.data.ObjectType.*;
+import static framework.data.OperationType.*;
+import static framework.data.ResIdTextAndDesc.*;
+import static framework.excute.Excute.*;
+
+//import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
+
+//import javax.imageio.ImageIO;
+
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+
+import com.android.uiautomator.core.UiObject;
+import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiSelector;
+import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+
+import framework.driver.AndroidObject;
+
+public class FileExplorerCommon 
+{
+	/**
+	 * 进入分类
+	 */
+	public static void Enterclass(String ClassName)
+	{
+		excute(Object_Text, Operation_ClickWait, ClassName);
+		excute(Object_Text, Operation_WaitForExists, ClassName, "10000");
+	}
+	/**
+	 * 进入分类菜单
+	 */
+	public static void classmenu(String ClassName)
+	{
+		excute(Object_Text, Operation_ClickWait, ClassName);
+		excute(Object_Text, Operation_WaitForExists, ClassName, "10000");
+		excute(Object_Device, Operation_PressMenu);
+	}
+	/**
+	 * 长按选项
+	 */
+	public static void Longclickmenu(String Name)
+	{
+		excute(Object_ResourceId, Operation_LongClick, "com.sprd.fileexplorer:id/file_item_list_name");
+		excute(Object_Text, Operation_ClickWait, Name);
+	}
+	/**
+	 * 选择多个
+	 */
+	public static void select(String ClassName)
+	{
+		excute(Object_Text, Operation_ClickWait, ClassName);
+		excute(Object_Text, Operation_WaitForExists, ClassName, "10000");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "选择多个");
+		excute(Object_Text, Operation_WaitForExists, "选择全部", "10000");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/select_checkbox", "0");
+	}
+	/**
+	 * 菜单
+	 */
+	public static void menu(String menuName)
+	{
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, menuName);
+	}
+}
