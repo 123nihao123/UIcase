@@ -53,6 +53,7 @@ public class ResIdTextAndDesc {
 	public static final String Devices_Desc_Calender = "日历";
 	public static final String Devices_Desc_Search = "搜索";
 	public static final String Devices_Desc_Music = "音乐";
+	public static final String Devices_Text_Fm = "FM 电台";
 	
 	//Call
 	public static final String CMCCNum = "10086";

@@ -36,7 +36,7 @@ public class CallCommon {
 	}
 	 
 	public static void endCall() throws UiObjectNotFoundException {
-		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button", "挂断");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
 	}
 	
 	public static void addFastDail(String name,int index) throws UiObjectNotFoundException {
@@ -75,4 +75,10 @@ public class CallCommon {
 		 Assert.assertTrue("Error: FastDail delete failed!!!",
 				 (Boolean) excute(Object_ResIdInstance,Operation_TextEqualTrue,"com.android.phone:id/contacts_cell_name",Integer.toString(index-1),"添加联系人"));
 	 }
+	 public static void dailandendCall() throws UiObjectNotFoundException {
+			DeviceCommon.enterApp(Devices_Desc_Call);
+			makeCallByDailer(CMCCNum);
+			Wait(10000);
+			endCall();
+		}
 }

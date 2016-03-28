@@ -7,6 +7,8 @@ Setting模块操作须知：
 (1更改支持机热点名字为Testteam,密码：test12345678，用作WIFI的支持
 (2)更改蓝牙支持机名字为SupportBT
 
+MusicPLayer模块操作须知：
+必须把testresource\Music下面的音乐文件拷到手机上
 
 运行步骤
 打开命令窗口：
