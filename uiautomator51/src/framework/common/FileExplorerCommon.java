@@ -52,7 +52,7 @@ public class FileExplorerCommon
 		excute(Object_Device, Operation_PressMenu);
 	}
 	/**
-	 * 长按选项
+	 * 长按并进入选项
 	 */
 	public static void Longclickmenu(String Name)
 	{
