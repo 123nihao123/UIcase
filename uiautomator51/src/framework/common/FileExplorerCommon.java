@@ -10,9 +10,16 @@ import static framework.excute.Excute.*;
 //import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.Collator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 //import javax.imageio.ImageIO;
 
@@ -74,7 +81,7 @@ public class FileExplorerCommon
 	}
 	
 	/**
-	 * 
+	 * 由格式如"1970-01-06 11:45:55"的字符串获得时间
 	 * @param strTime - 格式如"1970-01-06 11:45:55"
 	 * @return
 	 * @throws ParseException
@@ -86,6 +93,58 @@ public class FileExplorerCommon
 	    //System.out.print("Format To times:"+date.getTime());  
 	    return date.getTime();
 	}
+
+	/**
+	 * 判断文件名列表是否排好序。缺省为升序。
+	 * @param strArray
+	 * @return
+	 */
+	public static boolean isFileNameSorted(String[] strArray)
+	{
+		return isFileNameSorted(strArray, false);
+	}
+
+	/**
+	 * 判断文件名列表是否排好序
+	 * @param fileArray
+	 * @param isReverse - true:降序排列  false:升序排列，缺省为升序
+	 * @return
+	 */
+	public static boolean isFileNameSorted(String[] fileArray, boolean isReverse)
+	{
+		boolean returnValue = true;
+
+		List<String> fileList = new ArrayList<String>();
+		Collections.addAll(fileList, fileArray);
+
+		Collections.shuffle(fileList); //shuffle the file name to make sure re-sort will happen
+
+		String[] newFileArray = new String[fileList.size()];
+		fileList.toArray(newFileArray); //back to array in order to re-sort 
+
+		Comparator c = Collator.getInstance(Locale.CHINA);
+		Arrays.sort(newFileArray,c);
+
+		if (isReverse) Collections.reverse(Arrays.asList(newFileArray));
+
+		for(String str : newFileArray) {
+			System.out.println(str);
+		}
+		//if(!"as".equals("as")) System.out.println("uneqals");
+		for(int i=0;i<fileArray.length;i++)
+		{
+			System.out.println(i+" : "+ newFileArray[i]);
+			System.out.println(i+" : "+ fileArray[i]);
+			if (!fileArray[i].equals(newFileArray[i]))
+			{
+				returnValue= false;
+				break;
+			}
+
+		}
+		return returnValue;
+	}
+
 	/**
 	 * 到存储卡界面
 	 */
