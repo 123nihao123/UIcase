@@ -9,6 +9,9 @@ import static framework.excute.Excute.*;
 //import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 //import javax.imageio.ImageIO;
 
@@ -69,4 +72,19 @@ public class FileExplorerCommon
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait, menuName);
 	}
+	
+	/**
+	 * 
+	 * @param strTime - 格式如"1970-01-06 11:45:55"
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long stringToTime(String strTime) throws ParseException
+	{
+		SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");        
+	    Date date = format.parse(strTime);  
+	    //System.out.print("Format To times:"+date.getTime());  
+	    return date.getTime();
+	}
+	
 }
