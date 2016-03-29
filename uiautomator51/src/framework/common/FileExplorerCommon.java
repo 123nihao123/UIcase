@@ -1,5 +1,6 @@
 package framework.common;
 
+
 import static framework.data.DeviceParameter.*;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
@@ -24,7 +25,6 @@ import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 import framework.driver.AndroidObject;
-
 public class FileExplorerCommon 
 {
 	/**
@@ -86,5 +86,32 @@ public class FileExplorerCommon
 	    //System.out.print("Format To times:"+date.getTime());  
 	    return date.getTime();
 	}
+	/**
+	 * 到存储卡界面
+	 */
+	public static void cometoSD()
+	{
+		excute(Object_ClassName,Operation_ClickWait,"android.widget.Spinner");
+		excute(Object_Text,Operation_ClickWait,"存储卡");
+	}
+	/**
+	 * 在存储卡界面长按某一条目
+	 */
+	public static void longclickiteminSD()
+	{
+		excute(Object_ClassName,Operation_ClickWait,"android.widget.Spinner");
+		excute(Object_Text,Operation_ClickWait,"存储卡");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+	}
 	
+	/**
+	 * 在SD卡存储界面点击menu
+	 */
+	public static void clickmenuinSD()
+	{
+		excute(Object_ClassName,Operation_ClickWait,"android.widget.Spinner");
+		excute(Object_Text,Operation_ClickWait,"存储卡");
+		excute(Object_Device, Operation_PressMenu);
+	}
+
 }
