@@ -166,9 +166,9 @@ public class FileExplorerCommon
 	 * @param strArray
 	 * @return
 	 */
-	public static boolean isFileNameSorted(String[] strArray)
+	public static boolean isSortedByName(String[] strArray)
 	{
-		return isFileNameSorted(strArray, false);
+		return isSortedByName(strArray, false);
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class FileExplorerCommon
 	 * @param isReverse - true:降序排列  false:升序排列，缺省为升序
 	 * @return
 	 */
-	public static boolean isFileNameSorted(String[] fileArray, boolean isReverse)
+	public static boolean isSortedByName(String[] fileArray, boolean isReverse)
 	{
 		boolean returnValue = true;
 
