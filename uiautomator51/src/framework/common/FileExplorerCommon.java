@@ -161,6 +161,64 @@ public class FileExplorerCommon
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
 	}
+/**
+ * 判断是否按文件大小排好序。缺省为升序。
+ * @param strArray
+ * @return
+ */
+	public static boolean isSortedBySize(String[] strArray)
+	{
+		return isSortedBySize(strArray, false);
+	}
+/**
+ * 判断是否按文件大小排好序。缺省为升序
+ * @param strArray
+ * @param isReverse - true:降序排列  false:升序排列，缺省为升序
+ * @return
+ */
+	public static boolean isSortedBySize(String[] strArray, boolean isReverse)
+	{
+		boolean valReturn =true;
+		float numArray[]= new float[strArray.length];
+
+		if (strArray.length==1) return valReturn;
+
+		for(int i=0;i<strArray.length;i++)
+		{
+			numArray[i] = stringToSize(extractFileSize(strArray[i]));
+		}
+
+		/*for(float f : numArray) {
+			System.out.println(f);
+		}*/
+
+		if(isReverse)
+		{
+			//降序
+			for(int i=0;i<numArray.length-1;i++)
+			{
+				if(numArray[i]<numArray[i+1])
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		else
+		{
+			//升序
+			for(int i=0;i<numArray.length-1;i++)
+			{
+				if(numArray[i]>numArray[i+1])
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		return valReturn;
+	}
+
 	/**
 	 * 判断文件名列表是否排好序。缺省为升序。
 	 * @param strArray
