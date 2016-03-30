@@ -763,9 +763,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_095()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		if((Boolean)excute(Object_Text,Operation_Exists,"Test.txt"))
 		{
 			check(Object_Text,Operation_checkExist,"Test.txt");
@@ -782,9 +780,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_096()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		excute(Object_ResourceId,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name");
 		check(Object_Text,Operation_checkExist,"复制");
 		check(Object_Text,Operation_checkExist,"剪切");
@@ -800,11 +796,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_097()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"复制");
+		FileExplorerCommon.Enterclass("文档");
+		FileExplorerCommon.Longclickmenu("复制");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
 	}
 	
@@ -814,11 +807,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_098()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"剪切");
+		FileExplorerCommon.Enterclass("文档");
+		FileExplorerCommon.Longclickmenu("剪切");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
 	}
 	
@@ -828,11 +818,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_099()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"删除");
+		FileExplorerCommon.Enterclass("文档");
+		FileExplorerCommon.Longclickmenu("删除");
 		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
 	
@@ -842,12 +829,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_100()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"删除");
+		FileExplorerCommon.Enterclass("文档");
+		String txt = (String) excute(Object_ResourceId,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
 		excute(Object_Text,Operation_ClickWait,"取消");
 		check(Object_Text,Operation_checkExist,txt);
 	}
@@ -858,12 +842,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_101()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"删除");
+		FileExplorerCommon.Enterclass("文档");
+		String txt = (String) excute(Object_ResourceId,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkNoExist,txt);
 	}
@@ -874,11 +855,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_102()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"重命名");
+		FileExplorerCommon.Enterclass("文档");
+		FileExplorerCommon.Longclickmenu("重命名");
 		check(Object_Text,Operation_checkExist,"重命名");
 	}
 	
@@ -888,11 +866,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_103()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"重命名");
+		FileExplorerCommon.Enterclass("文档");
+		FileExplorerCommon.Longclickmenu("重命名");
 		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		if((Boolean)excute(Object_Text,Operation_Exists,"test1.txt"))
@@ -911,11 +886,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_104()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"分享");
+		FileExplorerCommon.Enterclass("文档");
+		FileExplorerCommon.Longclickmenu("分享");
 		check(Object_Text,Operation_checkExist,"电子邮件");
 		check(Object_Text,Operation_checkExist,"蓝牙");
 		check(Object_Text,Operation_checkExist,"信息");
@@ -927,12 +899,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_105()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"属性");
+		FileExplorerCommon.Longclickmenu("属性");
 		String txt1 = (String) excute(Object_ResourceId,Operation_GetText,"android:id/alertTitle");
 		Assert.assertEquals(txt, txt1);
 	}
@@ -943,9 +912,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_106()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"选择多个");
 		check(Object_Text,Operation_checkExist,"排序方式");
@@ -957,9 +924,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_107()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		check(Object_Text,Operation_checkExist,"选择全部");
@@ -971,12 +936,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_108()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("文档");
 		check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_checkbox","0");
 	}
 	
@@ -986,12 +946,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_109()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("文档");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/menu_delete");
 		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
@@ -1002,12 +957,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_110()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"复制");
 		check(Object_Text,Operation_checkExist,"剪切");
@@ -1020,12 +970,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_111()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"复制");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
@@ -1037,12 +982,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_112()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"剪切");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
@@ -1054,12 +994,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_113()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"分享");
 		check(Object_Text,Operation_checkExist,"电子邮件");
@@ -1073,9 +1008,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_114()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
@@ -1088,9 +1021,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_115()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
@@ -1104,9 +1035,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_116()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
@@ -1120,9 +1049,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_117()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"文档");
+		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"按名称");
 		check(Object_Text,Operation_checkExist,"按文件类型");
@@ -1137,9 +1064,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_123()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		check(Object_Text,Operation_checkExist,"APK安装文件");
 	}
 	
@@ -1149,9 +1074,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_124()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		check(Object_Text,Operation_checkExist,"复制");
 		check(Object_Text,Operation_checkExist,"剪切");
@@ -1167,11 +1090,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_125()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"复制");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		FileExplorerCommon.Longclickmenu("复制");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
 	}
 	
@@ -1181,11 +1101,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_126()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"剪切");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		FileExplorerCommon.Longclickmenu("剪切");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
 	}
 	
@@ -1195,11 +1112,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_127()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"删除");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		FileExplorerCommon.Longclickmenu("删除");
 		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
 	
@@ -1209,12 +1123,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_128()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"删除");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		String txt = (String) excute(Object_ResourceId,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
 		excute(Object_Text,Operation_ClickWait,"取消");
 		check(Object_Text,Operation_checkExist,txt);
 	}
@@ -1225,12 +1136,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_129()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"删除");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		String txt = (String) excute(Object_ResourceId,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkNoExist,txt);
 	}
@@ -1241,11 +1149,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_130()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"重命名");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		FileExplorerCommon.Longclickmenu("重命名");
 		check(Object_Text,Operation_checkExist,"重命名");
 	}
 
@@ -1255,11 +1160,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_131()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"重命名");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		FileExplorerCommon.Longclickmenu("重命名");
 		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","testAPK");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		if((Boolean)excute(Object_Text,Operation_Exists,"testAPK.apk"))
@@ -1278,11 +1180,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_132()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
-		excute(Object_Text,Operation_ClickWait,"分享");
+		FileExplorerCommon.Enterclass("APK安装文件");
+		FileExplorerCommon.Longclickmenu("分享");
 		check(Object_Text,Operation_checkExist,"电子邮件");
 		check(Object_Text,Operation_checkExist,"蓝牙");
 	}
@@ -1294,9 +1193,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_134()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"选择多个");
 		check(Object_Text,Operation_checkExist,"排序方式");
@@ -1308,9 +1205,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_135()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		check(Object_Text,Operation_checkExist,"选择全部");
@@ -1322,12 +1217,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_136()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("APK安装文件");
 		check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_checkbox","0");
 	}
 	
@@ -1337,12 +1227,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_137()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("APK安装文件");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/menu_delete");
 		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
@@ -1353,12 +1238,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_138()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"复制");
 		check(Object_Text,Operation_checkExist,"剪切");
@@ -1371,12 +1251,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_139()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"复制");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
@@ -1388,12 +1263,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_140()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"剪切");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
@@ -1405,12 +1275,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_141()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择多个");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		FileExplorerCommon.select("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"分享");
 		check(Object_Text,Operation_checkExist,"电子邮件");
@@ -1423,9 +1288,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_142()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
@@ -1438,9 +1301,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_143()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
@@ -1454,9 +1315,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_144()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
@@ -1470,9 +1329,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_145()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
-		excute(Object_Text,Operation_ClickWait,"快速查看");
-		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"按名称");
 		check(Object_Text,Operation_checkExist,"按文件类型");
