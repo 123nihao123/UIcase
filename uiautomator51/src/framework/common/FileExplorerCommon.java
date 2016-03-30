@@ -20,6 +20,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //import javax.imageio.ImageIO;
 
@@ -94,6 +96,45 @@ public class FileExplorerCommon
 	    return date.getTime();
 	}
 
+	public static String extractField(String info, String ptn)
+	{
+		String strReturn="";
+		Pattern p = Pattern.compile(ptn);
+		Matcher m = p.matcher(info);
+		while (m.find())
+		{
+			strReturn = m.group();
+		}
+		return strReturn;
+	}
+
+	/**
+	 * 提取信息中的文件时间
+	 * @param info - 输入字符串格式为“日期:2016-03-28 09:30:41  大小:3.66MB”
+	 * @return
+	 */
+	public static String extractFileTime(String info)
+	{
+		//System.out.println(info);
+		String strReturn= extractField(info,"\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d");
+		//System.out.println("FileTime is"+strReturn);
+		return strReturn;
+	}
+
+	/*public static String extractFileTime(String info)
+	{
+		String strReturn="";
+		//System.out.println(info);
+		Pattern p = Pattern.compile("\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d");
+		Matcher m = p.matcher(info);
+		while (m.find())
+		{
+			strReturn = m.group();
+		}
+		//System.out.println("FileTime is"+strReturn);
+	
+		return strReturn;
+	}*/
 	/**
 	 * 判断文件名列表是否排好序。缺省为升序。
 	 * @param strArray
@@ -127,14 +168,11 @@ public class FileExplorerCommon
 
 		if (isReverse) Collections.reverse(Arrays.asList(newFileArray));
 
-		for(String str : newFileArray) {
+		/*for(String str : newFileArray) {
 			System.out.println(str);
-		}
-		//if(!"as".equals("as")) System.out.println("uneqals");
+		}*/
 		for(int i=0;i<fileArray.length;i++)
 		{
-			System.out.println(i+" : "+ newFileArray[i]);
-			System.out.println(i+" : "+ fileArray[i]);
 			if (!fileArray[i].equals(newFileArray[i]))
 			{
 				returnValue= false;
