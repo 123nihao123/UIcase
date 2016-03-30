@@ -91,11 +91,40 @@ public class FileExplorerCommon
 	public static long stringToTime(String strTime) throws ParseException
 	{
 		SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");        
-	    Date date = format.parse(strTime);  
-	    //System.out.print("Format To times:"+date.getTime());  
-	    return date.getTime();
+		Date date = format.parse(strTime);
+		//System.out.print("Format To times:"+date.getTime());
+		return date.getTime();
 	}
-
+/**
+ * 由格式如“3.66MB”的字符串计算文件长度，单位转换成B
+ * @param strSize - 由格式如“3.66MB”的字符串
+ * @return - 返回浮点数
+ */
+	public static float stringToSize(String strSize)
+	{
+		String strNum= extractField(strSize,"\\d+(\\.\\d+)?" );
+		System.out.println("strNum: " +strNum);
+		String strUnit = extractField(strSize,"[K|M|G]?B$" );
+		System.out.println("strUnit: " +strUnit);
+		float num = Float.parseFloat(strNum);
+		if(strUnit.equals("B"))
+		{
+			return num;
+		}
+		else if(strUnit.equals("KB"))
+		{
+			num=num*1024;
+		}
+		else if (strUnit.equals("MB"))
+		{
+			num=num*1024*1024;
+		}
+		else if (strUnit.equals("GB"))
+		{
+			num=num*1024*1024*1024;
+		}
+		return num;
+	}
 	public static String extractField(String info, String ptn)
 	{
 		String strReturn="";
@@ -104,14 +133,26 @@ public class FileExplorerCommon
 		while (m.find())
 		{
 			strReturn = m.group();
+			//System.out.println("strReturn: " +strReturn);
 		}
+		return strReturn;
+	}
+	/**
+	 * 提取信息中的文件大小字符串
+	 * @param info -输入字符串格式为“日期:2016-03-28 09:30:41  大小:3.66MB”
+	 * @return - 返回字符串，比如“3.66MB”
+	 */
+	public static String extractFileSize(String info)
+	{
+		//System.out.println(info);
+		String strReturn= extractField(info,"\\d+(\\.\\d+)?[K|M|G]?B$");
 		return strReturn;
 	}
 
 	/**
-	 * 提取信息中的文件时间
+	 * 提取信息中的文件时间字符串
 	 * @param info - 输入字符串格式为“日期:2016-03-28 09:30:41  大小:3.66MB”
-	 * @return
+	 * @return -返回字符串，比如“2016-03-28 09:30:41”
 	 */
 	public static String extractFileTime(String info)
 	{
@@ -120,21 +161,6 @@ public class FileExplorerCommon
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
 	}
-
-	/*public static String extractFileTime(String info)
-	{
-		String strReturn="";
-		//System.out.println(info);
-		Pattern p = Pattern.compile("\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d");
-		Matcher m = p.matcher(info);
-		while (m.find())
-		{
-			strReturn = m.group();
-		}
-		//System.out.println("FileTime is"+strReturn);
-	
-		return strReturn;
-	}*/
 	/**
 	 * 判断文件名列表是否排好序。缺省为升序。
 	 * @param strArray
