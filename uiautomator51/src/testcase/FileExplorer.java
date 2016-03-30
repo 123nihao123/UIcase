@@ -756,6 +756,732 @@ public class FileExplorer extends UiAutomatorTestCase
 			Assert.assertEquals(name[i], bname[i]);
 		}
 	}
+	
+	/**
+	 *快速查看-文档
+	 */
+	public static void test_095()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		if((Boolean)excute(Object_Text,Operation_Exists,"Test.txt"))
+		{
+			check(Object_Text,Operation_checkExist,"Test.txt");
+		}
+		else
+		{
+			check(Object_TextScroll,Operation_checkExist,"Test.txt","vertical");
+		}
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源，上面有功能项：复制、剪切、删除、重命名、分享
+	 */
+	public static void test_096()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_ResourceId,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name");
+		check(Object_Text,Operation_checkExist,"复制");
+		check(Object_Text,Operation_checkExist,"剪切");
+		check(Object_Text,Operation_checkExist,"删除");
+		check(Object_Text,Operation_checkExist,"重命名");
+		check(Object_Text,Operation_checkExist,"分享");
+		check(Object_Text,Operation_checkExist,"属性");
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-复制
+	 */
+	public static void test_097()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"复制");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-剪切
+	 */
+	public static void test_098()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"剪切");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-删除
+	 */
+	public static void test_099()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-取消删除
+	 */
+	public static void test_100()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,txt);
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-删除一个文档
+	 */
+	public static void test_101()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkNoExist,txt);
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-重命名
+	 */
+	public static void test_102()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"重命名");
+		check(Object_Text,Operation_checkExist,"重命名");
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-重命名
+	 */
+	public static void test_103()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"重命名");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		if((Boolean)excute(Object_Text,Operation_Exists,"test1.txt"))
+		{
+			check(Object_Text,Operation_checkExist,"test1.txt");
+		}
+		else
+		{
+			check(Object_TextScroll,Operation_checkExist,"test1.txt","vertical");
+		}
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-分享-页面上有“电子邮件”“信息”“蓝牙”三种分享方式
+	 */
+	public static void test_104()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"分享");
+		check(Object_Text,Operation_checkExist,"电子邮件");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+		check(Object_Text,Operation_checkExist,"信息");
+	}
+	
+	/**
+	 *快速查看-文档-长按一个文档资源-属性-对话框上有text：类型、位置、日期、大小、是否可读、是否可写、是否隐藏 详细信息
+	 */
+	public static void test_105()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"属性");
+		String txt1 = (String) excute(Object_ResourceId,Operation_GetText,"android:id/alertTitle");
+		Assert.assertEquals(txt, txt1);
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个、排序方式
+	 */
+	public static void test_106()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"选择多个");
+		check(Object_Text,Operation_checkExist,"排序方式");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个
+	 */
+	public static void test_107()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		check(Object_Text,Operation_checkExist,"选择全部");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选中1个文档
+	 */
+	public static void test_108()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_checkbox","0");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选中1个文档
+	 */
+	public static void test_109()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/menu_delete");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选中1个文档-菜单-“复制”“剪切”“分享”
+	 */
+	public static void test_110()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"复制");
+		check(Object_Text,Operation_checkExist,"剪切");
+		check(Object_Text,Operation_checkExist,"分享");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选中1个文档-菜单-“复制”
+	 */
+	public static void test_111()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"复制");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选中1个文档-菜单-“剪切”
+	 */
+	public static void test_112()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"剪切");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选中1个文档-菜单-“分享”
+	 */
+	public static void test_113()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"分享");
+		check(Object_Text,Operation_checkExist,"电子邮件");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+		check(Object_Text,Operation_checkExist,"信息");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选择全部
+	 */
+	public static void test_114()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_all_cb");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-选择全部
+	 */
+	public static void test_115()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_Text,Operation_checkExist,"取消全部");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-选择多个-取消全部，删除图标置灰
+	 */
+	public static void test_116()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedFalse,"com.sprd.fileexplorer:id/menu_delete");
+	}
+	
+	/**
+	 *快速查看-文档-菜单-排序方式-对话框上有“按名称”“按文件类型”“按时间”“按大小”四种排序方式
+	 */
+	public static void test_117()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"按名称");
+		check(Object_Text,Operation_checkExist,"按文件类型");
+		check(Object_Text,Operation_checkExist,"按时间");
+		check(Object_Text,Operation_checkExist,"按大小");
+	}
+	
+	
+	/**
+	 *快速查看-APK安装文件
+	 */
+	public static void test_123()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		check(Object_Text,Operation_checkExist,"APK安装文件");
+	}
+	
+	/**
+	 *快速查看-APK安装文件 上面有功能项：复制、剪切、删除、重命名、分享、属性可以通过页面上的text进行判断
+	 */
+	public static void test_124()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		check(Object_Text,Operation_checkExist,"复制");
+		check(Object_Text,Operation_checkExist,"剪切");
+		check(Object_Text,Operation_checkExist,"删除");
+		check(Object_Text,Operation_checkExist,"重命名");
+		check(Object_Text,Operation_checkExist,"分享");
+		check(Object_Text,Operation_checkExist,"属性");
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 长按一个APK ，复制
+	 */
+	public static void test_125()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"复制");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 长按一个APK ，剪切
+	 */
+	public static void test_126()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"剪切");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 长按一个APK ，删除
+	 */
+	public static void test_127()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 长按一个APK -取消删除
+	 */
+	public static void test_128()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,txt);
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 长按一个APK -删除一个APK
+	 */
+	public static void test_129()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkNoExist,txt);
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 长按一个APK -重命名
+	 */
+	public static void test_130()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"重命名");
+		check(Object_Text,Operation_checkExist,"重命名");
+	}
+
+	/**
+	 *快速查看-APK安装文件- 长按一个APK-重命名
+	 */
+	public static void test_131()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"重命名");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","testAPK");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		if((Boolean)excute(Object_Text,Operation_Exists,"testAPK.apk"))
+		{
+			check(Object_Text,Operation_checkExist,"testAPK.apk");
+		}
+		else
+		{
+			check(Object_TextScroll,Operation_checkExist,"testAPK.apk","vertical");
+		}
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 长按一个APK-分享-页面上有“电子邮件”“蓝牙”三种分享方式
+	 */
+	public static void test_132()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"分享");
+		check(Object_Text,Operation_checkExist,"电子邮件");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+	}
+	
+	
+	/**
+	 *快速查看-APK安装文件- 菜单-选择多个、排序方式
+	 */
+	public static void test_134()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"选择多个");
+		check(Object_Text,Operation_checkExist,"排序方式");
+	}
+	
+	/**
+	 *快速查看-APK安装文件- 菜单-选择多个
+	 */
+	public static void test_135()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		check(Object_Text,Operation_checkExist,"选择全部");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选中1个APK
+	 */
+	public static void test_136()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_checkbox","0");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选中1个APK-点击删除
+	 */
+	public static void test_137()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/menu_delete");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选中1个文档-菜单-“复制”“剪切”“分享”
+	 */
+	public static void test_138()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"复制");
+		check(Object_Text,Operation_checkExist,"剪切");
+		check(Object_Text,Operation_checkExist,"分享");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选中1个文档-菜单-“复制”
+	 */
+	public static void test_139()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"复制");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选中1个文档-菜单-“剪切”
+	 */
+	public static void test_140()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"剪切");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选中1个文档-菜单-“分享”
+	 */
+	public static void test_141()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"分享");
+		check(Object_Text,Operation_checkExist,"电子邮件");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选择全部
+	 */
+	public static void test_142()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_all_cb");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-选择全部
+	 */
+	public static void test_143()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_Text,Operation_checkExist,"取消全部");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-选择多个-取消全部，删除图标置灰
+	 */
+	public static void test_144()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedFalse,"com.sprd.fileexplorer:id/menu_delete");
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-排序方式-对话框上有“按名称”“按文件类型”“按时间”“按大小”四种排序方式
+	 */
+	public static void test_145()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/text1");
+		excute(Object_Text,Operation_ClickWait,"快速查看");
+		excute(Object_Text,Operation_ClickWait,"APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"按名称");
+		check(Object_Text,Operation_checkExist,"按文件类型");
+		check(Object_Text,Operation_checkExist,"按时间");
+		check(Object_Text,Operation_checkExist,"按大小");
+	}
+	
+
+	
 	/**
 	*长按存储卡下条目，弹出功能菜单 
 	*/
