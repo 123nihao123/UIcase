@@ -9,6 +9,7 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import java.text.ParseException;
 import java.util.Arrays;
 
 import junit.framework.Assert;
@@ -444,6 +445,35 @@ public class FileExplorer extends UiAutomatorTestCase
 		}
 	}
 	/**
+	 * 音乐界面排列方式按时间排序
+	 * @throws ParseException 
+	 */
+	public static void test_035() throws ParseException 
+	{
+		//主体
+		FileExplorerCommon.classmenu("音乐");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按时间");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String Time = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
+		String fir = Time.substring(Time.indexOf(":")+1-Time.lastIndexOf("	")+1);
+		System.out.println(fir);
+		String sceTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
+		String sce = sceTime.substring(sceTime.lastIndexOf("：")+1)+sceTime.substring(sceTime.lastIndexOf(" ")+1);
+		String thrTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
+		String thr = thrTime.substring(thrTime.lastIndexOf("：")+1)+thrTime.substring(thrTime.lastIndexOf(" ")+1);
+		FileExplorerCommon.stringToTime(fir);
+		FileExplorerCommon.stringToTime(sce);
+		FileExplorerCommon.stringToTime(thr);
+		long timelist[] = {FileExplorerCommon.stringToTime(fir), FileExplorerCommon.stringToTime(sce), FileExplorerCommon.stringToTime(thr)};
+		for(int i=0;i<timelist.length-1;i++)
+		{
+			System.out.println(timelist[i]);
+			boolean b = timelist[i] <= timelist[i+1];
+			Assert.assertEquals(true, b);
+		}
+	}
+	/**
 	 * 播放音乐
 	 */
 	public static void test_037() 
@@ -539,7 +569,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_045() 
 	{
 		//主体
-		FileExplorerCommon.Enterclass("音乐");
+		FileExplorerCommon.Enterclass("图片");
 		FileExplorerCommon.Longclickmenu("重命名");
 		check(Object_Text, Operation_checkExist, "确定");
 	}
@@ -1339,6 +1369,317 @@ public class FileExplorer extends UiAutomatorTestCase
 	
 
 	
+	/**
+	 * 浏览图片
+	 */
+	public static void test_066() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("图片");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name");
+		check(Object_Description, Operation_checkExist, "分享方式");//图片浏览界面分享按钮
+	}
+	/**
+	 * 进入视频
+	 */
+	public static void test_067() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		check(Object_Text, Operation_checkExist, "视频");
+		
+	}
+	/**
+	 * 进入图片长按视频
+	 */
+	public static void test_068() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		excute(Object_ResourceId, Operation_LongClick, "com.sprd.fileexplorer:id/file_item_list_name");
+		check(Object_Text, Operation_checkExist, "复制");
+		check(Object_Text, Operation_checkExist, "剪切");
+		check(Object_Text, Operation_checkExist, "删除");
+		check(Object_Text, Operation_checkExist, "重命名");
+		check(Object_Text, Operation_checkExist, "分享");
+		check(Object_Text, Operation_checkExist, "属性");
+	}
+	/**
+	 * 长按视频复制
+	 */
+	public static void test_069() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		FileExplorerCommon.Longclickmenu("复制");
+		check(Object_Text, Operation_checkExist, "选择存储位置");
+		}
+	/**
+	 * 长按视频剪切
+	 */
+	public static void test_070() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		FileExplorerCommon.Longclickmenu("剪切");
+		check(Object_Text, Operation_checkExist, "选择存储位置");
+	}
+	/**
+	 * 长按视频删除
+	 */
+	public static void test_071() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		FileExplorerCommon.Longclickmenu("删除");
+		check(Object_Text, Operation_checkExist, "要删除所选内容吗？");
+	}
+	/**
+	 * 长按视频取消删除
+	 */
+	public static void test_072() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		String Musicname = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
+		excute(Object_Text, Operation_ClickWait, "取消");
+		check(Object_Text, Operation_checkExist, Musicname);
+	}
+	/**
+	 * 长按视频确定删除
+	 */
+//	public static void test_373() 
+//	{
+//		//主体
+//		FileExplorerCommon.Enterclass("视频");
+//		String Picturename = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
+//		FileExplorerCommon.Longclickmenu("删除");
+//		excute(Object_Text, Operation_ClickWait, "确定");
+//		check(Object_Text, Operation_checkNoExist, Picturename);
+//	}
+	/**
+	 * 长按视频重命名查看
+	 */
+	public static void test_074() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		FileExplorerCommon.Longclickmenu("重命名");
+		check(Object_Text, Operation_checkExist, "确定");
+	}
+	/**
+	 * 长按视频重命名
+	 */
+	public static void test_075() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		String Picture = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		FileExplorerCommon.Longclickmenu("重命名");
+		String prefix = Picture.substring(Picture.lastIndexOf(".")+1);
+		System.out.println(prefix);	
+		System.out.println("Picturename."+prefix);	
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", "Picturename");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		if(!(Boolean) excute(Object_Text, Operation_Exists, "Picturename."+prefix))
+			excute(Object_TextScroll, Operation_Exists, "Picturename."+prefix, "vertical");
+		check(Object_Text, Operation_checkExist, "Picturename."+prefix);
+		//清场
+		excute(Object_Text, Operation_LongClick, "Picturename."+prefix);
+		excute(Object_Text, Operation_ClickWait, "重命名");
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", Picture);
+		excute(Object_Text, Operation_ClickWait, "确定");
+	}
+	/**
+	 * 长按视频分享
+	 */
+	public static void test_076() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		FileExplorerCommon.Longclickmenu("分享");
+		check(Object_Text, Operation_checkExist, "信息");
+		check(Object_Text, Operation_checkExist, "电子邮件");
+		check(Object_Text, Operation_checkExist, "蓝牙");
+	}
+	/**
+	 * 长按视频属性
+	 */
+	public static void test_077() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		FileExplorerCommon.Longclickmenu("属性");
+		check(Object_ResourceId, Operation_checkExist, "android:id/content");//弹框ID
+	}
+	/**
+	 * 视频界面菜单键
+	 */
+	public static void test_078() 
+	{
+		//主体
+		FileExplorerCommon.classmenu("视频");
+		check(Object_Text, Operation_checkExist, "选择多个");
+		check(Object_Text, Operation_checkExist, "排序方式");
+	}
+	/**
+	 * 视频界面选择多个
+	 */
+	public static void test_079() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		check(Object_Text, Operation_checkExist, "选择全部");
+	}
+	/**
+	 * 视频界面选择多个任意选择
+	 */
+	public static void test_080() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "com.sprd.fileexplorer:id/select_checkbox", "0");
+	}
+	/**
+	 * 视频界面选择多个点击删除按钮
+	 */
+	public static void test_081() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/menu_delete");
+		check(Object_Text, Operation_checkExist, "要删除所选内容吗？");
+	}
+	/**
+	 * 视频界面选择多个点击菜单
+	 */
+	public static void test_082() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "复制");
+		check(Object_Text, Operation_checkExist, "剪切");
+		check(Object_Text, Operation_checkExist, "分享");
+	}
+	/**
+	 * 视频界面选择多个点击菜单复制
+	 */
+	public static void test_083() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		FileExplorerCommon.menu("复制");
+		check(Object_Text, Operation_checkExist, "选择存储位置");
+	}
+	/**
+	 * 视频界面选择多个点击菜单剪切
+	 */
+	public static void test_084() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		FileExplorerCommon.menu("剪切");
+		check(Object_Text, Operation_checkExist, "选择存储位置");
+	}
+	/**
+	 * 视频界面选择多个点击菜单剪切
+	 */
+	public static void test_085() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		FileExplorerCommon.menu("分享");
+		check(Object_Text, Operation_checkExist, "信息");
+		check(Object_Text, Operation_checkExist, "电子邮件");
+		check(Object_Text, Operation_checkExist, "蓝牙");
+	}
+	/**
+	 * 视频界面选择多个点击选择全部
+	 */
+	public static void test_086() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/select_all_cb");
+		int Num = ((Integer)(excute(Object_ResourceId, Operation_GetChildCount, "com.sprd.fileexplorer:id/list"))).intValue();
+		 for(int i=0; i<Num; i++)
+		 {
+			 check(Object_ResIdInstance, Operation_CheckedTrue, "com.sprd.fileexplorer:id/select_checkbox", String.valueOf(i));
+		 }
+	}
+	/**
+	 * 视频界面选择多个选择全部变成取消全部
+	 */
+	public static void test_087() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_Text, Operation_checkExist, "取消全部");
+	}
+	/**
+	 * 视频界面选择多个点击取消全部
+	 */
+	public static void test_088() 
+	{
+		//主体
+		FileExplorerCommon.select("视频");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/select_all_cb");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/select_all_cb");
+		int Num = ((Integer)(excute(Object_ResourceId, Operation_GetChildCount, "com.sprd.fileexplorer:id/list"))).intValue();
+		 for(int i=0; i<Num; i++)
+		 {
+			 check(Object_ResIdInstance, Operation_CheckedFalse, "com.sprd.fileexplorer:id/select_checkbox", String.valueOf(i));
+		 }
+		check(Object_ResourceId, Operation_EnabledFalse, "com.sprd.fileexplorer:id/menu_delete");
+	}
+	/**
+	 * 视频界面排列方式
+	 */
+	public static void test_089() 
+	{
+		//主体
+		FileExplorerCommon.classmenu("视频");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle", "排序方式");
+		check(Object_ResIdText, Operation_checkExist, "android:id/text1", "按名称");
+		check(Object_ResIdText, Operation_checkExist, "android:id/text1", "按文件类型");
+		check(Object_ResIdText, Operation_checkExist, "android:id/text1", "按时间");
+		check(Object_ResIdText, Operation_checkExist, "android:id/text1", "按大小");
+	}
+	/**
+	 * 视频界面排列方式按名称排序
+	 */
+	public static void test_090() 
+	{
+		//主体
+		FileExplorerCommon.classmenu("视频");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按名称");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String firname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		String scename = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
+		String thrname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
+		String bname[] = {firname, scename, thrname};
+		String name[] = {firname, scename, thrname};
+		Arrays.sort(name);
+		for(int i=0;i<name.length;i++)
+		{
+			Assert.assertEquals(name[i], bname[i]);
+		}
+	}
+	/**
+	 * 浏览视频
+	 */
+	public static void test_94() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name");
+		check(Object_Description, Operation_checkExist, "分享方式");//图片浏览界面分享按钮
+	}
 	/**
 	*长按存储卡下条目，弹出功能菜单 
 	*/
