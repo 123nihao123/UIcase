@@ -1173,6 +1173,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name");
 		check(Object_Description, Operation_checkExist, "分享方式");//图片浏览界面分享按钮
 	}
+
 	/**
 	 *快速查看-文档
 	 */
@@ -1180,14 +1181,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	{
 		//主体
 		FileExplorerCommon.Enterclass("文档");
-		if((Boolean)excute(Object_Text,Operation_Exists,"Test.txt"))
-		{
-			check(Object_Text,Operation_checkExist,"Test.txt");
-		}
-		else
-		{
-			check(Object_TextScroll,Operation_checkExist,"Test.txt","vertical");
-		}
+		check(Object_Text,Operation_checkExist,"文档");
+		
 	}
 	
 	/**
@@ -1473,6 +1468,24 @@ public class FileExplorer extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"按大小");
 	}
 	
+	/**
+	 *快速查看-文档-菜单-排序方式-对话框上有“按名称”排序方式
+	 */
+	public static void test_118()
+	{
+		//主体
+		FileExplorerCommon.Enterclass("文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按名称");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByName(Array);
+	}
+	
 	
 	/**
 	 *快速查看-APK安装文件
@@ -1747,18 +1760,360 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
 		check(Object_Text,Operation_checkExist,"按名称");
 		check(Object_Text,Operation_checkExist,"按文件类型");
 		check(Object_Text,Operation_checkExist,"按时间");
 		check(Object_Text,Operation_checkExist,"按大小");
 	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-排序方式-对话框上有“按名称”排序方式
+	 */
+	public static void test_146()
+	{
+		//主体
+		FileExplorerCommon.Enterclass("APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按名称");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByName(Array);
+	}
+	
+	
+	/**
+	 *快速查看-APK安装文件-菜单-全部安装
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_150() throws UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"未知来源","vertical");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		//主体
+		DeviceCommon.enterApp(Devices_Desc_FileManage);
+		FileExplorerCommon.Enterclass("APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"全部安装");
+		for (int i=0;i<=10;i++)
+		{
+			excute(Object_Text,Operation_ClickWait,"安装");
+			check(Object_Text,Operation_WaitForExists,"应用安装完成。","15000");
+			excute(Object_Text,Operation_ClickWait,"完成");
+			if ((Boolean)excute(Object_Text,Operation_Exists,"APK安装文件"))
+			{
+				//清场
+				DeviceCommon.enterApp(Devices_Desc_Setting);
+				excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+				excute(Object_TextScroll,Operation_ClickWait,"未知来源","vertical");
+				return ;
+			}
+		}
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-安装1个APK
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_151() throws UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"未知来源","vertical");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		//主体
+		DeviceCommon.enterApp(Devices_Desc_FileManage);
+		FileExplorerCommon.Enterclass("APK安装文件");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Text,Operation_ClickWait,"安装");
+		check(Object_Text,Operation_WaitForExists,"应用安装完成。","15000");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		//清场
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"未知来源","vertical");
+	}
+	
+	
+	/**
+	 *手机存储-长按一个条目，此菜单上有如下功能项:复制、剪切、删除、清空、重命名、属性
+	 */
+	public static void test_152() 
+	{
+		//主体
+		FileExplorerCommon.longclickitem("手机");
+		check(Object_Text,Operation_checkExist,"复制");
+		check(Object_Text,Operation_checkExist,"剪切");
+		check(Object_Text,Operation_checkExist,"删除");
+		check(Object_Text,Operation_checkExist,"清空");
+		check(Object_Text,Operation_checkExist,"重命名");
+		check(Object_Text,Operation_checkExist,"属性");
+	}
+	
+	/**
+	 *手机存储-长按一个条目-复制
+	 */
+	public static void test_153() 
+	{
+		//主体
+		FileExplorerCommon.longclickitem("手机");
+		excute(Object_Text,Operation_ClickWait,"复制");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *手机存储-长按一个条目-剪切
+	 */
+	public static void test_154() 
+	{
+		//主体
+		FileExplorerCommon.longclickitem("手机");
+		excute(Object_Text,Operation_ClickWait,"剪切");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 *手机存储-长按一个条目-删除
+	 */
+	public static void test_155() 
+	{
+		//主体
+		FileExplorerCommon.longclickitem("手机");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 *手机存储-长按一个条目-清空
+	 */
+	public static void test_156() 
+	{
+		//主体
+		FileExplorerCommon.longclickitem("手机");
+		excute(Object_Text,Operation_ClickWait,"清空");
+		check(Object_Text,Operation_checkExist,"是否删除当前文件夹中所有文件?");
+	}
+	
+	/**
+	 *手机存储-长按一个条目-重命名
+	 */
+	public static void test_157() 
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		if (!(Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/detailed_file_list","ReNameTest","vertical"))
+		{
+			excute(Object_Device, Operation_PressMenu);
+			excute(Object_Text, Operation_ClickWait,"新建文件夹");
+			excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","ReNameTest");
+			excute(Object_Text, Operation_ClickWait,"确定");
+		}
+		if ((Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/detailed_file_list","NewName","vertical"))
+		{
+			excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewName","vertical");
+			excute(Object_Text,Operation_ClickWait,"删除");
+			excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		//主体
+		excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","ReNameTest","vertical");
+		excute(Object_Text,Operation_ClickWait,"重命名");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","NewName");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_TextScrollWithResId, Operation_checkExist,"com.sprd.fileexplorer:id/detailed_file_list","NewName","vertical");
+		//清场
+		excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewName","vertical");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"确定");
+	}
+	
+	/**
+	 * 手机存储-长按一个条目-属性
+	 */
+	public static void test_158() 
+	{
+		//主体
+		FileExplorerCommon.longclickitem("手机");
+		excute(Object_Text,Operation_ClickWait,"属性");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","类型");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","位置");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","日期");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","包含");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","大小");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否可写");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否可读");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否隐藏");
+	}
+	
+	/**
+	 *手机存储-长按一个条目-搜索
+	 */
+	public static void test_159() 
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/searchfile");
+		check(Object_Text, Operation_checkExist,"搜索范围:");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）
+	 */
+	public static void test_160()
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		check(Object_Text, Operation_checkExist,"新建文件夹");
+		check(Object_Text, Operation_checkExist,"新建文件");
+		check(Object_Text, Operation_checkExist,"选择多个");
+		check(Object_Text, Operation_checkExist,"排序方式");
+		check(Object_Text, Operation_checkExist,"存储状态");
+		check(Object_Text, Operation_checkExist,"设置");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）-新建文件夹
+	 */
+	public static void test_162()
+	{
+		//前提
+		FileExplorerCommon.storagePath("手机");
+		if ((Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/file_item_list","NewFolderName","vertical"))
+		{
+			excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list","NewFolderName","vertical");
+			excute(Object_Text,Operation_ClickWait,"删除");
+			excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		//主体
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait,"新建文件夹");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","NewFolderName");
+		excute(Object_Text, Operation_ClickWait,"确定");
+		check(Object_TextScrollWithResId, Operation_checkExist,"com.sprd.fileexplorer:id/detailed_file_list","NewFolderName","vertical");
+		//清场
+		excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewFolderName","vertical");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"确定");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）选择多个
+	 */
+	public static void test_164() 
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		excute(Object_Text, Operation_ClickWait,"选择多个");
+		check(Object_Text,Operation_checkExist,"选择全部");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）选择全部
+	 */
+	public static void test_165() 
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		excute(Object_Text, Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId, Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_all_cb");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_ClassInstance,Operation_EnabledTrue,"android.widget.LinearLayout","0");
+		check(Object_ClassInstance,Operation_EnabledTrue,"android.widget.LinearLayout","1");
+	}
+	
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）-取消选择全部
+	 */
+	
+	public static void test_166() 
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		excute(Object_Text, Operation_ClickWait,"选择多个");
+		excute(Object_ResourceId, Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		excute(Object_ResourceId, Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
+		check(Object_ResourceId,Operation_CheckedFalse,"com.sprd.fileexplorer:id/select_all_cb");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_ClassInstance,Operation_EnabledFalse,"android.widget.LinearLayout","0");
+		check(Object_ClassInstance,Operation_EnabledFalse,"android.widget.LinearLayout","1");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）-选择1个条目，删除
+	 */
+	
+	public static void test_167() 
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		excute(Object_Text, Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance, Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_ResourceId, Operation_ClickWait,"com.sprd.fileexplorer:id/menu_delete");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）选择1个条目,复制
+	 */
+	public static void test_168() 
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		excute(Object_Text, Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance, Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait,"复制");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）选择1个条目,剪切
+	 */
+	public static void test_169() 
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		excute(Object_Text, Operation_ClickWait,"选择多个");
+		excute(Object_ResIdInstance, Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait,"剪切");
+		check(Object_Text,Operation_checkExist,"选择存储位置");
+	}
+	
+	/**
+	 * 手机存储-点击页面上的更多（菜单）选择1个条目,剪切
+	 */
+	public static void test_170() 
+	{
+		//主体
+		FileExplorerCommon.clickmenu("手机");
+		excute(Object_Text, Operation_ClickWait,"排序方式");
+		check(Object_Text,Operation_checkExist,"按名称");
+		check(Object_Text,Operation_checkExist,"按文件类型");
+		check(Object_Text,Operation_checkExist,"按时间");
+		check(Object_Text,Operation_checkExist,"按大小");
+	}
+	
+	
+	
+	
+	
 	/**
 	*长按存储卡下条目，弹出功能菜单 
 	*/
 	public static void test_177() 
 	{
 		//主体
-		FileExplorerCommon.longclickiteminSD();
+		FileExplorerCommon.longclickitem("存储卡");
 		check(Object_Text,Operation_checkExist,"复制");
 		check(Object_Text,Operation_checkExist,"剪切");
 		check(Object_Text,Operation_checkExist,"删除");
@@ -1773,7 +2128,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_178() 
 	{
 		//主体
-		FileExplorerCommon.longclickiteminSD();
+		FileExplorerCommon.longclickitem("存储卡");
 		excute(Object_Text,Operation_ClickWait,"复制");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
 	}
@@ -1784,7 +2139,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_179() 
 	{
 		//主体
-		FileExplorerCommon.longclickiteminSD();
+		FileExplorerCommon.longclickitem("存储卡");
 		excute(Object_Text,Operation_ClickWait,"剪切");
 		check(Object_Text,Operation_checkExist,"选择存储位置");
 	}
@@ -1795,7 +2150,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_180() 
 	{
 		//主体
-		FileExplorerCommon.longclickiteminSD();
+		FileExplorerCommon.longclickitem("存储卡");
 		excute(Object_Text,Operation_ClickWait,"删除");
 		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
@@ -1806,7 +2161,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_181() 
 	{
 		//主体
-		FileExplorerCommon.longclickiteminSD();
+		FileExplorerCommon.longclickitem("存储卡");
 		excute(Object_Text,Operation_ClickWait,"清空");
 		check(Object_Text,Operation_checkExist,"是否删除当前文件夹中所有文件?");
 	}
@@ -1817,7 +2172,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_182() 
 	{
 		//前提
-		FileExplorerCommon.cometoSD();
+		FileExplorerCommon.storagePath("存储卡");
 		if (!(Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/detailed_file_list","ReNameTest","vertical"))
 		{
 			excute(Object_Device, Operation_PressMenu);
@@ -1849,7 +2204,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_183() 
 	{
 		//主体
-		FileExplorerCommon.longclickiteminSD();
+		FileExplorerCommon.longclickitem("存储卡");
 		excute(Object_Text,Operation_ClickWait,"属性");
 		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","类型");
 		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","位置");
@@ -1879,7 +2234,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_185()
 	{
 		//主体
-		FileExplorerCommon.clickmenuinSD();
+		FileExplorerCommon.clickmenu("存储卡");
 		check(Object_Text, Operation_checkExist,"新建文件夹");
 		check(Object_Text, Operation_checkExist,"新建文件");
 		check(Object_Text, Operation_checkExist,"选择多个");
@@ -1894,7 +2249,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_187()
 	{
 		//前提
-		FileExplorerCommon.cometoSD();
+		FileExplorerCommon.storagePath("存储卡");
 		if ((Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/detailed_file_list","NewFolderName","vertical"))
 		{
 			excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewFolderName","vertical");
@@ -1919,7 +2274,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_188() 
 	{
 		//前提
-		FileExplorerCommon.cometoSD();
+		FileExplorerCommon.storagePath("存储卡");
 		if ((Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/detailed_file_list","NewFileName.txt","vertical"))
 		{
 			excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewFileName.txt","vertical");
@@ -1944,7 +2299,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_189() 
 	{
 		//主体
-		FileExplorerCommon.clickmenuinSD();
+		FileExplorerCommon.clickmenu("存储卡");
 		excute(Object_Text, Operation_ClickWait,"选择多个");
 		check(Object_Text,Operation_checkExist,"选择全部");
 	}

@@ -329,30 +329,30 @@ public class FileExplorerCommon
 	}
 
 	/**
-	 * 到存储卡界面
+	 * 选择存储类型（手机或存储卡）
 	 */
-	public static void cometoSD()
+	public static void storagePath(String storagetype)
 	{
 		excute(Object_ClassName,Operation_ClickWait,"android.widget.Spinner");
-		excute(Object_Text,Operation_ClickWait,"存储卡");
+		excute(Object_Text,Operation_ClickWait,storagetype);
 	}
 	/**
-	 * 在存储卡界面长按某一条目
+	 * 在存储界面长按某一条目
 	 */
-	public static void longclickiteminSD()
+	public static void longclickitem(String storagetype)
 	{
 		excute(Object_ClassName,Operation_ClickWait,"android.widget.Spinner");
-		excute(Object_Text,Operation_ClickWait,"存储卡");
+		excute(Object_Text,Operation_ClickWait,storagetype);
 		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list_name","0");
 	}
 	
 	/**
-	 * 在SD卡存储界面点击menu
+	 * 在存储界面点击menu
 	 */
-	public static void clickmenuinSD()
+	public static void clickmenu(String storagetype)
 	{
 		excute(Object_ClassName,Operation_ClickWait,"android.widget.Spinner");
-		excute(Object_Text,Operation_ClickWait,"存储卡");
+		excute(Object_Text,Operation_ClickWait,storagetype);
 		excute(Object_Device, Operation_PressMenu);
 	}
 
