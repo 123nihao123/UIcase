@@ -1342,10 +1342,14 @@ public class FileExplorer extends UiAutomatorTestCase
 	{
 		//主体
 		FileExplorerCommon.Enterclass("文档");
-		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		FileExplorerCommon.Longclickmenu("属性");
-		String txt1 = (String) excute(Object_ResourceId,Operation_GetText,"android:id/alertTitle");
-		Assert.assertEquals(txt, txt1);
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","类型");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","位置");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","日期");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","大小");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否可写");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否可读");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否隐藏");
 	}
 	
 	/**
@@ -1515,8 +1519,113 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
 		FileExplorerCommon.isSortedByName(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按名称");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array1 = new String[]{text,text1,txt2};
+		FileExplorerCommon.isSortedByName(Array1,true);
 	}
 	
+	/**
+	 *快速查看-文档-菜单-排序方式-对话框上有“按文件类型”排序方式
+	 */
+	public static void test_119()
+	{
+		//主体
+		FileExplorerCommon.Enterclass("文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按文件类型");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByType(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按文件类型");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array1 = new String[]{text,text1,txt2};
+		FileExplorerCommon.isSortedByType(Array1,true);
+	}
+	
+	/**
+	 *快速查看-文档-菜单-排序方式-对话框上有“按时间”排序方式
+	 * @throws ParseException 
+	 */
+	public static void test_120() throws ParseException
+	{
+		//主体
+		FileExplorerCommon.Enterclass("文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按时间");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByTime(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按时间");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedByTime(Array1,true);
+	}
+	
+	/**
+	 *快速查看-文档-菜单-排序方式-对话框上有“按大小”排序方式
+	 * @throws ParseException 
+	 */
+	public static void test_121() throws ParseException
+	{
+		//主体
+		FileExplorerCommon.Enterclass("文档");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按大小");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedBySize(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按大小");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedBySize(Array1,true);
+		
+	}
+	
+	/**
+	 *快速查看-文档-选择一个文档预览
+	 * @throws ParseException 
+	 */
+	public static void test_122() throws ParseException
+	{
+		//主体
+		FileExplorerCommon.Enterclass("文档");
+		String txt = (String)excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		check(Object_Text,Operation_WaitForExists,txt,"10000");
+	}
 	
 	/**
 	 *快速查看-APK安装文件
@@ -1646,6 +1755,22 @@ public class FileExplorer extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"蓝牙");
 	}
 	
+	/**
+	 * 快速查看-APK安装文件-长按一个APK-属性
+	 */
+	public static void test_133()
+	{
+		//主体
+		FileExplorerCommon.Enterclass("APK安装文件");
+		FileExplorerCommon.Longclickmenu("属性");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","类型");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","位置");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","日期");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","大小");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否可写");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否可读");
+		check(Object_ClassInstance,Operation_TextContainsTrue,"android.widget.TextView","1","是否隐藏");
+	}
 	
 	/**
 	 *快速查看-APK安装文件- 菜单-选择多个、排序方式
@@ -1814,8 +1939,99 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
 		FileExplorerCommon.isSortedByName(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按名称");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedByName(Array1,true);
 	}
 	
+	/**
+	 *快速查看-APK安装文件-菜单-排序方式-对话框上有“按文件类型”排序方式
+	 */
+	public static void test_147()
+	{
+		//主体
+		FileExplorerCommon.Enterclass("APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按文件类型");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByType(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按文件类型");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array1 = new String[]{text,text1,txt2};
+		FileExplorerCommon.isSortedByType(Array1,true);
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-排序方式-对话框上有“按时间”排序方式
+	 * @throws ParseException 
+	 */
+	public static void test_148() throws ParseException
+	{
+		//主体
+		FileExplorerCommon.Enterclass("APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按时间");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByTime(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按时间");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedByTime(Array1,true);
+	}
+	
+	/**
+	 *快速查看-APK安装文件-菜单-排序方式-对话框上有“按大小”排序方式
+	 * @throws ParseException 
+	 */
+	public static void test_149() throws ParseException
+	{
+		//主体
+		FileExplorerCommon.Enterclass("APK安装文件");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按大小");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedBySize(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按大小");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedBySize(Array1,true);
+	}
 	
 	/**
 	 *快速查看-APK安装文件-菜单-全部安装
@@ -2016,20 +2232,20 @@ public class FileExplorer extends UiAutomatorTestCase
 	{
 		//前提
 		FileExplorerCommon.storagePath("手机");
-		if ((Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/file_item_list","NewFolderName","vertical"))
+		if ((Boolean)excute(Object_TextScrollWithResId, Operation_Exists,"com.sprd.fileexplorer:id/detailed_file_list","NewFolder","vertical"))
 		{
-			excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/file_item_list","NewFolderName","vertical");
+			excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewFolder","vertical");
 			excute(Object_Text,Operation_ClickWait,"删除");
 			excute(Object_Text,Operation_ClickWait,"确定");
 		}
 		//主体
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait,"新建文件夹");
-		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","NewFolderName");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","NewFolder");
 		excute(Object_Text, Operation_ClickWait,"确定");
-		check(Object_TextScrollWithResId, Operation_checkExist,"com.sprd.fileexplorer:id/detailed_file_list","NewFolderName","vertical");
+		check(Object_TextScrollWithResId, Operation_checkExist,"com.sprd.fileexplorer:id/detailed_file_list","NewFolder","vertical");
 		//清场
-		excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewFolderName","vertical");
+		excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewFolder","vertical");
 		excute(Object_Text,Operation_ClickWait,"删除");
 		excute(Object_Text,Operation_ClickWait,"确定");
 	}
@@ -2121,7 +2337,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	}
 	
 	/**
-	 * 手机存储-点击页面上的更多（菜单）选择1个条目,剪切
+	 * 手机存储-点击页面上的更多-排序方式
 	 */
 	public static void test_170() 
 	{
@@ -2134,9 +2350,158 @@ public class FileExplorer extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"按大小");
 	}
 	
+	/**
+	 * 手机存储-点击页面上的更多-排序方式-按名称
+	 */
+	public static void test_171() 
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按名称");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByName(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按名称");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedByName(Array1,true);
+	}
 	
+	/**
+	 *快速查看-文档-菜单-排序方式-对话框上有“按文件类型”排序方式
+	 */
+	public static void test_172()
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		if((Boolean)excute(Object_Text,Operation_Exists,"search"))
+		{
+			excute(Object_Text,Operation_ClickWait,"search");
+		}
+		else
+		{
+			excute(Object_TextScroll,Operation_ClickWait,"search","vertical");
+		}	
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按文件类型");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByType(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按文件类型");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
+		String[] Array1 = new String[]{text,text1,txt2};
+		FileExplorerCommon.isSortedByType(Array1,true);
+	}
 	
+	/**
+	 * 手机存储-点击页面上的更多-排序方式-按时间
+	 * @throws ParseException 
+	 */
+	public static void test_173() throws ParseException 
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按时间");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedByTime(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按时间");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedByTime(Array1,true);
+	}
+
+
+	/**
+	 *快速查看-文档-菜单-排序方式-对话框上有“按文件大小”排序方式
+	 * @throws ParseException 
+	 */
+	public static void test_174() throws ParseException
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		if((Boolean)excute(Object_Text,Operation_Exists,"search"))
+		{
+			excute(Object_Text,Operation_ClickWait,"search");
+		}
+		else
+		{
+			excute(Object_TextScroll,Operation_ClickWait,"search","vertical");
+		}	
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按大小");
+		excute(Object_Text,Operation_ClickWait,"升序");
+		String txt = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array = new String[]{txt,txt1,txt2};
+		FileExplorerCommon.isSortedBySize(Array);
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
+		excute(Object_Text,Operation_ClickWait,"按大小");
+		excute(Object_Text,Operation_ClickWait,"降序");
+		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","0");
+		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
+		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
+		String[] Array1 = new String[]{text,text1,text2};
+		FileExplorerCommon.isSortedBySize(Array1,true);
+	}
+		
+	/**
+	 * 手机存储-点击页面上的更多-存储状态
+	 * @throws ParseException 
+	 */
+	public static void test_175() throws ParseException 
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"存储状态");
+		check(Object_Text,Operation_checkExist,"内部存储设备");
+	}
 	
+	/**
+	 * 手机存储-点击页面上的更多-设置
+	 * @throws ParseException 
+	 */
+	public static void test_176() throws ParseException 
+	{
+		//主体
+		FileExplorerCommon.storagePath("手机");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"设置");
+		check(Object_Text,Operation_checkExist,"显示设置");
+	}
 	
 	/**
 	*长按存储卡下条目，弹出功能菜单 
