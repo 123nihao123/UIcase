@@ -133,8 +133,15 @@ public class FileExplorerCommon
 		while (m.find())
 		{
 			strReturn = m.group();
-			System.out.println("in while strReturn: " +strReturn);
+			//System.out.println("in while strReturn: " +strReturn);
 		}
+		return strReturn;
+	}
+
+	public static String extractFileType(String info)
+	{
+		//System.out.println(info);
+		String strReturn=extractField(info,"(?<=\\.)\\w+");
 		return strReturn;
 	}
 	/**
@@ -160,6 +167,66 @@ public class FileExplorerCommon
 		String strReturn= extractField(info,"\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d");
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
+	}
+
+/**
+ * 判断是否按文件类型排好序。缺省为升序。
+ * @param strArray
+ * @return
+ */
+	public static boolean isSortedByType(String[] strArray)
+	{
+		return isSortedByType(strArray, false);
+	}
+
+/**
+ * 判断是否按文件类型排好序。缺省为升序。
+ * @param strArray
+ * @param isReverse -true:降序排列  false:升序排列，缺省为升序
+ * @return
+ */
+	public static boolean isSortedByType(String[] strArray, boolean isReverse )
+	{
+		boolean valReturn =true;
+		String typeArray[]= new String[strArray.length];
+
+		if(strArray.length==1) return valReturn;
+
+		for(int i=0;i<strArray.length;i++)
+		{
+			typeArray[i] = extractFileType(strArray[i]);
+		}
+
+		/*for(String t : typeArray) {
+			System.out.println(t);
+		}*/
+
+		if(isReverse)
+		{
+			//降序
+			for(int i=0;i<typeArray.length-1;i++)
+			{
+				if(typeArray[i].compareTo(typeArray[i+1])<0) //type cann't be chinese so comPareTo is safe
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		else
+		{
+			//升序
+			for(int i=0;i<typeArray.length-1;i++)
+			{
+				if(typeArray[i].compareTo(typeArray[i+1])>0)
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+
+		return valReturn;
 	}
 
 	/**
