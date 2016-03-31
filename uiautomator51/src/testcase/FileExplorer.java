@@ -1424,7 +1424,6 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Longclickmenu("分享");
 		check(Object_Text,Operation_checkExist,"电子邮件");
 		check(Object_Text,Operation_checkExist,"蓝牙");
-		check(Object_Text,Operation_checkExist,"信息");
 	}
 	
 	/**
@@ -1537,7 +1536,6 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"分享");
 		check(Object_Text,Operation_checkExist,"电子邮件");
 		check(Object_Text,Operation_checkExist,"蓝牙");
-		check(Object_Text,Operation_checkExist,"信息");
 	}
 	
 	/**
@@ -1589,6 +1587,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"排序方式");
 		check(Object_Text,Operation_checkExist,"按名称");
 		check(Object_Text,Operation_checkExist,"按文件类型");
 		check(Object_Text,Operation_checkExist,"按时间");
