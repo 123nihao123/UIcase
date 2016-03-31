@@ -133,7 +133,7 @@ public class FileExplorerCommon
 		while (m.find())
 		{
 			strReturn = m.group();
-			//System.out.println("strReturn: " +strReturn);
+			System.out.println("in while strReturn: " +strReturn);
 		}
 		return strReturn;
 	}
@@ -160,6 +160,67 @@ public class FileExplorerCommon
 		String strReturn= extractField(info,"\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d");
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
+	}
+
+	/**
+	 * 判断是否按文件时间排好序。缺省为升序。
+	 * @param strArray
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean isSortedByTime(String[] strArray) throws ParseException
+	{
+		return isSortedByTime(strArray, false);
+	}
+
+	/**
+	 * 判断是否按文件时间排好序。缺省为升序。
+	 * @param strArray
+	 * @param isReverse - true:降序排列  false:升序排列，缺省为升序
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean isSortedByTime(String[] strArray,boolean isReverse) throws ParseException
+	{
+		boolean valReturn =true;
+		float timeArray[]= new float[strArray.length];
+
+		if (strArray.length==1) return valReturn;
+
+		for(int i=0;i<strArray.length;i++)
+		{
+			timeArray[i] = stringToTime(extractFileTime(strArray[i]));
+		}
+
+		for(float t : timeArray) {
+		System.out.println(t);
+		}
+
+		if(isReverse)
+		{
+			//降序
+			for(int i=0;i<timeArray.length-1;i++)
+			{
+				if(timeArray[i]<timeArray[i+1])
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		else
+		{
+			//升序
+			for(int i=0;i<timeArray.length-1;i++)
+			{
+				if(timeArray[i]>timeArray[i+1])
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		return valReturn;
 	}
 /**
  * 判断是否按文件大小排好序。缺省为升序。
