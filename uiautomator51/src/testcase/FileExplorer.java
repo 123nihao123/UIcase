@@ -416,12 +416,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String scename = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
 		String thrname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
 		String bname[] = {firname, scename, thrname};
-		String name[] = {firname, scename, thrname};
-		Arrays.sort(name);
-		for(int i=0;i<name.length;i++)
-		{
-			Assert.assertEquals(name[i], bname[i]);
-		}
+		FileExplorerCommon.isSortedByName(bname, false);
+
 	}
 	/**
 	 * 音乐界面排列方式按文件类型排序
@@ -458,15 +454,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String Time = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
 		String sceTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
 		String thrTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
-		long timelist[] = {FileExplorerCommon.stringToTime(FileExplorerCommon.extractFileTime(Time)), 
-				FileExplorerCommon.stringToTime(FileExplorerCommon.extractFileTime(sceTime)), 
-				FileExplorerCommon.stringToTime(FileExplorerCommon.extractFileTime(thrTime))};
-		for(int i=0;i<timelist.length-1;i++)
-		{
-			boolean b = timelist[i] <= timelist[i+1];
-			Assert.assertEquals(true, b);
-			
-		}
+		String tim[] = {Time, sceTime, thrTime};
+		FileExplorerCommon.isSortedByTime(tim);
 	}
 	/**
 	 * 音乐界面排列方式按大小排序
@@ -482,27 +471,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String Size = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
 		String sceSize = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
 		String thrSize = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
-		String prefix = Size.substring(Size.indexOf("大小:")+1);
-		String sceprefix = Size.substring(Size.indexOf("大小:")+1);
-		String thrprefix = Size.substring(Size.indexOf("大小:")+1);
-		String thrprefix1 =Size.substring(Size.lastIndexOf(":")+1);
-		
-		System.out.println(thrprefix1);
-		String str2[]=thrprefix1.split("M");
-		System.out.println(str2[0]);
-		int j=Integer.parseInt(str2[0]);
-		System.out.println(j);
-//		int prefixint = Integer.parseInt(Size.substring(Size.lastIndexOf(":")+1));
-//		System.out.println(prefixint);
-//		int sceprefixint = Integer.parseInt(Size.substring(Size.lastIndexOf(":")+1));
-//		int thrprefixint = Integer.parseInt(Size.substring(Size.lastIndexOf(":")+1));
-//		int Sizelist[] = {prefixint, sceprefixint, thrprefixint};
-//		for(int i=0;i<Sizelist.length-1;i++)
-//		{
-//			System.out.println(Sizelist[i]);
-//			boolean b = Sizelist[i] <= Sizelist[i+1];
-//			Assert.assertEquals(true, b);
-//		}
+		String num[] = {Size, sceSize, thrSize};
+		FileExplorerCommon.isSortedBySize(num);
 	}
 	/**
 	 * 播放音乐
@@ -796,6 +766,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		check(Object_ResIdText, Operation_checkExist, "android:id/text1", "按时间");
 		check(Object_ResIdText, Operation_checkExist, "android:id/text1", "按大小");
 	}
+	
 	/**
 	 * 图片界面排列方式按名称排序
 	 */
@@ -810,12 +781,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String scename = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
 		String thrname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
 		String bname[] = {firname, scename, thrname};
-		String name[] = {firname, scename, thrname};
-		Arrays.sort(name);
-		for(int i=0;i<name.length;i++)
-		{
-			Assert.assertEquals(name[i], bname[i]);
-		}
+		FileExplorerCommon.isSortedByName(bname, false);
+
 	}
 	/**
 	 * 图片界面排列方式按文件类型排序
@@ -823,7 +790,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_063() 
 	{
 		//主体
-		FileExplorerCommon.classmenu("音乐");
+		FileExplorerCommon.classmenu("图片");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按文件类型");
 		excute(Object_Text, Operation_ClickWait, "升序");
@@ -845,22 +812,32 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_064() throws ParseException 
 	{
 		//主体
-		FileExplorerCommon.classmenu("音乐");
+		FileExplorerCommon.classmenu("图片");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按时间");
 		excute(Object_Text, Operation_ClickWait, "升序");
 		String Time = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
 		String sceTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
 		String thrTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
-		long timelist[] = {FileExplorerCommon.stringToTime(FileExplorerCommon.extractFileTime(Time)), 
-				FileExplorerCommon.stringToTime(FileExplorerCommon.extractFileTime(sceTime)), 
-				FileExplorerCommon.stringToTime(FileExplorerCommon.extractFileTime(thrTime))};
-		for(int i=0;i<timelist.length-1;i++)
-		{
-			boolean b = timelist[i] <= timelist[i+1];
-			Assert.assertEquals(true, b);
-			
-		}
+		String tim[] = {Time, sceTime, thrTime};
+		FileExplorerCommon.isSortedByTime(tim);
+	}
+	/**
+	 * 图片界面排列方式按大小排序
+	 * @throws ParseException 
+	 */
+	public static void test_065() throws ParseException 
+	{
+		//主体
+		FileExplorerCommon.classmenu("图片");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按大小");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String Size = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
+		String sceSize = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
+		String thrSize = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
+		String num[] = {Size, sceSize, thrSize};
+		FileExplorerCommon.isSortedBySize(num);
 	}
 	/**
 	 * 浏览图片
@@ -975,8 +952,11 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Longclickmenu("重命名");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", "Picturename");
 		excute(Object_Text, Operation_ClickWait, "确定");
+		excute(Object_Text, Operation_WaitForExists, "视频", "10000");
 		if(!(Boolean) excute(Object_Text, Operation_Exists, "Picturename."+prefix))
+		{
 			excute(Object_TextScroll, Operation_Exists, "Picturename."+prefix, "vertical");
+			}
 		check(Object_Text, Operation_checkExist, "Picturename."+prefix);
 		//清场
 		excute(Object_Text, Operation_LongClick, "Picturename."+prefix);
@@ -1156,12 +1136,63 @@ public class FileExplorer extends UiAutomatorTestCase
 		String scename = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
 		String thrname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
 		String bname[] = {firname, scename, thrname};
+		FileExplorerCommon.isSortedByName(bname, false);
+
+	}
+	/**
+	 * 视频界面排列方式按文件类型排序
+	 */
+	public static void test_091() 
+	{
+		//主体
+		FileExplorerCommon.classmenu("视频");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按文件类型");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String firname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		String scename = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
+		String thrname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
+		String bname[] = {firname, scename, thrname};
 		String name[] = {firname, scename, thrname};
 		Arrays.sort(name);
 		for(int i=0;i<name.length;i++)
 		{
 			Assert.assertEquals(name[i], bname[i]);
 		}
+	}
+	/**
+	 * 视频界面排列方式按时间排序
+	 * @throws ParseException 
+	 */
+	public static void test_092() throws ParseException 
+	{
+		//主体
+		FileExplorerCommon.classmenu("视频");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按时间");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String Time = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
+		String sceTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
+		String thrTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
+		String tim[] = {Time, sceTime, thrTime};
+		FileExplorerCommon.isSortedByTime(tim);
+	}
+	/**
+	 * 视频界面排列方式按大小排序
+	 * @throws ParseException 
+	 */
+	public static void test_093() throws ParseException 
+	{
+		//主体
+		FileExplorerCommon.classmenu("视频");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按大小");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String Size = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
+		String sceSize = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
+		String thrSize = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
+		String num[] = {Size, sceSize, thrSize};
+		FileExplorerCommon.isSortedBySize(num);
 	}
 	/**
 	 * 浏览视频
