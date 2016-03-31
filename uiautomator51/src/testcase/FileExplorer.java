@@ -2334,5 +2334,486 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait,"选择多个");
 		check(Object_Text,Operation_checkExist,"选择全部");
 	}
+		/**
+	 * 存储卡模式下，全部选中时，复制、剪切、删除功能可用，页面上的checkbox全部被选中。
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_190() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "选择多个");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/select_all_cb");
+		int count=(Integer)excute(Object_ResourceId, Operation_GetChildCount, "com.sprd.fileexplorer:id/list");
+		for (int i = 0; i < count; i++) {
+			check(Object_ResIdInstance, Operation_CheckedTrue, "com.sprd.fileexplorer:id/select_checkbox",String.valueOf(i));
+		}
+		check(Object_Description, Operation_EnabledTrue, "删除");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_ClassInstance, Operation_EnabledTrue, "android.widget.LinearLayout","0");
+		check(Object_ClassInstance, Operation_EnabledTrue, "android.widget.LinearLayout","1");
+	}
 	
+	/**
+	 * 存储卡模式下，取消全部选中时，复制、剪切、删除功能不可用，页面上的checkbox未被选中。
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_191() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "选择多个");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/select_all_cb");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/select_all_cb");
+		int count=(Integer)excute(Object_ResourceId, Operation_GetChildCount, "com.sprd.fileexplorer:id/list");
+		for (int i = 0; i < count; i++) {
+			check(Object_ResIdInstance, Operation_CheckedFalse, "com.sprd.fileexplorer:id/select_checkbox",String.valueOf(i));
+		}
+		check(Object_Description, Operation_EnabledFalse, "删除");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_ClassInstance, Operation_EnabledFalse, "android.widget.LinearLayout","0");
+		check(Object_ClassInstance, Operation_EnabledFalse, "android.widget.LinearLayout","1");
+	}
+	/**
+	 * 选择存储卡，点击菜单进入选择多个，选择一个点击删除
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_192() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "选择多个");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description, Operation_ClickWait, "删除");
+		check(Object_Text, Operation_checkExist, "要删除所选内容吗？");
+		
+	}
+	
+	
+	/**
+	 * 选择存储卡，点击菜单进入选择多个，选择一个文件复制
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_193() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "选择多个");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "复制");
+		check(Object_Text, Operation_checkExist, "选择存储位置");
+		
+	}
+	
+	/**
+	 * 选择存储卡，点击菜单进入选择多个，选择一个文件剪切
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_194() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "选择多个");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/select_checkbox","0");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "剪切");
+		check(Object_Text, Operation_checkExist, "选择存储位置");
+		
+	}
+	/**
+	 * 选择存储卡，点击菜单上的排序方式
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_195() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		check(Object_Text, Operation_checkExist, "按名称");
+		check(Object_Text, Operation_checkExist, "按文件类型");
+		check(Object_Text, Operation_checkExist, "按时间");
+		check(Object_Text, Operation_checkExist, "按大小");
+	}
+	/**
+	 * 存储卡模式下，菜单点击排序方式，按名称升序、降序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_196() throws UiObjectNotFoundException, RemoteException,IndexOutOfBoundsException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按名称");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String [] name1 =new String[3];
+		for (int i = 0; i < 3; i++) {
+			String name2=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			name1[i]=name2;
+		}
+		FileExplorerCommon.isSortedByName(name1);
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按名称");
+		excute(Object_Text, Operation_ClickWait, "降序");
+		String [] name3 =new String[3];
+		for (int i = 0; i < 3; i++) {
+			String name4=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			name3[i]=name4;
+		}
+		FileExplorerCommon.isSortedByName(name3,true);
+	}
+	/**
+	 * 存储卡模式下，菜单点击排序方式，按文件类型升序、降序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_197() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按文件类型");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String [] type1 =new String[3];
+		for (int i = 0; i < 3; i++) {
+			String name = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			type1[i]=FileExplorerCommon.extractFileType(name);
+		}
+		FileExplorerCommon.isSortedByType(type1);
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按文件类型");
+		excute(Object_Text, Operation_ClickWait, "降序");
+		String [] type2 =new String[3];
+		for (int i = 0; i < 3; i++) {
+			String name = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			type2[i]=FileExplorerCommon.extractFileType(name);
+		}
+		FileExplorerCommon.isSortedByType(type2,true);
+	}
+	/**
+	 * 存储卡模式下，菜单点击排序方式，按时间升序、降序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_198() throws UiObjectNotFoundException, RemoteException , ParseException
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按时间");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String [] time1=new String[3];
+		for (int i = 0; i < 3; i++) {
+			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
+			time1[i]=FileExplorerCommon.extractFileTime(str);
+		}
+		FileExplorerCommon.isSortedByTime(time1);
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按时间");
+		excute(Object_Text, Operation_ClickWait, "降序");
+		String [] time2=new String[3];
+		for (int i = 0; i < 3; i++) {
+			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
+			time2[i]=FileExplorerCommon.extractFileTime(str);
+		}
+		FileExplorerCommon.isSortedByTime(time2,true);
+	}
+	
+	/**
+	 * 存储卡模式下，菜单点击排序方式，按大小升序、降序
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_199() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按大小");
+		excute(Object_Text, Operation_ClickWait, "升序");
+		String [] size1=new String[3];
+		for (int i = 0; i < 3; i++) {
+			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
+			size1[i]=FileExplorerCommon.extractFileSize(str);
+		}
+		FileExplorerCommon.isSortedBySize(size1);
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "按大小");
+		excute(Object_Text, Operation_ClickWait, "降序");
+		String [] size2=new String[3];
+		for (int i = 0; i < 3; i++) {
+			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
+			size2[i]=FileExplorerCommon.extractFileSize(str);
+		}
+		FileExplorerCommon.isSortedBySize(size2,true);
+	}
+	/**
+	 * 选择存储卡点击进入储存状态
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_200() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "存储状态");
+		check(Object_Text, Operation_checkExist, "存储设置");
+		
+	}
+	/**
+	 * 选择存储卡进入设置页面
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_201() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "设置");
+		check(Object_Text, Operation_checkExist, "设置");
+		
+	}
+	/**
+	 * 选择存储卡进入设置页面,查看显示隐藏文件默认状态
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_202() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "设置");
+		check(Object_ResourceId, Operation_CheckedFalse, "android:id/checkbox");
+		
+	}
+	/**
+	 * 选择存储卡进入设置页面，勾选显示隐藏文件
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_203() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "设置");
+		if ((Boolean)check(Object_ResourceId, Operation_CheckedFalse, "android:id/checkbox")) {
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/checkbox");
+		}
+		check(Object_ResourceId, Operation_CheckedTrue, "android:id/checkbox");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		check(Object_Text, Operation_checkExist, ".隐藏文件夹");
+		//清场
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "设置");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/checkbox");
+	}
+	/**
+	 * 打开文件管理器，输入关键字test，搜索范围为全部，点击搜索
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_204() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "搜索");
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
+		excute(Object_Text, Operation_ClickWait, "搜索范围:");
+		excute(Object_Text, Operation_ClickWait, "全部");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		check(Object_Text, Operation_checkExist, "test.jpg");
+		check(Object_Text, Operation_checkExist, "test-sdcard.jpg");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
+		excute(Object_Text, Operation_ClickWait, "test");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		String [] str2=new String[]{"test.jpg","test.3gp","test.mp3","test-sdcard.jpg","test-sdcard.3gp","test-sdcard.mp3"};
+		for (int i = 0; i < str2.length; i++) {
+			check(Object_Text, Operation_checkExist, str2[i]);
+		}
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_document");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_apks");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_other");
+		excute(Object_Text, Operation_ClickWait, "test");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		String [] str1=new String[]{"test.jpg","test.mp3","test.apk","test.3gp","test.txt","test.rar","test-sdcard.jpg",
+				                    "test-sdcard.mp3","test-sdcard.apk","test-sdcard.3gp","test-sdcard.txt","test-sdcard.rar"};
+		for (int i = 0; i < str1.length; i++) {
+			check(Object_TextScroll, Operation_checkExist, str1[i],"vertical");
+		}
+	}
+	/**
+	 * 打开文件管理器，输入关键字test，搜索范围为手机，点击搜索
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_205() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "搜索");
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
+		excute(Object_Text, Operation_ClickWait, "搜索范围:");
+		excute(Object_Text, Operation_ClickWait, "手机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		check(Object_Text, Operation_checkExist, "test.jpg");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
+		excute(Object_Text, Operation_ClickWait, "test");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		check(Object_Text, Operation_checkExist, "test.jpg");
+		check(Object_Text, Operation_checkExist, "test.3gp");
+		check(Object_Text, Operation_checkExist, "test.mp3");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_document");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_apks");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_other");
+		excute(Object_Text, Operation_ClickWait, "test");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		String [] str1=new String[]{"test.jpg","test.mp3","test.apk","test.3gp","test.txt","test.rar"};
+		for (int i = 0; i < str1.length; i++) {
+			check(Object_Text, Operation_checkExist, str1[i]);
+		}
+	}
+	/**
+	 * 打开文件管理器，输入关键字test，搜索范围为存储卡，点击搜索
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_206() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "搜索");
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
+		excute(Object_Text, Operation_ClickWait, "搜索范围:");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		check(Object_Text, Operation_checkExist, "test-sdcard.jpg");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
+		excute(Object_Text, Operation_ClickWait, "test");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		check(Object_Text, Operation_checkExist, "test-sdcard.jpg");
+		check(Object_Text, Operation_checkExist, "test-sdcard.3gp");
+		check(Object_Text, Operation_checkExist, "test-sdcard.mp3");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_document");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_apks");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_other");
+		excute(Object_Text, Operation_ClickWait, "test");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		String [] str1=new String[]{"test-sdcard.jpg","test-sdcard.mp3","test-sdcard.apk","test-sdcard.3gp","test-sdcard.txt","test-sdcard.rar"};
+		for (int i = 0; i < str1.length; i++) {
+			check(Object_Text, Operation_checkExist, str1[i]);
+		}
+		
+	
+	}
+	/**
+	 * 清除搜索框里的“test”并检查
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_207() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "搜索");
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
+		excute(Object_ResIdIndex, Operation_ClickWait, "com.sprd.fileexplorer:id/clear_all_img","2");
+		check(Object_ResIdText, Operation_checkNoExist, "com.sprd.fileexplorer:id/search_view","test");
+	}
+	/**
+	 * 打开文件管理器，输入关键字test，搜索范围为手机，点击搜索，
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 */
+	public static void test_208() throws UiObjectNotFoundException, RemoteException 
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "搜索");
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
+		excute(Object_Text, Operation_ClickWait, "搜索范围:");
+		excute(Object_Text, Operation_ClickWait, "手机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_document");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_apks");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_other");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
+		excute(Object_Text, Operation_ClickWait, "test.jpg");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_Text, Operation_checkExist, "播放幻灯片");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Text, Operation_ClickWait, "test.mp3");
+		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/progress");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Text, Operation_ClickWait, "test.apk");
+		check(Object_Text, Operation_checkExist, "要安装此应用吗？它将获得以下权限：");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Text, Operation_ClickWait, "test.3gp");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_Text, Operation_checkExist, "声道设置");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Text, Operation_ClickWait, "test.txt");
+		check(Object_Text, Operation_checkExist, "test.txt");
+	}	
 }
