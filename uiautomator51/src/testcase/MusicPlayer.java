@@ -179,6 +179,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
 		excute(Object_Text, Operation_ClickWait, "播放");
 		String time1 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
+		Wait(3000);
 		String time2 =(String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
 		Assert.assertFalse(time1.equals(time2));
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/next");
@@ -1103,6 +1104,7 @@ public class MusicPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "歌曲");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/line1");
 		String starttime = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
+		Wait(3000);
 		String stoptime = (String)excute(Object_ResourceId, Operation_GetText, "com.android.music:id/currenttime");
 		Assert.assertFalse(starttime.equals(stoptime));
 		//清场
