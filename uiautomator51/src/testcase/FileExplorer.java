@@ -2919,7 +2919,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "快速查看");
 		excute(Object_Text, Operation_ClickWait, "存储卡");
-		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按名称");
@@ -2951,7 +2951,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "快速查看");
 		excute(Object_Text, Operation_ClickWait, "存储卡");
-		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按文件类型");
@@ -2983,7 +2983,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "快速查看");
 		excute(Object_Text, Operation_ClickWait, "存储卡");
-		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按时间");
@@ -3016,7 +3016,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Text, Operation_ClickWait, "快速查看");
 		excute(Object_Text, Operation_ClickWait, "存储卡");
-		excute(Object_Text, Operation_ClickWait, "search");
+		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按大小");
@@ -3069,7 +3069,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		
 	}
 	/**
-	 * 选择存储卡进入设置页面,查看显示隐藏文件默认状态
+	 * 进入设置页面,查看显示隐藏文件默认状态
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -3082,7 +3082,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		
 	}
 	/**
-	 * 选择存储卡进入设置页面，勾选显示隐藏文件
+	 * 进入设置页面，勾选显示隐藏文件
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -3098,7 +3098,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Text, Operation_ClickWait, "快速查看");
 		excute(Object_Text, Operation_ClickWait, "存储卡");
-		check(Object_Text, Operation_checkExist, ".隐藏文件夹");
+		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
+		check(Object_Text, Operation_checkExist, ".hiddenfiletest");
 		//清场
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "设置");
@@ -3119,15 +3120,15 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		check(Object_Text, Operation_checkExist, "test.jpg");
-		check(Object_Text, Operation_checkExist, "test-sdcard.jpg");
+		check(Object_Text, Operation_checkExist, "testpicture.jpg");
+		check(Object_Text, Operation_checkExist, "testpicture-sdcard.jpg");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
 		excute(Object_Text, Operation_ClickWait, "test");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		String [] str2=new String[]{"test.jpg","test.3gp","test.mp3","test-sdcard.jpg","test-sdcard.3gp","test-sdcard.mp3"};
+		String [] str2=new String[]{"testpicture.jpg","testvideo.3gp","testmusic.mp3","testpicture-sdcard.jpg","testvideo-sdcard.3gp","testmusic-sdcard.mp3"};
 		for (int i = 0; i < str2.length; i++) {
 			check(Object_Text, Operation_checkExist, str2[i]);
 		}
@@ -3138,8 +3139,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "test");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		String [] str1=new String[]{"test.jpg","test.mp3","test.apk","test.3gp","test.txt","test.rar","test-sdcard.jpg",
-				                    "test-sdcard.mp3","test-sdcard.apk","test-sdcard.3gp","test-sdcard.txt","test-sdcard.rar"};
+		String [] str1=new String[]{"testpicture.jpg","testmusic.mp3","testapk.apk","testvideo.3gp","testdocument.txt","testfile.rar","testpicture-sdcard.jpg",
+				                    "testmusic-sdcard.mp3","testapk-sdcard.apk","testvideo-sdcard.3gp","testdocument-sdcard.txt","testfile-sdcard.rar"};
 		for (int i = 0; i < str1.length; i++) {
 			check(Object_TextScroll, Operation_checkExist, str1[i],"vertical");
 		}
@@ -3159,16 +3160,16 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		check(Object_Text, Operation_checkExist, "test.jpg");
+		check(Object_Text, Operation_checkExist, "testpicture.jpg");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
 		excute(Object_Text, Operation_ClickWait, "test");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		check(Object_Text, Operation_checkExist, "test.jpg");
-		check(Object_Text, Operation_checkExist, "test.3gp");
-		check(Object_Text, Operation_checkExist, "test.mp3");
+		check(Object_Text, Operation_checkExist, "testpicture.jpg");
+		check(Object_Text, Operation_checkExist, "testvideo.3gp");
+		check(Object_Text, Operation_checkExist, "testmusic.mp3");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_document");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_apks");
@@ -3176,7 +3177,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "test");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		String [] str1=new String[]{"test.jpg","test.mp3","test.apk","test.3gp","test.txt","test.rar"};
+		String [] str1=new String[]{"testpicture.jpg","testmusic.mp3","testapk.apk","testvideo.3gp","testdocument.txt","testfile.rar"};
 		for (int i = 0; i < str1.length; i++) {
 			check(Object_Text, Operation_checkExist, str1[i]);
 		}
@@ -3196,16 +3197,16 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		check(Object_Text, Operation_checkExist, "test-sdcard.jpg");
+		check(Object_Text, Operation_checkExist, "testpicture-sdcard.jpg");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
 		excute(Object_Text, Operation_ClickWait, "test");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		check(Object_Text, Operation_checkExist, "test-sdcard.jpg");
-		check(Object_Text, Operation_checkExist, "test-sdcard.3gp");
-		check(Object_Text, Operation_checkExist, "test-sdcard.mp3");
+		check(Object_Text, Operation_checkExist, "testpicture-sdcard.jpg");
+		check(Object_Text, Operation_checkExist, "testvideo-sdcard.3gp");
+		check(Object_Text, Operation_checkExist, "testmusic-sdcard.mp3");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_document");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_apks");
@@ -3213,7 +3214,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "test");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		String [] str1=new String[]{"test-sdcard.jpg","test-sdcard.mp3","test-sdcard.apk","test-sdcard.3gp","test-sdcard.txt","test-sdcard.rar"};
+		String [] str1=new String[]{"testpicture-sdcard.jpg","testmusic-sdcard.mp3","testapk-sdcard.apk","testvideo-sdcard.3gp","testdocument-sdcard.txt","testfile-sdcard.rar"};
 		for (int i = 0; i < str1.length; i++) {
 			check(Object_Text, Operation_checkExist, str1[i]);
 		}
@@ -3244,7 +3245,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
 		excute(Object_Text, Operation_ClickWait, "搜索范围:");
-		excute(Object_Text, Operation_ClickWait, "手机");
+		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_image");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_vedio");
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_audio");
@@ -3253,23 +3254,23 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_other");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
-		excute(Object_Text, Operation_ClickWait, "test.jpg");
+		excute(Object_Text, Operation_ClickWait, "testpicture-sdcard.jpg");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		check(Object_Text, Operation_checkExist, "播放幻灯片");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_Text, Operation_ClickWait, "test.mp3");
+		excute(Object_Text, Operation_ClickWait, "testmusic-sdcard.mp3");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/progress");
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_Text, Operation_ClickWait, "test.apk");
+		excute(Object_Text, Operation_ClickWait, "testapk-sdcard.apk");
 		check(Object_Text, Operation_checkExist, "要安装此应用吗？它将获得以下权限：");
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_Text, Operation_ClickWait, "test.3gp");
+		excute(Object_Text, Operation_ClickWait, "testvideo-sdcard.3gp");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		check(Object_Text, Operation_checkExist, "声道设置");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_Text, Operation_ClickWait, "test.txt");
-		check(Object_Text, Operation_checkExist, "test.txt");
+		excute(Object_Text, Operation_ClickWait, "testdocument-sdcard.txt");
+		check(Object_Text, Operation_checkExist, "testdocument-sdcard.txt");
 	}	
 }
