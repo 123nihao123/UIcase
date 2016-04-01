@@ -2830,7 +2830,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_190() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "选择多个");
@@ -2853,7 +2853,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_191() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "选择多个");
@@ -2876,7 +2876,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_192() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "选择多个");
@@ -2895,7 +2895,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_193() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "选择多个");
@@ -2914,7 +2914,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_194() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "选择多个");
@@ -2932,7 +2932,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_195() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
@@ -2949,7 +2949,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_196() throws UiObjectNotFoundException, RemoteException,IndexOutOfBoundsException
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
@@ -2981,7 +2981,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_197() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
@@ -3013,7 +3013,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_198() throws UiObjectNotFoundException, RemoteException , ParseException
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
@@ -3046,7 +3046,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_199() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
@@ -3078,7 +3078,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_200() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "存储状态");
@@ -3093,7 +3093,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_201() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "设置");
@@ -3123,12 +3123,12 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "设置");
-		if ((Boolean)check(Object_ResourceId, Operation_CheckedFalse, "android:id/checkbox")) {
+		if (!(Boolean)excute(Object_ResourceId, Operation_IsChecked, "android:id/checkbox")) {
 			excute(Object_ResourceId, Operation_ClickWait, "android:id/checkbox");
 		}
 		check(Object_ResourceId, Operation_CheckedTrue, "android:id/checkbox");
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
 		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
 		check(Object_Text, Operation_checkExist, ".hiddenfiletest");
@@ -3144,6 +3144,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	 */
 	public static void test_204() throws UiObjectNotFoundException, RemoteException 
 	{
+		//前提
+		FileExplorerCommon.ClearSearchType();
 		//主体
 		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
@@ -3183,7 +3185,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	 * @throws RemoteException
 	 */
 	public static void test_205() throws UiObjectNotFoundException, RemoteException 
-	{
+	{	
+		//前提
+		FileExplorerCommon.ClearSearchType();
 		//主体
 		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
@@ -3220,7 +3224,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	 * @throws RemoteException
 	 */
 	public static void test_206() throws UiObjectNotFoundException, RemoteException 
-	{
+	{	
+		//前提
+		FileExplorerCommon.ClearSearchType();
 		//主体
 		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
@@ -3263,16 +3269,18 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
-		excute(Object_ResIdIndex, Operation_ClickWait, "com.sprd.fileexplorer:id/clear_all_img","2");
+		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/clear_all_img");
 		check(Object_ResIdText, Operation_checkNoExist, "com.sprd.fileexplorer:id/search_view","test");
 	}
 	/**
-	 * 打开文件管理器，输入关键字test，搜索范围为手机，点击搜索，
+	 * 打开文件管理器，输入关键字test，搜索范围为存储卡，点击搜索，
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
 	public static void test_208() throws UiObjectNotFoundException, RemoteException 
-	{
+	{	
+		//前提
+		FileExplorerCommon.ClearSearchType();
 		//主体
 		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");

@@ -422,5 +422,27 @@ public class FileExplorerCommon
 		excute(Object_Text,Operation_ClickWait,storagetype);
 		excute(Object_Device, Operation_PressMenu);
 	}
-
+	/**
+	 * 清除搜索界面的文件类型选项
+	 */
+	public static void ClearSearchType()
+	{
+		String [] str3={"com.sprd.fileexplorer:id/fragment_search_type_image",
+		                "com.sprd.fileexplorer:id/fragment_search_type_vedio",
+		                "com.sprd.fileexplorer:id/fragment_search_type_audio",
+		                "com.sprd.fileexplorer:id/fragment_search_type_document",
+		                "com.sprd.fileexplorer:id/fragment_search_type_apks",
+		                "com.sprd.fileexplorer:id/fragment_search_type_other"};
+		for(int i=0;i<6;i++)
+		{
+			if((Boolean)excute(Object_ResourceId, Operation_IsChecked, str3[i]))
+	         {
+			    excute(Object_ResourceId, Operation_ClickWait, str3[i]);
+		     }
+        }
+	}
+	
+	
+	
+	
 }
