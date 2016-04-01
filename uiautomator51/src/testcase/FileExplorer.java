@@ -1401,8 +1401,18 @@ public class FileExplorer extends UiAutomatorTestCase
 	{
 		//主体
 		FileExplorerCommon.Enterclass("文档");
-		FileExplorerCommon.Longclickmenu("重命名");
-		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
+		if((Boolean)excute(Object_Text,Operation_Exists,"0atest.txt"))
+		{
+			excute(Object_Text,Operation_LongClick,"0atest.txt");
+			excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
+			
+		}
+		else
+		{
+			excute(Object_TextScroll,Operation_LongClick,"0atest.txt","vertical");
+			excute(Object_Text,Operation_ClickWait,"重命名");
+			excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
+		} 
 		excute(Object_Text,Operation_ClickWait,"确定");
 		if((Boolean)excute(Object_Text,Operation_Exists,"test1.txt"))
 		{
@@ -1828,15 +1838,15 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		FileExplorerCommon.Enterclass("APK安装文件");
 		FileExplorerCommon.Longclickmenu("重命名");
-		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","testAPK");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","APKtest");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		if((Boolean)excute(Object_Text,Operation_Exists,"testAPK.apk"))
+		if((Boolean)excute(Object_Text,Operation_Exists,"APKtest.apk"))
 		{
-			check(Object_Text,Operation_checkExist,"testAPK.apk");
+			check(Object_Text,Operation_checkExist,"APKtest.apk");
 		}
 		else
 		{
-			check(Object_TextScroll,Operation_checkExist,"testAPK.apk","vertical");
+			check(Object_TextScroll,Operation_checkExist,"APKtest.apk","vertical");
 		}
 	}
 	
@@ -2157,7 +2167,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		for (int i=0;i<=10;i++)
 		{
 			excute(Object_Text,Operation_ClickWait,"安装");
-			check(Object_Text,Operation_WaitForExists,"应用安装完成。","15000");
+			check(Object_Text,Operation_WaitForExists,"应用安装完成。","35000");
 			excute(Object_Text,Operation_ClickWait,"完成");
 			if ((Boolean)excute(Object_Text,Operation_Exists,"APK安装文件"))
 			{
@@ -2186,7 +2196,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		excute(Object_Text,Operation_ClickWait,"安装");
-		check(Object_Text,Operation_WaitForExists,"应用安装完成。","15000");
+		check(Object_Text,Operation_WaitForExists,"应用安装完成。","35000");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Setting);
