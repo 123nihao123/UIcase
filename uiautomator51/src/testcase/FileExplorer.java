@@ -1373,7 +1373,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	/**
 	 *快速查看-文档-长按一个文档资源-删除一个文档
 	 */
-	public static void test_101()
+	public static void test_3101()
 	{
 		//主体
 		FileExplorerCommon.Enterclass("文档");
@@ -1617,7 +1617,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
-		String[] Array1 = new String[]{text,text1,txt2};
+		String[] Array1 = new String[]{text,text1,text2};
 		FileExplorerCommon.isSortedByName(Array1,true);
 	}
 	
@@ -1644,7 +1644,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
-		String[] Array1 = new String[]{text,text1,txt2};
+		String[] Array1 = new String[]{text,text1,text2};
 		FileExplorerCommon.isSortedByType(Array1,true);
 	}
 	
@@ -1793,7 +1793,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	/**
 	 *快速查看-APK安装文件- 长按一个APK -删除一个APK
 	 */
-	public static void test_129()
+	public static void test_3129()
 	{
 		//主体
 		FileExplorerCommon.Enterclass("APK安装文件");
@@ -2064,7 +2064,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
-		String[] Array1 = new String[]{text,text1,txt2};
+		String[] Array1 = new String[]{text,text1,text2};
 		FileExplorerCommon.isSortedByType(Array1,true);
 	}
 	
@@ -2475,13 +2475,13 @@ public class FileExplorer extends UiAutomatorTestCase
 	{
 		//主体
 		FileExplorerCommon.storagePath("手机");
-		if((Boolean)excute(Object_Text,Operation_Exists,"search"))
+		if((Boolean)excute(Object_Text,Operation_Exists,"FileExplorer_Phone"))
 		{
-			excute(Object_Text,Operation_ClickWait,"search");
+			excute(Object_Text,Operation_ClickWait,"FileExplorer_Phone");
 		}
 		else
 		{
-			excute(Object_TextScroll,Operation_ClickWait,"search","vertical");
+			excute(Object_TextScroll,Operation_ClickWait,"FileExplorer_Phone","vertical");
 		}	
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
@@ -2499,7 +2499,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
-		String[] Array1 = new String[]{text,text1,txt2};
+		String[] Array1 = new String[]{text,text1,text2};
 		FileExplorerCommon.isSortedByType(Array1,true);
 	}
 	
@@ -2540,13 +2540,13 @@ public class FileExplorer extends UiAutomatorTestCase
 	{
 		//主体
 		FileExplorerCommon.storagePath("手机");
-		if((Boolean)excute(Object_Text,Operation_Exists,"search"))
+		if((Boolean)excute(Object_Text,Operation_Exists,"FileExplorer_Phone"))
 		{
-			excute(Object_Text,Operation_ClickWait,"search");
+			excute(Object_Text,Operation_ClickWait,"FileExplorer_Phone");
 		}
 		else
 		{
-			excute(Object_TextScroll,Operation_ClickWait,"search","vertical");
+			excute(Object_TextScroll,Operation_ClickWait,"FileExplorer_Phone","vertical");
 		}	
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
