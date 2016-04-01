@@ -1609,7 +1609,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByName(Array);
+		boolean result = FileExplorerCommon.isSortedByName(Array);
+		Assert.assertEquals(result,true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按名称");
@@ -1618,7 +1619,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByName(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByName(Array1,true);
+		Assert.assertEquals(result1,true);
 	}
 	
 	/**
@@ -1636,7 +1638,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByType(Array);
+		boolean result = FileExplorerCommon.isSortedByType(Array);
+		Assert.assertEquals(result,true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按文件类型");
@@ -1645,7 +1648,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByType(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByType(Array1,true);
+		Assert.assertEquals(result1,true);
 	}
 	
 	/**
@@ -1664,7 +1668,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByTime(Array);
+		boolean result = FileExplorerCommon.isSortedByTime(Array);
+		Assert.assertEquals(result,true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按时间");
@@ -1673,7 +1678,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByTime(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByTime(Array1,true);
+		Assert.assertEquals(result1,true);
 	}
 	
 	/**
@@ -2029,7 +2035,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByName(Array);
+		boolean result = FileExplorerCommon.isSortedByName(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按名称");
@@ -2038,7 +2045,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByName(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByName(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 	
 	/**
@@ -2056,7 +2064,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByType(Array);
+		boolean result = FileExplorerCommon.isSortedByType(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按文件类型");
@@ -2065,7 +2074,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByType(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByType(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 	
 	/**
@@ -2084,7 +2094,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByTime(Array);
+		boolean result = FileExplorerCommon.isSortedByTime(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按时间");
@@ -2093,7 +2104,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByTime(Array1,true);
+		boolean result1 =FileExplorerCommon.isSortedByTime(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 	
 	/**
@@ -2112,7 +2124,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedBySize(Array);
+		boolean result = FileExplorerCommon.isSortedBySize(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按大小");
@@ -2121,7 +2134,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedBySize(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedBySize(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 	
 	/**
@@ -2456,7 +2470,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByName(Array);
+		boolean result = FileExplorerCommon.isSortedByName(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按名称");
@@ -2465,7 +2480,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByName(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByName(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 	
 	/**
@@ -2491,7 +2507,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByType(Array);
+		boolean result = FileExplorerCommon.isSortedByType(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按文件类型");
@@ -2500,7 +2517,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByType(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByType(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 	
 	/**
@@ -2519,7 +2537,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedByTime(Array);
+		boolean result = FileExplorerCommon.isSortedByTime(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按时间");
@@ -2528,7 +2547,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedByTime(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedByTime(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 
 
@@ -2556,7 +2576,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String txt2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array = new String[]{txt,txt1,txt2};
-		FileExplorerCommon.isSortedBySize(Array);
+		boolean result = FileExplorerCommon.isSortedBySize(Array);
+		Assert.assertEquals(result, true);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"排序方式");
 		excute(Object_Text,Operation_ClickWait,"按大小");
@@ -2565,7 +2586,8 @@ public class FileExplorer extends UiAutomatorTestCase
 		String text1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","1");
 		String text2 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_msg","2");
 		String[] Array1 = new String[]{text,text1,text2};
-		FileExplorerCommon.isSortedBySize(Array1,true);
+		boolean result1 = FileExplorerCommon.isSortedBySize(Array1,true);
+		Assert.assertEquals(result1, true);
 	}
 		
 	/**
