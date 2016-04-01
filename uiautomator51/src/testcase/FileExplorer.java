@@ -2948,20 +2948,20 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "升序");
 		String [] name1 =new String[3];
 		for (int i = 0; i < 3; i++) {
-			String name2=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
-			name1[i]=name2;
+			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			name1[i]=str;
 		}
-		FileExplorerCommon.isSortedByName(name1);
+		Assert.assertTrue(FileExplorerCommon.isSortedByName(name1));
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按名称");
 		excute(Object_Text, Operation_ClickWait, "降序");
-		String [] name3 =new String[3];
+		String [] name2 =new String[3];
 		for (int i = 0; i < 3; i++) {
-			String name4=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
-			name3[i]=name4;
+			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			name2[i]=str;
 		}
-		FileExplorerCommon.isSortedByName(name3,true);
+		Assert.assertTrue(FileExplorerCommon.isSortedByName(name2,true));
 	}
 	/**
 	 * 存储卡模式下，菜单点击排序方式，按文件类型升序、降序
@@ -2980,20 +2980,20 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "升序");
 		String [] type1 =new String[3];
 		for (int i = 0; i < 3; i++) {
-			String name = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
-			type1[i]=FileExplorerCommon.extractFileType(name);
+			String str = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			type1[i]=str;
 		}
-		FileExplorerCommon.isSortedByType(type1);
+		Assert.assertTrue(FileExplorerCommon.isSortedByType(type1));
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按文件类型");
 		excute(Object_Text, Operation_ClickWait, "降序");
 		String [] type2 =new String[3];
 		for (int i = 0; i < 3; i++) {
-			String name = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
-			type2[i]=FileExplorerCommon.extractFileType(name);
+			String str = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", String.valueOf(i));
+			type2[i]=str;
 		}
-		FileExplorerCommon.isSortedByType(type2,true);
+		Assert.assertTrue(FileExplorerCommon.isSortedByType(type2,true));
 	}
 	/**
 	 * 存储卡模式下，菜单点击排序方式，按时间升序、降序
@@ -3013,9 +3013,9 @@ public class FileExplorer extends UiAutomatorTestCase
 		String [] time1=new String[3];
 		for (int i = 0; i < 3; i++) {
 			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
-			time1[i]=FileExplorerCommon.extractFileTime(str);
+			time1[i]=str;
 		}
-		FileExplorerCommon.isSortedByTime(time1);
+		Assert.assertTrue(FileExplorerCommon.isSortedByTime(time1));
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按时间");
@@ -3023,9 +3023,9 @@ public class FileExplorer extends UiAutomatorTestCase
 		String [] time2=new String[3];
 		for (int i = 0; i < 3; i++) {
 			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
-			time2[i]=FileExplorerCommon.extractFileTime(str);
+			time2[i]=str;
 		}
-		FileExplorerCommon.isSortedByTime(time2,true);
+		Assert.assertTrue(FileExplorerCommon.isSortedByTime(time2,true));
 	}
 	
 	/**
@@ -3046,9 +3046,9 @@ public class FileExplorer extends UiAutomatorTestCase
 		String [] size1=new String[3];
 		for (int i = 0; i < 3; i++) {
 			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
-			size1[i]=FileExplorerCommon.extractFileSize(str);
+			size1[i]=str;
 		}
-		FileExplorerCommon.isSortedBySize(size1);
+		Assert.assertTrue(FileExplorerCommon.isSortedBySize(size1));
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按大小");
@@ -3056,9 +3056,9 @@ public class FileExplorer extends UiAutomatorTestCase
 		String [] size2=new String[3];
 		for (int i = 0; i < 3; i++) {
 			String str=(String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg",String.valueOf(i));
-			size2[i]=FileExplorerCommon.extractFileSize(str);
+			size2[i]=str;
 		}
-		FileExplorerCommon.isSortedBySize(size2,true);
+		Assert.assertTrue(FileExplorerCommon.isSortedBySize(size2,true));
 	}
 	/**
 	 * 选择存储卡点击进入储存状态
