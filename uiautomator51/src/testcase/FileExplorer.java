@@ -59,7 +59,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_002() 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		excute(Object_ClassName,Operation_ClickWait,"android.widget.Spinner");
 		check(Object_Text, Operation_checkExist, "快速查看");
 		check(Object_Text, Operation_checkExist, "手机");
 		check(Object_Text, Operation_checkExist, "存储卡");
@@ -70,8 +70,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_003() 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
-		excute(Object_Text, Operation_ClickWait, "快速查看");
+		FileExplorerCommon.storagePath("快速查看");
 		check(Object_Text, Operation_checkExist, "快速查看");
 	}
 	/**
@@ -80,8 +79,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_004() 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
-		excute(Object_Text, Operation_ClickWait, "手机");
+		FileExplorerCommon.storagePath("手机");
 		check(Object_Text, Operation_checkExist, "手机");
 	}
 	/**
@@ -90,8 +88,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_005() 
 	{
 		//主体
-		excute(Object_Text, Operation_ClickWait, "快速查看");
-		excute(Object_Text, Operation_ClickWait, "存储卡");
+		FileExplorerCommon.storagePath("存储卡");
 		check(Object_Text, Operation_checkExist, "存储卡");
 	}
 	/**
@@ -476,7 +473,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		String scTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
 		String thTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
 		String ti[] = {Tim, scTime, thTime};
-		Assert.assertTrue(FileExplorerCommon.isSortedByTime(ti));
+		Assert.assertTrue(FileExplorerCommon.isSortedByTime(ti, true));
 	}
 	/**
 	 * 音乐界面排列方式按大小排序
@@ -618,6 +615,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		System.out.println("Picturename."+prefix);	
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", "Picturename");
 		excute(Object_Text, Operation_ClickWait, "确定");
+		Wait(1000);
 		if(!(Boolean) excute(Object_Text, Operation_Exists, "Picturename."+prefix))
 			excute(Object_TextScroll, Operation_Exists, "Picturename."+prefix, "vertical");
 		check(Object_Text, Operation_checkExist, "Picturename."+prefix);
@@ -1012,6 +1010,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Longclickmenu("重命名");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", "Picturename");
 		excute(Object_Text, Operation_ClickWait, "确定");
+		Wait(1000);
 		excute(Object_Text, Operation_WaitForExists, "视频", "10000");
 		if(!(Boolean) excute(Object_Text, Operation_Exists, "Picturename."+prefix))
 		{
