@@ -228,6 +228,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Enterclass("音乐");
 		String music = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
 		FileExplorerCommon.Longclickmenu("重命名");
+		String prefix1 = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/name_editor");
 		String prefix = music.substring(music.lastIndexOf(".")+1);
 		System.out.println(prefix);	
 		System.out.println("Musicname."+prefix);	
@@ -239,7 +240,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text, Operation_LongClick, "Musicname."+prefix);
 		excute(Object_Text, Operation_ClickWait, "重命名");
-		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", music);
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", prefix1);
 		excute(Object_Text, Operation_ClickWait, "确定");
 	}
 	/**
@@ -613,8 +614,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		String Picture = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
 		FileExplorerCommon.Longclickmenu("重命名");
 		String prefix = Picture.substring(Picture.lastIndexOf(".")+1);
-		System.out.println(prefix);	
-		System.out.println("Picturename."+prefix);	
+		String prefix1 = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/name_editor");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", "Picturename");
 		excute(Object_Text, Operation_ClickWait, "确定");
 		Wait(1000);
@@ -624,7 +624,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text, Operation_LongClick, "Picturename."+prefix);
 		excute(Object_Text, Operation_ClickWait, "重命名");
-		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", Picture);
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", prefix1);
 		excute(Object_Text, Operation_ClickWait, "确定");
 	}
 	/**
@@ -1010,6 +1010,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		System.out.println(prefix);	
 		System.out.println("Picturename."+prefix);
 		FileExplorerCommon.Longclickmenu("重命名");
+		String prefix1 = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/name_editor");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", "Picturename");
 		excute(Object_Text, Operation_ClickWait, "确定");
 		Wait(1000);
@@ -1022,7 +1023,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text, Operation_LongClick, "Picturename."+prefix);
 		excute(Object_Text, Operation_ClickWait, "重命名");
-		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", Picture);
+		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/name_editor", prefix1);
 		excute(Object_Text, Operation_ClickWait, "确定");
 	}
 	/**
@@ -2176,7 +2177,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		for (int j=0;j<=10;j++)
 		{
 			excute(Object_Text,Operation_ClickWait,"安装");
-			check(Object_Text,Operation_WaitForExists,"应用安装完成。","60000");
+			check(Object_Text,Operation_WaitForExists,"应用安装完成。","120000");
 			excute(Object_Text,Operation_ClickWait,"完成");
 			if ((Boolean)excute(Object_Text,Operation_Exists,"APK安装文件"))
 			{
@@ -2209,7 +2210,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		excute(Object_Text,Operation_ClickWait,"安装");
-		check(Object_Text,Operation_WaitForExists,"应用安装完成。","60000");
+		check(Object_Text,Operation_WaitForExists,"应用安装完成。","120000");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Setting);
