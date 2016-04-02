@@ -455,7 +455,7 @@ public class FileExplorerCommon
 	/**
 	 * 预览文件。缺省点击第一个文件。按文件点击时，需要输入文件名
 	 * @param storagetype - 取值范围：快速查看，手机，存储卡
-	 * @param appName -打开文件app,取值范围：音乐，视频播放器
+	 * @param appName -打开文件app,取值范围：音乐，视频播放器,HTML查看器等。
 	 * @param play
 	 * @param fileName - 
 	 */
