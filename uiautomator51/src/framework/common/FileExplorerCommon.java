@@ -59,6 +59,7 @@ public class FileExplorerCommon
 	public static void Longclickmenu(String Name)
 	{
 		excute(Object_ResourceId, Operation_LongClick, "com.sprd.fileexplorer:id/file_item_list_name");
+		excute(Object_Text, Operation_WaitForExists, Name, "10000");
 		excute(Object_Text, Operation_ClickWait, Name);
 	}
 	/**

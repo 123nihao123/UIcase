@@ -2167,12 +2167,20 @@ public class FileExplorer extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
 		excute(Object_TextScroll,Operation_Exists,"未知来源","vertical");
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "0")) 
+    	Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "未知来源");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 55)
+                break;
+            i++;
+        }
+        while(true);    
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
 		{
-			excute(Object_Text,Operation_ClickWait,"未知来源");
-			excute(Object_Text,Operation_ClickWait,"确定");
-			}
-		
+			excute(Object_TextScroll, Operation_ClickWait, "未知来源", "vertical");
+			excute(Object_Text, Operation_ClickWait, "确定");
+		}
 		//主体
 		DeviceCommon.enterApp(Devices_Desc_FileManage);
 		FileExplorerCommon.Enterclass("APK安装文件");
@@ -2180,8 +2188,10 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"全部安装");
 		for (int j=0;j<=10;j++)
 		{
+			if ((Boolean)excute(Object_Text, Operation_Exists, "下一步"))
+				excute(Object_Text,Operation_ClickWait,"下一步");
 			excute(Object_Text,Operation_ClickWait,"安装");
-			check(Object_Text,Operation_WaitForExists,"应用安装完成。","120000");
+			check(Object_Text,Operation_WaitForExists,"应用安装完成。","300000");
 			excute(Object_Text,Operation_ClickWait,"完成");
 			if ((Boolean)excute(Object_Text,Operation_Exists,"APK安装文件"))
 			{
@@ -2208,13 +2218,15 @@ public class FileExplorer extends UiAutomatorTestCase
 		{
 			excute(Object_Text,Operation_ClickWait,"未知来源");
 			excute(Object_Text,Operation_ClickWait,"确定");
-			}
+		}
 		//主体
 		DeviceCommon.enterApp(Devices_Desc_FileManage);
 		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "下一步"))
+			excute(Object_Text,Operation_ClickWait,"下一步");
 		excute(Object_Text,Operation_ClickWait,"安装");
-		check(Object_Text,Operation_WaitForExists,"应用安装完成。","120000");
+		check(Object_Text,Operation_WaitForExists,"应用安装完成。","300000");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Setting);
@@ -3350,11 +3362,20 @@ public class FileExplorer extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
 		excute(Object_TextScroll,Operation_Exists,"未知来源","vertical");
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "0")) 
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "未知来源");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 55)
+                break;
+            i++;
+        }
+        while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
 		{
-			excute(Object_Text,Operation_ClickWait,"未知来源");
-			excute(Object_Text,Operation_ClickWait,"确定");
-			}
+			excute(Object_TextScroll, Operation_ClickWait, "未知来源", "vertical");
+			excute(Object_Text, Operation_ClickWait, "确定");
+		}
 		DeviceCommon.enterApp(Devices_Desc_FileManage);
 		excute(Object_Description, Operation_ClickWait, "搜索");
 		FileExplorerCommon.ClearSearchType();
