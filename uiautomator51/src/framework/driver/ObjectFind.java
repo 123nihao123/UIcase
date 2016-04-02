@@ -69,7 +69,8 @@ public class ObjectFind
 	//ResId为Scroll控件的
 	public static UiObject byTextScrollWithResId(String resId, String text, String direction) throws UiObjectNotFoundException
 	{
-		UiScrollable applist = new UiScrollable(new UiSelector().resourceId(resId).scrollable(true));
+		//UiScrollable applist = new UiScrollable(new UiSelector().resourceId(resId).scrollable(true));
+		UiScrollable applist = new UiScrollable(new UiSelector().resourceId(resId));
 		setScrollDirection(direction, applist);
 		return applist.getChildByText(new UiSelector().text(text), text, true);
 	}
