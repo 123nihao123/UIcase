@@ -28,6 +28,7 @@ import framework.common.DeviceCommon;
 import framework.common.FileExplorerCommon;
 import framework.common.MusicPlayerCommon;
 import framework.common.SettingCommon;
+import framework.data.DeviceParameter;
 public class FileExplorer extends UiAutomatorTestCase
 {
 	@Override
@@ -508,7 +509,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_037() 
 	{
 		//主体
-		FileExplorerCommon.viewfile("快速查看", "音乐", "音乐");
+		FileExplorerCommon.Enterclass("音乐");
+		FileExplorerCommon.viewfile("音乐");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/playpause");//播放暂停按钮
 		
 	}
@@ -1291,7 +1293,8 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_094() 
 	{
 		//主体
-		FileExplorerCommon.viewfile("快速查看", "视频", "视频播放器");
+		FileExplorerCommon.Enterclass("视频");
+		FileExplorerCommon.viewfile("视频播放器");
 		check(Object_Description, Operation_checkExist, "分享方式");//图片浏览界面分享按钮
 	}
 
@@ -3350,13 +3353,15 @@ public class FileExplorer extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "播放幻灯片");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_Text, Operation_ClickWait, "testmusic-sdcard.mp3");
+		FileExplorerCommon.viewfile("音乐", "testmusic-sdcard.mp3");
+		//excute(Object_Text, Operation_ClickWait, "testmusic-sdcard.mp3");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/progress");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Text, Operation_ClickWait, "testapk-sdcard.apk");
 		check(Object_Text, Operation_checkExist, "要安装此应用吗？它将获得以下权限：");
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_Text, Operation_ClickWait, "testvideo-sdcard.3gp");
+		FileExplorerCommon.viewfile("视频播放器", "testvideo-sdcard.3gp");
+		//excute(Object_Text, Operation_ClickWait, "testvideo-sdcard.3gp");
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		check(Object_Text, Operation_checkExist, "声道设置");
 		excute(Object_Device, Operation_PressBack);

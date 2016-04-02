@@ -441,20 +441,46 @@ public class FileExplorerCommon
 		     }
         }
 	}
+	
+	
 	/**
-	 * 浏览文件
+	 * 预览文件。缺省点击第一个文件。按文件点击时，需要输入文件名
+	 * @param appName -打开文件app,取值范围：音乐，视频播放器
 	 */
-	public static void viewfile(String storagetype, String file, String play)
+	public static void viewfile(String appName)
 	{
-		excute(Object_ClassName, Operation_ClickWait, "android.widget.Spinner");
-		excute(Object_Text, Operation_ClickWait, storagetype);//快速查看，手机，存储卡
-		excute(Object_Text, Operation_ClickWait, file);//音乐，视频
-		excute(Object_Text, Operation_WaitForExists, file, "10000");
-		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name", "0");
-		if ((Boolean)excute(Object_Text, Operation_Exists, "仅此一次"))
+		viewfile(appName, "");
+	}
+	
+	/**
+	 * 预览文件。缺省点击第一个文件。按文件点击时，需要输入文件名
+	 * @param storagetype - 取值范围：快速查看，手机，存储卡
+	 * @param appName -打开文件app,取值范围：音乐，视频播放器
+	 * @param play
+	 * @param fileName - 
+	 */
+	public static void viewfile(String appName, String fileName)
+	{
+		
+		if(fileName.equals(""))
 		{
-			if ((Boolean)excute(Object_Text, Operation_Exists, play))
-				excute(Object_Text, Operation_ClickWait, play);
+			//点击第一个
+			excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		}
+		else
+		{
+			//按文件名点击
+			excute(Object_Text, Operation_ClickWait, fileName);
+		}
+		
+		if ((Boolean)excute(Object_Text, Operation_Exists, "打开方式"))
+		{	
+			//首次打开
+			excute(Object_Text, Operation_ClickWait, appName);
+			excute(Object_Text, Operation_ClickWait, "仅此一次");
+		}
+		else 
+		{
 			excute(Object_Text, Operation_ClickWait, "仅此一次");
 		}
 	}
