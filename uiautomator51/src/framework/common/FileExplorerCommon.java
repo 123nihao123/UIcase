@@ -479,7 +479,7 @@ public class FileExplorerCommon
 			excute(Object_Text, Operation_ClickWait, appName);
 			excute(Object_Text, Operation_ClickWait, "仅此一次");
 		}
-		else 
+		else if((Boolean)excute(Object_ResourceId, Operation_Exists, "android:id/contentPanel"))
 		{
 			excute(Object_Text, Operation_ClickWait, "仅此一次");
 		}
