@@ -3141,8 +3141,20 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "android:id/text1");//点击选择查看列表
 		excute(Object_Text, Operation_ClickWait, "存储卡");
-		excute(Object_Text, Operation_ClickWait, "FileExplorer_SD");
-		check(Object_Text, Operation_checkExist, ".hiddenfiletest");
+		
+		//excute(Object_TextScrollWithResId, Operation_ClickWait,"com.sprd.fileexplorer:id/detailed_file_list","FileExplorer_SD","DeviceParameter.Scroll_Vertical");
+		
+		if((Boolean)excute(Object_Text,Operation_Exists,"FileExplorer_SD"))
+		{
+			excute(Object_Text,Operation_ClickWait,"FileExplorer_SD");
+		}
+		else
+		{
+			excute(Object_TextScroll,Operation_ClickWait,"FileExplorer_SD",DeviceParameter.Scroll_Vertical);
+		}
+		
+		excute(Object_TextScrollWithResId,Operation_checkExist,"com.sprd.fileexplorer:id/detailed_file_list",".hiddenfiletest",DeviceParameter.Scroll_Vertical);
+		
 		//清场
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "设置");
@@ -3156,9 +3168,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_204() throws UiObjectNotFoundException, RemoteException 
 	{
 		//前提
+		excute(Object_Description, Operation_ClickWait, "搜索");
 		FileExplorerCommon.ClearSearchType();
 		//主体
-		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
 		excute(Object_Text, Operation_ClickWait, "搜索范围:");
 		excute(Object_Text, Operation_ClickWait, "全部");
@@ -3175,7 +3187,14 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
 		String [] str2=new String[]{"testpicture.jpg","testvideo.3gp","testmusic.mp3","testpicture-sdcard.jpg","testvideo-sdcard.3gp","testmusic-sdcard.mp3"};
 		for (int i = 0; i < str2.length; i++) {
-			check(Object_Text, Operation_checkExist, str2[i]);
+			if((Boolean)excute(Object_Text, Operation_Exists, str2[i]))
+			{
+				check(Object_Text, Operation_checkExist, str2[i]);
+			}
+			else 
+			{
+				check(Object_TextScroll, Operation_checkExist, str2[i],"vertical");	
+			}
 		}
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/fragment_search_type_document");
@@ -3187,7 +3206,14 @@ public class FileExplorer extends UiAutomatorTestCase
 		String [] str1=new String[]{"testpicture.jpg","testmusic.mp3","testapk.apk","testvideo.3gp","testdocument.txt","testfile.rar","testpicture-sdcard.jpg",
 				                    "testmusic-sdcard.mp3","testapk-sdcard.apk","testvideo-sdcard.3gp","testdocument-sdcard.txt","testfile-sdcard.rar"};
 		for (int i = 0; i < str1.length; i++) {
-			check(Object_TextScroll, Operation_checkExist, str1[i],"vertical");
+			if((Boolean)excute(Object_Text, Operation_Exists, str1[i]))
+			{
+				check(Object_Text, Operation_checkExist, str1[i]);
+			}
+			else 
+			{
+				check(Object_TextScroll, Operation_checkExist, str1[i],"vertical");	
+			}
 		}
 	}
 	/**
@@ -3198,9 +3224,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_205() throws UiObjectNotFoundException, RemoteException 
 	{	
 		//前提
+		excute(Object_Description, Operation_ClickWait, "搜索");
 		FileExplorerCommon.ClearSearchType();
 		//主体
-		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
 		excute(Object_Text, Operation_ClickWait, "搜索范围:");
 		excute(Object_Text, Operation_ClickWait, "手机");
@@ -3226,7 +3252,14 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
 		String [] str1=new String[]{"testpicture.jpg","testmusic.mp3","testapk.apk","testvideo.3gp","testdocument.txt","testfile.rar"};
 		for (int i = 0; i < str1.length; i++) {
-			check(Object_Text, Operation_checkExist, str1[i]);
+			if((Boolean)excute(Object_Text, Operation_Exists, str1[i]))
+			{
+				check(Object_Text, Operation_checkExist, str1[i]);
+			}
+			else 
+			{
+				check(Object_TextScroll, Operation_checkExist, str1[i],"vertical");	
+			}
 		}
 	}
 	/**
@@ -3237,9 +3270,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_206() throws UiObjectNotFoundException, RemoteException 
 	{	
 		//前提
+		excute(Object_Description, Operation_ClickWait, "搜索");
 		FileExplorerCommon.ClearSearchType();
 		//主体
-		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
 		excute(Object_Text, Operation_ClickWait, "搜索范围:");
 		excute(Object_Text, Operation_ClickWait, "存储卡");
@@ -3265,7 +3298,14 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "搜索结果", "10000");
 		String [] str1=new String[]{"testpicture-sdcard.jpg","testmusic-sdcard.mp3","testapk-sdcard.apk","testvideo-sdcard.3gp","testdocument-sdcard.txt","testfile-sdcard.rar"};
 		for (int i = 0; i < str1.length; i++) {
-			check(Object_Text, Operation_checkExist, str1[i]);
+			if((Boolean)excute(Object_Text, Operation_Exists, str1[i]))
+			{
+				check(Object_Text, Operation_checkExist, str1[i]);
+			}
+			else 
+			{
+				check(Object_TextScroll, Operation_checkExist, str1[i],"vertical");	
+			}
 		}
 		
 	
@@ -3291,9 +3331,9 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_208() throws UiObjectNotFoundException, RemoteException 
 	{	
 		//前提
+		excute(Object_Description, Operation_ClickWait, "搜索");
 		FileExplorerCommon.ClearSearchType();
 		//主体
-		excute(Object_Description, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "com.sprd.fileexplorer:id/search_view","test");
 		excute(Object_Text, Operation_ClickWait, "搜索范围:");
 		excute(Object_Text, Operation_ClickWait, "存储卡");
