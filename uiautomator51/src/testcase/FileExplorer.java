@@ -1478,6 +1478,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_Text, Operation_WaitForExists, "选择全部", "10000");
 		check(Object_Text,Operation_checkExist,"选择全部");
 	}
 	
@@ -1561,6 +1562,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_Text, Operation_WaitForExists, "选择全部", "10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
 		check(Object_ResourceId,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_all_cb");
 	}
@@ -1574,6 +1576,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_Text, Operation_WaitForExists, "选择全部", "10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
 		check(Object_ResourceId,Operation_CheckedTrue,"com.sprd.fileexplorer:id/select_all_cb");
 		check(Object_Text,Operation_checkExist,"取消全部");
@@ -1588,6 +1591,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Enterclass("文档");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择多个");
+		excute(Object_Text, Operation_WaitForExists, "选择全部", "10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
 		excute(Object_ResourceId,Operation_ClickWait,"com.sprd.fileexplorer:id/select_all_cb");
 		check(Object_ResourceId,Operation_CheckedFalse,"com.sprd.fileexplorer:id/menu_delete");
