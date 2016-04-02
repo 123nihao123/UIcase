@@ -443,10 +443,11 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按文件类型");
 		excute(Object_Text, Operation_ClickWait, "降序");
-		String Tim = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
-		String scTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
-		String thTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
+		String Tim = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		String scTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
+		String thTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
 		String ti[] = {Tim, scTime, thTime};
+		System.out.println(ti[0]+ti[1]+ti[2]);
 		Assert.assertTrue(FileExplorerCommon.isSortedByType(ti, true));
 	}
 	/**
@@ -507,8 +508,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_037() 
 	{
 		//主体
-		FileExplorerCommon.Enterclass("音乐");
-		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.viewfile("快速查看", "音乐", "音乐");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/playpause");//播放暂停按钮
 		
 	}
@@ -839,9 +839,9 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按文件类型");
 		excute(Object_Text, Operation_ClickWait, "降序");
-		String Tim = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
-		String scTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
-		String thTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
+		String Tim = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		String scTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
+		String thTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
 		String ti[] = {Tim, scTime, thTime};
 		Assert.assertTrue(FileExplorerCommon.isSortedByType(ti, true));
 	}
@@ -1227,9 +1227,9 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "排序方式");
 		excute(Object_Text, Operation_ClickWait, "按文件类型");
 		excute(Object_Text, Operation_ClickWait, "降序");
-		String Tim = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "0");
-		String scTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "1");
-		String thTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_msg", "2");
+		String Tim = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		String scTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "1");
+		String thTime = (String)excute(Object_ResIdInstance, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name", "2");
 		String ti[] = {Tim, scTime, thTime};
 		Assert.assertTrue(FileExplorerCommon.isSortedByType(ti, true));
 	}
@@ -1291,8 +1291,7 @@ public class FileExplorer extends UiAutomatorTestCase
 	public static void test_094() 
 	{
 		//主体
-		FileExplorerCommon.Enterclass("视频");
-		excute(Object_ResourceId, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.viewfile("快速查看", "视频", "视频播放器");
 		check(Object_Description, Operation_checkExist, "分享方式");//图片浏览界面分享按钮
 	}
 
@@ -1403,6 +1402,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		if((Boolean)excute(Object_Text,Operation_Exists,"0atest.txt"))
 		{
 			excute(Object_Text,Operation_LongClick,"0atest.txt");
+			excute(Object_Text,Operation_ClickWait,"重命名");
 			excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
 			
 		}
@@ -1413,6 +1413,7 @@ public class FileExplorer extends UiAutomatorTestCase
 			excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
 		} 
 		excute(Object_Text,Operation_ClickWait,"确定");
+		Wait(1000);
 		if((Boolean)excute(Object_Text,Operation_Exists,"test1.txt"))
 		{
 			check(Object_Text,Operation_checkExist,"test1.txt");
@@ -1839,6 +1840,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		FileExplorerCommon.Longclickmenu("重命名");
 		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","APKtest");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		Wait(1000);
 		if((Boolean)excute(Object_Text,Operation_Exists,"APKtest.apk"))
 		{
 			check(Object_Text,Operation_checkExist,"APKtest.apk");
@@ -2156,17 +2158,22 @@ public class FileExplorer extends UiAutomatorTestCase
 		//前提
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
-		excute(Object_TextScroll,Operation_ClickWait,"未知来源","vertical");
-		excute(Object_Text,Operation_ClickWait,"确定");
+		excute(Object_TextScroll,Operation_Exists,"未知来源","vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "0")) 
+		{
+			excute(Object_Text,Operation_ClickWait,"未知来源");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			}
+		
 		//主体
 		DeviceCommon.enterApp(Devices_Desc_FileManage);
 		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"全部安装");
-		for (int i=0;i<=10;i++)
+		for (int j=0;j<=10;j++)
 		{
 			excute(Object_Text,Operation_ClickWait,"安装");
-			check(Object_Text,Operation_WaitForExists,"应用安装完成。","35000");
+			check(Object_Text,Operation_WaitForExists,"应用安装完成。","60000");
 			excute(Object_Text,Operation_ClickWait,"完成");
 			if ((Boolean)excute(Object_Text,Operation_Exists,"APK安装文件"))
 			{
@@ -2188,14 +2195,18 @@ public class FileExplorer extends UiAutomatorTestCase
 		//前提
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
-		excute(Object_TextScroll,Operation_ClickWait,"未知来源","vertical");
-		excute(Object_Text,Operation_ClickWait,"确定");
+		excute(Object_TextScroll,Operation_Exists,"未知来源","vertical");
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", "0")) 
+		{
+			excute(Object_Text,Operation_ClickWait,"未知来源");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			}
 		//主体
 		DeviceCommon.enterApp(Devices_Desc_FileManage);
 		FileExplorerCommon.Enterclass("APK安装文件");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.sprd.fileexplorer:id/file_item_list_name","0");
 		excute(Object_Text,Operation_ClickWait,"安装");
-		check(Object_Text,Operation_WaitForExists,"应用安装完成。","35000");
+		check(Object_Text,Operation_WaitForExists,"应用安装完成。","60000");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Setting);
@@ -2288,6 +2299,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"重命名");
 		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","NewName");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		Wait(1000);
 		check(Object_TextScrollWithResId, Operation_checkExist,"com.sprd.fileexplorer:id/detailed_file_list","NewName","vertical");
 		//清场
 		excute(Object_TextScrollWithResId,Operation_LongClick,"com.sprd.fileexplorer:id/detailed_file_list","NewName","vertical");

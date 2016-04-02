@@ -441,7 +441,23 @@ public class FileExplorerCommon
 		     }
         }
 	}
-	
+	/**
+	 * 浏览文件
+	 */
+	public static void viewfile(String storagetype, String file, String play)
+	{
+		excute(Object_ClassName, Operation_ClickWait, "android.widget.Spinner");
+		excute(Object_Text, Operation_ClickWait, storagetype);//快速查看，手机，存储卡
+		excute(Object_Text, Operation_ClickWait, file);//音乐，视频
+		excute(Object_Text, Operation_WaitForExists, file, "10000");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/file_item_list_name", "0");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "仅此一次"))
+		{
+			if ((Boolean)excute(Object_Text, Operation_Exists, play))
+				excute(Object_Text, Operation_ClickWait, play);
+			excute(Object_Text, Operation_ClickWait, "仅此一次");
+		}
+	}
 	
 	
 	
