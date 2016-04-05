@@ -3424,6 +3424,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
 		FileExplorerCommon.viewfile("HTML 查看程序", "testdocument-sdcard.txt");
+		excute(Object_Text, Operation_WaitForExists, "testdocument-sdcard.txt", "10000");
 		//excute(Object_Text, Operation_ClickWait, "testdocument-sdcard.txt");
 		check(Object_Text, Operation_checkExist, "testdocument-sdcard.txt");
 		//清场
