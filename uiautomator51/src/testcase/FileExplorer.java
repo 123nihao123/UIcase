@@ -201,15 +201,15 @@ public class FileExplorer extends UiAutomatorTestCase
 	/**
 	 * 长按音乐确定删除
 	 */
-//	public static void test_316() 
-//	{
-//		//主体
-//		FileExplorerCommon.Enterclass("音乐");
-//		String Musicname = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
-//		FileExplorerCommon.Longclickmenu("删除");
-//		excute(Object_Text, Operation_ClickWait, "确定");
-//		check(Object_Text, Operation_checkNoExist, Musicname);
-//	}
+	public static void test_316() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("音乐");
+		String Musicname = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkNoExist, Musicname);
+	}
 	/**
 	 * 长按音乐重命名查看
 	 */
@@ -586,15 +586,15 @@ public class FileExplorer extends UiAutomatorTestCase
 	/**
 	 * 长按图片确定删除
 	 */
-//	public static void test_344() 
-//	{
-//		//主体
-//		FileExplorerCommon.Enterclass("图片");
-//		String Picturename = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
-//		FileExplorerCommon.Longclickmenu("删除");
-//		excute(Object_Text, Operation_ClickWait, "确定");
-//		check(Object_Text, Operation_checkNoExist, Picturename);
-//	}
+	public static void test_344() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("图片");
+		String Picturename = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkNoExist, Picturename);
+	}
 	/**
 	 * 长按图片重命名查看
 	 */
@@ -980,15 +980,15 @@ public class FileExplorer extends UiAutomatorTestCase
 	/**
 	 * 长按视频确定删除
 	 */
-//	public static void test_373() 
-//	{
-//		//主体
-//		FileExplorerCommon.Enterclass("视频");
-//		String Picturename = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
-//		FileExplorerCommon.Longclickmenu("删除");
-//		excute(Object_Text, Operation_ClickWait, "确定");
-//		check(Object_Text, Operation_checkNoExist, Picturename);
-//	}
+	public static void test_373() 
+	{
+		//主体
+		FileExplorerCommon.Enterclass("视频");
+		String Picturename = (String)excute(Object_ResourceId, Operation_GetText, "com.sprd.fileexplorer:id/file_item_list_name");
+		FileExplorerCommon.Longclickmenu("删除");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkNoExist, Picturename);
+	}
 	/**
 	 * 长按视频重命名查看
 	 */
