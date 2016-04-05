@@ -1846,6 +1846,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		//主体
 		FileExplorerCommon.Enterclass("APK安装文件");
 		FileExplorerCommon.Longclickmenu("重命名");
+		String apkname = (String) excute(Object_ResourceId,Operation_GetText,"com.sprd.fileexplorer:id/name_editor");
 		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","APKtest");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		Wait(1000);
@@ -1857,6 +1858,11 @@ public class FileExplorer extends UiAutomatorTestCase
 		{
 			check(Object_TextScroll,Operation_checkExist,"APKtest.apk","vertical");
 		}
+		//清场
+		excute(Object_Text, Operation_LongClick, "APKtest.apk");
+		excute(Object_Text, Operation_ClickWait, "重命名");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor",apkname);
+		excute(Object_Text,Operation_ClickWait,"确定");
 	}
 	
 	/**
@@ -3170,7 +3176,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		}
 		else
 		{
-			excute(Object_TextScroll,Operation_ClickWait,"FileExplorer_SD",DeviceParameter.Scroll_Vertical);
+			excute(Object_TextScrollWithResId,Operation_ClickWait, "com.sprd.fileexplorer:id/detailed_file_list", "FileExplorer_SD",  "vertical");
 		}
 		
 		check(Object_TextScrollWithResId,Operation_checkExist,"com.sprd.fileexplorer:id/detailed_file_list",".hiddenfiletest",DeviceParameter.Scroll_Vertical);
