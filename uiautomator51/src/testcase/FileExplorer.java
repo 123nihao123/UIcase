@@ -31,6 +31,7 @@ import framework.common.SettingCommon;
 import framework.data.DeviceParameter;
 public class FileExplorer extends UiAutomatorTestCase
 {
+	
 	@Override
 	protected void setUp() throws UiObjectNotFoundException, RemoteException 
     {
@@ -1408,24 +1409,31 @@ public class FileExplorer extends UiAutomatorTestCase
 			excute(Object_Text,Operation_LongClick,"0atest.txt");
 			excute(Object_Text,Operation_ClickWait,"重命名");
 			excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
-			
+			excute(Object_Text,Operation_ClickWait,"确定");
+			Wait(1000);
 		}
 		else
 		{
 			excute(Object_TextScroll,Operation_LongClick,"0atest.txt","vertical");
 			excute(Object_Text,Operation_ClickWait,"重命名");
 			excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","test1");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			Wait(1000);
+			if((Boolean)excute(Object_Text,Operation_Exists,"test1.txt"))
+			{
+				check(Object_Text,Operation_checkExist,"test1.txt");
+			}
+			else
+			{
+				check(Object_TextScroll,Operation_checkExist,"test1.txt","vertical");
+			}
 		} 
+		
+		//清场
+		excute(Object_Text,Operation_LongClick,"test1.txt");
+		excute(Object_Text,Operation_ClickWait,"重命名");
+		excute(Object_ResourceId,Operation_SetText,"com.sprd.fileexplorer:id/name_editor","0atest");
 		excute(Object_Text,Operation_ClickWait,"确定");
-		Wait(1000);
-		if((Boolean)excute(Object_Text,Operation_Exists,"test1.txt"))
-		{
-			check(Object_Text,Operation_checkExist,"test1.txt");
-		}
-		else
-		{
-			check(Object_TextScroll,Operation_checkExist,"test1.txt","vertical");
-		}
 	}
 	
 	/**
