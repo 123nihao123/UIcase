@@ -3415,7 +3415,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/progress");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Text, Operation_ClickWait, "testapk-sdcard.apk");
-		check(Object_Text, Operation_checkExist, "要安装此应用吗？它将获得以下权限：");
+		check(Object_Text, Operation_checkExist, "取消");
 		excute(Object_Device, Operation_PressBack);
 		FileExplorerCommon.viewfile("视频播放器", "testvideo-sdcard.3gp");
 		//excute(Object_Text, Operation_ClickWait, "testvideo-sdcard.3gp");
