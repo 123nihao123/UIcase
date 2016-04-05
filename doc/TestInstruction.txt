@@ -10,6 +10,9 @@ Setting模块操作须知：
 MusicPLayer模块操作须知：
 必须把testresource\Music下面的音乐文件拷到手机上
 
+FileExplore模块操作须知：
+必须把testresource\FileExploreResource下的FileExplorer_Phone连目录拷到手机内置存储根目录下，把FileExplorer_SD连目录拷到存储卡根目录下
+
 运行步骤
 打开命令窗口：
 1.手机连接电脑，adb root 和adb remount 一下

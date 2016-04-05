@@ -69,9 +69,21 @@ public class ObjectFind
 	//ResId为Scroll控件的
 	public static UiObject byTextScrollWithResId(String resId, String text, String direction) throws UiObjectNotFoundException
 	{
-		UiScrollable applist = new UiScrollable(new UiSelector().resourceId(resId).scrollable(true));
+		//UiScrollable applist = new UiScrollable(new UiSelector().resourceId(resId).scrollable(true));
+		UiScrollable applist = new UiScrollable(new UiSelector().resourceId(resId));
 		setScrollDirection(direction, applist);
-		return applist.getChildByText(new UiSelector().text(text), text, true);
+		//fix error in Operation_Exists
+		UiObject uiObject;
+		try
+		{
+			uiObject = applist.getChildByText(new UiSelector().text(text), text, true);
+		}
+		catch (Exception e)
+		{
+			//e.printStackTrace();
+			uiObject = new UiObject( new UiSelector().text("dumpdump_workaround"));
+		}
+		return uiObject;
 	}
 	
 	//ResId为Scroll控件的
