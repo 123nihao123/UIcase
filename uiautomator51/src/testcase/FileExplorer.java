@@ -1383,6 +1383,7 @@ public class FileExplorer extends UiAutomatorTestCase
 		String txt = (String) excute(Object_ResourceId,Operation_GetText,"com.sprd.fileexplorer:id/file_item_list_name");
 		FileExplorerCommon.Longclickmenu("删除");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		excute(Object_Text, Operation_WaitForExists, "文档", "10000");
 		check(Object_Text,Operation_checkNoExist,txt);
 	}
 	
