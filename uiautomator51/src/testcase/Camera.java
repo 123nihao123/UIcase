@@ -196,9 +196,13 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 		//主体
+		int num = CameraCommon.getMediaCount("拍照");
+		System.out.println(num);
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
-		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/rounded_thumbnail_view");
+		int Num = CameraCommon.getMediaCount("拍照");
+		System.out.println(Num);
+		Assert.assertEquals(Num, num+1);
 	}
 	/**
 	 * 点击浏览位置
@@ -229,6 +233,8 @@ public class Camera extends UiAutomatorTestCase
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/makeup_seekbar");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
 	 * 点击美颜拍照
@@ -245,6 +251,8 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/rounded_thumbnail_view");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
 	 * 点击美颜拍照后预览
@@ -262,6 +270,9 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/rounded_thumbnail_view");
 		check(Object_Description, Operation_checkExist, "切换到图库");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
 	 * 退出美颜拍照模式
@@ -422,6 +433,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/makeup_seekbar");
 		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 	}
 	/**
@@ -440,7 +452,9 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/rounded_thumbnail_view");
 		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
 	 * 点击选项图标
@@ -508,9 +522,12 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.switchMode("相机");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("前置摄像头");
+		excute(Object_ResIdDesc, Operation_WaitForExists, "com.android.camera2:id/camera_toggle_button", "前置摄像头", "10000");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
+		excute(Object_ResIdDesc, Operation_WaitForExists, "com.android.camera2:id/camera_toggle_button", "后置摄像头", "10000");
 		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/camera_toggle_button", "后置摄像头");
-		CameraCommon.switchGridlines("前置摄像头");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		excute(Object_ResIdDesc, Operation_WaitForExists, "com.android.camera2:id/camera_toggle_button", "前置摄像头", "10000");
 		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/camera_toggle_button", "前置摄像头");
 		//清场
 		CameraCommon.switchFrontBackCamera("后置摄像头");
