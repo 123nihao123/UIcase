@@ -4,6 +4,7 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+import junit.framework.Assert;
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -514,4 +515,321 @@ public class Camera extends UiAutomatorTestCase
 		//清场
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 	}
+	
+	/**
+	 * 点击 视频-后置摄像头 -  页面上有网格模式、闪光灯、前后摄像头切换三个功能项
+	 */
+	public static void test_066() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/grid_lines_toggle_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/flash_toggle_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/camera_toggle_button");
+	}
+	
+	/**
+	 * 点击 视频-后置摄像头 -  页面上有网格模式、默认是关闭的，打开再关闭
+	 */
+	public static void test_067() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		check(Object_Description,Operation_checkExist,"网格线已关闭");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/grid_lines_toggle_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/grid_lines_toggle_button");
+		check(Object_Description,Operation_checkExist,"网格线已关闭");
+	}
+
+	/**
+	 * 点击 视频-后置摄像头 -  页面上有闪光灯、默认是关闭的，打开再关闭
+	 */
+	public static void test_068() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		check(Object_Description,Operation_checkExist,"手电筒已关闭");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/flash_toggle_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/flash_toggle_button");
+		check(Object_Description,Operation_checkExist,"手电筒已关闭");
+	}
+	
+	/**
+	 * 点击 视频-后置摄像头 -  页面上有前后摄像头、切换至前置摄像头
+	 */
+	public static void test_069() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"后置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"前置摄像头");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+	}
+
+	/**
+	 * 点击 视频- 开始录像，页面上有计时，和停止和暂停按钮
+	 */
+	public static void test_070() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"前置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"后置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/recording_time");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/btn_video_pause");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+	}
+	
+	/**
+	 * 点击 视频- 开始录像，点击暂停，录像暂停
+	 */
+	public static void test_071() throws UiObjectNotFoundException
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"前置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"后置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
+		String time = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		String time1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		Assert.assertEquals(time, time1);
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+	}
+	
+	/**
+	 * 点击 视频- 开始录像，点击暂停，录像暂停,继续录制
+	 */
+	public static void test_072() throws UiObjectNotFoundException
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"前置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"后置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
+		String time = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		String time1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		Assert.assertNotSame(time, time1);
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+	}
+	
+	/**
+	 * 点击 视频- 开始录像，停止录像
+	 */
+	public static void test_073() throws UiObjectNotFoundException
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"前置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"后置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.camera2:id/btn_video_pause");
+		
+	}
+	
+	/**
+	 * 点击 视频 -前置摄像头- 菜单，有网格，切换摄像头模式
+	 */
+	public static void test_074() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"后置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"前置摄像头");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/grid_lines_toggle_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/camera_toggle_button");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+	}
+	
+	/**
+	 * 点击 视频-前置摄像头 -  页面上有网格模式、默认是关闭的，打开再关闭
+	 */
+	public static void test_075() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"后置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"网格线已关闭");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/grid_lines_toggle_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/grid_lines_toggle_button");
+		check(Object_Description,Operation_checkExist,"网格线已关闭");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+	}
+	
+	/**
+	 * 点击 视频-前置摄像头 -  切换至后置摄像头
+	 */
+	public static void test_076() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"前置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}else
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"后置摄像头");
+	}
+	
+	/**
+	 * 点击 视频-前置摄像头- 开始录像，页面上有计时，和停止和暂停按钮
+	 */
+	public static void test_077() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"后置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"前置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/recording_time");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/btn_video_pause");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+	}
+	
+	/**
+	 * 点击 视频-前置摄像头- 开始录像，页面上有计时，和停止和暂停按钮
+	 */
+	public static void test_078() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"后置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"前置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/recording_time");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/btn_video_pause");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+	}
+	
+	/**
+	 * 点击 视频-前置摄像头- 开始录像，点击暂停，录像暂停,继续录制
+	 */
+	public static void test_079() throws UiObjectNotFoundException
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"后置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"前置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
+		String time = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		String time1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		Assert.assertNotSame(time, time1);
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+	}
+	
+	/**
+	 * 点击 视频-前置摄像头- 开始录像，停止录像
+	 */
+	public static void test_080() throws UiObjectNotFoundException
+	{
+		//主体
+		CameraCommon.switchMode("视频");
+		excute(Object_Description,Operation_ClickWait,"选项");
+		if((Boolean)excute(Object_Description,Operation_Exists,"后置摄像头"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+		}
+		check(Object_Description,Operation_checkExist,"前置摄像头");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.camera2:id/btn_video_pause");
+		//清场
+		excute(Object_Description,Operation_ClickWait,"选项");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/camera_toggle_button");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
