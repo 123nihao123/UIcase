@@ -181,15 +181,15 @@ public class CameraCommon
 	{
 		if(type.equals("摄像"))
 		{
-			return DeviceCommon.getFileCount("/sdcard/DCIM/Camera", "mp4");
+			return DeviceCommon.getFileCount("/storage/sdcard0/DCIM/Camera", "mp4");
 		}
 		else if(type.equals("拍照"))
 		{
-			return DeviceCommon.getFileCount("/sdcard/DCIM/Camera", "jpg");
+			return DeviceCommon.getFileCount("/storage/sdcard0/DCIM/Camera", "jpg");
 		}
 		else if(type.equals("动画"))
 		{
-			return DeviceCommon.getFileCount("/sdcard/DCIM/Camera", "gif");
+			return DeviceCommon.getFileCount("/storage/sdcard0/DCIM/Camera", "gif");
 		}
 		return 0;
 	}
