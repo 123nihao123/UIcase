@@ -171,5 +171,347 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"前置摄像头视频");
 		excute(Object_Text,Operation_ClickWait,str[0]);
 	}
-
+	/**
+	 * 进入后置相机
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_042() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		check(Object_Description, Operation_checkExist, "后置摄像头");
+	}
+	/**
+	 * 拍照
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_043() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/rounded_thumbnail_view");
+	}
+	/**
+	 * 点击浏览位置
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_044() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/rounded_thumbnail_view");
+		check(Object_Description, Operation_checkExist, "切换到图库");
+	}
+	/**
+	 * 点击美颜图标
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_045() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/makeup_seekbar");
+	}
+	/**
+	 * 点击美颜拍照
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_047() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/rounded_thumbnail_view");
+	}
+	/**
+	 * 点击美颜拍照后预览
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_048() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/rounded_thumbnail_view");
+		check(Object_Description, Operation_checkExist, "切换到图库");
+	}
+	/**
+	 * 退出美颜拍照模式
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_049() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		check(Object_ResourceId, Operation_checkNoExist, "com.android.camera2:id/makeup_seekbar");
+	}
+	/**
+	 * 点击选项图标
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_050() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button");//倒计时器ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/grid_lines_toggle_button");//网格线ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/hdr_plus_toggle_button");//HDR ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/flash_toggle_button");//闪光灯ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/camera_toggle_button");//切换摄像头ID
+	}
+	/**
+	 * 点击倒计时
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_051() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		CameraCommon.setCountdown("倒计时器已关闭");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button", "倒计时器已关闭");
+		CameraCommon.setCountdown("倒计时器的时长已设为3秒");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button", "倒计时器的时长已设为3秒");
+		CameraCommon.setCountdown("倒计时器的时长已设为10秒");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button", "倒计时器的时长已设为10秒");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/countdown_toggle_button");
+	}
+	/**
+	 * 点击网格线
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_052() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		CameraCommon.switchGridlines("网格线已开启");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/grid_lines_toggle_button", "网格线已开启");
+		CameraCommon.switchGridlines("网格线已关闭");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/grid_lines_toggle_button", "网格线已关闭");
+	}
+	/**
+	 * 点击闪光灯
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_053() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		CameraCommon.setFlash("闪光灯已打开");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/flash_toggle_button", "闪光灯已打开");
+		CameraCommon.setFlash("闪光灯已关闭");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/flash_toggle_button", "闪光灯已关闭");
+		CameraCommon.setFlash("自动闪光");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/flash_toggle_button", "自动闪光");
+	}
+	/**
+	 * 切换前后置摄像头
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_054() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/camera_toggle_button", "前置摄像头");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/camera_toggle_button", "后置摄像头");
+	}
+	/**
+	 * 查看倒计时
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_055() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		CameraCommon.setCountdown("倒计时器的时长已设为3秒");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/mode_options_overlay");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/countdown_timer_indicator");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.setCountdown("倒计时器已关闭");
+	}
+	/**
+	 * 查看闪光灯
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_056() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		CameraCommon.setFlash("闪光灯已打开");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/mode_options_overlay");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/flash_indicator");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.setFlash("自动闪光");
+	}
+	/**
+	 * 切换到前置
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_058() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/camera_toggle_button", "前置摄像头");
+		//清场
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
+	/**
+	 * 点击美颜图标
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_059() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/makeup_seekbar");
+		//清场
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
+	/**
+	 * 点击美颜拍照
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_061() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		//主体
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/rounded_thumbnail_view", "10000");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/rounded_thumbnail_view");
+		//清场
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
+	/**
+	 * 点击选项图标
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_062() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		//主体
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button");//倒计时器ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/grid_lines_toggle_button");//网格线ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/hdr_plus_toggle_button");//HDR ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/flash_toggle_button");//闪光灯ID
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/camera_toggle_button");//切换摄像头ID
+		//清场
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
+	/**
+	 * 点击倒计时
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_063() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		CameraCommon.setCountdown("倒计时器已关闭");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button", "倒计时器已关闭");
+		CameraCommon.setCountdown("倒计时器的时长已设为3秒");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button", "倒计时器的时长已设为3秒");
+		CameraCommon.setCountdown("倒计时器的时长已设为10秒");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/countdown_toggle_button", "倒计时器的时长已设为10秒");
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/countdown_toggle_button");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
+	/**
+	 * 点击网格线
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_064() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		CameraCommon.switchGridlines("网格线已开启");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/grid_lines_toggle_button", "网格线已开启");
+		CameraCommon.switchGridlines("网格线已关闭");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/grid_lines_toggle_button", "网格线已关闭");
+		//清场
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
+	/**
+	 * 切换前后置摄像头
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_065() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/camera_toggle_button", "后置摄像头");
+		CameraCommon.switchGridlines("前置摄像头");
+		check(Object_ResIdDesc, Operation_checkExist, "com.android.camera2:id/camera_toggle_button", "前置摄像头");
+		//清场
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
 }
