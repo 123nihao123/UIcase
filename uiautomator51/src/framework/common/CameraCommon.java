@@ -1,5 +1,7 @@
 package framework.common;
 
+import java.io.IOException;
+
 import android.graphics.Rect;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -169,4 +171,26 @@ public class CameraCommon
 			}
 		}
 	}	
+
+	/**
+	 * 获得/sdcard/DCIM/Camera下通过摄像，拍照，动画产生的文件个数，
+	 * @param type - "摄像"，"拍照"，"动画"
+	 * @return
+	 */
+	public static int getMediaCount(String type)
+	{
+		if(type.equals("摄像"))
+		{
+			return DeviceCommon.getFileCount("/sdcard/DCIM/Camera", "mp4");
+		}
+		else if(type.equals("拍照"))
+		{
+			return DeviceCommon.getFileCount("/sdcard/DCIM/Camera", "jpg");
+		}
+		else if(type.equals("动画"))
+		{
+			return DeviceCommon.getFileCount("/sdcard/DCIM/Camera", "gif");
+		}
+		return 0;
+	}
 }

@@ -304,7 +304,8 @@ public class DeviceCommon
 	    String returnValue = "", line; 
 	    InputStream inStream = null; 
 	    try { 
-	        Process process = Runtime.getRuntime().exec(adbCommand); 
+	        String command[]= {"/bin/sh","-c",adbCommand};
+	        Process process = Runtime.getRuntime().exec(command);
 	        inStream = process.getInputStream(); 
 	        BufferedReader brCleanUp = new BufferedReader( 
 	        new InputStreamReader(inStream)); 
@@ -477,5 +478,50 @@ public class DeviceCommon
 		cursor.close();
 		return iccID;
 	}
-  
+	/**
+	 * 得到某个目录下文件数目
+	 * @param folder
+	 * @return
+	 */
+	public static int getFileCount(String folder)
+	{
+		return getFileCount(folder,"");
+	}
+
+	/**
+	 * 得到某个目录下文件数目
+	 * @param folder - 目录路径
+	 * @param type - 文件类型，比如“jpg","gif"
+	 * @return
+	 */
+	public static int getFileCount(String folder, String type )
+	{
+		String adbCommand;
+		String cmdResult="";
+		int returnValue=0;
+
+		if(type.equals(""))
+		{
+			//adbCommand = "ls /sdcard/DCIM/Camera |busybox wc -l";
+			adbCommand = "ls " + folder + " |busybox wc -l";
+		}
+		else
+		{
+			//adbCommand = "ls /sdcard/DCIM/Camera |busybox grep " + type +" |busybox wc -l";
+			adbCommand = "ls "+folder+ " |busybox grep " + type +" |busybox wc -l";
+		}
+		try{
+			cmdResult= runADBCommand(adbCommand);
+			//System.out.println("Command is : "+ adbCommand);
+			//System.out.println("cmdResult is : "+ cmdResult);
+			String s[] = cmdResult.split("\n");
+			returnValue = Integer.parseInt(s[0]);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		return returnValue ;
+	}
 }
