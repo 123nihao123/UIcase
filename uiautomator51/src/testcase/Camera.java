@@ -890,7 +890,7 @@ public class Camera extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_checkNoExist, "com.android.camera2:id/collage_grid_item_id");
 	}
 	/**
-	 * 动画模式&后置摄像头开启条件下，录制动画时，检测取消、确定按钮
+	 * 动画模式&后置摄像头开启条件下，录制动画
 	 * @throws UiObjectNotFoundException
 	 */
 	public static void test_085() throws UiObjectNotFoundException 
@@ -901,8 +901,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
-		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/gif_finish");
-		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/gif_cancel");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/gif_progress_bar");
 	}
 	/**
 	 * 动画模式&后置摄像头开启条件下，录制动画
@@ -979,11 +978,16 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 		//主体
+		int startnum=CameraCommon.getMediaCount("动画");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_Text, Operation_WaitForExists, "编辑","20000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/ugif_topbar_btn_save");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/ugif_topbar_btn_save","10000");
-		check(Object_ResourceId, Operation_EnabledFalse, "com.android.camera2:id/ugif_topbar_btn_save");
+		int endnum=CameraCommon.getMediaCount("动画");
+		boolean boo=(startnum+1==endnum);
+		Assert.assertTrue(boo);
+//		check(Object_ResourceId, Operation_EnabledFalse, "com.android.camera2:id/ugif_topbar_btn_save");
+		
 	}
 	/**
 	 * 动画模式&后置摄像头开启条件下，录制动画，播放动画
@@ -1054,7 +1058,7 @@ public class Camera extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_checkNoExist, "com.android.camera2:id/collage_grid_item_id");
 	}	
 	/**
-	 * 动画模式&前置摄像头开启条件下，录制动画时，检测取消、确定按钮
+	 * 动画模式&前置摄像头开启条件下，录制动画
 	 * @throws UiObjectNotFoundException
 	 */
 	public static void test_098() throws UiObjectNotFoundException 
@@ -1065,8 +1069,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.switchFrontBackCamera("前置摄像头");
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
-		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/gif_finish");
-		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/gif_cancel");
+		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/gif_progress_bar");
 	}
 	/**
 	 * 动画模式&前置摄像头开启条件下，录制动画
@@ -1142,11 +1145,15 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("前置摄像头");
 		//主体
+		int startnum=CameraCommon.getMediaCount("动画");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_Text, Operation_WaitForExists, "编辑","20000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/ugif_topbar_btn_save");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/ugif_topbar_btn_save","10000");
-		check(Object_ResourceId, Operation_EnabledFalse, "com.android.camera2:id/ugif_topbar_btn_save");
+		int endnum=CameraCommon.getMediaCount("动画");
+		boolean boo=(startnum+1==endnum);
+		Assert.assertTrue(boo);
+	  //check(Object_ResourceId, Operation_EnabledFalse, "com.android.camera2:id/ugif_topbar_btn_save");
 	}
 	/**
 	 * 动画模式&前置摄像头开启条件下，录制动画，播放动画
