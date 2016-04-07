@@ -18,6 +18,9 @@ public class CameraCommon
 	 */
 	public static void switchMode(String ModeName) throws UiObjectNotFoundException
 	{
+		//excute(Object_ResourceId,Operation_WaitForExists,"com.android.camera2:id/shutter_button","10000");
+		//使用WaitForExists时，全景和动画模式会出错，现使用Wait()
+		Wait(5000);
 		if (ModeName.equals("全景"))
 		{
 			if (isInPanorama())
@@ -46,9 +49,6 @@ public class CameraCommon
 				return;
 			}
 		}
-		//excute(Object_ResourceId,Operation_WaitForExists,"com.android.camera2:id/shutter_button","10000");
-		//使用WaitForExists时，全景和动画模式会出错，现使用Wait()
-		Wait(5000);
 		DeviceCommon.swipe("Right",10, 1);
 		excute(Object_Text,Operation_ClickWait,ModeName);
 	}
