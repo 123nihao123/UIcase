@@ -5,10 +5,14 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.data.DeviceParameter.*;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -523,5 +527,26 @@ public class DeviceCommon
 		}
 
 		return returnValue ;
+	}
+	
+	public static String parseTagFromXml(String path,String tag)
+	{
+		File file=  new File(path);
+		BufferedInputStream str = null;
+		Map map = null;
+		String v=null;
+		//System.out.println("+++"+file.exists());
+		if (file.exists() && file.canRead())
+		{
+			 try{
+				 str = new BufferedInputStream(new FileInputStream(file), 16*1024);
+				 map = XmlUtils.readMapXml(str);
+				 v = (String)map.get(tag);
+				 //System.out.println("The value is "+ v);
+			 }
+			 catch (Exception e) {
+			 }
+		}
+		return v;
 	}
 }
