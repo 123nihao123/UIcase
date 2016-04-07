@@ -18,6 +18,34 @@ public class CameraCommon
 	 */
 	public static void switchMode(String ModeName) throws UiObjectNotFoundException
 	{
+		if (ModeName.equals("全景"))
+		{
+			if (isInPanorama())
+			{
+				return;
+			}
+		}
+		else if (ModeName.equals("相机"))
+		{
+			if (isInCamera())
+			{
+				return;
+			}
+		}
+		else if (ModeName.equals("视频"))
+		{
+			if (isInVideo())
+			{
+				return;
+			}
+		}
+		else if (ModeName.equals("动画"))
+		{
+			if (isInGif())
+			{
+				return;
+			}
+		}
 		//excute(Object_ResourceId,Operation_WaitForExists,"com.android.camera2:id/shutter_button","10000");
 		//使用WaitForExists时，全景和动画模式会出错，现使用Wait()
 		Wait(5000);
@@ -171,6 +199,89 @@ public class CameraCommon
 			}
 		}
 	}	
+    /**
+	 * 判断是否在全景模式
+	 */
+	public static boolean isInPanorama()
+	{
+		if ((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.camera2:id/pano_preview_textureview"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	/**
+	 * 判断是否在相机模式
+	 */
+	public static boolean isInCamera()
+	{
+		if ((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.camera2:id/btn_beauty_button"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	/**
+	 * 判断是否在视频模式
+	 */
+	public static boolean isInVideo()
+	{
+		if ((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.camera2:id/face_view")
+				&& (!(Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.camera2:id/pano_preview_textureview"))
+				&& (!(Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.camera2:id/btn_beauty_button"))
+				&& (!(Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.camera2:id/gif_progress_text")))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	/**
+	 * 判断是否在动画模式
+	 */
+	public static boolean isInGif()
+	{
+		if ((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.camera2:id/gif_progress_text"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}	
+	}
+	/**
+	 * 还原拍照默认设置
+	 */
+	public static void restoreCameraSetting() throws UiObjectNotFoundException
+	{
+		excute(Object_TextScroll,Operation_ClickWait,"还原拍照默认设置","vertical");	
+		excute(Object_Text,Operation_ClickWait,"确定");
+	}
+	/**
+	 * 还原视频默认设置
+	 */
+	public static void restoreVideoSetting() throws UiObjectNotFoundException
+	{
+		excute(Object_TextScroll,Operation_ClickWait,"还原视频默认设置","vertical");	
+		excute(Object_Text,Operation_ClickWait,"确定");
+	}
+	/**
+	 * 还原动画默认设置
+	 */
+	public static void restoreGifSetting() throws UiObjectNotFoundException
+	{
+		excute(Object_TextScroll,Operation_ClickWait,"还原动画默认设置","vertical");	
+		excute(Object_Text,Operation_ClickWait,"确定");
+	}
 
 	/**
 	 * 获得/sdcard/DCIM/Camera下通过摄像，拍照，动画产生的文件个数，

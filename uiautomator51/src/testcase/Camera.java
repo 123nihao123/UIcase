@@ -12,7 +12,6 @@ import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 import framework.common.CameraCommon;
 import framework.common.DeviceCommon;
-
 public class Camera extends UiAutomatorTestCase
 {
 	@Override
@@ -57,7 +56,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.switchMode("全景");
-		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/pano_preview_textureview");
+		Assert.assertTrue(CameraCommon.isInPanorama());
 	}
 	/**
 	 * 进入相机模式
@@ -67,7 +66,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.switchMode("相机");
-		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/btn_beauty_button");
+		Assert.assertTrue(CameraCommon.isInCamera());
 	}
 	/**
 	 * 进入视频模式
@@ -77,7 +76,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.switchMode("视频");
-		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/face_view");
+		Assert.assertTrue(CameraCommon.isInVideo());
 	}
 	/**
 	 * 进入动画模式
@@ -87,7 +86,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.switchMode("动画");
-		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/gif_progress_text");
+		Assert.assertTrue(CameraCommon.isInGif());
 	}
 	/**
 	 * 进入设置界面
@@ -114,9 +113,19 @@ public class Camera extends UiAutomatorTestCase
 	public static void test_010() throws UiObjectNotFoundException 
 	{
 		//主体
+		String[] str;
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"后置摄像头照片");
-		String[] str={"(4:3) 5.0百万像素","(4:3) 3.1百万像素","(4:3) 1.9百万像素","(16:9) 2.1百万像素","(16:9) 0.9百万像素"};
+		String[] str1={"(4:3) 5.0百万像素","(4:3) 3.1百万像素","(4:3) 1.9百万像素","(16:9) 2.1百万像素","(16:9) 0.9百万像素"};
+		String[] str2={"(4:3) 8.0百万像素","(4:3) 5.0百万像素","(4:3) 3.1百万像素","(16:9) 7.2百万像素","(16:9) 2.1百万像素","(16:9) 0.9百万像素"};
+		if ((Boolean)excute(Object_Text,Operation_Exists,"(4:3) 8.0百万像素"))
+		{
+			str=str2;
+		}
+		else
+		{
+			str=str1;
+		}
 		CameraCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
@@ -146,9 +155,19 @@ public class Camera extends UiAutomatorTestCase
 	public static void test_012() throws UiObjectNotFoundException 
 	{
 		//主体
+		String[] str;
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"后置摄像头视频");
-		String[] str={"HD 720p","SD 480p","CIF"};
+		String[] str1={"HD 720p","SD 480p","CIF"};
+		String[] str2={"HD 1080p","HD 720p","SD 480p"};
+		if ((Boolean)excute(Object_Text,Operation_Exists,"HD 1080p"))
+		{
+			str=str2;
+		}
+		else
+		{
+			str=str1;
+		}
 		CameraCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
@@ -171,6 +190,414 @@ public class Camera extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text,Operation_ClickWait,"前置摄像头视频");
 		excute(Object_Text,Operation_ClickWait,str[0]);
+	}
+	/**
+	 * 快门声音开关默认是开启的
+	 */
+	public static void test_014() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterMainSetting();
+		check(Object_ResourceId,Operation_CheckedTrue,"android:id/switchWidget");
+	}
+	/**
+	 * 点击快门声音开关
+	 */
+	public static void test_015() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterMainSetting();
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
+		check(Object_ResourceId,Operation_CheckedFalse,"android:id/switchWidget");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
+	}
+	/**
+	 * 点击存储路径，弹出对话框
+	 */
+	public static void test_016() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterMainSetting();
+		excute(Object_Text,Operation_ClickWait,"存储路径");
+		check(Object_Text,Operation_checkExist,"取消");
+	}
+	/**
+	 * 进入高级设置
+	 */
+	public static void test_017() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		String[] str={"手动曝光","定格显示","时间戳","防闪烁","照片质量","智能检测","色彩效果","取景模式","白平衡","连续拍摄","对比度",
+				"亮度","感光度","饱和度","还原拍照默认设置","编码类型","防闪烁","延时","慢录","还原视频默认设置","GIF大小","GIF帧数","还原动画默认设置"};
+		for(int i=0;i<str.length;i++)
+		{
+			check(Object_TextScroll,Operation_checkExist,str[i],"vertical");
+		}
+	}
+	/**
+	 * 手动曝光开关默认关闭
+	 */
+	public static void test_018() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		check(Object_ResIdInstance,Operation_CheckedFalse,"android:id/switchWidget","0");
+		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","0");
+		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","0");  
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 * 定格显示开关默认关闭
+	 */
+	public static void test_019() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		check(Object_ResIdInstance,Operation_CheckedFalse,"android:id/switchWidget","1");
+		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","1");
+		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","1");  
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 * 时间戳开关默认关闭
+	 */
+	public static void test_020() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		check(Object_ResIdInstance,Operation_CheckedFalse,"android:id/switchWidget","2");
+		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","2");
+		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","2");  
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 * 防闪烁
+	 */
+	public static void test_021() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_Text,Operation_ClickWait,"防闪烁");
+		String[] str={"50Hz","60Hz"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 * 照片质量
+	 */
+	public static void test_022() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_Text,Operation_ClickWait,"照片质量");
+		String[] str={"极精细","精细","正常"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 * 智能检测
+	 */
+	public static void test_023() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_Text,Operation_ClickWait,"智能检测");
+		String[] str={"关闭","人脸检测","笑脸拍照"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();	
+	}
+	/**
+	 * 色彩效果
+	 */
+	public static void test_024() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		//小屏幕手机滑到色彩效果附近
+		excute(Object_TextScroll,Operation_Exists,"取景模式","vertical");
+		excute(Object_TextScroll,Operation_ClickWait,"色彩效果","vertical");
+		String[] str={"关闭","黑白","反色","旧照片","冷色","怀旧"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 * 取景模式
+	 */
+	public static void test_025() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"取景模式","vertical");
+		String[] str={"运动","夜间","自动","正常","肖像","风景"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 *白平衡
+	 */
+	public static void test_026() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"白平衡","vertical");	
+		String[] str={"白炽灯","日光灯","自动","晴天","阴天"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 *连续拍摄
+	 */
+	public static void test_027() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"连续拍摄","vertical");	
+		String[] str={"3","6","10","关闭"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 *对比度
+	 */
+	public static void test_028() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"对比度","vertical");	
+		String[] str={"3","2","1","0","-1","-2","-3"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 *亮度
+	 */
+	public static void test_029() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"亮度","vertical");	
+		String[] str={"6","5","4","3","2","1","0"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();	
+	}
+	/**
+	 *感光度
+	 */
+	public static void test_030() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		//防止滑动后下面的值获取不到
+		excute(Object_TextScroll,Operation_Exists,"测光","vertical");	
+		excute(Object_TextScroll,Operation_ClickWait,"感光度","vertical");	
+		String[] str={"自动","1600","800","400","200","100"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 *测光
+	 */
+	public static void test_031() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"测光","vertical");	
+		String[] str={"帧平均","中心测光","点"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[0]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
+		//清场
+		CameraCommon.restoreCameraSetting();	
+	}
+	/**
+	 *饱和度
+	 */
+	public static void test_032() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"饱和度","vertical");	
+		String[] str={"3","2","1","0","-1","-2","-3"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[0]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
+		//清场
+		CameraCommon.restoreCameraSetting();
+	}
+	/**
+	 *还原拍照默认设置
+	 */
+	public static void test_033() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"还原拍照默认设置","vertical");	
+		check(Object_Text,Operation_checkExist,"要恢复拍照默认设置吗?");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,"设置");
+		excute(Object_Text,Operation_ClickWait,"还原拍照默认设置");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/shutter_button");
+	}
+	/**
+	 *编码类型
+	 */
+	public static void test_034() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"编码类型","vertical");	
+		String[] str={"MPEG4","H.264"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[0]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
+		//清场
+		CameraCommon.restoreVideoSetting();	
+	}
+	/**
+	 *防闪烁(视频中)
+	 */
+	public static void test_035() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		//使手机先滑动到视频中防闪烁附近
+		excute(Object_TextScroll,Operation_Exists,"编码类型","vertical");	
+		excute(Object_Text,Operation_ClickWait,"防闪烁","vertical");	
+		String[] str={"50Hz","60Hz"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[1]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreVideoSetting();	
+	}
+	/**
+	 *延时
+	 */
+	public static void test_036() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"延时","vertical");	
+		String[] str={"关闭","间隔0.12秒(4倍)","间隔0.3秒(10倍)","间隔1秒(30倍)","间隔2秒(60倍)","间隔3秒(90倍)","间隔5秒(150倍)","间隔10秒(300倍)","间隔15秒(450倍)","间隔30秒(900倍)","间隔60秒(1800倍)"};
+		for(int i=0;i<str.length;i++)
+		{
+			check(Object_TextScroll,Operation_checkExist,str[i],"vertical");
+		}
+		excute(Object_TextScrollWithResId,Operation_ClickWait,"android:id/select_dialog_listview",str[1],"vertical");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
+		//清场
+		CameraCommon.restoreVideoSetting();		
+	}
+	/**
+	 *慢录
+	 */
+	public static void test_037() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"慢录","vertical");	
+		String[] str={"3","2","关闭"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[0]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
+		//清场
+		CameraCommon.restoreVideoSetting();		
+	}
+	/**
+	 *还原视频默认设置
+	 */
+	public static void test_038() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"还原视频默认设置","vertical");	
+		check(Object_Text,Operation_checkExist,"要恢复视频默认设置吗?");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,"设置");
+		excute(Object_Text,Operation_ClickWait,"还原视频默认设置");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/shutter_button");
+	}
+	/**
+	 *GIF大小
+	 */
+	public static void test_039() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"GIF大小","vertical");	
+		String[] str={"140x140","200x200","260x260"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[0]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
+		//清场
+		CameraCommon.restoreGifSetting();	
+	}
+	/**
+	 *GIF帧数
+	 */
+	public static void test_040() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"GIF帧数","vertical");	
+		String[] str={"10","15","20"};
+		CameraCommon.checkForExist(str);
+		excute(Object_Text,Operation_ClickWait,str[0]);
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
+		//清场
+		CameraCommon.restoreGifSetting();	
+	}
+	/**
+	 *还原动画默认设置
+	 */
+	public static void test_041() throws UiObjectNotFoundException 
+	{
+		//主体
+		CameraCommon.enterAdvSubSetting();
+		excute(Object_TextScroll,Operation_ClickWait,"还原动画默认设置","vertical");	
+		check(Object_Text,Operation_checkExist,"要恢复动画默认设置吗?");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkExist,"设置");
+		excute(Object_Text,Operation_ClickWait,"还原动画默认设置");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/shutter_button");
 	}
 	/**
 	 * 进入后置相机
@@ -1192,4 +1619,5 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "编辑","20000");
 		check(Object_Text, Operation_checkExist, "编辑");
 	}
+	
 }
