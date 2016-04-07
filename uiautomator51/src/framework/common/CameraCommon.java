@@ -4,11 +4,13 @@ import java.io.IOException;
 
 import android.graphics.Rect;
 
+import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.excute.Excute.*;
 import framework.common.DeviceCommon;
+
 
 public class CameraCommon 
 {
@@ -303,5 +305,45 @@ public class CameraCommon
 			return DeviceCommon.getFileCount("/storage/sdcard0/DCIM/Camera", "gif");
 		}
 		return 0;
+	}
+	/**
+	 * 根据屏幕大小判断使用哪个相机像素数组
+	 */
+	public static String[] chooseCameraPixelByScreenSize()
+	{
+	    String[] str;
+		String[] str1={"(4:3) 5.0百万像素","(4:3) 3.1百万像素","(4:3) 1.9百万像素","(16:9) 2.1百万像素","(16:9) 0.9百万像素"};
+		String[] str2={"(4:3) 8.0百万像素","(4:3) 5.0百万像素","(4:3) 3.1百万像素","(16:9) 7.2百万像素","(16:9) 2.1百万像素","(16:9) 0.9百万像素"};
+		int hight=UiDevice.getInstance().getDisplayHeight();
+		int width=UiDevice.getInstance().getDisplayWidth();
+		if(hight==854&&width==480)
+	    {
+	    	str=str1;
+	    }
+		else
+		{
+			str=str2;
+		}
+		return str;
+	}
+	/**
+	 * 根据屏幕大小判断使用哪个视频像素数组
+	 */
+	public static String[] chooseVideoPixelByScreenSize()
+	{
+	    String[] str;
+	    String[] str1={"HD 720p","SD 480p","CIF"};
+		String[] str2={"HD 1080p","HD 720p","SD 480p"};
+		int hight=UiDevice.getInstance().getDisplayHeight();
+		int width=UiDevice.getInstance().getDisplayWidth();
+		if(hight==854&&width==480)
+	    {
+	    	str=str1;
+	    }
+		else
+		{
+			str=str2;
+		}
+		return str;
 	}
 }

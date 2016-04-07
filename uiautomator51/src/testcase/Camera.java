@@ -4,14 +4,18 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+
 import junit.framework.Assert;
+import android.graphics.Rect;
 import android.os.RemoteException;
 
+import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 import framework.common.CameraCommon;
 import framework.common.DeviceCommon;
+
 public class Camera extends UiAutomatorTestCase
 {
 	@Override
@@ -116,16 +120,7 @@ public class Camera extends UiAutomatorTestCase
 		String[] str;
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"后置摄像头照片");
-		String[] str1={"(4:3) 5.0百万像素","(4:3) 3.1百万像素","(4:3) 1.9百万像素","(16:9) 2.1百万像素","(16:9) 0.9百万像素"};
-		String[] str2={"(4:3) 8.0百万像素","(4:3) 5.0百万像素","(4:3) 3.1百万像素","(16:9) 7.2百万像素","(16:9) 2.1百万像素","(16:9) 0.9百万像素"};
-		if ((Boolean)excute(Object_Text,Operation_Exists,"(4:3) 8.0百万像素"))
-		{
-			str=str2;
-		}
-		else
-		{
-			str=str1;
-		}
+		str=CameraCommon.chooseCameraPixelByScreenSize();
 		CameraCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
@@ -158,16 +153,7 @@ public class Camera extends UiAutomatorTestCase
 		String[] str;
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"后置摄像头视频");
-		String[] str1={"HD 720p","SD 480p","CIF"};
-		String[] str2={"HD 1080p","HD 720p","SD 480p"};
-		if ((Boolean)excute(Object_Text,Operation_Exists,"HD 1080p"))
-		{
-			str=str2;
-		}
-		else
-		{
-			str=str1;
-		}
+		str=CameraCommon.chooseVideoPixelByScreenSize();
 		CameraCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
@@ -664,6 +650,26 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
+	 * 调节美化程度
+	 */
+	public static void test_046() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("后置摄像头");
+		//主体
+		//只是操作，没有判断
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.camera2:id/makeup_seekbar");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x / 2, y);
+		UiDevice.getInstance().click(x / 3, y);
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+	}
+	/**
 	 * 点击美颜拍照
 	 * @throws UiObjectNotFoundException
 	 */
@@ -862,6 +868,26 @@ public class Camera extends UiAutomatorTestCase
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
+	}
+	/**
+	 * 调节美化程度
+	 */
+	public static void test_060() throws UiObjectNotFoundException 
+	{
+		//前提
+		CameraCommon.switchMode("相机");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
+		CameraCommon.switchFrontBackCamera("前置摄像头");
+		//主体
+		//只是操作，没有判断
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.camera2:id/makeup_seekbar");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x / 2, y);
+		UiDevice.getInstance().click(x / 3, y);
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
 	 * 点击美颜拍照
@@ -1691,5 +1717,4 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "编辑","20000");
 		check(Object_Text, Operation_checkExist, "编辑");
 	}
-	
 }
