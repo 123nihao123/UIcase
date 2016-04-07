@@ -1334,7 +1334,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_Text, Operation_WaitForExists, "编辑","20000");
 		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.camera2:id/ugif_edit_cate_icon_id","1");
-		check(Object_Text, Operation_checkExist, "黑白");
+		check(Object_Text, Operation_checkExist, "彩虹");
 	}
 	/**
 	 * 动画模式&后置摄像头开启条件下，录制动画，点击速度
@@ -1501,7 +1501,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_Text, Operation_WaitForExists, "编辑","20000");
 		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.camera2:id/ugif_edit_cate_icon_id","1");
-		check(Object_Text, Operation_checkExist, "黑白");
+		check(Object_Text, Operation_checkExist, "彩虹");
 	}
 	/**
 	 * 动画模式&前置摄像头开启条件下，录制动画，点击速度
