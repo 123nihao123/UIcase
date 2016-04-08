@@ -824,6 +824,9 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 		CameraCommon.setCountdown("倒计时器的时长已设为3秒");
+		String str1 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_camera_countdown_duration_key");
+		String str = "3";
+		Assert.assertEquals(str, str1);
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/mode_options_overlay");
 		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/countdown_timer_indicator");
 		//清场
