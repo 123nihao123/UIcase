@@ -1012,6 +1012,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.switchMode("视频");
+		excute(Object_Description, Operation_WaitForExists, "选项","20000");
 		excute(Object_Description,Operation_ClickWait,"选项");
 		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/grid_lines_toggle_button");
 		check(Object_ResourceId,Operation_checkExist,"com.android.camera2:id/flash_toggle_button");
@@ -1264,6 +1265,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//前提
 		CameraCommon.switchMode("动画");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/three_dots","20000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 		//主体
@@ -1379,12 +1381,16 @@ public class Camera extends UiAutomatorTestCase
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_Text, Operation_WaitForExists, "编辑","30000");
-		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.camera2:id/ugif_edit_cate_icon_id","1");//点击特效
-		UiDevice device = UiDevice.getInstance();
-		SettingCommon.take_temp_pic(device, "888");
+		excute(Object_TextScroll, Operation_ClickWait,"特效","horizontal");//点击特效
+		if ((Boolean)excute(Object_Text, Operation_Exists, "点此调整常用滤镜排序")) {
+			excute(Object_Text, Operation_ClickWait, "点此调整常用滤镜排序");
+		}
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/top_sub_menu_cancel","20000");
-		SettingCommon.take_temp_pic(device, "999");
 		check(Object_Text, Operation_checkExist, "彩虹");
+		
+//		UiDevice device = UiDevice.getInstance();
+//		SettingCommon.take_temp_pic(device, "888");
+//		SettingCommon.take_temp_pic(device, "999");
 	}
 	/**
 	 * 动画模式&后置摄像头开启条件下，录制动画，点击相框
