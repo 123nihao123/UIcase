@@ -659,14 +659,19 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 		//主体
-		//只是操作，没有判断
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.camera2:id/makeup_seekbar");
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x, y);
+		String str1 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
+		System.out.println("The value is "+ str1);
 		UiDevice.getInstance().click(x / 2, y);
-		UiDevice.getInstance().click(x / 3, y);
+		String str2 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
+		System.out.println("The value is "+ str2);
+		Assert.assertFalse(str1.equals(str2));
 		//清场
+		UiDevice.getInstance().click(x, y);
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
@@ -879,14 +884,19 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("前置摄像头");
 		//主体
-		//只是操作，没有判断
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.camera2:id/makeup_seekbar");
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x, y);
+		String str1 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
+		System.out.println("The value is "+ str1);
 		UiDevice.getInstance().click(x / 2, y);
-		UiDevice.getInstance().click(x / 3, y);
+		String str2 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
+		System.out.println("The value is "+ str2);
+		Assert.assertFalse(str1.equals(str2));
 		//清场
+		UiDevice.getInstance().click(x, y);
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
 	}
 	/**
