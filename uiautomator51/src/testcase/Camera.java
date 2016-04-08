@@ -666,13 +666,17 @@ public class Camera extends UiAutomatorTestCase
 		UiDevice.getInstance().click(x, y);
 		String str1 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
 		System.out.println("The value is "+ str1);
+		Wait(2000);
 		UiDevice.getInstance().click(x / 2, y);
 		String str2 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
 		System.out.println("The value is "+ str2);
-		Assert.assertFalse(str1.equals(str2));
+		try{
+			Assert.assertFalse(str1.equals(str2));
+		}
 		//清场
-		UiDevice.getInstance().click(x, y);
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		finally{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		}
 	}
 	/**
 	 * 点击美颜拍照
@@ -891,13 +895,18 @@ public class Camera extends UiAutomatorTestCase
 		UiDevice.getInstance().click(x, y);
 		String str1 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
 		System.out.println("The value is "+ str1);
+		Wait(2000);
 		UiDevice.getInstance().click(x / 2, y);
 		String str2 = DeviceCommon.parseTagFromXml("/data/data/com.android.camera2/shared_prefs/com.android.camera2_preferences.xml", "pref_makeup_mode_level_key");
 		System.out.println("The value is "+ str2);
-		Assert.assertFalse(str1.equals(str2));
+		try{
+			Assert.assertFalse(str1.equals(str2));
+		}
 		//清场
-		UiDevice.getInstance().click(x, y);
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		finally{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/btn_beauty_button");
+		}
+		
 	}
 	/**
 	 * 点击美颜拍照
