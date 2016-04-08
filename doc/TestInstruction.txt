@@ -1,7 +1,17 @@
+SDK环境更改：
+更改sdk下的\tools\ant\build.xml文件
+<property name="java.target" value="1.5" />
+<property name="java.source" value="1.5" />
+改为
+<property name="java.target" value="1.7" />
+<property name="java.source" value="1.7" />
+否则build不过
+
 前置条件：
 手动设置：
 1. 插入2张SIM卡
 2. 插入1张SD卡
+
 
 Setting模块操作须知：
 (1更改支持机热点名字为Testteam,密码：test12345678，用作WIFI的支持
@@ -12,6 +22,7 @@ MusicPLayer模块操作须知：
 
 FileExplore模块操作须知：
 必须把testresource\FileExploreResource下的FileExplorer_Phone连目录拷到手机内置存储根目录下，把FileExplorer_SD连目录拷到存储卡根目录下
+
 
 运行步骤
 打开命令窗口：
