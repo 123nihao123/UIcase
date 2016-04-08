@@ -1,5 +1,5 @@
 SDK环境更改：
-更改sdk下的\tools\ant\build.xml文件
+更改sdk下的\tools\ant\uibuild.xml文件
 <property name="java.target" value="1.5" />
 <property name="java.source" value="1.5" />
 改为
