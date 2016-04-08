@@ -545,7 +545,13 @@ public class DeviceCommon
 				 //System.out.println("The value is "+ v);
 			 }
 			 catch (Exception e) {
+				 e.printStackTrace(); 
+				 System.err.println("Error: " + e.getMessage());
 			 }
+		}
+		else
+		{
+			System.out.println("Can not read file");
 		}
 		return v;
 	}
