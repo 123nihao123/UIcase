@@ -1440,7 +1440,7 @@ public class Camera extends UiAutomatorTestCase
 		{
 			excute(Object_TextScrollWithResId, Operation_Exists, "com.android.camera2:id/ugif_hs_cate","模式","horizontal");
 		}
-		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.camera2:id/ugif_edit_cate_icon_id","5");//点击模式
+		excute(Object_Text, Operation_ClickWait, "模式");//点击模式
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/top_sub_menu_cancel","10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/top_sub_menu_ok");
 	}
@@ -1665,7 +1665,7 @@ public class Camera extends UiAutomatorTestCase
 		{
 			excute(Object_TextScrollWithResId, Operation_Exists, "com.android.camera2:id/ugif_hs_cate","模式","horizontal");
 		}
-		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.camera2:id/ugif_edit_cate_icon_id","5");//点击模式
+		excute(Object_Text, Operation_ClickWait,"模式");//点击模式
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/top_sub_menu_cancel","10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/top_sub_menu_ok");
 	}
