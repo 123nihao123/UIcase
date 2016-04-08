@@ -844,10 +844,8 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.switchFrontBackCamera("后置摄像头");
 		CameraCommon.setFlash("闪光灯已打开");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/mode_options_overlay");
-		check(Object_ResourceId, Operation_checkExist, "com.android.camera2:id/flash_indicator");
+		check(Object_Description, Operation_checkExist, "闪光灯已打开");
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/three_dots");
 		CameraCommon.setFlash("自动闪光");
 	}
 	/**
