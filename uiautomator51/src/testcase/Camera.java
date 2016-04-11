@@ -1381,16 +1381,19 @@ public class Camera extends UiAutomatorTestCase
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.camera2:id/shutter_button");
 		excute(Object_Text, Operation_WaitForExists, "编辑","30000");
+		UiDevice device = UiDevice.getInstance();
+		SettingCommon.take_temp_pic(device, "888");
 		excute(Object_TextScroll, Operation_ClickWait,"特效","horizontal");//点击特效
+		SettingCommon.take_temp_pic(device, "999");
 		if ((Boolean)excute(Object_Text, Operation_Exists, "点此调整常用滤镜排序")) {
+			System.out.println("Enter filter");
 			excute(Object_Text, Operation_ClickWait, "点此调整常用滤镜排序");
+			SettingCommon.take_temp_pic(device, "aaa");
+			
 		}
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.camera2:id/top_sub_menu_cancel","20000");
 		check(Object_Text, Operation_checkExist, "彩虹");
-		
-//		UiDevice device = UiDevice.getInstance();
-//		SettingCommon.take_temp_pic(device, "888");
-//		SettingCommon.take_temp_pic(device, "999");
+
 	}
 	/**
 	 * 动画模式&后置摄像头开启条件下，录制动画，点击相框
