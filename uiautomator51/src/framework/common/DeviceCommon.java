@@ -5,10 +5,14 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.data.DeviceParameter.*;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -304,7 +308,8 @@ public class DeviceCommon
 	    String returnValue = "", line; 
 	    InputStream inStream = null; 
 	    try { 
-	        Process process = Runtime.getRuntime().exec(adbCommand); 
+	        String command[]= {"/bin/sh","-c",adbCommand};
+	        Process process = Runtime.getRuntime().exec(command);
 	        inStream = process.getInputStream(); 
 	        BufferedReader brCleanUp = new BufferedReader( 
 	        new InputStreamReader(inStream)); 
@@ -477,5 +482,77 @@ public class DeviceCommon
 		cursor.close();
 		return iccID;
 	}
-  
+	/**
+	 * 得到某个目录下文件数目
+	 * @param folder
+	 * @return
+	 */
+	public static int getFileCount(String folder)
+	{
+		return getFileCount(folder,"");
+	}
+
+	/**
+	 * 得到某个目录下文件数目
+	 * @param folder - 目录路径
+	 * @param type - 文件类型，比如“jpg","gif"
+	 * @return
+	 */
+	public static int getFileCount(String folder, String type )
+	{
+		String adbCommand;
+		String cmdResult="";
+		int returnValue=0;
+
+		if(type.equals(""))
+		{
+			//adbCommand = "ls /sdcard/DCIM/Camera |busybox wc -l";
+			adbCommand = "ls " + folder + " |busybox wc -l";
+		}
+		else
+		{
+			//adbCommand = "ls /sdcard/DCIM/Camera |busybox grep " + type +" |busybox wc -l";
+			adbCommand = "ls "+folder+ " |busybox grep " + type +" |busybox wc -l";
+		}
+		try{
+			cmdResult= runADBCommand(adbCommand);
+			//System.out.println("Command is : "+ adbCommand);
+			//System.out.println("cmdResult is : "+ cmdResult);
+			String s[] = cmdResult.split("\n");
+			returnValue = Integer.parseInt(s[0]);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		return returnValue ;
+	}
+	
+	public static String parseTagFromXml(String path,String tag)
+	{
+		File file=  new File(path);
+		BufferedInputStream str = null;
+		Map map = null;
+		String v=null;
+		//System.out.println("+++"+file.exists());
+		if (file.exists() && file.canRead())
+		{
+			 try{
+				 str = new BufferedInputStream(new FileInputStream(file), 16*1024);
+				 map = XmlUtils.readMapXml(str);
+				 v = (String)map.get(tag);
+				 //System.out.println("The value is "+ v);
+			 }
+			 catch (Exception e) {
+				 e.printStackTrace(); 
+				 System.err.println("Error: " + e.getMessage());
+			 }
+		}
+		else
+		{
+			System.out.println("Can not read file");
+		}
+		return v;
+	}
 }

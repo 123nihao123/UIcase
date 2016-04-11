@@ -1660,11 +1660,11 @@ public class Settings extends UiAutomatorTestCase
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x / 2, y);
 		String i = DeviceCommon.runADBCommand("settings get system screen_brightness");
-		String actual[] = i.split("\n");
+		String s[] = i.split("\n");
 		UiDevice.getInstance().click(x / 3, y);
 		String j = DeviceCommon.runADBCommand("settings get system screen_brightness");
-		String actua[] = j.split("\n");
-		Assert.assertNotSame(i, j);
+		String s1[] = j.split("\n");
+		Assert.assertFalse(s[0].equals(s1[0]));
 		//清场
 		DeviceCommon.runADBCommand("settings put system screen_brightness 25");
 	}
