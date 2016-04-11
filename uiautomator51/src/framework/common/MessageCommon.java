@@ -45,4 +45,25 @@ public class MessageCommon {
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/attach_media_button");
 	}
+	/**
+	 * 进入常规设置
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void enterGeneralSetting() throws UiObjectNotFoundException
+	{
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "设置");
+		excute(Object_Text, Operation_ClickWait, "常规");
+	}
+	/**
+	 * 进入SIM卡设置
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void enterSIMSetting() throws UiObjectNotFoundException
+	{
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "设置");
+		excute(Object_ClassContainsText, Operation_ClickWait, "android.widget.TextView","SIM");
+	}	
+	
 }
