@@ -35,4 +35,31 @@ public class Message extends UiAutomatorTestCase
     {
     }
 	
+	
+	public static void test_073() throws UiObjectNotFoundException 
+	{
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}

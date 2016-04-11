@@ -13,6 +13,18 @@ import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class MessageCommon {
 	
+	
+	/**
+	  * 切换视图模式
+	  * @param ViewName 取值范围：消息视图，文件夹视图
+	  */
+	 public static void switchView(String ViewName)
+	 {
+	  excute(Object_Device, Operation_PressMenu);
+	  if ((Boolean)excute(Object_Text, Operation_Exists, ViewName)) 
+	   excute(Object_Text, Operation_ClickWait, ViewName);
+	 }
+	
 	/**
 	 * 消息模式，新建短信点击附件
 	 * @param num
