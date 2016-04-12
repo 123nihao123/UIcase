@@ -83,7 +83,7 @@ public class MessageCommon {
 	}
 	/**
 	 * 文件视图下拉菜单操作
-	 * @param optionName 取值范围：发件箱，已发送，发件箱，草稿箱
+	 * @param optionName 取值范围：收件箱，已发送，发件箱，草稿箱
 	 */
 	public static void Menuoption(String optionName)
 	{
