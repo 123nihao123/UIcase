@@ -8,7 +8,9 @@ import static framework.excute.Excute.*;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Rect;
 
+import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class MessageCommon {
@@ -44,6 +46,7 @@ public class MessageCommon {
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view",num);
 		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/attach_media_button","5000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/attach_media_button");
 	}
 	/**
@@ -143,4 +146,17 @@ public class MessageCommon {
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text",Content);
 	}
+	
+	/**
+	 * 长按录音
+	 */
+	public static  void longClickAudio()
+	{
+		Rect bound = (Rect) excute(Object_ResourceId,Operation_GetBounds,"com.android.messaging:id/record_button_visual");
+		int x = bound.centerX();
+		int y = bound.centerY();
+		UiDevice.getInstance().drag(x,y,x, y, 400);
+		
+	}
+	
 }

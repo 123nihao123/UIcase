@@ -837,11 +837,545 @@ public class Message extends UiAutomatorTestCase
 		//清场
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
 	}
+	
+	/**
+	 * 新建信息，添加拍照附件，自动加载到编辑页面上
+	 * @throws UiObjectNotFoundException
+	 */
 	public static void test_073() throws UiObjectNotFoundException 
 	{
+		//主体
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+		excute(Object_Description,Operation_ClickWait,"拍照");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/attachment_image_view");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 	}
+	
+	/**
+	 * 新建信息，添加拍照附件，自动加载到编辑页面上，点击预览图片
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_074() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+		excute(Object_Description,Operation_ClickWait,"拍照");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/attachment_image_view");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/photo_view");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+	}
+	
+	/**
+	 * 新建信息，添加拍照附件，自动加载到编辑页面上，删除拍摄照片
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_075() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+		excute(Object_Description,Operation_ClickWait,"拍照");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/attachment_image_view","3000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.messaging:id/attachment_image_view");
+	}
+	
+	/**
+	 * 新建信息，添加摄像附件，自动加载到编辑页面上
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_076() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+		excute(Object_Description,Operation_ClickWait,"拍摄视频");
+		if((Boolean)excute(Object_Text,Operation_WaitForExists,"00:05","5000"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
+		}
+		check(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/video_thumbnail_play_button","3000");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+	}
+	
+	/**
+	 * 新建信息，添加摄像附件，自动加载到编辑页面上,点击视频预览
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_077() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+		excute(Object_Description,Operation_ClickWait,"拍摄视频");
+		if((Boolean)excute(Object_Text,Operation_WaitForExists,"00:05","5000"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
+		}
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/video_thumbnail_play_button");
+		check(Object_Description,Operation_checkExist,"视频播放器时间栏");
+		//清场
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","10000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+	}
+	
+	/**
+	 * 新建信息，添加摄像附件，自动加载到编辑页面上,删除该视频
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_078() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+		excute(Object_Description,Operation_ClickWait,"拍摄视频");
+		if((Boolean)excute(Object_Text,Operation_WaitForExists,"00:05","5000"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
+		}
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","10000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.messaging:id/video_thumbnail_play_button");
+	}
+	
+	/**
+	 * 新建信息，添加录音附件，自动加载到编辑页面上
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_079() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"录制语音");
+		excute(Object_ResourceId,Operation_LongClick,"com.android.messaging:id/record_button_visual");
+		check(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/audio_attachment_view","1500");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+	}
+	
+	/**
+	 * 新建信息，添加录音附件，自动加载到编辑页面上,播放录音
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_080() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"录制语音");
+		MessageCommon.longClickAudio();
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/audio_attachment_view","1500");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/play_button");
+		check(Object_Description,Operation_checkExist,"暂停");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+	}
+	
+	/**
+	 * 新建信息，添加录音附件，自动加载到编辑页面上,删除录音
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_081() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"录制语音");
+		MessageCommon.longClickAudio();
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/audio_attachment_view","1500");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.messaging:id/audio_attachment_view");
+	}
+	
+	/**
+	 * 新建信息，添加视频附件界面
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_082() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"视频");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_video_attach");
+		check(Object_ResourceId,Operation_checkExist,"com.android.documentsui:id/icon_mime");
+	}
+	
+	/**
+	 * 新建信息，添加视频附件，大小合适的视频被添加上去，大小不合的视频弹出，大小不合适的对话框，视频且无法添加
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_083() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"视频");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_video_attach");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.documentsui:id/icon_mime");
+		if((Boolean)excute(Object_ResourceId,Operation_Exists,"android:id/alertTitle"))
+		{
+			check(Object_Text,Operation_checkExist,"您选择的视频大小超过上限！");
+			excute(Object_Text,Operation_ClickWait,"确定");
+		}
+		else
+		{
+			check(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/video_thumbnail_play_button","1500");
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+		}
+	}
+	
+	/**
+	 * 新建信息，添加音频附件界面
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_084() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"音频");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_audio_attach");
+		if((Boolean)excute(Object_Text,Operation_Exists,"使用媒体存储完成操作"))
+		{
+			excute(Object_Text,Operation_ClickWait,"仅此一次");
+		}
+		else
+		{
+			excute(Object_Text,Operation_ClickWait,"媒体存储");
+			excute(Object_Text,Operation_ClickWait,"仅此一次");
+		}
+		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle");
+	}
+	
+	/**
+	 * 新建信息，添加音频附件界面,选择一个音频进入编辑界面
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_085() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"音频");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_audio_attach");
+		if((Boolean)excute(Object_Text,Operation_Exists,"使用媒体存储完成操作"))
+		{
+			excute(Object_Text,Operation_ClickWait,"仅此一次");
+		}
+		else
+		{
+			excute(Object_Text,Operation_ClickWait,"媒体存储");
+			excute(Object_Text,Operation_ClickWait,"仅此一次");
+		}
+		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/text1","0");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/audio_attachment_view");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+	}
+	
+	/**
+	 * 新建信息，添加名片界面
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_086() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"名片");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_vcard_attach");
+		check(Object_Text,Operation_checkExist,"选择联系人");
+	}
+	
+	/**
+	 * 新建信息，添加名片
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_087() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"名片");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_vcard_attach");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.contacts:id/cliv_name_textview","0");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/vcard_attachment_view");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+	}
+	
+	/**
+	 * 新建信息，添加名片,删除信息
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_088() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"名片");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_vcard_attach");
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.contacts:id/cliv_name_textview","0");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.messaging:id/vcard_attachment_view");	
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，功能下拉框上有 参与者名单和选项、插入常用短语、归档、删除功能项
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_089() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text,Operation_checkExist,"参与者名单和选项");
+		check(Object_Text,Operation_checkExist,"插入常用短语");
+		check(Object_Text,Operation_checkExist,"归档");
+		check(Object_Text,Operation_checkExist,"删除");
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，点击 参与者名单和选项
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_090() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"参与者名单和选项");
+		check(Object_Text,Operation_checkExist,"参与者名单和选项");
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，点击 参与者名单和选项，点击一个参与者
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_091() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"参与者名单和选项");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/details_container");
+		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/photo_touch_intercept_overlay");
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，点击 参与者名单和选项，点击一个参与者
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_092() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"参与者名单和选项");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/details_container");
+		check(Object_Text,Operation_checkExist,"要添加到通讯录吗？");
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，点击 插入常用短语
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_093() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"插入常用短语");
+		check(Object_Text,Operation_checkExist,"选择常用短语");
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，点击 插入常用短语
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_094() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"插入常用短语");
+		excute(Object_Text,Operation_ClickWait,"请稍后打给我或发信息给我。");
+		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","请稍后打给我或发信息给我。");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		for(int i=0;i<=20;i++)
+		{
+			excute(Object_Device, Operation_PressDelete);
+		}
+		if(!(Boolean)excute(Object_ResIdContainsText,Operation_Exists,"com.android.messaging:id/compose_message_text","发送信息"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+			for(int i=0;i<=20;i++)
+			{
+				excute(Object_Device, Operation_PressDelete);
+			}
+		}
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，点击 归档
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_095() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.switchView("消息视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"归档");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"已归档的对话");
+		check(Object_Text,Operation_checkExist,"选择常用短语");
+		//清场
+		
+	}
+	
+	/**
+	 * 新建信息，更多菜单，页面弹出功能下拉框，点击 删除
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_096() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.switchView("消息视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10021");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/conversation_title");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		check(Object_ResourceId,Operation_checkNoExist,"com.android.messaging:id/conversation_title");
+	}
+	
+	/**
+	 * 新建信息，点击通话图标，跳转到通话界面
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_097() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.switchView("消息视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_call");
+		if((Boolean)excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
+		}
+		check(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","1500");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
+	}
+	
+	/**
+	 * 新建信息，发送短信成功
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_098() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.switchView("消息视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/recipient_text_view");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/self_send_icon");
+		check(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.messaging:id/conversation_name","10086"))
+		{
+			excute(Object_ResIdText,Operation_LongClick,"com.android.messaging:id/conversation_name","10086");
+		}
+		else
+		{
+			excute(Object_TextScrollWithResId,Operation_LongClick,"com.android.messaging:id/conversation_name","10086","vertical");
+		}
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
+		excute(Object_Text,Operation_ClickWait,"删除");
+	}
+	
+	/**
+	 * 新建信息，发送彩信成功
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_099() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+		excute(Object_Description,Operation_ClickWait,"拍照");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/send_message_button");
+		check(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.messaging:id/conversation_name","10086"))
+		{
+			excute(Object_ResIdText,Operation_LongClick,"com.android.messaging:id/conversation_name","10086");
+		}
+		else
+		{
+			excute(Object_TextScrollWithResId,Operation_LongClick,"com.android.messaging:id/conversation_name","10086","vertical");
+		}
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
+		excute(Object_Text,Operation_ClickWait,"删除");
+	}
+	
+	/**
+	 * 新建信息，草稿
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_100() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.switchView("消息视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/recipient_text_view");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		check(Object_ResIdText,Operation_WaitForExists,"com.android.messaging:id/conversation_timestamp","草稿","3500");
+		//清场
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.messaging:id/conversation_name","10086"))
+		{
+			excute(Object_ResIdText,Operation_LongClick,"com.android.messaging:id/conversation_name","10086");
+		}
+		else
+		{
+			excute(Object_TextScrollWithResId,Operation_LongClick,"com.android.messaging:id/conversation_name","10086","vertical");
+		}
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
+		excute(Object_Text,Operation_ClickWait,"删除");
+	}
+	
+	
 	/**
 	 * 进入常规设置，点击默认信息应用
 	 * @throws UiObjectNotFoundException
