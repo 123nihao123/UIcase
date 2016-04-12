@@ -161,7 +161,6 @@ public class MessageCommon {
 		int x = bound.centerX();
 		int y = bound.centerY();
 		UiDevice.getInstance().drag(x,y,x, y, 400);
-		
 	}
 	
 }

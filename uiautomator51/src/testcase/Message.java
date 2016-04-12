@@ -1167,6 +1167,9 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_091() throws UiObjectNotFoundException 
 	{
+		//前提
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.addNameAndTel("本机", "test", "10086");
 		//主体
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
@@ -1174,6 +1177,14 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"参与者名单和选项");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/details_container");
 		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/photo_touch_intercept_overlay");
+		//清场
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		excute(Object_Text,Operation_ClickWait,"所有联系人");
+		excute(Object_Text,Operation_ClickWait,"test");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		
 	}
 	
 	/**
