@@ -48,7 +48,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_001()
 	{
 		//主体
-		check(Object_ResourceId,Operation_checkExist,"com.android.mmsfolderview:id/action_bar");//状态栏
+		check(Object_Description,Operation_checkExist,"更多选项");//状态栏更多选项
 	}
 	/**
 	 * 进入信息无信息时查看
@@ -111,7 +111,12 @@ public class Message extends UiAutomatorTestCase
 	public static void test_008()
 	{
 		//主体
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.messaging:id/swipeableContent");
+		if ((Boolean)excute(Object_ResourceId, Operation_Exists, "com.android.mmsfolderview:id/conversation_name"))
+		{
+		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
+		}else{
+			excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
+		}
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.messaging:id/action_call", "10000");//拨号按钮
 		check(Object_ResourceId, Operation_checkExist, "com.android.messaging:id/action_call");
 	}
@@ -121,7 +126,12 @@ public class Message extends UiAutomatorTestCase
 	public static void test_009()
 	{
 		//主体
-		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/swipeableContent");
+		if ((Boolean)excute(Object_ResourceId, Operation_Exists, "com.android.mmsfolderview:id/conversation_name"))
+		{
+		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
+		}else{
+			excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
+		}
 		check(Object_Description, Operation_checkExist, "转到上一层级");
 		check(Object_Description, Operation_checkExist, "归档");
 	}

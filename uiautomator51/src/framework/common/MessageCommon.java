@@ -75,7 +75,12 @@ public class MessageCommon {
 	 */
 	public static void Longclickmessage(String optionName)
 	{
-		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/swipeableContent");
+		if ((Boolean)excute(Object_ResourceId, Operation_Exists, "com.android.mmsfolderview:id/conversation_name"))
+		{
+		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
+		}else{
+			excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
+		}
 		if ((Boolean)excute(Object_Description, Operation_Exists, optionName))
 		{
 			excute(Object_Description, Operation_ClickWait, optionName);
