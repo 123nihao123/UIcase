@@ -26,7 +26,6 @@ public class MessageCommon {
 			excute(Object_Device, Operation_PressBack);
 		}
 	}
-	
 	/**
 	 * 消息模式，新建短信点击附件
 	 * @param num
@@ -90,5 +89,58 @@ public class MessageCommon {
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/actionbar_spinner");
 		excute(Object_Text, Operation_ClickWait, optionName);
 	}
-	
+     /**
+	 * 进入收件箱文件夹
+	 */
+	public static void enterInbox()
+	{
+		switchView("文件夹视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
+		excute(Object_Text,Operation_ClickWait,"收件箱");
+	}
+	/**
+	 * 进入已发送文件夹
+	 */
+	public static void enterOutBox()
+	{
+		switchView("文件夹视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
+		excute(Object_Text,Operation_ClickWait,"已发送");
+	}
+	/**
+	 * 进入发件箱文件夹
+	 */
+	public static void enterSent()
+	{
+		switchView("文件夹视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
+		excute(Object_Text,Operation_ClickWait,"发件箱");
+	}
+	/**
+	 * 进入草稿箱文件夹
+	 */
+	public static void enterDrafts()
+	{
+		switchView("文件夹视图");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
+		excute(Object_Text,Operation_ClickWait,"草稿箱");
+	}
+	/**
+	 * 添加短信号码和内容
+	 */
+	public static void newMessageWithNumAndContent(String Num ,String Content)
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		if((Boolean)excute(Object_Text,Operation_Exists,"消息视图"))
+		{
+			excute(Object_Text,Operation_ClickWait,"消息视图");
+		}else
+		{
+			excute(Object_Device, Operation_PressBack);
+		}
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view",Num);
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text",Content);
+	}
 }

@@ -5,6 +5,7 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,6 +18,7 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
+import framework.common.CameraCommon;
 import framework.common.DeviceCommon;
 import framework.common.MessageCommon;
 
@@ -213,7 +215,7 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.Menuoption("收件箱");
 		check(Object_Text, Operation_checkExist, "收件箱");
 	}
-	public static void test_024()
+	public static void test_024() throws ParseException
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
@@ -233,11 +235,374 @@ public class Message extends UiAutomatorTestCase
 		}
 		System.out.print("****************************"+tim);
 	}
-	
+	/**
+	 * 收件箱内点击一条短信
+	 */
+	public static void test_043()
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		check(Object_Text,Operation_checkExist,"信息详情");
+	}
+    /**
+     * 收件箱回复短信
+     */
+	public static void test_044() 
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Text,Operation_ClickWait,"回复");
+		check(Object_Description,Operation_checkExist,"添加附件");
+	}
+	/**
+     * 收件箱信息详细界面点击菜单
+     */
+	public static void test_045()
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		String[] str={"新信息","转发","编辑","删除"};
+		CameraCommon.checkForExist(str);
+	}
+	/**
+     * 收件箱菜单新建信息
+     */
+	public static void test_046() 
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"新信息");
+        check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/recipient_text_view");
+	}
+	/**
+     * 收件箱菜单转发
+     */
+	public static void test_048() 
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"转发");
+        check(Object_Text,Operation_checkExist,"转发信息");
+	}
+	/**
+     * 收件箱菜单编辑
+     */
+	public static void test_049() 
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"编辑");
+        check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
+	}
+	/**
+     * 收件箱菜单删除
+     */
+	public static void test_050() 
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+        check(Object_Text,Operation_checkExist,"要删除此信息吗？");
+	}
+	/**
+     * 收件箱复制文字
+     */
+	public static void test_051() 
+	{
+		//主体
+		MessageCommon.enterInbox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_ResourceId,Operation_LongClick,"com.android.messaging:id/content");
+        check(Object_Text,Operation_checkExist,"复制文字");
+        excute(Object_Text,Operation_ClickWait,"复制文字");
+        check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/copy_part_message");
+	}
+	/**
+     * 已发送放缩文字大小
+     */
+	public static void test_052() 
+	{
+		//主体
+		MessageCommon.enterOutBox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		Rect ModArea0 = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.messaging:id/content");
+		int y0 = ModArea0.centerY();
+		excute(Object_ResourceId,Operation_LongClick,"android:id/zoomOut");
+		Rect ModArea1 = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.messaging:id/content");
+		int y1 = ModArea1.centerY();
+		boolean boo=y0>y1;
+		Assert.assertTrue(boo);
+		excute(Object_ResourceId,Operation_LongClick,"android:id/zoomIn");
+		Rect ModArea2 = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.messaging:id/content");
+		int y2 = ModArea2.centerY();
+		boolean boo1=y1<y2;
+		Assert.assertTrue(boo1);
+	}
+	/**
+     * 已发送转发
+     */
+	public static void test_053() 
+	{
+		//主体
+		MessageCommon.enterOutBox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Text,Operation_ClickWait,"转发");
+		check(Object_Text,Operation_checkExist,"转发信息");
+	}
+	/**
+     * 已发送新信息
+     */
+	public static void test_054() 
+	{
+		//主体
+		MessageCommon.enterOutBox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"新信息");
+        check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/recipient_text_view");
+	}
+	/**
+     * 已发送删除
+     */
+	public static void test_055() 
+	{
+		//主体
+		MessageCommon.enterOutBox();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+        check(Object_Text,Operation_checkExist,"要删除此信息吗？");
+	}
+	/**
+     * 发件箱重发信息 
+     */
+	public static void test_056()  
+	{
+		//前提
+		MessageCommon.newMessageWithNumAndContent("11111111","SendFail");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/self_send_icon");
+		excute(Object_Text,Operation_WaitForExists,"发送失败。触摸即可重试。","60000");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		//主体
+		MessageCommon.enterSent();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Text,Operation_ClickWait,"重发");
+		check(Object_Text,Operation_checkExist,"正在发送…");
+	}
+	/**
+     * 发件箱新信息
+     */
+	public static void test_057()  
+	{
+		//主体
+		MessageCommon.enterSent();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"新信息");
+        check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/recipient_text_view");
+	}
+	/**
+     * 发件箱转发 
+     */
+	public static void test_058() 
+	{
+		//主体
+		MessageCommon.enterSent();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"转发");
+        check(Object_Text,Operation_checkExist,"转发信息");
+	}
+	/**
+     * 发件箱删除 
+     */
+	public static void test_059() 
+	{
+		//主体
+		MessageCommon.enterSent();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+        check(Object_Text,Operation_checkExist,"要删除此信息吗？");
+	}
+	/**
+     * 草稿箱编辑
+     */
+	public static void test_060() 
+	{
+		//前提
+		MessageCommon.newMessageWithNumAndContent("10010","Draft");
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		//主体
+		MessageCommon.enterDrafts();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		//清场
+		
+	}
+	/**
+     * 草稿箱新信息
+     */
+	public static void test_061()
+	{
+		//主体
+		MessageCommon.enterDrafts();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"新信息");
+        check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/recipient_text_view");
+	}
+	/**
+     * 草稿箱删除 
+     */
+	public static void test_062()
+	{
+		//主体
+		MessageCommon.enterDrafts();
+		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text,Operation_ClickWait,"删除");
+        check(Object_Text,Operation_checkExist,"要删除此信息吗？");
+	}
+	/**
+	 * 点击新建图标
+	 */
+	public static void test_063()
+	{
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		if((Boolean)excute(Object_Text,Operation_Exists,"消息视图"))
+		{
+			excute(Object_Text,Operation_ClickWait,"消息视图");
+		}else
+		{
+			excute(Object_Device, Operation_PressBack);
+		}
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
+		check(Object_Text,Operation_checkExist,"收件人");
+	}
+	/**
+	 * 输入短信号码和内容
+	 */
+	public static void test_064()
+	{
+		//主体
+		MessageCommon.newMessageWithNumAndContent("10086", "123");
+		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","123");
+	}
+	/**
+	 * 点击附件图标
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_065() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/camera_preview");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/mediapicker_tabstrip");	
+	}
+	/**
+	 * 默认是拍照
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_066() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		check(Object_Description,Operation_checkExist,"拍照");
+	}
+	/**
+	 * 视频
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_067() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_swap_mode_button");
+		check(Object_Description,Operation_checkExist,"停止拍摄并添加视频附件");
+	}
+	/**
+	 * 选择图库
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_068() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"选择此设备上的图片");
+		check(Object_Description,Operation_checkExist,"从文档库中选择图片");
+		//清场
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+	}
+	/**
+	 * 录音
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_069() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"录制语音");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/record_button_visual");
+		//清场
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+	}
+	/**
+	 * 视频播放
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_070() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"视频");
+		check(Object_Text,Operation_checkExist,"点击按钮，您将进入视频选择界面");
+		//清场
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+	}
+	/**
+	 * 视音频铃声
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_071() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"音频");
+		check(Object_Text,Operation_checkExist,"点击按钮，您将进入音频选择界面");
+		//清场
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+	}
+	/**
+	 * 联系人附件
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_072() throws UiObjectNotFoundException
+	{
+		//主体
+		MessageCommon.addNewMessageAttach("10086");
+		excute(Object_Description,Operation_ClickWait,"名片");
+		check(Object_Text,Operation_checkExist,"点击按钮，您将进入联系人选择界面");
+		//清场
+		excute(Object_Description,Operation_ClickWait,"拍照或录像");
+	}
 	public static void test_073() throws UiObjectNotFoundException 
 	{
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
 	}
 }
-	
