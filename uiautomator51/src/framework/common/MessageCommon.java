@@ -12,18 +12,20 @@ import android.database.sqlite.SQLiteDatabase;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class MessageCommon {
-	
-	
 	/**
-	  * 切换视图模式
-	  * @param ViewName 取值范围：消息视图，文件夹视图
-	  */
-	 public static void switchView(String ViewName)
-	 {
-	  excute(Object_Device, Operation_PressMenu);
-	  if ((Boolean)excute(Object_Text, Operation_Exists, ViewName)) 
-	   excute(Object_Text, Operation_ClickWait, ViewName);
-	 }
+	 * 切换视图模式
+	 * @param ViewName 取值范围：消息视图，文件夹视图,已归档的对话,设置，无线警报
+	 */
+	public static void switchView(String ViewName)
+	{
+		excute(Object_Device, Operation_PressMenu);
+		if ((Boolean)excute(Object_Text, Operation_Exists, ViewName)) 
+		{
+			excute(Object_Text, Operation_ClickWait, ViewName);
+		}else{
+			excute(Object_Device, Operation_PressBack);
+		}
+	}
 	
 	/**
 	 * 消息模式，新建短信点击附件
@@ -64,6 +66,29 @@ public class MessageCommon {
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "设置");
 		excute(Object_ClassContainsText, Operation_ClickWait, "android.widget.TextView","SIM");
-	}	
+	}
+	/**
+	 * 消息视图长按操作
+	 * @param optionName 取值范围：转到上一层级，归档，删除，关闭通知，开启通知，添加到通讯录，屏蔽
+	 */
+	public static void Longclickmessage(String optionName)
+	{
+		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/swipeableContent");
+		if ((Boolean)excute(Object_Description, Operation_Exists, optionName))
+		{
+			excute(Object_Description, Operation_ClickWait, optionName);
+		}else{
+			excute(Object_Device, Operation_PressBack);
+		}
+	}
+	/**
+	 * 文件视图下拉菜单操作
+	 * @param optionName 取值范围：发件箱，已发送，发件箱，草稿箱
+	 */
+	public static void Menuoption(String optionName)
+	{
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/actionbar_spinner");
+		excute(Object_Text, Operation_ClickWait, optionName);
+	}
 	
 }
