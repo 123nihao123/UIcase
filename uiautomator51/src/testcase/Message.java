@@ -18,7 +18,11 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
+
+
+import framework.common.CallCommon;
 import framework.common.CameraCommon;
+import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
 import framework.common.MessageCommon;
 
@@ -215,6 +219,56 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.Menuoption("收件箱");
 		check(Object_Text, Operation_checkExist, "收件箱");
 	}
+	/**
+	 * 文件夹视图已发送
+	 */
+	public static void test_019()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("已发送");
+		check(Object_Text, Operation_checkExist, "已发送");
+	}
+	/**
+	 * 文件夹视图发件箱
+	 */
+	public static void test_020()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("发件箱");
+		check(Object_Text, Operation_checkExist, "发件箱");
+	}
+	/**
+	 * 文件夹视图草稿箱
+	 */
+	public static void test_021()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("草稿箱");
+		check(Object_Text, Operation_checkExist, "草稿箱");
+	}
+	/**
+	 * 文件夹视图新建
+	 */
+	public static void test_022()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_compose_new");
+		check(Object_ResIdText, Operation_checkExist, "com.android.messaging:id/recipient_text_view", "收件人");
+	}
+	/**
+	 * 文件夹视图排序
+	 */
+	public static void test_023()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+		check(Object_Text, Operation_checkExist, "按时间降序");
+	}
 	public static void test_024() throws ParseException
 	{
 		//主体
@@ -234,6 +288,189 @@ public class Message extends UiAutomatorTestCase
 			
 		}
 		System.out.print("****************************"+tim);
+	}
+	/**
+	 * 文件夹视图菜单
+	 */
+	public static void test_028()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "消息视图");
+		check(Object_Text, Operation_checkExist, "无线警报");
+		check(Object_Text, Operation_checkExist, "删除信息");
+		check(Object_Text, Operation_checkExist, "设置");
+		check(Object_Text, Operation_checkExist, "显示选项");
+	}
+	/**
+	 * 文件夹视图切换消息视图
+	 */
+	public static void test_029()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("消息视图");
+		check(Object_Text, Operation_checkExist, "信息");
+	}
+	/**
+	 * 文件夹视图切换小区广播
+	 */
+	public static void test_030()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("无线警报");
+		check(Object_Text, Operation_checkExist, "小区广播");
+	}
+	/**
+	 * 文件夹视图切换显示选项
+	 */
+	public static void test_031()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("显示选项");
+		check(Object_Text, Operation_checkExist, "取消");
+	}
+	/**
+	 * 文件夹视图切换显示全部
+	 */
+	public static void test_032()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("显示选项");
+		excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		check(Object_Text, Operation_checkExist, "SIM1");
+		check(Object_Text, Operation_checkExist, "SIM2");
+	}
+	/**
+	 * 文件夹视图切换显示SIM1
+	 */
+	public static void test_033()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("显示选项");
+		excute(Object_Text, Operation_ClickWait, "SIM1");
+		check(Object_Text, Operation_checkExist, "SIM1");
+		check(Object_Text, Operation_checkNoExist, "SIM2");
+	}
+	/**
+	 * 文件夹视图切换显示SIM2
+	 */
+	public static void test_034()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("显示选项");
+		excute(Object_Text, Operation_ClickWait, "SIM2");
+		check(Object_Text, Operation_checkExist, "SIM2");
+		check(Object_Text, Operation_checkNoExist, "SIM1");
+	}
+	/**
+	 * 文件夹视图删除
+	 */
+	public static void test_035()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("删除信息");
+		check(Object_Text, Operation_checkExist, "全选");
+	}
+	/**
+	 * 文件夹视图选择一个删除
+	 */
+	public static void test_036()
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.switchView("删除信息");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/swipeableContent");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		check(Object_Text, Operation_checkExist, "确认要删除所选的信息？");
+	}
+	/**
+	 * 文件夹视图设置
+	 */
+	public static void test_037()
+	{
+		//前提
+		MessageCommon.switchView("文件夹视图");
+		//主体
+		MessageCommon.switchView("设置");
+		check(Object_Text, Operation_checkExist, "常规");
+	}
+	/**
+	 * 文件夹视图长按菜单
+	 */
+	public static void test_038()
+	{
+		//前提
+		MessageCommon.switchView("文件夹视图");
+		//主体
+		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/swipeableContent");
+		check(Object_Text, Operation_checkExist, "屏蔽");
+		check(Object_Text, Operation_checkExist, "呼叫");
+		check(Object_Text, Operation_checkExist, "呼叫前编辑");
+		check(Object_Text, Operation_checkExist, "删除");
+	}
+	/**
+	 * 文件夹视图长按添加到联系人
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_039() throws UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.BatchDelete("所有联系人");
+		DeviceCommon.enterApp( Devices_Desc_Message);
+		MessageCommon.switchView("文件夹视图");
+		//主体
+		MessageCommon.Longclickmessage("添加到联系人");
+		check(Object_Text, Operation_checkExist, "选择联系人");
+	}
+	/**
+	 * 文件夹视图长按呼叫
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_040() throws UiObjectNotFoundException
+	{
+		//前提
+		MessageCommon.switchView("文件夹视图");
+		//主体
+		MessageCommon.Longclickmessage("呼叫");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "用于外拨电话的帐户"))
+			excute(Object_ResIdInstance, Operation_ClickWait, "com.android.dialer:id/label", "0");
+		
+		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
+		//清场
+		CallCommon.endCall();
+	}
+	/**
+	 * 文件夹视图长按呼叫前编辑
+	 * @throws 
+	 */
+	public static void test_041()
+	{
+		//前提
+		MessageCommon.switchView("文件夹视图");
+		//主体
+		MessageCommon.Longclickmessage("呼叫前编辑");
+		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/dialpad_floating_action_button");//拨号按钮
+	}
+	/**
+	 * 文件夹视图长按点击删除
+	 * @throws 
+	 */
+	public static void test_042()
+	{
+		//前提
+		MessageCommon.switchView("文件夹视图");
+		//主体
+		MessageCommon.Longclickmessage("删除");
+		check(Object_Text, Operation_checkExist, "要删除此信息吗？");
 	}
 	/**
 	 * 收件箱内点击一条短信

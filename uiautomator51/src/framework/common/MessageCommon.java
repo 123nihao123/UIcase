@@ -67,8 +67,8 @@ public class MessageCommon {
 		excute(Object_ClassContainsText, Operation_ClickWait, "android.widget.TextView","SIM");
 	}
 	/**
-	 * 消息视图长按操作
-	 * @param optionName 取值范围：转到上一层级，归档，删除，关闭通知，开启通知，添加到通讯录，屏蔽
+	 * 长按消息操作
+	 * @param optionName 取值范围：转到上一层级，归档，删除，关闭通知，开启通知，添加到通讯录，屏蔽,添加到联系人,呼叫,呼叫前编辑,删除
 	 */
 	public static void Longclickmessage(String optionName)
 	{
