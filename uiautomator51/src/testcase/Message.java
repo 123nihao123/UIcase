@@ -842,4 +842,417 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
 	}
+	/**
+	 * 进入常规设置，点击默认信息应用
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_102() throws UiObjectNotFoundException 
+	{	
+		//主体
+		MessageCommon.enterGeneralSetting();
+		excute(Object_Text, Operation_ClickWait, "默认信息应用");
+		check(Object_Text, Operation_checkExist, "要更改信息应用吗？");
+	}
+	/**
+	 * 进入常规设置，验证信息发送提示音默认打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_103() throws UiObjectNotFoundException 
+	{	
+		//主体
+		MessageCommon.enterGeneralSetting();
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","0");
+	}
+	/**
+	 * 进入常规设置，信息发送提示音点击一下后，验证被关闭
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_104() throws UiObjectNotFoundException 
+	{	
+		//主体
+		MessageCommon.enterGeneralSetting();
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","0");
+		excute(Object_Text, Operation_ClickWait, "信息发送提示音");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","0");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "信息发送提示音");
+	}	
+	/**
+	 * 进入常规设置，验证通知默认打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_105() throws UiObjectNotFoundException 
+	{	
+		//主体
+		MessageCommon.enterGeneralSetting();
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","1");
+	}	
+	/**
+	 * 进入常规设置，点击一下通知，验证开关被关闭
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_106() throws UiObjectNotFoundException 
+	{	
+		//主体
+		MessageCommon.enterGeneralSetting();
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","1");
+		excute(Object_Text, Operation_ClickWait, "通知");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","1");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "通知");
+	}	
+	/**
+	 * 进入高级设置
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_107() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		check(Object_Text, Operation_checkExist, "群发彩信");
+	}
+	/**
+	 * 进入高级设置 ，点击群发彩信
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_108() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_Text, Operation_ClickWait, "群发彩信");
+		check(Object_Text, Operation_checkExist, "将单条短信发送给所有收件人。只有您能收到相应回复");
+		check(Object_Text, Operation_checkExist, "将单条彩信发送给所有收件人");
+	}
+	/**
+	 *  进入高级设置 ,自动检索的默认状态
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_111() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","0");//自动检索
+	}
+	/**
+	 *  进入高级设置 ,点击一下自动检索，开关被关闭
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_112() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		if ((Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","0")) 
+		{
+			excute(Object_Text, Operation_ClickWait, "自动检索");
+		}
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","0");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "自动检索");
+	}	
+	/**
+	 *  进入高级设置 ,漫游时自动检索的默认状态
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_113() throws UiObjectNotFoundException 
+	{
+		//前提
+		MessageCommon.enterSIMSetting();
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","0")) 
+		{
+			excute(Object_Text, Operation_ClickWait, "自动检索");
+		}
+		//主体
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/switchWidget","1");//漫游时自动检索
+	}	
+	/**
+	 *  进入高级设置 ,点击一下漫游时自动检索开关，此开关被打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_114() throws UiObjectNotFoundException 
+	{
+		//前提
+		MessageCommon.enterSIMSetting();
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","0")) 
+		{
+			excute(Object_Text, Operation_ClickWait, "自动检索");
+		}
+		//主体
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","1")) 
+		{
+			excute(Object_Text, Operation_ClickWait, "漫游时自动检索");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","1");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "漫游时自动检索");
+	}
+	/**
+	 * 进入高级设置，点击彩信有效期
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_115() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_Text, Operation_ClickWait, "彩信有效期");
+		String[] str={"不设定","1小时","12小时","24小时","2天","最大值"};
+		for (int i = 0; i < str.length; i++) 
+		{
+			check(Object_Text, Operation_checkExist, str[i]);
+		}
+	}
+	/**
+	 * 进入高级设置，检测彩信送达报告默认状态
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_116() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		check(Object_ResIdInstance, Operation_CheckedFalse,"android:id/switchWidget","2");
+	}
+	/**
+	 * 进入高级设置，点击彩信送达报告开关，开关被打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_117() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","2")) {
+			excute(Object_Text, Operation_ClickWait, "彩信送达报告");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget","2");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "彩信送达报告");
+	}
+	/**
+	 * 进入高级设置，允许返回彩信送达报告默认开关状态
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_118() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		check(Object_TextScroll, Operation_CheckedFalse, "允许返回彩信送达报告", "vertical");
+	}	
+	/**
+	 * 进入高级设置，点击允许返回彩信送达报告开关，开关被打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_119() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_TextScroll, Operation_Exists, "允许返回彩信送达报告", "vertical");
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "允许返回彩信送达报告");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 50)
+                break;
+            i++;
+        }
+        while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
+	}
+	/**
+	 * 进入高级设置，彩信阅读报告默认开关状态
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_120() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		check(Object_TextScroll, Operation_CheckedFalse, "彩信阅读报告", "vertical");
+	}	
+	/**
+	 * 进入高级设置，点击彩信阅读报告开关，开关被打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_121() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_TextScroll, Operation_Exists, "彩信阅读报告", "vertical");
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "彩信阅读报告");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 25)
+                break;
+            i++;
+        }
+        while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "彩信阅读报告", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "彩信阅读报告", "vertical");
+	}
+	/**
+	 * 进入高级设置，允许返回彩信已读回执默认开关状态
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_122() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		check(Object_TextScroll, Operation_CheckedFalse, "允许返回彩信已读回执", "vertical");
+	}	
+	/**
+	 * 进入高级设置，点击允许返回彩信已读回执开关，开关被打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_123() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_TextScroll, Operation_Exists, "允许返回彩信已读回执", "vertical");
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "允许返回彩信已读回执");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 50)
+                break;
+            i++;
+        }
+        while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信已读回执", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信已读回执", "vertical");
+	}
+	/**
+	 * 进入高级设置，短信送达情况报告默认状态
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_124() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		check(Object_TextScroll, Operation_CheckedFalse, "短信送达情况报告", "vertical");
+	}
+	/**
+	 * 进入高级设置，点击短信送达情况报告开关，开关被打开
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_125() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_TextScroll, Operation_Exists, "短信送达情况报告", "vertical");
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "短信送达情况报告");
+        int i = 0;
+        do{
+            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 25)
+                break;
+            i++;
+        }
+        while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+		{
+			excute(Object_TextScroll, Operation_ClickWait, "短信送达情况报告", "vertical");
+		}
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "短信送达情况报告", "vertical");
+		
+	}
+	/**
+	 * 进入高级设置，可以编辑短信中心号
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_126() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_TextScroll, Operation_ClickWait, "SIM SIM1 短信中心号码","vertical");
+		check(Object_Text, Operation_checkExist, "管理短信中心号码");
+	}
+	/**
+	 * 进入高级设置，点击短信信有效期
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_127() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterSIMSetting();
+		excute(Object_TextScroll, Operation_ClickWait, "短信有效期", "vertical");
+		String[] str={"不设定","1小时","12小时","24小时","2天","最大值"};
+		for (int i = 0; i < str.length; i++) 
+		{
+			check(Object_Text, Operation_checkExist, str[i]);
+		}
+	}
+	/**
+	 * 进入常规设置，编辑签名
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_128() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterGeneralSetting();
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","2")) {
+			excute(Object_Text, Operation_ClickWait, "附加签名");
+		}
+		excute(Object_Text, Operation_ClickWait, "编辑签名");
+		excute(Object_ResourceId, Operation_SetText, "android:id/edit","testname");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkExist, "testname");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "编辑签名");
+		excute(Object_ResourceId, Operation_SetText,"android:id/edit","");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		excute(Object_Text, Operation_ClickWait, "附加签名");
+	}
+	/**
+	 * 进入常规设置，点击常用短语
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_129() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterGeneralSetting();
+		excute(Object_Text, Operation_ClickWait, "常用短语");
+		check(Object_Text, Operation_checkExist, "添加");
+	}
+	/**
+	 * 进入常规设置，进入常用短语，点击添加
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_130() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterGeneralSetting();
+		excute(Object_Text, Operation_ClickWait, "常用短语");
+		excute(Object_Text, Operation_ClickWait, "添加");
+		check(Object_Text, Operation_checkExist, "添加常用短语");
+	}
+	/**
+	 * 进入常规设置，进入常用短语，长按任意一条短语，跳出删除界面
+	 * @throws UiObjectNotFoundException
+	 */
+	public static void test_131() throws UiObjectNotFoundException 
+	{
+		//主体
+		MessageCommon.enterGeneralSetting();
+		excute(Object_Text, Operation_ClickWait, "常用短语");
+		excute(Object_ResIdInstance, Operation_LongClick, "com.android.messaging:id/text_view","0");
+		check(Object_Text, Operation_checkExist, "删除");
+	}
+	
+	
+	
 }
