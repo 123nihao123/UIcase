@@ -46,7 +46,7 @@ public class MessageCommon {
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view",num);
 		excute(Object_Device, Operation_PressEnter);
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/attach_media_button","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/recipient_text_view");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/attach_media_button");
 	}
 	/**

@@ -929,7 +929,7 @@ public class Message extends UiAutomatorTestCase
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
 		}
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/video_thumbnail_play_button");
-		check(Object_Description,Operation_checkExist,"视频播放器时间栏");
+		check(Object_ResourceId,Operation_checkExist,"com.android.gallery3d:id/surface_view");
 		//清场
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
