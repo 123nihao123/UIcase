@@ -113,7 +113,7 @@ public class MessageCommon {
 	{
 		switchView("文件夹视图");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
-		excute(Object_Text,Operation_ClickWait,"已发送");
+		excute(Object_Text,Operation_ClickWait,"发件箱");
 	}
 	/**
 	 * 进入发件箱文件夹
@@ -122,7 +122,7 @@ public class MessageCommon {
 	{
 		switchView("文件夹视图");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
-		excute(Object_Text,Operation_ClickWait,"发件箱");
+		excute(Object_Text,Operation_ClickWait,"已发送");
 	}
 	/**
 	 * 进入草稿箱文件夹
@@ -162,5 +162,34 @@ public class MessageCommon {
 		int y = bound.centerY();
 		UiDevice.getInstance().drag(x,y,x, y, 400);
 	}
-	
+	/**
+	 * 删除某个文件夹下的所有消息
+	 * @param BoxName 取值范围：收件箱、已发送、发件箱、草稿箱
+	 */
+	public static  void deleteAllMessageIn(String BoxName)
+	{
+		if(BoxName.equals("收件箱"))
+		{
+			MessageCommon.enterInbox();
+		}
+		else if(BoxName.equals("已发送"))
+		{
+			MessageCommon.enterSent();
+		}
+		else if(BoxName.equals("发件箱"))
+		{
+			MessageCommon.enterOutBox();
+		}
+		else if(BoxName.equals("草稿箱"))
+		{
+			MessageCommon.enterDrafts();
+		}
+		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.mmsfolderview:id/conversation_snippet"))
+		{
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"删除信息");
+			excute(Object_Text,Operation_ClickWait,"全选");
+			excute(Object_Text,Operation_ClickWait,"删除");
+		}
+	}
 }

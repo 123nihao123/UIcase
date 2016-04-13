@@ -582,7 +582,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_052() 
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterSent();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		Rect ModArea0 = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.messaging:id/content");
 		int y0 = ModArea0.centerY();
@@ -603,7 +603,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_053() 
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterSent();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Text,Operation_ClickWait,"转发");
 		check(Object_Text,Operation_checkExist,"转发信息");
@@ -614,7 +614,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_054() 
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterSent();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"新信息");
@@ -626,7 +626,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_055() 
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterSent();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -638,15 +638,17 @@ public class Message extends UiAutomatorTestCase
 	public static void test_056()  
 	{
 		//前提
+		MessageCommon.deleteAllMessageIn("发件箱");
 		MessageCommon.newMessageWithNumAndContent("11111111","SendFail");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/self_send_icon");
-		excute(Object_Text,Operation_WaitForExists,"发送失败。触摸即可重试。","60000");
+		excute(Object_Text,Operation_WaitForExists,"发送失败。触摸即可重试。","120000");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterOutBox();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Text,Operation_ClickWait,"重发");
+		excute(Object_Text,Operation_WaitForExists,"正在发送…","5000");
 		check(Object_Text,Operation_checkExist,"正在发送…");
 	}
 	/**
@@ -655,7 +657,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_057()  
 	{
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterOutBox();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"新信息");
@@ -667,7 +669,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_058() 
 	{
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterOutBox();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"转发");
@@ -679,7 +681,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_059() 
 	{
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterOutBox();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -691,14 +693,15 @@ public class Message extends UiAutomatorTestCase
 	public static void test_060() 
 	{
 		//前提
+		MessageCommon.deleteAllMessageIn("草稿箱");
 		MessageCommon.newMessageWithNumAndContent("10010","Draft");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
 		//主体
 		MessageCommon.enterDrafts();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
-		//清场
-		
+		excute(Object_Text,Operation_ClickWait,"编辑");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
 	}
 	/**
      * 草稿箱新信息
@@ -746,6 +749,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_064()
 	{
+		//前提
+		MessageCommon.deleteAllMessageIn("草稿箱");
 		//主体
 		MessageCommon.newMessageWithNumAndContent("10086", "123");
 		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","123");
