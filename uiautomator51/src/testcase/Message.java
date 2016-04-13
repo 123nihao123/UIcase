@@ -47,14 +47,18 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_001()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
-		check(Object_Description,Operation_checkExist,"更多选项");//状态栏更多选项
+		check(Object_Text, Operation_checkExist, "信息");
 	}
 	/**
 	 * 进入信息无信息时查看
 	 */
 	public static void test_222()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		check(Object_Text,Operation_checkExist,"您的信息对话将列在此处");
 	}
@@ -63,6 +67,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_003()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		excute(Object_Device, Operation_PressMenu);
 		check(Object_Text,Operation_checkExist,"设置");
@@ -83,9 +89,11 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_005()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		MessageCommon.switchView("已归档的对话");
-		check(Object_ClassText, Operation_checkExist, "android.widget.TextView", "已归档的对话");
+		check(Object_Text, Operation_checkExist, "已归档的对话");
 	}
 	/**
 	 * 设置
@@ -110,13 +118,10 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_008()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
-		if ((Boolean)excute(Object_ResourceId, Operation_Exists, "com.android.mmsfolderview:id/conversation_name"))
-		{
-		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
-		}else{
-			excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
-		}
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.messaging:id/conversation_name");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.messaging:id/action_call", "10000");//拨号按钮
 		check(Object_ResourceId, Operation_checkExist, "com.android.messaging:id/action_call");
 	}
@@ -125,13 +130,10 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_009()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
-		if ((Boolean)excute(Object_ResourceId, Operation_Exists, "com.android.mmsfolderview:id/conversation_name"))
-		{
-		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
-		}else{
-			excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
-		}
+		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
 		check(Object_Description, Operation_checkExist, "转到上一层级");
 		check(Object_Description, Operation_checkExist, "归档");
 	}
@@ -140,6 +142,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_010()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		MessageCommon.Longclickmessage("转到上一层级");
 		check(Object_Description, Operation_checkNoExist, "转到上一层级");
@@ -149,6 +153,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_011()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		String Name = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.messaging:id/conversation_name", "0");
 		MessageCommon.Longclickmessage("归档");
@@ -164,6 +170,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_012()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		MessageCommon.Longclickmessage("删除");
 		check(Object_Text, Operation_checkExist, "要删除这些对话吗？");
@@ -173,17 +181,26 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_013()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		MessageCommon.Longclickmessage("关闭通知");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.messaging:id/conversation_notification_bell", "10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.messaging:id/conversation_notification_bell");
 		//清场
 		MessageCommon.Longclickmessage("开启通知");
 	}
 	/**
 	 * 长按短信添加到联系人
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_014()
+	public static void test_014() throws UiObjectNotFoundException
 	{
+		//前提
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.BatchDelete("所有联系人");
+		DeviceCommon.enterApp( Devices_Desc_Message);
+		MessageCommon.switchView("消息视图");
 		//主体
 		MessageCommon.Longclickmessage("添加到通讯录");
 		check(Object_Text, Operation_checkExist, "要添加到通讯录吗？");
@@ -193,6 +210,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_015()
 	{
+		//前提
+		MessageCommon.switchView("消息视图");
 		//主体
 		MessageCommon.Longclickmessage("屏蔽");
 		check(Object_Text, Operation_checkExist, "您将继续接收来自此号码的信息，但不会再收到相关通知。此对话将被归档。");
@@ -350,10 +369,13 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("显示选项");
+		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
+		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
 		excute(Object_Text, Operation_ClickWait, "显示全部信息");
-		check(Object_Text, Operation_checkExist, "SIM1");
-		check(Object_Text, Operation_checkExist, "SIM2");
+		check(Object_Text, Operation_checkExist, SIM1);
+		check(Object_Text, Operation_checkExist, SIM2);
 	}
 	/**
 	 * 文件夹视图切换显示SIM1
@@ -362,10 +384,12 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("显示选项");
-		excute(Object_Text, Operation_ClickWait, "SIM1");
-		check(Object_Text, Operation_checkExist, "SIM1");
-		check(Object_Text, Operation_checkNoExist, "SIM2");
+		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
+		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
+		excute(Object_Text, Operation_ClickWait, SIM1);
+		check(Object_Text, Operation_checkExist, SIM1);
 	}
 	/**
 	 * 文件夹视图切换显示SIM2
@@ -374,10 +398,12 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("显示选项");
-		excute(Object_Text, Operation_ClickWait, "SIM2");
-		check(Object_Text, Operation_checkExist, "SIM2");
-		check(Object_Text, Operation_checkNoExist, "SIM1");
+		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
+		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
+		excute(Object_Text, Operation_ClickWait, SIM2);
+		check(Object_Text, Operation_checkExist, SIM2);
 	}
 	/**
 	 * 文件夹视图删除
@@ -420,8 +446,7 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.switchView("文件夹视图");
 		//主体
-		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/swipeableContent");
-		check(Object_Text, Operation_checkExist, "屏蔽");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
 		check(Object_Text, Operation_checkExist, "呼叫");
 		check(Object_Text, Operation_checkExist, "呼叫前编辑");
 		check(Object_Text, Operation_checkExist, "删除");
@@ -438,7 +463,7 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		MessageCommon.switchView("文件夹视图");
 		//主体
-		MessageCommon.Longclickmessage("添加到联系人");
+		MessageCommon.longclickmessage("添加到联系人");
 		check(Object_Text, Operation_checkExist, "选择联系人");
 	}
 	/**
@@ -450,7 +475,7 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.switchView("文件夹视图");
 		//主体
-		MessageCommon.Longclickmessage("呼叫");
+		MessageCommon.longclickmessage("呼叫");
 		if ((Boolean)excute(Object_Text, Operation_Exists, "用于外拨电话的帐户"))
 			excute(Object_ResIdInstance, Operation_ClickWait, "com.android.dialer:id/label", "0");
 		
@@ -467,7 +492,7 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.switchView("文件夹视图");
 		//主体
-		MessageCommon.Longclickmessage("呼叫前编辑");
+		MessageCommon.longclickmessage("呼叫前编辑");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/dialpad_floating_action_button");//拨号按钮
 	}
 	/**
@@ -479,7 +504,7 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.switchView("文件夹视图");
 		//主体
-		MessageCommon.Longclickmessage("删除");
+		MessageCommon.longclickmessage("删除");
 		check(Object_Text, Operation_checkExist, "要删除此信息吗？");
 	}
 	/**

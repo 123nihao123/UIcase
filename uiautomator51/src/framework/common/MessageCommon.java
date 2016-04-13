@@ -70,23 +70,22 @@ public class MessageCommon {
 		excute(Object_ClassContainsText, Operation_ClickWait, "android.widget.TextView","SIM");
 	}
 	/**
-	 * 长按消息操作
-	 * @param optionName 取值范围：转到上一层级，归档，删除，关闭通知，开启通知，添加到通讯录，屏蔽,添加到联系人,呼叫,呼叫前编辑,删除
+	 * 消息视图长按消息操作
+	 * @param optionName 取值范围：转到上一层级，归档，删除，关闭通知，开启通知，添加到通讯录，屏蔽
 	 */
 	public static void Longclickmessage(String optionName)
 	{
-		if ((Boolean)excute(Object_ResourceId, Operation_Exists, "com.android.mmsfolderview:id/conversation_name"))
-		{
+		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
+		excute(Object_Description, Operation_ClickWait, optionName);
+	}
+	/**
+	 * 文件夹视图长按消息操作
+	 * @param optionName 取值范围：转到上一层级，归档，删除，关闭通知，开启通知，添加到通讯录，屏蔽
+	 */
+	public static void longclickmessage(String Name)
+	{
 		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
-		}else{
-			excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
-		}
-		if ((Boolean)excute(Object_Description, Operation_Exists, optionName))
-		{
-			excute(Object_Description, Operation_ClickWait, optionName);
-		}else{
-			excute(Object_Device, Operation_PressBack);
-		}
+		excute(Object_Description, Operation_ClickWait, Name);
 	}
 	/**
 	 * 文件视图下拉菜单操作
