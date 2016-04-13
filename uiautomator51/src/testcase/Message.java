@@ -1016,7 +1016,7 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_Description,Operation_ClickWait,"视频");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/select_video_attach");
-		check(Object_ResourceId,Operation_checkExist,"com.android.documentsui:id/icon_mime");
+		check(Object_ResourceId,Operation_checkExist,"com.android.documentsui:id/toolbar");
 	}
 	
 	/**
@@ -1176,6 +1176,7 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.addNameAndTel("本机", "test", "10086");
 		//主体
+		DeviceCommon.enterApp( Devices_Desc_Message);
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		excute(Object_Device, Operation_PressMenu);
@@ -1261,14 +1262,17 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
 		excute(Object_Device, Operation_PressEnter);
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+//		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","rstfgdfg");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"归档");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"已归档的对话");
-		check(Object_Text,Operation_checkExist,"选择常用短语");
+		check(Object_Text,Operation_checkExist,"rstfgdfg");
 		//清场
-		
+		excute(Object_Text,Operation_LongClick,"rstfgdfg");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
+		excute(Object_Text,Operation_ClickWait,"删除");
 	}
 	
 	/**
