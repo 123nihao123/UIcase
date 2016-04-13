@@ -190,6 +190,7 @@ public class MessageCommon {
 			excute(Object_Text,Operation_ClickWait,"删除信息");
 			excute(Object_Text,Operation_ClickWait,"全选");
 			excute(Object_Text,Operation_ClickWait,"删除");
+			excute(Object_Text,Operation_ClickWait,"删除");
 		}
 	}
 }
