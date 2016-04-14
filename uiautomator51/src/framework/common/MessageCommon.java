@@ -85,7 +85,7 @@ public class MessageCommon {
 	public static void longclickmessage(String Name)
 	{
 		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
-		excute(Object_Description, Operation_ClickWait, Name);
+		excute(Object_Text, Operation_ClickWait, Name);
 	}
 	/**
 	 * 文件视图下拉菜单操作
