@@ -779,6 +779,11 @@ public class Message extends UiAutomatorTestCase
 		//主体
 		MessageCommon.newMessageWithNumAndContent("10086", "123");
 		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","123");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.deleteAllMessageIn("草稿箱");
 	}
 	/**
 	 * 点击附件图标
