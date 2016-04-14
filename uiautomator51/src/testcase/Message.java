@@ -24,6 +24,7 @@ import framework.common.CallCommon;
 import framework.common.CameraCommon;
 import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
+import framework.common.FileExplorerCommon;
 import framework.common.MessageCommon;
 
 public class Message extends UiAutomatorTestCase
@@ -298,25 +299,89 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
 		check(Object_Text, Operation_checkExist, "按时间降序");
 	}
-	public static void test_024() throws ParseException
+	/**
+	 * 按时间降序
+	 * @throws ParseException
+	 */
+//	public static void test_024() throws ParseException
+//	{
+//		//主体
+//		MessageCommon.switchView("文件夹视图");
+//		MessageCommon.Menuoption("收件箱");
+//		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+//		excute(Object_Text, Operation_ClickWait, "按时间降序");
+//		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+//		String [] tim=new String[num];
+//		for(int i = 0; i<num; i++)
+//		{
+//			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
+//			tim[i]=Time;
+//			System.out.print(Time);
+//		}
+//		Assert.assertTrue(FileExplorerCommon.isSortedByTime(tim,true));
+//	}
+	/**
+	 * 按时间升序
+	 * @throws ParseException
+	 */
+//	public static void test_025() throws ParseException
+//	{
+//		//主体
+//		MessageCommon.switchView("文件夹视图");
+//		MessageCommon.Menuoption("收件箱");
+//		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+//		excute(Object_Text, Operation_ClickWait, "按时间升序");
+//		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+//		String [] tim=new String[num];
+//		for(int i = 0; i<num; i++)
+//		{
+//			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
+//			tim[i]=Time;
+//			
+//		}
+//		Assert.assertTrue(FileExplorerCommon.isSortedByTime(tim));
+//	}
+	/**
+	 * 按号码降序
+	 * @throws ParseException
+	 */
+	public static void test_026() throws ParseException
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
 		MessageCommon.Menuoption("收件箱");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
-		excute(Object_Text, Operation_ClickWait, "按时间降序");
+		excute(Object_Text, Operation_ClickWait, "按号码降序");
 		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
 		String [] tim=new String[num];
 		for(int i = 0; i<num; i++)
 		{
-			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
-			String prefix = Time.substring(Time.lastIndexOf("午")+1);
-			SimpleDateFormat format =  new SimpleDateFormat("mm:ss");        
-			Date date = format.parse(prefix);
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_name", String.valueOf(i));
 			tim[i]=Time;
-			
+			System.out.print(Time);
 		}
-		System.out.print("****************************"+tim);
+		Assert.assertTrue(FileExplorerCommon.isSortedByName(tim,true));
+	}
+	/**
+	 * 按号码升序
+	 * @throws ParseException
+	 */
+	public static void test_027() throws ParseException
+	{
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+		excute(Object_Text, Operation_ClickWait, "按号码升序");
+		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		String [] tim=new String[num];
+		for(int i = 0; i<num; i++)
+		{
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_name", String.valueOf(i));
+			tim[i]=Time;
+			System.out.print(Time);
+		}
+		Assert.assertTrue(FileExplorerCommon.isSortedByName(tim,false));
 	}
 	/**
 	 * 文件夹视图菜单
