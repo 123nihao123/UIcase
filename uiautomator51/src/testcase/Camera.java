@@ -485,7 +485,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		//使手机先滑动到视频中防闪烁附近
 		excute(Object_TextScroll,Operation_Exists,"编码类型","vertical");	
-		excute(Object_Text,Operation_ClickWait,"防闪烁","vertical");	
+		excute(Object_TextScroll,Operation_ClickWait,"防闪烁","vertical");	
 		String[] str={"50Hz","60Hz"};
 		CameraCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
