@@ -1700,7 +1700,7 @@ public class Message extends UiAutomatorTestCase
         int i = 0;
         do{
             Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
-            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 25)
+            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 35)
                 break;
             i++;
         }
