@@ -453,7 +453,7 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.switchView("显示选项");
 		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
 		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
-		excute(Object_Text, Operation_ClickWait, SIM1);
+		excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "1");
 		check(Object_Text, Operation_checkExist, SIM1);
 		//清场
 		MessageCommon.switchView("显示选项");
@@ -470,7 +470,7 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.switchView("显示选项");
 		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
 		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
-		excute(Object_Text, Operation_ClickWait, SIM2);
+		excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
 		check(Object_Text, Operation_checkExist, SIM2);
 		//清场
 		MessageCommon.switchView("显示选项");
