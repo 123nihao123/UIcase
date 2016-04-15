@@ -59,6 +59,8 @@ public class Message extends UiAutomatorTestCase
 	public static void test_222()
 	{
 		//前提
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.deleteAllMessage();
 		MessageCommon.switchView("消息视图");
 		//主体
 		check(Object_Text,Operation_checkExist,"您的信息对话将列在此处");

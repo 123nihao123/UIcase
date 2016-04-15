@@ -199,6 +199,27 @@ public class MessageCommon {
 			excute(Object_Text,Operation_ClickWait,"删除");
 		}
 	}
+	/**
+	 * 删除全部信息
+	 */
+	public static  void deleteAllMessage()
+	{
+		String Menu[] = {"收件箱", "已发送", "发件箱", "草稿箱"};
+		for (int i =0;i<Menu.length; i++)
+		{
+			MessageCommon.Menuoption(Menu[i]);
+			excute(Object_Device, Operation_PressMenu);
+			excute(Object_Text, Operation_ClickWait, "删除信息");
+			if ((Boolean)excute(Object_Text, Operation_Exists, "全选"))
+			{
+				excute(Object_Text, Operation_ClickWait, "全选");
+				excute(Object_Text, Operation_ClickWait, "删除");
+				excute(Object_Text, Operation_ClickWait, "删除");
+			}else{
+				excute(Object_Device, Operation_PressBack);
+			}
+		}
+	}
 	public static String extractFileTime(String info)
 	{
 		//System.out.println(info);
