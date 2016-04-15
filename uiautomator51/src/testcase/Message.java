@@ -1710,42 +1710,42 @@ public class Message extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text, Operation_ClickWait, "彩信送达报告");
 	}
-	/**
-	 * 进入高级设置，允许返回彩信送达报告默认开关状态
-	 * @throws UiObjectNotFoundException
-	 */
-	public static void test_118() throws UiObjectNotFoundException 
-	{
-		//主体
-		MessageCommon.enterSIMSetting();
-		check(Object_TextScroll, Operation_CheckedFalse, "允许返回彩信送达报告", "vertical");
-	}	
-	/**
-	 * 进入高级设置，点击允许返回彩信送达报告开关，开关被打开
-	 * @throws UiObjectNotFoundException
-	 */
-	public static void test_119() throws UiObjectNotFoundException 
-	{
-		//主体
-		MessageCommon.enterSIMSetting();
-		excute(Object_TextScroll, Operation_Exists, "允许返回彩信送达报告", "vertical");
-		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "允许返回彩信送达报告");
-        int i = 0;
-        do{
-            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
-            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 50)
-                break;
-            i++;
-        }
-        while(true);
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
-		{
-			excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
-		}
-		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
-		//清场
-		excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
-	}
+//	/**
+//	 * 进入高级设置，允许返回彩信送达报告默认开关状态
+//	 * @throws UiObjectNotFoundException
+//	 */
+//	public static void test_118() throws UiObjectNotFoundException 
+//	{
+//		//主体
+//		MessageCommon.enterSIMSetting();
+//		check(Object_TextScroll, Operation_CheckedFalse, "允许返回彩信送达报告", "vertical");
+//	}	
+//	/**
+//	 * 进入高级设置，点击允许返回彩信送达报告开关，开关被打开
+//	 * @throws UiObjectNotFoundException
+//	 */
+//	public static void test_119() throws UiObjectNotFoundException 
+//	{
+//		//主体
+//		MessageCommon.enterSIMSetting();
+//		excute(Object_TextScroll, Operation_Exists, "允许返回彩信送达报告", "vertical");
+//		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "允许返回彩信送达报告");
+//        int i = 0;
+//        do{
+//            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+//            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 50)
+//                break;
+//            i++;
+//        }
+//        while(true);
+//		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+//		{
+//			excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
+//		}
+//		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
+//		//清场
+//		excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
+//	}
 	/**
 	 * 进入高级设置，彩信阅读报告默认开关状态
 	 * @throws UiObjectNotFoundException
@@ -1889,11 +1889,11 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.enterGeneralSetting();
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","2")) {
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","2")) {//打开附加签名开关
 			excute(Object_Text, Operation_ClickWait, "附加签名");
 		}
 		excute(Object_Text, Operation_ClickWait, "编辑签名");
-		excute(Object_ResourceId, Operation_SetText, "android:id/edit","testname");
+		excute(Object_ResourceId, Operation_SetText, "android:id/edit","testname");//编辑签名
 		excute(Object_Text, Operation_ClickWait, "确定");
 		check(Object_Text, Operation_checkExist, "testname");
 		//清场
