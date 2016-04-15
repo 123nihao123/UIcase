@@ -1380,8 +1380,8 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"插入常用短语");
-		excute(Object_Text,Operation_ClickWait,"请稍后打给我或发信息给我。");
-		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","请稍后打给我或发信息给我。");
+		excute(Object_Text,Operation_ClickWait,"稍后给你回电话。");
+		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","稍后给你回电话。");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		for(int i=0;i<=20;i++)
