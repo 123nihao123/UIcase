@@ -1593,19 +1593,19 @@ public class Message extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "将单条彩信发送给所有收件人");
 	}
 	/**
-	 * 进入高级设置 ，查看手机号码
+	 * 进入高级设置 ，查看手机号码 
 	 * @throws UiObjectNotFoundException
 	 */
 	public static void test_109() throws UiObjectNotFoundException 
 	{
 		//主体
-		excute(Object_Description, Operation_ClickWait, "更多选项");
-		excute(Object_Text, Operation_ClickWait, "设置");
-		String num1=(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.messaging:id/subtitle","0");
-		System.out.println(num1);
+		MessageCommon.enterSIMSetting();
 		excute(Object_ClassContainsText, Operation_ClickWait, "android.widget.TextView","SIM");
 		String num2=(String)excute(Object_ResIdInstance, Operation_GetText, "android:id/summary","1");
-		System.out.println(num2);
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text, Operation_ClickWait, "SIM 卡");
+		excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
+		String num1=(String)excute(Object_ResourceId, Operation_GetText, "com.android.settings:id/display_number");
 		Assert.assertEquals(num1, num2);
 	}	
 	/**
