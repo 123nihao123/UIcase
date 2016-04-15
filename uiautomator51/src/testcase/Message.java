@@ -452,8 +452,7 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("显示选项");
 		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
-		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
-		excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "1");
+		excute(Object_ResourceId, Operation_ClickWait,"android:id/text1", "1");
 		check(Object_Text, Operation_checkExist, SIM1);
 		//清场
 		MessageCommon.switchView("显示选项");
@@ -468,7 +467,6 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.switchView("文件夹视图");
 		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("显示选项");
-		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
 		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
 		excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
 		check(Object_Text, Operation_checkExist, SIM2);
@@ -483,6 +481,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("删除信息");
 		check(Object_Text, Operation_checkExist, "全选");
 	}
@@ -493,6 +492,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("删除信息");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/swipeableContent");
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -505,6 +505,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//前提
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		MessageCommon.switchView("设置");
 		check(Object_Text, Operation_checkExist, "常规");
@@ -516,6 +517,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//前提
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
 		check(Object_Text, Operation_checkExist, "呼叫");
@@ -533,6 +535,7 @@ public class Message extends UiAutomatorTestCase
 		ContactCommon.BatchDelete("所有联系人");
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		MessageCommon.longclickmessage("添加到联系人");
 		check(Object_Text, Operation_checkExist, "选择联系人");
@@ -545,11 +548,12 @@ public class Message extends UiAutomatorTestCase
 	{
 		//前提
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		MessageCommon.longclickmessage("呼叫");
-		if ((Boolean)excute(Object_Text, Operation_Exists, "用于外拨电话的帐户"))
-			excute(Object_ResIdInstance, Operation_ClickWait, "com.android.dialer:id/label", "0");
-		
+		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户", "10000");
+		CallCommon.makeCallByDualcard(1);
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
 		//清场
 		CallCommon.endCall();
