@@ -925,7 +925,12 @@ public class Message extends UiAutomatorTestCase
 		//主体
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_swap_mode_button");
+		excute(Object_Description,Operation_WaitForExists,"停止拍摄并添加视频附件","3000");
 		check(Object_Description,Operation_checkExist,"停止拍摄并添加视频附件");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","10000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 	}
 	/**
 	 * 选择图库
