@@ -312,11 +312,13 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp( Devices_Desc_Setting);
 		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
 		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
-		excute(Object_Text, Operation_ClickWait, "关闭");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "关闭");
 		excute(Object_Text, Operation_ClickWait, "设置日期");
 		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
 		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
 		excute(Object_Text, Operation_ClickWait, "确定");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		//主体
 		MessageCommon.switchView("文件夹视图");
@@ -338,7 +340,9 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp( Devices_Desc_Setting);
 		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
 		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
-		excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
 	}
 	/**
 	 * 按时间升序
@@ -350,11 +354,13 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp( Devices_Desc_Setting);
 		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
 		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
-		excute(Object_Text, Operation_ClickWait, "关闭");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "关闭");
 		excute(Object_Text, Operation_ClickWait, "设置日期");
 		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
 		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
 		excute(Object_Text, Operation_ClickWait, "确定");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		//主体
 		MessageCommon.switchView("文件夹视图");
@@ -376,7 +382,9 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp( Devices_Desc_Setting);
 		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
 		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
-		excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
 	}
 	/**
 	 * 按号码降序
