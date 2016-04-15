@@ -302,45 +302,80 @@ public class Message extends UiAutomatorTestCase
 	/**
 	 * 按时间降序
 	 * @throws ParseException
+	 * @throws UiObjectNotFoundException 
 	 */
-//	public static void test_024() throws ParseException
-//	{
-//		//主体
-//		MessageCommon.switchView("文件夹视图");
-//		MessageCommon.Menuoption("收件箱");
-//		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
-//		excute(Object_Text, Operation_ClickWait, "按时间降序");
-//		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
-//		String [] tim=new String[num];
-//		for(int i = 0; i<num; i++)
-//		{
-//			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
-//			tim[i]=Time;
-//			System.out.print(Time);
-//		}
-//		Assert.assertTrue(FileExplorerCommon.isSortedByTime(tim,true));
-//	}
+	public static void test_024() throws ParseException, UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		excute(Object_Text, Operation_ClickWait, "关闭");
+		excute(Object_Text, Operation_ClickWait, "设置日期");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
+		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		DeviceCommon.enterApp( Devices_Desc_Message);
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+		excute(Object_Text, Operation_ClickWait, "按时间降序");
+		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		String [] tim=new String[num];
+		for(int i = 0; i<num; i++)
+		{
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
+			tim[i]=Time;
+			MessageCommon.extractFileTime(Time);
+			System.out.println(MessageCommon.extractFileTime(Time));
+			System.out.println(MessageCommon.stringToTime(Time));
+		}
+		Assert.assertTrue(MessageCommon.isSortedByTime(tim,true));
+		//清场
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+	}
 	/**
 	 * 按时间升序
 	 * @throws ParseException
 	 */
-//	public static void test_025() throws ParseException
-//	{
-//		//主体
-//		MessageCommon.switchView("文件夹视图");
-//		MessageCommon.Menuoption("收件箱");
-//		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
-//		excute(Object_Text, Operation_ClickWait, "按时间升序");
-//		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
-//		String [] tim=new String[num];
-//		for(int i = 0; i<num; i++)
-//		{
-//			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
-//			tim[i]=Time;
-//			
-//		}
-//		Assert.assertTrue(FileExplorerCommon.isSortedByTime(tim));
-//	}
+	public static void test_025() throws ParseException, UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		excute(Object_Text, Operation_ClickWait, "关闭");
+		excute(Object_Text, Operation_ClickWait, "设置日期");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
+		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		DeviceCommon.enterApp( Devices_Desc_Message);
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+		excute(Object_Text, Operation_ClickWait, "按时间升序");
+		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		String [] tim=new String[num];
+		for(int i = 0; i<num; i++)
+		{
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
+			tim[i]=Time;
+			MessageCommon.extractFileTime(Time);
+			System.out.println(MessageCommon.extractFileTime(Time));
+			System.out.println(MessageCommon.stringToTime(Time));
+		}
+		Assert.assertTrue(MessageCommon.isSortedByTime(tim,false));
+		//清场
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+	}
 	/**
 	 * 按号码降序
 	 * @throws ParseException

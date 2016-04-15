@@ -5,6 +5,13 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.database.sqlite.SQLiteDatabase;
 
 import android.database.sqlite.SQLiteDatabase;
@@ -191,5 +198,86 @@ public class MessageCommon {
 			excute(Object_Text,Operation_ClickWait,"删除");
 			excute(Object_Text,Operation_ClickWait,"删除");
 		}
+	}
+	public static String extractFileTime(String info)
+	{
+		//System.out.println(info);
+		String strReturn= extractField(info,"\\d\\d\\d\\d/\\d/\\d\\d\\s\\d\\d:\\d\\d");
+		//System.out.println("FileTime is"+strReturn);
+		return strReturn;
+	}
+	public static String extractField(String info, String ptn)
+	{
+		String strReturn="";
+		Pattern p = Pattern.compile(ptn);
+		Matcher m = p.matcher(info);
+		while (m.find())
+		{
+			strReturn = m.group();
+			//System.out.println("in while strReturn: " +strReturn);
+		}
+		return strReturn;
+	}
+	/**
+	 * 判断是否按文件时间排好序。缺省为升序。
+	 * @param strArray
+	 * @param isReverse - true:降序排列  false:升序排列，缺省为升序
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean isSortedByTime(String[] strArray,boolean isReverse) throws ParseException
+	{
+		boolean valReturn =true;
+		float timeArray[]= new float[strArray.length];
+
+		if (strArray.length==1) return valReturn;
+
+		for(int i=0;i<strArray.length;i++)
+		{
+			timeArray[i] = stringToTime(extractFileTime(strArray[i]));
+		}
+
+		for(float t : timeArray) {
+		System.out.println(t);
+		}
+
+		if(isReverse)
+		{
+			//降序
+			for(int i=0;i<timeArray.length-1;i++)
+			{
+				if(timeArray[i]<timeArray[i+1])
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		else
+		{
+			//升序
+			for(int i=0;i<timeArray.length-1;i++)
+			{
+				if(timeArray[i]>timeArray[i+1])
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		return valReturn;
+	}
+	/**
+	 * 由格式如"1970-01-06 11:45:55"的字符串获得时间
+	 * @param strTime - 格式如"1970-01-06 11:45:55"
+	 * @return
+	 * @throws ParseException
+	 */
+	public static long stringToTime(String strTime) throws ParseException
+	{
+		SimpleDateFormat format =  new SimpleDateFormat("yyyy/MM/dd HH:mm");        
+		Date date = format.parse(strTime);
+		//System.out.print("Format To times:"+date.getTime());
+		return date.getTime();
 	}
 }
