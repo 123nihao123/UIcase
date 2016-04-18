@@ -301,4 +301,19 @@ public class MessageCommon {
 		//System.out.print("Format To times:"+date.getTime());
 		return date.getTime();
 	}
+	
+	public static  void cancelPrompt (String switchbutton) throws UiObjectNotFoundException
+	{
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "应用", "vertical");
+		excute(Object_TextScroll, Operation_ClickWait, "信息", "vertical");
+		excute(Object_TextScroll, Operation_ClickWait, "通知", "vertical");
+		String txt = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/switchWidget","1");
+		if (!txt.equals(switchbutton))
+		{
+			excute(Object_ResIdInstance, Operation_ClickWait, "android:id/switchWidget","1");
+		}
+		DeviceCommon.enterApp( Devices_Desc_Message);
+	}
+	
 }

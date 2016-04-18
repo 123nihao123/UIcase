@@ -1492,6 +1492,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_098() throws UiObjectNotFoundException 
 	{
+		//前提
+		MessageCommon.cancelPrompt("关闭");
 		//主体
 		MessageCommon.switchView("消息视图");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
@@ -1514,6 +1516,7 @@ public class Message extends UiAutomatorTestCase
 		}
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
 		excute(Object_Text,Operation_ClickWait,"删除");
+		MessageCommon.cancelPrompt("开启");
 	}
 	
 	/**
@@ -1522,6 +1525,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_099() throws UiObjectNotFoundException 
 	{
+		//前提
+		MessageCommon.cancelPrompt("关闭");
 		//主体
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
@@ -1541,6 +1546,7 @@ public class Message extends UiAutomatorTestCase
 		}
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
 		excute(Object_Text,Operation_ClickWait,"删除");
+		MessageCommon.cancelPrompt("开启");
 	}
 	
 	/**
