@@ -187,8 +187,14 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.switchView("消息视图");
 		//主体
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "android:id/list");
+		int x = ModArea.centerX();
+		int y = ModArea.bottom;
 		MessageCommon.Longclickmessage("关闭通知");
+		UiDevice.getInstance().click(x, y-10);
+		Wait(1000);
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.messaging:id/conversation_notification_bell", "10000");
+		
 		check(Object_ResourceId, Operation_checkExist, "com.android.messaging:id/conversation_notification_bell");
 		//清场
 		MessageCommon.Longclickmessage("开启通知");
