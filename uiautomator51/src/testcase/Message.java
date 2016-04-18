@@ -1655,6 +1655,7 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_Text, Operation_ClickWait, "SIM 卡");
 		excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
+		excute(Object_TextScroll, Operation_Exists,"号码","vertical");
 		String num1=(String)excute(Object_ResourceId, Operation_GetText, "com.android.settings:id/display_number");
 		Assert.assertEquals(num1, num2);
 	}	
