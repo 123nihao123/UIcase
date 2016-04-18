@@ -1481,7 +1481,7 @@ public class Message extends UiAutomatorTestCase
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
 		}
-		check(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","1500");
+		check(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
 	}
