@@ -1418,14 +1418,20 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
 		excute(Object_Device, Operation_PressEnter);
 //		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
-		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","rstfgdfg");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
 		excute(Object_Device, Operation_PressMenu);
+		if((Boolean)excute(Object_Text,Operation_Exists,"取消归档"))
+		{
+			excute(Object_Text,Operation_ClickWait,"取消归档");
+			excute(Object_Device, Operation_PressMenu);
+		}
 		excute(Object_Text,Operation_ClickWait,"归档");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"已归档的对话");
-		check(Object_Text,Operation_checkExist,"rstfgdfg");
+		check(Object_ResourceId,Operation_TextContainsTrue,"com.android.messaging:id/conversation_snippet","abcd");
 		//清场
-		excute(Object_Text,Operation_LongClick,"rstfgdfg");
+		String txt = (String) excute(Object_ResourceId,Operation_GetText,"com.android.messaging:id/conversation_snippet");
+		excute(Object_Text,Operation_LongClick,txt);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
 		excute(Object_Text,Operation_ClickWait,"删除");
 	}
