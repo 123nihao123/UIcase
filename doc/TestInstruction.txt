@@ -23,9 +23,6 @@ MusicPLayer模块操作须知：
 FileExplore模块操作须知：
 必须把testresource\FileExploreResource下的FileExplorer_Phone连目录拷到手机内置存储根目录下，把FileExplorer_SD连目录拷到存储卡根目录下
 
-Message模块操作须知：
-手动分别给两张SIM卡添加一条收件信息。 ps:可以给运营商客服发送信息，会有反馈信息。
-
 
 运行步骤
 打开命令窗口：
