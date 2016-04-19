@@ -43,6 +43,13 @@ public class Message extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
+
+	public static void test_000()
+	{
+		MessageCommon.delAllFromDB();
+		MessageCommon.fillSMSDB();
+	}
+
 	/**
 	 * 进入信息
 	 */
