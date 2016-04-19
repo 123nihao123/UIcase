@@ -807,13 +807,6 @@ public class Message extends UiAutomatorTestCase
      */
 	public static void test_056()  
 	{
-		//前提
-		MessageCommon.deleteAllMessageIn("发件箱");
-		MessageCommon.newMessageWithNumAndContent("11111111","SendFail");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/self_send_icon");
-		excute(Object_Text,Operation_WaitForExists,"发送失败。触摸即可重试。","120000");
-		excute(Object_Device, Operation_PressBack);
-		excute(Object_Device, Operation_PressBack);
 		//主体
 		MessageCommon.enterOutBox();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
@@ -896,6 +889,10 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");
         check(Object_Text,Operation_checkExist,"要删除此信息吗？");
+        //清场
+        excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+        MessageCommon.deleteAllMessageIn("草稿箱");
 	}
 	/**
 	 * 点击新建图标
