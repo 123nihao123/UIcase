@@ -194,17 +194,11 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.switchView("消息视图");
 		//主体
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "android:id/list");
-		int x = ModArea.centerX();
-		int y = ModArea.bottom;
 		MessageCommon.Longclickmessage("关闭通知");
-		UiDevice.getInstance().click(x, y-10);
-		Wait(1000);
-		excute(Object_ResourceId, Operation_WaitForExists, "com.android.messaging:id/conversation_notification_bell", "10000");
-		
-		check(Object_ResourceId, Operation_checkExist, "com.android.messaging:id/conversation_notification_bell");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
+		check(Object_Description, Operation_checkExist, "开启通知");
 		//清场
-		MessageCommon.Longclickmessage("开启通知");
+		excute(Object_Description, Operation_ClickWait, "开启通知");
 	}
 	/**
 	 * 长按短信添加到联系人
@@ -1264,6 +1258,7 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/audio_attachment_view");
 		//清场
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","5000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 	}
 	
@@ -1439,7 +1434,7 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
 		excute(Object_Device, Operation_PressEnter);
-//		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
 		excute(Object_Device, Operation_PressMenu);
 		if((Boolean)excute(Object_Text,Operation_Exists,"取消归档"))
@@ -1493,11 +1488,13 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_call");
+		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户","5000");
 		if((Boolean)excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
 		}
-		check(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/floating_end_call_action_button");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
 	}
@@ -1518,7 +1515,8 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/recipient_text_view");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/self_send_icon");
-		check(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		excute(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		check(Object_Text,Operation_checkExist,"刚刚");
 		//清场
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
@@ -1548,7 +1546,8 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
 		excute(Object_Description,Operation_ClickWait,"拍照");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/send_message_button");
-		check(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		excute(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		check(Object_Text,Operation_checkExist,"刚刚");
 		//清场
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
