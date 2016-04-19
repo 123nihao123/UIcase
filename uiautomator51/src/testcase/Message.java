@@ -499,31 +499,43 @@ public class Message extends UiAutomatorTestCase
 	public static void test_033()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
-		MessageCommon.switchView("显示选项");
-		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
-		excute(Object_ResourceId, Operation_ClickWait,"android:id/text1", "1");
-		check(Object_Text, Operation_checkExist, SIM1);
-		//清场
-		MessageCommon.switchView("显示选项");
-		excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		try
+		{
+			MessageCommon.switchView("文件夹视图");
+			MessageCommon.Menuoption("收件箱");
+			MessageCommon.switchView("显示选项");
+			String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
+			excute(Object_ResourceId, Operation_ClickWait,"android:id/text1", "1");
+			check(Object_Text, Operation_checkExist, SIM1);
+		}
+		finally
+		{
+			//清场
+			MessageCommon.switchView("显示选项");
+			excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		}
 	}
 	/**
 	 * 文件夹视图切换显示SIM2
 	 */
 	public static void test_034()
 	{
-		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
-		MessageCommon.switchView("显示选项");
-		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
-		excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
-		check(Object_Text, Operation_checkExist, SIM2);
-		//清场
-		MessageCommon.switchView("显示选项");
-		excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		try
+		{
+			//主体
+			MessageCommon.switchView("文件夹视图");
+			MessageCommon.Menuoption("收件箱");
+			MessageCommon.switchView("显示选项");
+			String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
+			excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
+			check(Object_Text, Operation_checkExist, SIM2);
+		}
+		finally
+		{
+			//清场
+			MessageCommon.switchView("显示选项");
+			excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		}
 	}
 	/**
 	 * 文件夹视图删除
