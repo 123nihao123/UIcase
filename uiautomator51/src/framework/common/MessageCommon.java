@@ -346,11 +346,11 @@ public class MessageCommon {
 	 */
 	public static void fillSMSDB()
 	{
-		String [] numList= {"+8610086","+8618914760001","+8618914760002","+8618914760003","+8618914760004","+8618914760005"};
+		String [] numList= {"+8610086","+8618914760001","+8618914760002","+8618914760003","+8618914760004","+8618914760005","+8618914760006"};
 		//1-SIM1;2-SIM2
-		String [] simIDList= {"1","1","2","2","2","2"};
+		String [] simIDList= {"1","1","2","2","2","2","1"};
 		//1-收件箱；2-已发；5-发件箱；
-		String [] typeList = {"1","1","1","1","2","5"};
+		String [] typeList = {"1","1","1","1","2","5","5"};
 		String [] recipIDs=new String[numList.length];
 		String dbName= "/data/data/com.android.providers.telephony/databases/mmssms.db";
 		SQLiteDatabase db = DeviceCommon.openDatabase(dbName);
