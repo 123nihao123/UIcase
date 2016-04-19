@@ -1,0 +1,2281 @@
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+testcase.Message:
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_000
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+SQL is: DELETE FROM android_metadata
+SQL is: DELETE FROM pdu
+SQL is: DELETE FROM sqlite_sequence
+SQL is: DELETE FROM addr
+SQL is: DELETE FROM part
+SQL is: DELETE FROM rate
+SQL is: DELETE FROM drm
+SQL is: DELETE FROM sms
+SQL is: DELETE FROM raw
+SQL is: DELETE FROM attachments
+SQL is: DELETE FROM sr_pending
+SQL is: DELETE FROM canonical_addresses
+SQL is: DELETE FROM threads
+SQL is: DELETE FROM pending_msgs
+SQL is: DELETE FROM words
+SQL is: DELETE FROM words_content
+SQL is: DELETE FROM words_segments
+SQL is: DELETE FROM words_segdir
+SQL is: DELETE FROM temp_conversation
+SQL is: DELETE FROM icc_message
+SQL is: INSERT INTO canonical_addresses (address) VALUES ('+8610086')
+SQL is: INSERT INTO canonical_addresses (address) VALUES ('+8618914760001')
+SQL is: INSERT INTO canonical_addresses (address) VALUES ('+8618914760002')
+SQL is: INSERT INTO canonical_addresses (address) VALUES ('+8618914760003')
+SQL is: INSERT INTO canonical_addresses (address) VALUES ('+8618914760004')
+SQL is: INSERT INTO canonical_addresses (address) VALUES ('+8618914760005')
+SQL is: INSERT INTO canonical_addresses (address) VALUES ('+8618914760006')
+addrID is: 1
+SQL is: INSERT INTO threads (recipient_ids) VALUES (1)
+addrID is: 2
+SQL is: INSERT INTO threads (recipient_ids) VALUES (2)
+addrID is: 3
+SQL is: INSERT INTO threads (recipient_ids) VALUES (3)
+addrID is: 4
+SQL is: INSERT INTO threads (recipient_ids) VALUES (4)
+addrID is: 5
+SQL is: INSERT INTO threads (recipient_ids) VALUES (5)
+addrID is: 6
+SQL is: INSERT INTO threads (recipient_ids) VALUES (6)
+addrID is: 7
+SQL is: INSERT INTO threads (recipient_ids) VALUES (7)
+recipIDs: 1
+threadID is: 1
+SQL is: INSERT INTO sms (address,date,date_sent,body,type,sub_id,service_center,creator,read,thread_id) VALUES ('+8610086',1461049792118,1461049792118,'testsms0',1,1,'+8613800510541','com.android.messaging','1',1)
+recipIDs: 2
+threadID is: 2
+SQL is: INSERT INTO sms (address,date,date_sent,body,type,sub_id,service_center,creator,read,thread_id) VALUES ('+8618914760001',1461046192118,1461046192118,'testsms1',1,1,'+8613800510541','com.android.messaging','1',2)
+recipIDs: 3
+threadID is: 3
+SQL is: INSERT INTO sms (address,date,date_sent,body,type,sub_id,service_center,creator,read,thread_id) VALUES ('+8618914760002',1461042592118,1461042592118,'testsms2',1,2,'+8613800510541','com.android.messaging','1',3)
+recipIDs: 4
+threadID is: 4
+SQL is: INSERT INTO sms (address,date,date_sent,body,type,sub_id,service_center,creator,read,thread_id) VALUES ('+8618914760003',1461038992118,1461038992118,'testsms3',1,2,'+8613800510541','com.android.messaging','1',4)
+recipIDs: 5
+threadID is: 5
+SQL is: INSERT INTO sms (address,date,date_sent,body,type,sub_id,service_center,creator,read,thread_id) VALUES ('+8618914760004',1461035392118,1461035392118,'testsms4',2,2,'+8613800510541','com.android.messaging','1',5)
+recipIDs: 6
+threadID is: 6
+SQL is: INSERT INTO sms (address,date,date_sent,body,type,sub_id,service_center,creator,read,thread_id) VALUES ('+8618914760005',1461031792118,1461031792118,'testsms5',5,2,'+8613800510541','com.android.messaging','1',6)
+recipIDs: 7
+threadID is: 7
+SQL is: INSERT INTO sms (address,date,date_sent,body,type,sub_id,service_center,creator,read,thread_id) VALUES ('+8618914760006',1461028192118,1461028192118,'testsms6',5,1,'+8613800510541','com.android.messaging','1',7)
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_000
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_007
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_007
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_008
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_008
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_009
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_009
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_010
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_012
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_012
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_013
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_014
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+Contacts were already empty.
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_014
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_015
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_015
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_016
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_016
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_017
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_017
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_018
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_018
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_019
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_019
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_020
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_020
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_021
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_021
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_022
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_022
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_023
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_023
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_024
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+2016/4/19 15:09
+1461049740000
+2016/4/19 14:09
+1461046140000
+2016/4/19 13:09
+1461042540000
+2016/4/19 12:09
+1461038940000
+1.4610498E12
+1.4610461E12
+1.4610425E12
+1.4610389E12
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_024
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_025
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+2016/4/19 12:09
+1461038940000
+2016/4/19 13:09
+1461042540000
+2016/4/19 14:09
+1461046140000
+2016/4/19 15:09
+1461049740000
+1.4610389E12
+1.4610425E12
+1.4610461E12
+1.4610498E12
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_025
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_026
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+189 1476 0003189 1476 0002189 1476 000110086INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_026
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_027
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=27
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+10086189 1476 0001189 1476 0002189 1476 0003INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_027
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=27
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_028
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=28
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_028
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=28
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_029
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=29
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_029
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=29
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_030
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=30
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_030
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=30
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_031
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=31
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_031
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=31
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_032
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=32
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_032
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=32
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_033
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=33
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_033
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=33
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_034
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=34
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_034
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=34
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_035
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=35
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_035
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=35
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_036
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=36
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_036
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=36
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_037
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=37
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_037
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=37
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_038
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=38
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_038
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=38
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_039
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=39
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+Contacts were already empty.
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_039
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=39
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_040
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=40
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_040
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=40
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_041
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=41
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_041
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=41
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_042
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=42
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_042
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=42
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_043
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=43
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_043
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=43
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_044
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=44
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_044
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=44
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_045
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=45
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_045
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=45
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_046
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=46
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_046
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=46
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_048
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=47
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_048
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=47
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_049
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=48
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_049
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=48
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_050
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=49
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_050
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=49
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_051
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=50
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_051
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=50
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_052
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=51
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_052
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=51
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_053
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=52
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_053
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=52
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_054
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=53
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_054
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=53
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_055
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=54
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_055
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=54
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_056
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=55
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_056
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=55
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_057
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=56
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_057
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=56
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_058
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=57
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_058
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=57
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_059
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=58
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_059
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=58
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_060
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=59
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_060
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=59
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_061
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=60
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_061
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=60
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_062
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=61
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_062
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=61
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_063
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=62
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_063
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=62
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_064
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=63
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_064
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=63
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_065
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=64
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_065
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=64
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_066
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=65
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_066
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=65
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_067
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=66
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_067
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=66
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_068
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=67
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_068
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=67
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_069
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=68
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_069
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=68
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_070
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=69
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_070
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=69
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_071
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=70
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_071
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=70
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_072
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=71
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_072
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=71
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_073
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=72
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_073
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=72
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_074
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=73
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_074
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=73
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_075
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=74
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_075
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=74
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_076
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=75
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_076
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=75
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_077
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=76
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_077
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=76
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_078
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=77
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_078
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=77
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_079
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=78
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_079
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=78
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_080
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=79
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_080
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=79
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_081
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=80
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_081
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=80
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_082
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=81
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_082
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=81
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_083
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=82
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_083
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=82
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_084
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=83
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_084
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=83
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_085
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=84
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_085
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=84
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_086
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=85
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_086
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=85
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_087
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=86
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_087
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=86
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_088
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=87
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_088
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=87
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_089
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=88
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_089
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=88
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_090
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=89
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_090
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=89
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_091
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=90
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_091
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=90
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_092
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=91
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_092
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=91
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_093
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=92
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_093
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=92
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_094
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=93
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_094
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=93
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_095
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=94
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_095
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=94
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_096
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=95
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_096
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=95
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_097
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=96
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_097
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=96
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_098
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=97
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_098
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=97
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_099
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=98
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_099
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=98
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_100
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=99
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_100
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=99
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_102
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=100
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_102
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=100
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_103
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=101
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_103
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=101
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_104
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=102
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_104
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=102
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_105
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=103
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_105
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=103
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_106
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=104
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_106
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=104
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_107
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=105
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_107
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=105
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_108
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=106
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_108
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=106
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_109
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=107
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_109
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=107
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_111
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=108
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_111
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=108
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_112
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=109
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_112
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=109
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_113
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=110
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_113
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=110
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_114
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=111
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_114
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=111
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_115
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=112
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_115
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=112
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_116
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=113
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_116
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=113
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_117
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=114
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_117
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=114
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_120
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=115
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_120
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=115
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_121
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=116
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_121
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=116
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_122
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=117
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_122
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=117
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_123
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=118
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_123
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=118
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_124
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=119
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_124
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=119
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_125
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=120
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_125
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=120
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_126
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=121
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_126
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=121
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_127
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=122
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_127
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=122
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_128
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=123
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_128
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=123
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_129
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=124
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_129
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=124
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_130
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=125
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_130
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=125
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_131
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=126
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_131
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=126
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_222
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=127
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+INSTRUMENTATION_STATUS: numtests=127
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_222
+INSTRUMENTATION_STATUS: class=testcase.Message
+INSTRUMENTATION_STATUS: current=127
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+Test results for WatcherResultPrinter=.........................................
+.........................................
+.........................................
+....
+Time: 3246.943
+
+OK (127 tests)
+
+
+INSTRUMENTATION_STATUS_CODE: -1
