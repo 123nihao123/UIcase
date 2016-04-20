@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -447,7 +448,6 @@ public class DeviceCommon
 		System.out.println("SQL is: "+ sql);
 		db.execSQL(sql);		
 	}
-
 	/**
 	 * 获得SIM ICC_ID
 	 * @param simSlot - "SIM1" for slot1, "SIM2" for slot2
@@ -458,7 +458,7 @@ public class DeviceCommon
 		//SIM_SLOT
 		String dbPath = "/data/data/com.android.providers.telephony/databases/telephony.db";
 		SQLiteDatabase database = openDatabase(dbPath,SQLiteDatabase.OPEN_READONLY);
-		String iccID="";
+		String iccID=null;
 		String id="";
 		if(simSlot=="SIM1")
 		{
@@ -470,15 +470,14 @@ public class DeviceCommon
 		}
 		else
 		{
-			Assert.assertFalse("SIM slot error",false);
+			Assert.assertTrue("SIM slot error",false);
 		}
 		//System.out.println("simSlot is: "+ simSlot );
 		Cursor cursor = database.query("siminfo",new String[]{"icc_id"},"sim_id=?",new String[]{id},null,null,null,null);
-		while (cursor.moveToNext()) {
+		while (cursor.moveToNext()){
 			iccID = cursor.getString(0);
-			System.out.println("iccID is: "+ iccID );
+			System.out.println(simSlot + " iccID is: "+ iccID );
 		}
-
 		cursor.close();
 		return iccID;
 	}
@@ -551,8 +550,42 @@ public class DeviceCommon
 		}
 		else
 		{
-			System.out.println("Can not read file");
+			Assert.assertTrue("Errror: Can not read file!!!",false);
 		}
 		return v;
+	}
+	/**
+	 * 获取所有sim卡的信息，以Map的方式返回
+	 * @return
+	 * @throws IOException
+	 */
+	public static Map<String, String> GetSIMInfo() throws IOException {
+		Map<String, String> map = new HashMap<String, String>();
+		String path = "data/local/tmp/PhoneNumList.xml";
+		String SIMNum = null, SIMiccID = null;
+		String [] simID = {"SIM1", "SIM2"};
+		for(int i=0;i<simID.length;i++){
+			SIMiccID = DeviceCommon.getSIMID(simID[i]);
+			if(SIMiccID != null){
+				SIMNum = DeviceCommon.parseTagFromXml(path, SIMiccID);
+				Assert.assertTrue("Can't find sim Info(" + simID[i] + " iccID:" + SIMiccID + ") in xml, please add!!!", SIMNum != null);
+				map.put(simID[i], SIMNum);
+			}
+		}
+		return map;
+	}
+	/**
+	 * 单独获取simNum的接口
+	 * @throws IOException
+	 */
+	public static String GetSIMNum(String simID) throws IOException {
+		String path = "data/local/tmp/PhoneNumList.xml";
+		String SIMNum = null;
+		String SIMiccID = DeviceCommon.getSIMID(simID);
+		if(SIMiccID != null){
+			SIMNum = DeviceCommon.parseTagFromXml(path, SIMiccID);
+			Assert.assertTrue("Can't find sim Info(" + simID + " iccID:" + SIMiccID + ") in xml, please add!!!", SIMNum != null);
+		}
+		return SIMNum;
 	}
 }

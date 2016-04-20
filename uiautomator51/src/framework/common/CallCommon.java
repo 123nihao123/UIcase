@@ -1,9 +1,9 @@
 package framework.common;
-import static framework.data.DeviceParameter.*;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+
 import junit.framework.Assert;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -15,9 +15,9 @@ public class CallCommon {
 	
 	public static void makeCallByDailer(String number,int simNum) throws UiObjectNotFoundException{
 		 DeviceCommon.enterApp(Devices_Desc_Call);
-		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.dialer:id/floating_action_button", "拨号键盘");
-		excute(Object_ResourceId,Operation_SetText,"com.android.dialer:id/digits",number);
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/dialpad_floating_action_button");
+		 excute(Object_ResIdDesc,Operation_ClickWait,"com.android.dialer:id/floating_action_button", "拨号键盘");
+		 excute(Object_ResourceId,Operation_SetText,"com.android.dialer:id/digits",number);
+		 excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/dialpad_floating_action_button");
 		 if((Boolean) excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
 		 {
 			 makeCallByDualcard(simNum);
@@ -45,7 +45,7 @@ public class CallCommon {
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","设置");
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.dialer:id/title","常规");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","快速拨号设置");
-       excute(Object_ResIdInstance,Operation_ClickWait,"com.android.phone:id/img_back",Integer.toString(index-1));
+        excute(Object_ResIdInstance,Operation_ClickWait,"com.android.phone:id/img_back",Integer.toString(index-1));
 	    if((Boolean) excute(Object_Text,Operation_Exists,"替换快速拨号"))
 		{
 			excute(Object_ResIdText,Operation_ClickWait,"android:id/text1","替换快速拨号");

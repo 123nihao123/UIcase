@@ -5,6 +5,12 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import junit.framework.Assert;
 import android.graphics.Rect;
 import android.os.RemoteException;
@@ -652,8 +658,9 @@ public class Camera extends UiAutomatorTestCase
 	}
 	/**
 	 * 调节美化程度
+	 * @throws UiObjectNotFoundException
 	 */
-	public static void test_046() throws UiObjectNotFoundException 
+	public static void test_046() throws UiObjectNotFoundException
 	{
 		//前提
 		CameraCommon.switchMode("相机");
