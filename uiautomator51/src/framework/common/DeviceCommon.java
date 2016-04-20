@@ -188,7 +188,7 @@ public class DeviceCommon
 	 public static void removePermissions() throws UiObjectNotFoundException, RemoteException
 	 {
 		 	excute(Object_TextScroll, Operation_ClickWait, "应用", "vertical");
-	        String[] appList = {"信息","浏览器","相机","文件管理器","电话","通讯录","日历","电子邮件","Launcher3","HTML 查看程序","文档", "音乐", "小区广播"};
+	        String[] appList = {"信息","浏览器","相机","文件管理器","电话","通讯录","日历","电子邮件","Launcher3","HTML 查看程序","文档", "音乐", "小区广播","图库"};
 	        
 	        for(int i=0; i<appList.length; i++){
 	        	excute(Object_Device, Operation_PressMenu);

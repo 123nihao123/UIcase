@@ -43,6 +43,13 @@ public class Message extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
+
+	public static void test_000()
+	{
+		MessageCommon.delAllFromDB();
+		MessageCommon.fillSMSDB();
+	}
+
 	/**
 	 * 进入信息
 	 */
@@ -59,6 +66,8 @@ public class Message extends UiAutomatorTestCase
 	public static void test_222()
 	{
 		//前提
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.deleteAllMessage();
 		MessageCommon.switchView("消息视图");
 		//主体
 		check(Object_Text,Operation_checkExist,"您的信息对话将列在此处");
@@ -186,10 +195,10 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.switchView("消息视图");
 		//主体
 		MessageCommon.Longclickmessage("关闭通知");
-		excute(Object_ResourceId, Operation_WaitForExists, "com.android.messaging:id/conversation_notification_bell", "10000");
-		check(Object_ResourceId, Operation_checkExist, "com.android.messaging:id/conversation_notification_bell");
+		excute(Object_ResourceId, Operation_LongClick, "com.android.messaging:id/conversation_name");
+		check(Object_Description, Operation_checkExist, "开启通知");
 		//清场
-		MessageCommon.Longclickmessage("开启通知");
+		excute(Object_Description, Operation_ClickWait, "开启通知");
 	}
 	/**
 	 * 长按短信添加到联系人
@@ -302,45 +311,88 @@ public class Message extends UiAutomatorTestCase
 	/**
 	 * 按时间降序
 	 * @throws ParseException
+	 * @throws UiObjectNotFoundException 
 	 */
-//	public static void test_024() throws ParseException
-//	{
-//		//主体
-//		MessageCommon.switchView("文件夹视图");
-//		MessageCommon.Menuoption("收件箱");
-//		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
-//		excute(Object_Text, Operation_ClickWait, "按时间降序");
-//		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
-//		String [] tim=new String[num];
-//		for(int i = 0; i<num; i++)
-//		{
-//			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
-//			tim[i]=Time;
-//			System.out.print(Time);
-//		}
-//		Assert.assertTrue(FileExplorerCommon.isSortedByTime(tim,true));
-//	}
+	public static void test_024() throws ParseException, UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "关闭");
+		excute(Object_Text, Operation_ClickWait, "设置日期");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
+		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+		DeviceCommon.enterApp( Devices_Desc_Message);
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+		excute(Object_Text, Operation_ClickWait, "按时间降序");
+		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		String [] tim=new String[num];
+		for(int i = 0; i<num; i++)
+		{
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
+			tim[i]=Time;
+			MessageCommon.extractFileTime(Time);
+			System.out.println(MessageCommon.extractFileTime(Time));
+			System.out.println(MessageCommon.stringToTime(Time));
+		}
+		Assert.assertTrue(MessageCommon.isSortedByTime(tim,true));
+		//清场
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+	}
 	/**
 	 * 按时间升序
 	 * @throws ParseException
 	 */
-//	public static void test_025() throws ParseException
-//	{
-//		//主体
-//		MessageCommon.switchView("文件夹视图");
-//		MessageCommon.Menuoption("收件箱");
-//		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
-//		excute(Object_Text, Operation_ClickWait, "按时间升序");
-//		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
-//		String [] tim=new String[num];
-//		for(int i = 0; i<num; i++)
-//		{
-//			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
-//			tim[i]=Time;
-//			
-//		}
-//		Assert.assertTrue(FileExplorerCommon.isSortedByTime(tim));
-//	}
+	public static void test_025() throws ParseException, UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "关闭");
+		excute(Object_Text, Operation_ClickWait, "设置日期");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
+		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+		DeviceCommon.enterApp( Devices_Desc_Message);
+		//主体
+		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
+		excute(Object_Text, Operation_ClickWait, "按时间升序");
+		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		String [] tim=new String[num];
+		for(int i = 0; i<num; i++)
+		{
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
+			tim[i]=Time;
+			MessageCommon.extractFileTime(Time);
+			System.out.println(MessageCommon.extractFileTime(Time));
+			System.out.println(MessageCommon.stringToTime(Time));
+		}
+		Assert.assertTrue(MessageCommon.isSortedByTime(tim,false));
+		//清场
+		DeviceCommon.enterApp( Devices_Desc_Setting);
+		excute(Object_TextScroll, Operation_ClickWait, "日期和时间", "vertical");
+		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
+		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
+			excute(Object_Text, Operation_ClickWait, "使用网络提供时间");
+		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+	}
 	/**
 	 * 按号码降序
 	 * @throws ParseException
@@ -448,33 +500,43 @@ public class Message extends UiAutomatorTestCase
 	public static void test_033()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
-		MessageCommon.switchView("显示选项");
-		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
-		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
-		excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "1");
-		check(Object_Text, Operation_checkExist, SIM1);
-		//清场
-		MessageCommon.switchView("显示选项");
-		excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		try
+		{
+			MessageCommon.switchView("文件夹视图");
+			MessageCommon.Menuoption("收件箱");
+			MessageCommon.switchView("显示选项");
+			String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
+			excute(Object_ResourceId, Operation_ClickWait,"android:id/text1", "1");
+			check(Object_Text, Operation_checkExist, SIM1);
+		}
+		finally
+		{
+			//清场
+			MessageCommon.switchView("显示选项");
+			excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		}
 	}
 	/**
 	 * 文件夹视图切换显示SIM2
 	 */
 	public static void test_034()
 	{
-		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
-		MessageCommon.switchView("显示选项");
-		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
-		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
-		excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
-		check(Object_Text, Operation_checkExist, SIM2);
-		//清场
-		MessageCommon.switchView("显示选项");
-		excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		try
+		{
+			//主体
+			MessageCommon.switchView("文件夹视图");
+			MessageCommon.Menuoption("收件箱");
+			MessageCommon.switchView("显示选项");
+			String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
+			excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
+			check(Object_Text, Operation_checkExist, SIM2);
+		}
+		finally
+		{
+			//清场
+			MessageCommon.switchView("显示选项");
+			excute(Object_Text, Operation_ClickWait, "显示全部信息");
+		}
 	}
 	/**
 	 * 文件夹视图删除
@@ -483,6 +545,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("删除信息");
 		check(Object_Text, Operation_checkExist, "全选");
 	}
@@ -493,6 +556,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		MessageCommon.switchView("删除信息");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/swipeableContent");
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -505,6 +569,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//前提
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		MessageCommon.switchView("设置");
 		check(Object_Text, Operation_checkExist, "常规");
@@ -516,6 +581,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//前提
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
 		check(Object_Text, Operation_checkExist, "呼叫");
@@ -533,6 +599,7 @@ public class Message extends UiAutomatorTestCase
 		ContactCommon.BatchDelete("所有联系人");
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		MessageCommon.longclickmessage("添加到联系人");
 		check(Object_Text, Operation_checkExist, "选择联系人");
@@ -545,11 +612,12 @@ public class Message extends UiAutomatorTestCase
 	{
 		//前提
 		MessageCommon.switchView("文件夹视图");
+		MessageCommon.Menuoption("收件箱");
 		//主体
 		MessageCommon.longclickmessage("呼叫");
-		if ((Boolean)excute(Object_Text, Operation_Exists, "用于外拨电话的帐户"))
-			excute(Object_ResIdInstance, Operation_ClickWait, "com.android.dialer:id/label", "0");
-		
+		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户", "10000");
+		CallCommon.makeCallByDualcard(1);
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
 		//清场
 		CallCommon.endCall();
@@ -733,13 +801,6 @@ public class Message extends UiAutomatorTestCase
      */
 	public static void test_056()  
 	{
-		//前提
-		MessageCommon.deleteAllMessageIn("发件箱");
-		MessageCommon.newMessageWithNumAndContent("11111111","SendFail");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/self_send_icon");
-		excute(Object_Text,Operation_WaitForExists,"发送失败。触摸即可重试。","120000");
-		excute(Object_Device, Operation_PressBack);
-		excute(Object_Device, Operation_PressBack);
 		//主体
 		MessageCommon.enterOutBox();
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
@@ -822,6 +883,10 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");
         check(Object_Text,Operation_checkExist,"要删除此信息吗？");
+        //清场
+        excute(Object_Device, Operation_PressBack);
+		excute(Object_Device, Operation_PressBack);
+        MessageCommon.deleteAllMessageIn("草稿箱");
 	}
 	/**
 	 * 点击新建图标
@@ -886,7 +951,12 @@ public class Message extends UiAutomatorTestCase
 		//主体
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_swap_mode_button");
+		excute(Object_Description,Operation_WaitForExists,"停止拍摄并添加视频附件","3000");
 		check(Object_Description,Operation_checkExist,"停止拍摄并添加视频附件");
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","10000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 	}
 	/**
 	 * 选择图库
@@ -1188,6 +1258,7 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/audio_attachment_view");
 		//清场
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","5000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 	}
 	
@@ -1334,8 +1405,8 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"插入常用短语");
-		excute(Object_Text,Operation_ClickWait,"请稍后打给我或发信息给我。");
-		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","请稍后打给我或发信息给我。");
+		excute(Object_Text,Operation_ClickWait,"稍后给你回电话。");
+		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","稍后给你回电话。");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		for(int i=0;i<=20;i++)
@@ -1363,15 +1434,21 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view","10086");
 		excute(Object_Device, Operation_PressEnter);
-//		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
-		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","rstfgdfg");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
+		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
 		excute(Object_Device, Operation_PressMenu);
+		if((Boolean)excute(Object_Text,Operation_Exists,"取消归档"))
+		{
+			excute(Object_Text,Operation_ClickWait,"取消归档");
+			excute(Object_Device, Operation_PressMenu);
+		}
 		excute(Object_Text,Operation_ClickWait,"归档");
 		excute(Object_Device, Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"已归档的对话");
-		check(Object_Text,Operation_checkExist,"rstfgdfg");
+		check(Object_ResourceId,Operation_TextContainsTrue,"com.android.messaging:id/conversation_snippet","abcd");
 		//清场
-		excute(Object_Text,Operation_LongClick,"rstfgdfg");
+		String txt = (String) excute(Object_ResourceId,Operation_GetText,"com.android.messaging:id/conversation_snippet");
+		excute(Object_Text,Operation_LongClick,txt);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
 		excute(Object_Text,Operation_ClickWait,"删除");
 	}
@@ -1411,11 +1488,13 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_call");
+		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户","5000");
 		if((Boolean)excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
 		}
-		check(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","1500");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/floating_end_call_action_button");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
 	}
@@ -1426,6 +1505,8 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_098() throws UiObjectNotFoundException 
 	{
+		//前提
+		MessageCommon.cancelPrompt("关闭");
 		//主体
 		MessageCommon.switchView("消息视图");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
@@ -1434,7 +1515,8 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/recipient_text_view");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/self_send_icon");
-		check(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		excute(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		check(Object_Text,Operation_checkExist,"刚刚");
 		//清场
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
@@ -1448,6 +1530,7 @@ public class Message extends UiAutomatorTestCase
 		}
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
 		excute(Object_Text,Operation_ClickWait,"删除");
+		MessageCommon.cancelPrompt("开启");
 	}
 	
 	/**
@@ -1456,12 +1539,15 @@ public class Message extends UiAutomatorTestCase
 	 */
 	public static void test_099() throws UiObjectNotFoundException 
 	{
+		//前提
+		MessageCommon.cancelPrompt("关闭");
 		//主体
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
 		excute(Object_Description,Operation_ClickWait,"拍照");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/send_message_button");
-		check(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		excute(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		check(Object_Text,Operation_checkExist,"刚刚");
 		//清场
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
@@ -1475,6 +1561,7 @@ public class Message extends UiAutomatorTestCase
 		}
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_delete");
 		excute(Object_Text,Operation_ClickWait,"删除");
+		MessageCommon.cancelPrompt("开启");
 	}
 	
 	/**
@@ -1589,19 +1676,20 @@ public class Message extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "将单条彩信发送给所有收件人");
 	}
 	/**
-	 * 进入高级设置 ，查看手机号码
+	 * 进入高级设置 ，查看手机号码 
 	 * @throws UiObjectNotFoundException
 	 */
 	public static void test_109() throws UiObjectNotFoundException 
 	{
 		//主体
-		excute(Object_Description, Operation_ClickWait, "更多选项");
-		excute(Object_Text, Operation_ClickWait, "设置");
-		String num1=(String)excute(Object_ResIdInstance, Operation_GetText, "com.android.messaging:id/subtitle","0");
-		System.out.println(num1);
+		MessageCommon.enterSIMSetting();
 		excute(Object_ClassContainsText, Operation_ClickWait, "android.widget.TextView","SIM");
 		String num2=(String)excute(Object_ResIdInstance, Operation_GetText, "android:id/summary","1");
-		System.out.println(num2);
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text, Operation_ClickWait, "SIM 卡");
+		excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
+		excute(Object_TextScroll, Operation_Exists,"号码","vertical");
+		String num1=(String)excute(Object_ResourceId, Operation_GetText, "com.android.settings:id/display_number");
 		Assert.assertEquals(num1, num2);
 	}	
 	/**
@@ -1706,42 +1794,42 @@ public class Message extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text, Operation_ClickWait, "彩信送达报告");
 	}
-	/**
-	 * 进入高级设置，允许返回彩信送达报告默认开关状态
-	 * @throws UiObjectNotFoundException
-	 */
-	public static void test_118() throws UiObjectNotFoundException 
-	{
-		//主体
-		MessageCommon.enterSIMSetting();
-		check(Object_TextScroll, Operation_CheckedFalse, "允许返回彩信送达报告", "vertical");
-	}	
-	/**
-	 * 进入高级设置，点击允许返回彩信送达报告开关，开关被打开
-	 * @throws UiObjectNotFoundException
-	 */
-	public static void test_119() throws UiObjectNotFoundException 
-	{
-		//主体
-		MessageCommon.enterSIMSetting();
-		excute(Object_TextScroll, Operation_Exists, "允许返回彩信送达报告", "vertical");
-		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "允许返回彩信送达报告");
-        int i = 0;
-        do{
-            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
-            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 50)
-                break;
-            i++;
-        }
-        while(true);
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
-		{
-			excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
-		}
-		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
-		//清场
-		excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
-	}
+//	/**
+//	 * 进入高级设置，允许返回彩信送达报告默认开关状态
+//	 * @throws UiObjectNotFoundException
+//	 */
+//	public static void test_118() throws UiObjectNotFoundException 
+//	{
+//		//主体
+//		MessageCommon.enterSIMSetting();
+//		check(Object_TextScroll, Operation_CheckedFalse, "允许返回彩信送达报告", "vertical");
+//	}	
+//	/**
+//	 * 进入高级设置，点击允许返回彩信送达报告开关，开关被打开
+//	 * @throws UiObjectNotFoundException
+//	 */
+//	public static void test_119() throws UiObjectNotFoundException 
+//	{
+//		//主体
+//		MessageCommon.enterSIMSetting();
+//		excute(Object_TextScroll, Operation_Exists, "允许返回彩信送达报告", "vertical");
+//		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "允许返回彩信送达报告");
+//        int i = 0;
+//        do{
+//            Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+//            if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 50)
+//                break;
+//            i++;
+//        }
+//        while(true);
+//		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+//		{
+//			excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
+//		}
+//		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/switchWidget", Integer.toString(i));
+//		//清场
+//		excute(Object_TextScroll, Operation_ClickWait, "允许返回彩信送达报告", "vertical");
+//	}
 	/**
 	 * 进入高级设置，彩信阅读报告默认开关状态
 	 * @throws UiObjectNotFoundException
@@ -1885,11 +1973,11 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.enterGeneralSetting();
-		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","2")) {
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget","2")) {//打开附加签名开关
 			excute(Object_Text, Operation_ClickWait, "附加签名");
 		}
 		excute(Object_Text, Operation_ClickWait, "编辑签名");
-		excute(Object_ResourceId, Operation_SetText, "android:id/edit","testname");
+		excute(Object_ResourceId, Operation_SetText, "android:id/edit","testname");//编辑签名
 		excute(Object_Text, Operation_ClickWait, "确定");
 		check(Object_Text, Operation_checkExist, "testname");
 		//清场
