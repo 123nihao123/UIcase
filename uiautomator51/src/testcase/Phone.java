@@ -220,26 +220,27 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/five");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Text,Operation_ClickWait,"添加到联系人");
-		if((Boolean)excute(Object_Text,Operation_Exists,"没有联系人"))
+		if((Boolean)excute(Object_Text,Operation_Exists,"没有联系人。"))
 		{
-			check(Object_Text,Operation_Exists,"没有联系人");
+			check(Object_Text,Operation_Exists,"没有联系人。");
 		}
 		else
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.contacts:id/cliv_name_textview","0");
-			if((Boolean)excute(Object_Text,Operation_Exists,"123"))
+			if((Boolean)excute(Object_Text,Operation_Exists,"35"))
 			{
-				check(Object_Text,Operation_checkExist,"123");
+				check(Object_Text,Operation_checkExist,"35");
 			}
 			else
 			{
-				check(Object_TextScroll,Operation_checkExist,"123","vertical");
+				check(Object_TextScroll,Operation_checkExist,"35","vertical");
 			}
+			//清场
+			excute(Object_Device,Operation_PressMenu);
+			excute(Object_Text,Operation_ClickWait,"舍弃更改");
+			excute(Object_Text,Operation_ClickWait,"确定");
 		}
-		//清场
-		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text,Operation_ClickWait,"舍弃更改");
-		excute(Object_Text,Operation_ClickWait,"确定");
+		
 	}
 	
 	/**
@@ -418,6 +419,7 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"最近");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/name","0");
 		excute(Object_Text,Operation_ClickWait,"添加至黑名单");
+		excute(Object_Text,Operation_WaitForExists,"从黑名单中删除","5000");
 		check(Object_Text,Operation_checkExist,"从黑名单中删除");	
 		//清场
 		excute(Object_Text,Operation_ClickWait,"从黑名单中删除");
