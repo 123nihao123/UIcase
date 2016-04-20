@@ -4,24 +4,14 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
-
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
 import junit.framework.Assert;
 import android.graphics.Rect;
 import android.os.RemoteException;
-
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
-
 import framework.common.CameraCommon;
 import framework.common.DeviceCommon;
-import framework.common.SettingCommon;
 
 public class Camera extends UiAutomatorTestCase
 {
