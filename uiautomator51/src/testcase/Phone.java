@@ -4,11 +4,7 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
-
-import static framework.excute.Excute.ClearBackgroundApp;
-import static framework.excute.Excute.Wait;
-import static framework.excute.Excute.check;
-import static framework.excute.Excute.excute;
+import static framework.data.ResIdTextAndDesc.Devices_Desc_Call;
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -482,19 +478,293 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"查看全部通话记录");
 		check(Object_Text,Operation_checkExist,"通话记录");	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * 进入设置界面
+	 */
+	public static void test_073() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		check(Object_Text, Operation_checkExist,"设置");
+	}
+	/**
+	 * 显示选项
+	 */
+	public static void test_074() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "显示选项");
+		check(Object_Text, Operation_checkExist,"排序方式");
+	}
+	/**
+	 * 排序方式
+	 */
+	public static void test_075() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "显示选项");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "名字");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","名字");
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "姓氏");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","姓氏");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "排序方式");
+		excute(Object_Text, Operation_ClickWait, "名字");
+	}
+	/**
+	 * 姓名格式
+	 */
+	public static void test_076() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "显示选项");
+		excute(Object_Text, Operation_ClickWait, "姓名格式");
+		excute(Object_Text, Operation_ClickWait, "名字在前");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","名字在前");
+		excute(Object_Text, Operation_ClickWait, "姓名格式");
+		excute(Object_Text, Operation_ClickWait, "姓氏在前");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","姓氏在前");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "姓名格式");
+		excute(Object_Text, Operation_ClickWait, "名字在前");
+	}
+	/**
+	 * IP拨号列表
+	 */
+	public static void test_077() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "IP 拨号设置");
+		check(Object_Text,Operation_checkExist,"IP 拨号列表");
+	}
+	/**
+	 * IP拨号列表新建
+	 */
+	public static void test_078() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "IP 拨号设置");
+		excute(Object_Text, Operation_ClickWait, "新建");
+		excute(Object_ResourceId,Operation_SetText,"com.android.phone:id/ip_editor","17951");
+		excute(Object_Text, Operation_ClickWait, "完成");
+		check(Object_ResIdText,Operation_checkExist,"com.android.phone:id/text","17951");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "移除");
+		excute(Object_Text, Operation_ClickWait, "17951");
+		excute(Object_Text, Operation_ClickWait, "完成");
+	}
+	/**
+	 * IP拨号列表移除
+	 */
+	public static void test_079() 
+	{
+		//前提
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "IP 拨号设置");
+		excute(Object_Text, Operation_ClickWait, "新建");
+		excute(Object_ResourceId,Operation_SetText,"com.android.phone:id/ip_editor","17951");
+		excute(Object_Text, Operation_ClickWait, "完成");
+		//主体
+		excute(Object_Text, Operation_ClickWait, "移除");
+		excute(Object_Text, Operation_ClickWait, "17951");
+		excute(Object_Text, Operation_ClickWait, "完成");
+		check(Object_Text,Operation_checkNoExist,"17951");
+	}
+	/**
+	 * 通话账户
+	 */
+	public static void test_081() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "通话帐户");
+		check(Object_Text,Operation_checkExist,"通话帐户");
+	}
+	/**
+	 * 选择通话账户
+	 */
+	public static void test_082() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "通话帐户");
+		excute(Object_Text, Operation_ClickWait, "选择通话帐户");
+		check(Object_ResourceId,Operation_checkExist,"android:id/select_dialog_listview");
+		excute(Object_Text, Operation_ClickWait, "每次都询问");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","每次都询问");
+		excute(Object_Text, Operation_ClickWait, "选择通话帐户");
+		excute(Object_Text, Operation_ClickWait, "SIM1 SIM1");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","SIM1");
+		excute(Object_Text, Operation_ClickWait, "选择通话帐户");
+		excute(Object_Text, Operation_ClickWait, "SIM2 SIM2");
+		check(Object_ResIdText,Operation_checkExist,"android:id/summary","SIM2");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "选择通话帐户");
+		excute(Object_Text, Operation_ClickWait, "每次都询问");
+	}
+	/**
+	 * SIM1设置界面
+	 */
+	public static void test_083() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		check(Object_Text,Operation_checkExist,"通话设置 (SIM1)");
+	}
+	/**
+	 * 语音信箱
+	 */
+	public static void test_084() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		excute(Object_Text, Operation_ClickWait, "语音信箱");
+		check(Object_Text,Operation_checkExist,"语音信箱（SIM1）");
+	}
+	/**
+	 * 固定拨号
+	 */
+	public static void test_085() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		excute(Object_Text, Operation_ClickWait, "固定拨号");
+		check(Object_Text,Operation_checkExist,"固定拨号 (SIM1)");
+	}
+	/**
+	 * 来电转接
+	 */
+	public static void test_086() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		excute(Object_Text, Operation_ClickWait, "来电转接");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"当前数据连接处于关闭状态，是否设置数据连接？"))
+		{
+			excute(Object_Text, Operation_ClickWait, "是");
+			excute(Object_Text,Operation_WaitForExists,"移动数据网络","3000");
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Text, Operation_ClickWait, "来电转接");
+		}
+		check(Object_Text,Operation_checkExist,"语音来电转接");
+	}
+	/**
+	 * 呼叫限制
+	 */
+	public static void test_087() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		excute(Object_Text, Operation_ClickWait, "呼叫限制");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"当前数据连接处于关闭状态，是否设置数据连接？"))
+		{
+			excute(Object_Text, Operation_ClickWait, "是");
+			excute(Object_Text,Operation_WaitForExists,"移动数据网络","3000");
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Text, Operation_ClickWait, "呼叫限制");
+		}
+		check(Object_Text,Operation_checkExist,"呼叫限制设置");
+	}
+	/**
+	 * 其他设置
+	 */
+	public static void test_088() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		excute(Object_Text, Operation_ClickWait, "其他设置");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"当前数据连接处于关闭状态，是否设置数据连接？"))
+		{
+			excute(Object_Text, Operation_ClickWait, "是");
+			excute(Object_Text,Operation_WaitForExists,"移动数据网络","3000");
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.settings:id/universal_switch","2");
+			excute(Object_Device,Operation_PressBack);
+			excute(Object_Text, Operation_ClickWait, "其他设置");
+		}
+		check(Object_Text,Operation_checkExist,"其他设置 (SIM1)");
+	}
+	/**
+	 * SDN列表
+	 */
+	public static void test_089() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		excute(Object_Text, Operation_ClickWait, "SDN 列表");
+		check(Object_Text,Operation_checkNoExist,"通话设置 (SIM1)");
+		check(Object_Text,Operation_checkExist,"SDN 列表");
+	}
+	/**
+	 * LND列表
+	 */
+	public static void test_091() 
+	{
+		//主体
+		PhoneCommon.enterSIM1Settings();
+		excute(Object_Text, Operation_ClickWait, "LND 列表");
+		check(Object_Text,Operation_checkNoExist,"通话设置 (SIM1)");
+		check(Object_Text,Operation_checkExist,"LND 列表");
+	}
+	/**
+	 * 快速回复
+	 */
+	public static void test_093() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "快速回复");
+		check(Object_Text,Operation_checkExist,"修改快速回复");
+	}
+	/**
+	 * 快速拨号设置
+	 */
+	public static void test_094() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "快速拨号设置");
+		check(Object_Text,Operation_checkExist,"快速拨号设置");
+	}
+	/**
+	 * 通话录音
+	 */
+	public static void test_095() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "通话录音");
+		check(Object_Text,Operation_checkExist,"自动录音");
+		check(Object_ResourceId,Operation_CheckedFalse,"android:id/checkbox");
+	}
+	/**
+	 * 通话连接提示
+	 */
+	public static void test_096() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "通话连接提示");
+		check(Object_Text,Operation_checkExist,"通话连接后发出振动反馈");
+		check(Object_ResourceId,Operation_CheckedFalse,"android:id/checkbox");
+	}
+	/**
+	 * 通话连接提示
+	 */
+	public static void test_097() 
+	{
+		//主体
+		PhoneCommon.enterSettings();
+		excute(Object_Text, Operation_ClickWait, "来电翻转静音");
+		check(Object_ResIdText,Operation_checkExist,"android:id/title","来电翻转静音");
+		check(Object_ResourceId,Operation_CheckedFalse,"android:id/checkbox");
+	}
 }

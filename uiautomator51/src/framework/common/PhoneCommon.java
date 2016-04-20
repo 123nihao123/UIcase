@@ -1,5 +1,8 @@
 package framework.common;
 
+import static framework.data.ObjectType.*;
+import static framework.data.OperationType.*;
+import static framework.excute.Excute.excute;
 import android.database.sqlite.SQLiteDatabase;
 
 public class PhoneCommon{
@@ -47,8 +50,23 @@ public class PhoneCommon{
 		}
 		return 0;
 	}
-	
-
+	/**
+	 * 进入设置界面
+	 */
+	public static void enterSettings()
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"设置");
+	}
+	/**
+	 * 进入SIM卡1的通话设置
+	 */
+	public static void enterSIM1Settings()
+	{
+		PhoneCommon.enterSettings();
+		excute(Object_Text,Operation_ClickWait,"通话帐户");
+		excute(Object_Text,Operation_ClickWait,"SIM1");
+	}
 	
 	
 	
