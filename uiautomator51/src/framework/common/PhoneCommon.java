@@ -4,8 +4,12 @@ package framework.common;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.OperationType.*;
+import static framework.excute.Excute.Wait;
 import static framework.excute.Excute.check;
 import static framework.excute.Excute.excute;
+
+import com.android.uiautomator.core.UiObjectNotFoundException;
+
 import android.database.sqlite.SQLiteDatabase;
 
 public class PhoneCommon{
@@ -82,6 +86,25 @@ public class PhoneCommon{
 		excute(Object_Text, Operation_WaitForExists, menu, "10000");
 	}
 	
-	
+	/**
+	 * 拨打电话
+	 * @param num 号码
+	 * @param num 选择SIM卡
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void Makecall(String num, int SIMnum) throws UiObjectNotFoundException 
+	{
+		Wait(1000);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_action_button");
+		excute(Object_ResourceId, Operation_SetText, "com.android.dialer:id/digits", num);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpad_floating_action_button");
+		excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
+		 if((Boolean) excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
+		 {
+			 CallCommon.makeCallByDualcard(SIMnum);
+		 }
+		//主体
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "100000");
+	}
 	
 }
