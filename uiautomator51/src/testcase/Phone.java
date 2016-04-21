@@ -5,6 +5,8 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import java.io.IOException;
+
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
