@@ -912,7 +912,16 @@ public class Phone extends UiAutomatorTestCase
 			excute(Object_Device,Operation_PressBack);
 			excute(Object_Text, Operation_ClickWait, "来电转接");
 		}
-		check(Object_Text,Operation_checkExist,"语音来电转接");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"语音来电转接"))
+		{
+			check(Object_Text,Operation_checkExist,"语音来电转接");
+		}
+		else
+		{
+			excute(Object_Text,Operation_WaitForExists,"始终转接","60000");
+			check(Object_Text,Operation_checkExist,"始终转接");
+		}
+		
 	}
 	/**
 	 * 呼叫限制
@@ -930,6 +939,7 @@ public class Phone extends UiAutomatorTestCase
 			excute(Object_Device,Operation_PressBack);
 			excute(Object_Text, Operation_ClickWait, "呼叫限制");
 		}
+		excute(Object_Text,Operation_WaitForExists,"呼叫限制设置","60000");
 		check(Object_Text,Operation_checkExist,"呼叫限制设置");
 	}
 	/**
@@ -958,6 +968,7 @@ public class Phone extends UiAutomatorTestCase
 		//主体
 		PhoneCommon.enterSIM1Settings();
 		excute(Object_Text, Operation_ClickWait, "SDN 列表");
+		excute(Object_Text,Operation_WaitForExists,"SDN 列表","5000");
 		check(Object_Text,Operation_checkNoExist,"通话设置 (SIM1)");
 		check(Object_Text,Operation_checkExist,"SDN 列表");
 	}
@@ -969,6 +980,7 @@ public class Phone extends UiAutomatorTestCase
 		//主体
 		PhoneCommon.enterSIM1Settings();
 		excute(Object_Text, Operation_ClickWait, "LND 列表");
+		excute(Object_Text,Operation_WaitForExists,"LND 列表","5000");
 		check(Object_Text,Operation_checkNoExist,"通话设置 (SIM1)");
 		check(Object_Text,Operation_checkExist,"LND 列表");
 	}
