@@ -335,8 +335,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 进入拨号盘-收藏一个联系人拨出
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public void test_020() throws UiObjectNotFoundException {  
+	public void test_020() throws UiObjectNotFoundException, RemoteException, IOException {  
 		//前提
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.addNameAndTel("本机", "zhanxun","10086");
@@ -345,11 +347,12 @@ public class Phone extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"快速拨号");
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.dialer:id/contact_tile_name","zhanxun");
-		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户", "10000");
-		if((Boolean)excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
-		{
-			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
-		}
+		new PreSetup("SIM");
+        if(PreSetup.simFlag.equals("11"))
+        {
+        	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
+        	CallCommon.makeCallByDualcard(1);
+        }
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
 		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/floating_end_call_action_button");
 		//清场
@@ -445,18 +448,22 @@ public class Phone extends UiAutomatorTestCase
 	
 	/**
 	 * 进入拨号盘-点击一条最近通话详情，拨号
+	 * @throws IOException 
+	 * @throws UiObjectNotFoundException 
+	 * @throws RemoteException 
 	 */
-	public void test_029() {
+	public void test_029() throws RemoteException, UiObjectNotFoundException, IOException {
 		//主体
 		excute(Object_Description,Operation_ClickWait,"最近");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/name","0");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_back_button");
-		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户", "10000");
-		if((Boolean)excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
-		{
-			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
-		}
+		new PreSetup("SIM");
+        if(PreSetup.simFlag.equals("11"))
+        {
+        	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
+        	CallCommon.makeCallByDualcard(1);
+        }
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
 		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/floating_end_call_action_button");
 		//清场
