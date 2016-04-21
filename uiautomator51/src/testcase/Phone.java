@@ -565,11 +565,17 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_044() throws UiObjectNotFoundException 
 	{
+		try
+		{
 		//主体
 		PhoneCommon.Makecall("10086", 1);
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
+		}
+		finally
+		{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 挂断电话
@@ -590,13 +596,19 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_047() throws UiObjectNotFoundException 
 	{
+		try
+		{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/audioButton");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/audioButton");//外放按钮
+		}
+		finally
+		{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 静音按钮
@@ -604,13 +616,19 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_049() throws UiObjectNotFoundException 
 	{
+		try
+		{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/muteButton");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/muteButton");
+		}
+		finally
+		{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * DTMF按钮
@@ -618,14 +636,18 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_050() throws UiObjectNotFoundException 
 	{
+		try
+		{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpadButton");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/one");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/dialpadButton");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 输入按钮
@@ -633,6 +655,7 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_051() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
@@ -640,8 +663,10 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/one");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/two");
 		check(Object_Text, Operation_checkExist, "12");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 暂停按钮
@@ -649,13 +674,16 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_052() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/holdButton");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 恢复按钮
@@ -663,14 +691,17 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_053() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		check(Object_ResourceId, Operation_CheckedFalse, "com.android.dialer:id/holdButton");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 拨号界面菜单键
@@ -678,6 +709,7 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_054() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
@@ -685,9 +717,11 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");
 		check(Object_Text, Operation_checkExist, "添加通话");
 		check(Object_Text, Operation_checkExist, "录音");
+		}finally{
 		//清场
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 添加通话
@@ -695,6 +729,7 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_055() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
@@ -705,10 +740,12 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpad_floating_action_button");
 		excute(Object_Text, Operation_WaitForExists, "保持", "10000");
 		check(Object_Text, Operation_checkExist, "保持");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 录音
@@ -716,6 +753,7 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_057() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
@@ -723,8 +761,10 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");
 		excute(Object_Text, Operation_ClickWait, "录音");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/recordinglabel");//正在录音按钮
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 保存录音
@@ -732,6 +772,7 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_058() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
@@ -742,8 +783,10 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "停止录音", "10000");
 		excute(Object_Text, Operation_ClickWait, "停止录音");
 		check(Object_ResourceId, Operation_checkNoExist, "com.android.dialer:id/recordinglabel");//正在录音按钮
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 主卡拨号
@@ -751,12 +794,15 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_059() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.dialer:id/callStateLabel", "主卡");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 通话时长
@@ -764,12 +810,15 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_060() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.dialer:id/elapsedTime", "00");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 通话名称
@@ -777,12 +826,15 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_061() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/name");//号码id
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 切换通话
@@ -790,6 +842,7 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_063() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
@@ -801,10 +854,12 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Text, Operation_WaitForExists, "保持", "10000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/secondaryCallName");
 		check(Object_ResIdText, Operation_checkExist, "com.android.dialer:id/name", "10086");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 合并通话
@@ -812,6 +867,7 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_064() throws UiObjectNotFoundException 
 	{
+		try{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
 		//主体
@@ -824,8 +880,10 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_ClickWait, "合并通话");
 		check(Object_ResourceId, Operation_checkNoExist, "com.android.dialer:id/secondaryCallName");
+		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}
 	}
 	/**
 	 * 进入设置界面
