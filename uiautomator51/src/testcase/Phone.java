@@ -39,8 +39,11 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * Workaround of  not working @BeforeClass @AfterClass
 	 * Compile is ok but @BeforeClass @AfterClass can not be recognized because of extending UiAutomatorTestCase
+	 * @throws IOException 
+	 * @throws UiObjectNotFoundException 
+	 * @throws RemoteException 
 	 */
-	public void test_0000(){  
+	public void test_0000() throws RemoteException, UiObjectNotFoundException, IOException{  
         System.out.println("before class!!!!!!!!!!!!!!!!!!!!!!!!");
         PhoneCommon.fillPhoneData();
     }
@@ -564,8 +567,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 拨打10086
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_044() throws UiObjectNotFoundException 
+	public static void test_044() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try
 		{
@@ -582,8 +587,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 挂断电话
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_045() throws UiObjectNotFoundException 
+	public static void test_045() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		PhoneCommon.Makecall("10086", 1);
@@ -595,8 +602,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 外放按钮
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_047() throws UiObjectNotFoundException 
+	public static void test_047() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try
 		{
@@ -615,8 +624,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 静音按钮
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_049() throws UiObjectNotFoundException 
+	public static void test_049() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try
 		{
@@ -635,8 +646,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * DTMF按钮
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_050() throws UiObjectNotFoundException 
+	public static void test_050() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try
 		{
@@ -654,8 +667,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 输入按钮
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_051() throws UiObjectNotFoundException 
+	public static void test_051() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -673,8 +688,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 暂停按钮
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_052() throws UiObjectNotFoundException 
+	public static void test_052() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -690,8 +707,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 恢复按钮
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_053() throws UiObjectNotFoundException 
+	public static void test_053() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -708,8 +727,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 拨号界面菜单键
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_054() throws UiObjectNotFoundException 
+	public static void test_054() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -728,8 +749,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 添加通话
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_055() throws UiObjectNotFoundException 
+	public static void test_055() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -752,8 +775,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 录音
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_057() throws UiObjectNotFoundException 
+	public static void test_057() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -771,8 +796,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 保存录音
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_058() throws UiObjectNotFoundException 
+	public static void test_058() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -793,8 +820,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 主卡拨号
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_059() throws UiObjectNotFoundException 
+	public static void test_059() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -809,8 +838,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 通话时长
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_060() throws UiObjectNotFoundException 
+	public static void test_060() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -825,8 +856,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 通话名称
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_061() throws UiObjectNotFoundException 
+	public static void test_061() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -841,8 +874,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 切换通话
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_063() throws UiObjectNotFoundException 
+	public static void test_063() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
@@ -866,8 +901,10 @@ public class Phone extends UiAutomatorTestCase
 	/**
 	 * 合并通话
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_064() throws UiObjectNotFoundException 
+	public static void test_064() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		try{
 		//前提
