@@ -574,6 +574,7 @@ public class Phone extends UiAutomatorTestCase
 		 {
 			 CallCommon.makeCallByDualcard(1);
 		 }
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "3000"); 
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
@@ -594,6 +595,7 @@ public class Phone extends UiAutomatorTestCase
 			 CallCommon.makeCallByDualcard(1);
 		 }
 		//主体
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/audioButton", "10000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_action_button", "3000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_action_button");//拨号按钮
@@ -705,7 +707,7 @@ public class Phone extends UiAutomatorTestCase
 			 CallCommon.makeCallByDualcard(1);
 		 }
 		//主体
-		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/audioButton", "10000");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "10000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/holdButton");
 		//清场
@@ -727,7 +729,7 @@ public class Phone extends UiAutomatorTestCase
 			 CallCommon.makeCallByDualcard(1);
 		 }
 		//主体
-		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/audioButton", "10000");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "10000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		check(Object_ResourceId, Operation_CheckedFalse, "com.android.dialer:id/holdButton");
