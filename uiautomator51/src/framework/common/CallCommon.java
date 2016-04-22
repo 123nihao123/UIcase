@@ -60,35 +60,19 @@ public class CallCommon {
 	}
 	 
 	/**
-	 * 从收藏联系人中打电话,从通话记录中打电话
-	 * @param mod:快速拨号，最近；
-	 * @param name:在快速拨号中代表着改收藏人的姓名，在最近则指Object_ResIdInstance的值
+	 * 判断是否弹出选择用于外拨的SIM卡，弹出就选第SIM1
 	 * @throws UiObjectNotFoundException
 	 * @throws IOException 
 	 * @throws RemoteException 
 	 */
-	public static void makeCall(String mod,String name) throws UiObjectNotFoundException, RemoteException, IOException {
-		
-		if(!(Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.dialer:id/floating_end_call_action_button"))
-		{
-			DeviceCommon.enterApp(Devices_Desc_Call);
-		}
-		if((Boolean)mod.equals("快速拨号"))
-		{
-			excute(Object_Description,Operation_ClickWait,mod);
-			excute(Object_ResIdText,Operation_ClickWait,"com.android.dialer:id/contact_tile_name",name);
-		}
-		else if((Boolean)mod.equals("最近"))
-		{
-			excute(Object_Description,Operation_ClickWait,mod);
-			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/primary_action_button",name);
-		}
+	public static void makeCall() throws UiObjectNotFoundException, RemoteException, IOException {
 		new PreSetup("SIM");
         if(PreSetup.simFlag.equals("11"))
         {
         	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
         	CallCommon.makeCallByDualcard(1);
         }
+        excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "100000");
 	}
 	/**
 	 * 挂断电话 
