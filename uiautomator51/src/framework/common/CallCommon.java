@@ -15,10 +15,25 @@ import android.os.RemoteException;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class CallCommon {
+	/**
+	 * 单卡或者使用SIM卡1拨打电话时使用
+	 * @param number
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 * @throws IOException
+	 */
 	public static void makeCallByDailer(String number) throws UiObjectNotFoundException, RemoteException, IOException{
 		makeCallByDailer(number,1);
 	}
 	
+	/**
+	 * 用SIM2拨打电话时使用
+	 * @param number
+	 * @param simNum
+	 * @throws UiObjectNotFoundException
+	 * @throws RemoteException
+	 * @throws IOException
+	 */
 	public static void makeCallByDailer(String number,int simNum) throws UiObjectNotFoundException, RemoteException, IOException{
 		 if (!(Boolean)excute(Object_Description,Operation_Exists,"拨号键盘"))
 		 {
@@ -34,7 +49,11 @@ public class CallCommon {
 	        	CallCommon.makeCallByDualcard(simNum);
 	     }
 	}
-	 
+	/**
+	 * 选择SIM卡
+	 * @param simNum
+	 * @throws UiObjectNotFoundException
+	 */
 	public static void makeCallByDualcard(int simNum) throws UiObjectNotFoundException {
 		 excute(Object_ClassInstance,Operation_ClickWait,"android.widget.ImageView",Integer.toString(--simNum));
 	}
@@ -45,7 +64,10 @@ public class CallCommon {
 			makeCallByDualcard(1);
 		}
 	}
-	 
+	/**
+	 * 挂断电话 
+	 * @throws UiObjectNotFoundException
+	 */
 	public static void endCall() throws UiObjectNotFoundException {
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
 	}
@@ -86,6 +108,12 @@ public class CallCommon {
 		 Assert.assertTrue("Error: FastDail delete failed!!!",
 				 (Boolean) excute(Object_ResIdInstance,Operation_TextEqualTrue,"com.android.phone:id/contacts_cell_name",Integer.toString(index-1),"添加联系人"));
 	 }
+	 /**
+	  * 拨打并挂断电话
+	  * @throws UiObjectNotFoundException
+	  * @throws RemoteException
+	  * @throws IOException
+	  */
 	 public static void dailandendCall() throws UiObjectNotFoundException, RemoteException, IOException {
 			DeviceCommon.enterApp(Devices_Desc_Call);
 			makeCallByDailer(CMCCNum);
