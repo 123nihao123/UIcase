@@ -892,8 +892,6 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/overflowButton", "100000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/secondaryCallName");
 		excute(Object_ResIdText, Operation_WaitForExists, "com.android.dialer:id/secondaryCallName", "10086", "10000");
-		String name = (String) excute(Object_ResourceId, Operation_GetText, "com.android.dialer:id/name");
-		System.out.println(name);
 		check(Object_ResIdText, Operation_checkExist, "com.android.dialer:id/name", "10086");
 		}finally{
 		//清场
