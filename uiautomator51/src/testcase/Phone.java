@@ -7,8 +7,10 @@ import static framework.excute.Excute.*;
 
 import java.io.IOException;
 
+import android.graphics.Rect;
 import android.os.RemoteException;
 
+import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
@@ -887,8 +889,11 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "添加通话");
 		excute(Object_ResourceId, Operation_SetText, "com.android.dialer:id/digits", "10010");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpad_floating_action_button");
-		excute(Object_Text, Operation_WaitForExists, "保持", "10000");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/overflowButton", "100000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/secondaryCallName");
+		excute(Object_ResIdText, Operation_WaitForExists, "com.android.dialer:id/secondaryCallName", "10086", "10000");
+		String name = (String) excute(Object_ResourceId, Operation_GetText, "com.android.dialer:id/name");
+		System.out.println(name);
 		check(Object_ResIdText, Operation_checkExist, "com.android.dialer:id/name", "10086");
 		}finally{
 		//清场
@@ -914,10 +919,18 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "添加通话");
 		excute(Object_ResourceId, Operation_SetText, "com.android.dialer:id/digits", "10010");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpad_floating_action_button");
-		excute(Object_Text, Operation_WaitForExists, "保持", "10000");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/overflowButton", "100000");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_ClickWait, "合并通话");
-		check(Object_ResourceId, Operation_checkNoExist, "com.android.dialer:id/secondaryCallName");
+		if((boolean) excute(Object_Text, Operation_Exists, "无法进行电话会议。"))
+		{
+			check(Object_Text, Operation_checkExist, "无法进行电话会议。");
+			excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		}else{
+			check(Object_ResourceId, Operation_checkNoExist, "com.android.dialer:id/secondaryCallName");
+		}
+		
 		}finally{
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
