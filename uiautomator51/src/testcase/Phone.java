@@ -1232,5 +1232,4 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResIdText,Operation_checkExist,"android:id/title","来电翻转静音");
 		check(Object_ResourceId,Operation_CheckedFalse,"android:id/checkbox");
 	}
-	
 }

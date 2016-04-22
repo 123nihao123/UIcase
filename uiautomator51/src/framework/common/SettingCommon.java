@@ -602,24 +602,6 @@ public class SettingCommon {
 		excute(Object_Text, Operation_ClickWait, "确定");
 	}
 
-	public static void SelectendCall(int simNum)
-			throws UiObjectNotFoundException {
-		try {
-			ClearBackgroundApp();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		DeviceCommon.enterApp(Devices_Desc_Call);
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds,
-				"com.android.dialer:id/floating_action_button");
-		int WideArea = ModArea.width();
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		CallCommon.makeCallByDailer(CMCCNum, simNum);
-		Wait(10000);
-		UiDevice.getInstance().click(x, y);
-	}
 
 	// 进入锁屏
 	public static void Entersecurity() throws UiObjectNotFoundException {

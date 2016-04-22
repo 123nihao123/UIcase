@@ -4,24 +4,35 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import java.io.IOException;
+
+import testcase.PreSetup;
+
 import junit.framework.Assert;
+
+import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class CallCommon {
-	public static void makeCallByDailer(String number) throws UiObjectNotFoundException{
+	public static void makeCallByDailer(String number) throws UiObjectNotFoundException, RemoteException, IOException{
 		makeCallByDailer(number,1);
 	}
 	
-	public static void makeCallByDailer(String number,int simNum) throws UiObjectNotFoundException{
-		 DeviceCommon.enterApp(Devices_Desc_Call);
+	public static void makeCallByDailer(String number,int simNum) throws UiObjectNotFoundException, RemoteException, IOException{
+		 if (!(Boolean)excute(Object_Description,Operation_Exists,"拨号键盘"))
+		 {
+			 DeviceCommon.enterApp(Devices_Desc_Call);
+		 }
 		 excute(Object_ResIdDesc,Operation_ClickWait,"com.android.dialer:id/floating_action_button", "拨号键盘");
 		 excute(Object_ResourceId,Operation_SetText,"com.android.dialer:id/digits",number);
 		 excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/dialpad_floating_action_button");
-		 if((Boolean) excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
-		 {
-			 makeCallByDualcard(simNum);
-		 }
+		 new PreSetup("SIM");
+	     if(PreSetup.simFlag.equals("11"))
+	     {
+	        	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
+	        	CallCommon.makeCallByDualcard(simNum);
+	     }
 	}
 	 
 	public static void makeCallByDualcard(int simNum) throws UiObjectNotFoundException {
@@ -75,7 +86,7 @@ public class CallCommon {
 		 Assert.assertTrue("Error: FastDail delete failed!!!",
 				 (Boolean) excute(Object_ResIdInstance,Operation_TextEqualTrue,"com.android.phone:id/contacts_cell_name",Integer.toString(index-1),"添加联系人"));
 	 }
-	 public static void dailandendCall() throws UiObjectNotFoundException {
+	 public static void dailandendCall() throws UiObjectNotFoundException, RemoteException, IOException {
 			DeviceCommon.enterApp(Devices_Desc_Call);
 			makeCallByDailer(CMCCNum);
 			Wait(10000);

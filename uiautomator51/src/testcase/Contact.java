@@ -4,6 +4,9 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+
+import java.io.IOException;
+
 import junit.framework.Assert;
 import android.graphics.Rect;
 import android.os.RemoteException;
@@ -106,7 +109,7 @@ public class Contact extends UiAutomatorTestCase
 	}
 	
 	//判断有“是否清楚常用联系人”字样
-	public static void test_009() throws UiObjectNotFoundException, RemoteException 
+	public static void test_009() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
@@ -125,7 +128,7 @@ public class Contact extends UiAutomatorTestCase
 	}
 	
 	//清除常用联系人
-	public static void test_010() throws UiObjectNotFoundException, RemoteException 
+	public static void test_010() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		ContactCommon.addNameTelMail("本机","zhanxun","10086","zhanxun@spreadtrum.com");
