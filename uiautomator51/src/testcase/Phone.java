@@ -344,19 +344,11 @@ public class Phone extends UiAutomatorTestCase
 		ContactCommon.addNameAndTel("本机", "zhanxun","10086");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.contacts:id/menu_star");
 		//主体
-		DeviceCommon.enterApp(Devices_Desc_Call);
-		excute(Object_Description,Operation_ClickWait,"快速拨号");
-		excute(Object_ResIdText,Operation_ClickWait,"com.android.dialer:id/contact_tile_name","zhanxun");
-		new PreSetup("SIM");
-        if(PreSetup.simFlag.equals("11"))
-        {
-        	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
-        	CallCommon.makeCallByDualcard(1);
-        }
+		CallCommon.makeCall("快速拨号","zhanxun");
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
 		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/floating_end_call_action_button");
 		//清场
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
 	}
