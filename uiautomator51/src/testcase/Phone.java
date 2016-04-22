@@ -576,7 +576,7 @@ public class Phone extends UiAutomatorTestCase
 		try
 		{
 		//主体
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
 		}
 		finally
@@ -594,7 +594,7 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_045() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_action_button", "3000");
@@ -611,7 +611,7 @@ public class Phone extends UiAutomatorTestCase
 		try
 		{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/audioButton");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/audioButton");//外放按钮
@@ -633,7 +633,7 @@ public class Phone extends UiAutomatorTestCase
 		try
 		{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/muteButton");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/muteButton");
@@ -655,7 +655,7 @@ public class Phone extends UiAutomatorTestCase
 		try
 		{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpadButton");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/one");
@@ -675,7 +675,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpadButton");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/one");
@@ -696,7 +696,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/holdButton");
@@ -715,7 +715,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/holdButton");
@@ -735,7 +735,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");
@@ -757,7 +757,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");
@@ -783,7 +783,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");
@@ -804,7 +804,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");
@@ -828,7 +828,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.dialer:id/callStateLabel", "主卡");
 		}finally{
@@ -846,7 +846,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.dialer:id/elapsedTime", "00");
 		}finally{
@@ -864,7 +864,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/name");//号码id
 		}finally{
@@ -882,7 +882,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");
@@ -910,7 +910,7 @@ public class Phone extends UiAutomatorTestCase
 	{
 		try{
 		//前提
-		PhoneCommon.Makecall("10086", 1);
+		CallCommon.makeCallByDailer("10086", 1);
 		//主体
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/overflowButton");
 		excute(Object_Text, Operation_WaitForExists, "录音", "10000");

@@ -49,6 +49,7 @@ public class CallCommon {
 	        	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
 	        	CallCommon.makeCallByDualcard(simNum);
 	     }
+	     excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "100000");
 	}
 	/**
 	 * 选择SIM卡

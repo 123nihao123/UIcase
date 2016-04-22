@@ -111,7 +111,6 @@ public class PhoneCommon{
         	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
         	CallCommon.makeCallByDualcard(1);
         }
-		//主体
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "100000");
 	}
 	
