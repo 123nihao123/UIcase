@@ -585,7 +585,7 @@ public class Phone extends UiAutomatorTestCase
 		finally
 		{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -622,7 +622,7 @@ public class Phone extends UiAutomatorTestCase
 		finally
 		{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -644,7 +644,7 @@ public class Phone extends UiAutomatorTestCase
 		finally
 		{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -665,7 +665,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/dialpadButton");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -686,7 +686,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "12");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -705,7 +705,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_CheckedTrue, "com.android.dialer:id/holdButton");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -725,7 +725,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_CheckedFalse, "com.android.dialer:id/holdButton");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -747,7 +747,7 @@ public class Phone extends UiAutomatorTestCase
 		}finally{
 		//清场
 		excute(Object_Device, Operation_PressBack);
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -771,9 +771,9 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "保持");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -794,7 +794,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/recordinglabel");//正在录音按钮
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -818,7 +818,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_checkNoExist, "com.android.dialer:id/recordinglabel");//正在录音按钮
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -836,7 +836,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.dialer:id/callStateLabel", "主卡");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -854,7 +854,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.dialer:id/elapsedTime", "00");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -872,7 +872,7 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/name");//号码id
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -898,9 +898,9 @@ public class Phone extends UiAutomatorTestCase
 		check(Object_ResIdText, Operation_checkExist, "com.android.dialer:id/name", "10086");
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
@@ -934,7 +934,7 @@ public class Phone extends UiAutomatorTestCase
 		
 		}finally{
 		//清场
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_end_call_action_button");
+		CallCommon.endCall();
 		}
 	}
 	/**
