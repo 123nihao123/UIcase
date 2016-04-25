@@ -23,6 +23,10 @@ MusicPLayer模块操作须知：
 FileExplore模块操作须知：
 必须把testresource\FileExploreResource下的FileExplorer_Phone连目录拷到手机内置存储根目录下，把FileExplorer_SD连目录拷到存储卡根目录下
 
+Phone模块操作须知：
+将...\UIcase\uiautomator51下的PhoneNumList.xml文件push到data/local/tmp中
+执行代码如下：adb push 路径 data/local/tmp
+
 
 运行步骤
 打开命令窗口：
