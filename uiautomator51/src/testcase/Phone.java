@@ -4,18 +4,10 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
-
 import java.io.IOException;
-
-import junit.framework.Assert;
-
-import android.graphics.Rect;
 import android.os.RemoteException;
-
-import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
-
 import framework.common.CallCommon;
 import framework.common.CallLogCommon;
 import framework.common.ContactCommon;
@@ -24,8 +16,6 @@ import framework.common.PhoneCommon;
 
 public class Phone extends UiAutomatorTestCase
 {
-//	 PreSetup presetup;
-	
 	@Override
 	protected void setUp() throws UiObjectNotFoundException, RemoteException 
     {
@@ -947,28 +937,10 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_067() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = "reject";
-		Interaction IMtCall = new Interaction("mtCall_wakeUp");
+		String option = Interaction.mtCall_reject;
+		Interaction IMtCall = new Interaction(Interaction.mtCall_wakeUp);
 		//主体
-		switch(DeviceCommon.simFlag){
-		case "00":
-			Assert.assertTrue("No SIMCard in phone !!!",false);
-			break;
-		case "10":
-			IMtCall.mtCall(DeviceCommon.sim1Num,option);
-			break;
-		case "01":
-			IMtCall.mtCall(DeviceCommon.sim2Num,option);
-			break;
-		case "11":
-			IMtCall.mtCall(DeviceCommon.sim1Num,option);
-			Wait(2000);
-			IMtCall.mtCall(DeviceCommon.sim2Num,option);
-			break;
-		default:
-			Assert.assertTrue("Error: simFlag got error!!!",false);
-			break;
-		}
+		IMtCall.CmtCall(option);
 		//清场
 		IMtCall.mtCallClose();
 	}
@@ -980,28 +952,10 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_068() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = "answer";
-		Interaction IMtCall = new Interaction("mtCall_wakeUp");
+		String option = Interaction.mtCall_answer;
+		Interaction IMtCall = new Interaction(Interaction.mtCall_wakeUp);
 		//主体
-		switch(DeviceCommon.simFlag){
-		case "00":
-			Assert.assertTrue("No SIMCard in phone !!!",false);
-			break;
-		case "10":
-			IMtCall.mtCall(DeviceCommon.sim1Num,option);
-			break;
-		case "01":
-			IMtCall.mtCall(DeviceCommon.sim2Num,option);
-			break;
-		case "11":
-			IMtCall.mtCall(DeviceCommon.sim1Num,option);
-			Wait(2000);
-			IMtCall.mtCall(DeviceCommon.sim2Num,option);
-			break;
-		default:
-			Assert.assertTrue("Error: simFlag got error!!!",false);
-			break;
-		}
+		IMtCall.CmtCall(option);
 		//清场
 		IMtCall.mtCallClose();
 	}
@@ -1013,8 +967,12 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_069() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = "answer";
-		Interaction IMtCall = new Interaction("mtCall_Sleep");
+		String option = Interaction.mtCall_answer;
+		Interaction IMtCall = new Interaction(Interaction.mtCall_sleep);
+		//主体
+		IMtCall.CmtCall(option);
+		//清场
+		IMtCall.mtCallClose();
 	}
 	/**
 	 * 灭屏据电话
@@ -1023,7 +981,13 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_070() throws IOException, InterruptedException 
 	{
-		
+		//前提
+		String option = Interaction.mtCall_reject;
+		Interaction IMtCall = new Interaction(Interaction.mtCall_sleep);
+		//主体
+		IMtCall.CmtCall(option);
+		//清场
+		IMtCall.mtCallClose();
 	}
 	/**
 	 * 灭屏用短信据电话
@@ -1032,7 +996,13 @@ public class Phone extends UiAutomatorTestCase
 	 */
 	public static void test_071() throws IOException, InterruptedException 
 	{
-		
+		//前提
+		String option = Interaction.mtCall_rejectBySMS;
+		Interaction IMtCall = new Interaction(Interaction.mtCall_sleep);
+		//主体
+		IMtCall.CmtCall(option);
+		//清场
+		IMtCall.mtCallClose();
 	}
 	/**
 	 * 进入设置界面
