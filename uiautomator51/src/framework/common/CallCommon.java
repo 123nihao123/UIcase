@@ -43,8 +43,7 @@ public class CallCommon {
 		 excute(Object_ResIdDesc,Operation_ClickWait,"com.android.dialer:id/floating_action_button", "拨号键盘");
 		 excute(Object_ResourceId,Operation_SetText,"com.android.dialer:id/digits",number);
 		 excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/dialpad_floating_action_button");
-		 new PreSetup("SIM");
-	     if(PreSetup.simFlag.equals("11"))
+	     if(DeviceCommon.simFlag.equals("11"))
 	     {
 	        	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
 	        	CallCommon.makeCallByDualcard(simNum);
@@ -67,8 +66,7 @@ public class CallCommon {
 	 * @throws RemoteException 
 	 */
 	public static void makeCall() throws UiObjectNotFoundException, RemoteException, IOException {
-		new PreSetup("SIM");
-        if(PreSetup.simFlag.equals("11"))
+        if(DeviceCommon.simFlag.equals("11"))
         {
         	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
         	CallCommon.makeCallByDualcard(1);
