@@ -27,6 +27,7 @@ Phone模块操作须知：
 1.将准备插入的SIM卡CCID号和对应的号码添加到PhoneNumList.xml中（已有的不需要添加）
 2.将...\UIcase\uiautomator51下的PhoneNumList.xml文件push到data/local/tmp中
   执行代码如下：adb push 路径 data/local/tmp
+3.case(67-71)涉及到交互系统，需要配备相应的运行环境。测试机终端需要安装iTestApp.apk。
 
 
 运行步骤
