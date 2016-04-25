@@ -7,6 +7,8 @@ import static framework.excute.Excute.*;
 
 import java.io.IOException;
 
+import junit.framework.Assert;
+
 import android.graphics.Rect;
 import android.os.RemoteException;
 
@@ -936,6 +938,101 @@ public class Phone extends UiAutomatorTestCase
 		//清场
 		CallCommon.endCall();
 		}
+	}
+	/**
+	 * 亮屏拒电话
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 */
+	public static void test_067() throws IOException, InterruptedException 
+	{
+		//前提
+		String option = "reject";
+		Interaction IMtCall = new Interaction("mtCall_wakeUp");
+		//主体
+		switch(DeviceCommon.simFlag){
+		case "00":
+			Assert.assertTrue("No SIMCard in phone !!!",false);
+			break;
+		case "10":
+			IMtCall.mtCall(DeviceCommon.sim1Num,option);
+			break;
+		case "01":
+			IMtCall.mtCall(DeviceCommon.sim2Num,option);
+			break;
+		case "11":
+			IMtCall.mtCall(DeviceCommon.sim1Num,option);
+			Wait(2000);
+			IMtCall.mtCall(DeviceCommon.sim2Num,option);
+			break;
+		default:
+			Assert.assertTrue("Error: simFlag got error!!!",false);
+			break;
+		}
+		//清场
+		IMtCall.mtCallClose();
+	}
+	/**
+	 * 亮屏接电话
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 */
+	public static void test_068() throws IOException, InterruptedException 
+	{
+		//前提
+		String option = "answer";
+		Interaction IMtCall = new Interaction("mtCall_wakeUp");
+		//主体
+		switch(DeviceCommon.simFlag){
+		case "00":
+			Assert.assertTrue("No SIMCard in phone !!!",false);
+			break;
+		case "10":
+			IMtCall.mtCall(DeviceCommon.sim1Num,option);
+			break;
+		case "01":
+			IMtCall.mtCall(DeviceCommon.sim2Num,option);
+			break;
+		case "11":
+			IMtCall.mtCall(DeviceCommon.sim1Num,option);
+			Wait(2000);
+			IMtCall.mtCall(DeviceCommon.sim2Num,option);
+			break;
+		default:
+			Assert.assertTrue("Error: simFlag got error!!!",false);
+			break;
+		}
+		//清场
+		IMtCall.mtCallClose();
+	}
+	/**
+	 * 灭屏接电话
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 */
+	public static void test_069() throws IOException, InterruptedException 
+	{
+		//前提
+		String option = "answer";
+		Interaction IMtCall = new Interaction("mtCall_Sleep");
+	}
+	/**
+	 * 灭屏据电话
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 */
+	public static void test_070() throws IOException, InterruptedException 
+	{
+		
+	}
+	/**
+	 * 灭屏用短信据电话
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 */
+	public static void test_071() throws IOException, InterruptedException 
+	{
+		
 	}
 	/**
 	 * 进入设置界面
