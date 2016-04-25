@@ -91,27 +91,4 @@ public class PhoneCommon{
 		excute(Object_Text, Operation_WaitForExists, menu, "10000");
 	}
 	
-	/**
-	 * 拨打电话
-	 * @param num 号码
-	 * @param num 选择SIM卡
-	 * @throws UiObjectNotFoundException 
-	 * @throws IOException 
-	 * @throws RemoteException 
-	 */
-	public static void Makecall(String num, int SIMnum) throws UiObjectNotFoundException, RemoteException, IOException 
-	{
-		Wait(1000);
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/floating_action_button");
-		excute(Object_ResourceId, Operation_SetText, "com.android.dialer:id/digits", num);
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.dialer:id/dialpad_floating_action_button");
-		new PreSetup("SIM");
-        if(PreSetup.simFlag.equals("11"))
-        {
-        	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
-        	CallCommon.makeCallByDualcard(1);
-        }
-		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "100000");
-	}
-	
 }
