@@ -5,7 +5,6 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
-import java.io.IOException;
 
 import android.graphics.Rect;
 import android.os.RemoteException;
@@ -14,15 +13,11 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
-import framework.common.CallCommon;
-import framework.common.CallLogCommon;
-import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
-import framework.common.PhoneCommon;
+import framework.common.ClockCommon;
 
 public class Clock extends UiAutomatorTestCase
 {
-	
 	@Override
 	protected void setUp() throws UiObjectNotFoundException, RemoteException 
     {
@@ -31,7 +26,7 @@ public class Clock extends UiAutomatorTestCase
 		DeviceCommon.unLock();	
 		ClearBackgroundApp();
 		Wait(1000);
-		DeviceCommon.enterApp("时钟");
+		DeviceCommon.enterApp(Devices_Desc_Clock);
    }
 	@Override
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
@@ -62,16 +57,5 @@ public class Clock extends UiAutomatorTestCase
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
