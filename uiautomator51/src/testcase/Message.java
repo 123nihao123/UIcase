@@ -619,7 +619,6 @@ public class Message extends UiAutomatorTestCase
 		//主体
 		MessageCommon.longclickmessage("呼叫");
 		CallCommon.makeCall();
-		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
 		//清场
 		CallCommon.endCall();
