@@ -5,6 +5,7 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -607,16 +608,17 @@ public class Message extends UiAutomatorTestCase
 	/**
 	 * 文件夹视图长按呼叫
 	 * @throws UiObjectNotFoundException 
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_040() throws UiObjectNotFoundException
+	public static void test_040() throws UiObjectNotFoundException, RemoteException, IOException
 	{
 		//前提
 		MessageCommon.switchView("文件夹视图");
 		MessageCommon.Menuoption("收件箱");
 		//主体
 		MessageCommon.longclickmessage("呼叫");
-		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户", "10000");
-		CallCommon.makeCallByDualcard(1);
+		CallCommon.makeCall();
 		excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "10000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.dialer:id/floating_end_call_action_button");//挂断按钮
 		//清场
@@ -1478,8 +1480,10 @@ public class Message extends UiAutomatorTestCase
 	/**
 	 * 新建信息，点击通话图标，跳转到通话界面
 	 * @throws UiObjectNotFoundException
+	 * @throws IOException 
+	 * @throws RemoteException 
 	 */
-	public static void test_097() throws UiObjectNotFoundException 
+	public static void test_097() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//主体
 		MessageCommon.switchView("消息视图");
@@ -1488,12 +1492,7 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/action_call");
-		excute(Object_Text,Operation_WaitForExists,"用于外拨电话的帐户","5000");
-		if((Boolean)excute(Object_Text,Operation_Exists,"用于外拨电话的帐户"))
-		{
-			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.dialer:id/label","0");
-		}
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/floating_end_call_action_button","5000");
+		CallCommon.makeCall();
 		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/floating_end_call_action_button");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");

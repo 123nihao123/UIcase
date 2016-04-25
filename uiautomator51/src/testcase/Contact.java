@@ -811,7 +811,7 @@ public class Contact extends UiAutomatorTestCase
 		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
 	}
 	//通过联系人进入拨号界面
-	public void test_054() throws UiObjectNotFoundException, RemoteException 
+	public void test_054() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		DeviceCommon.enterApp(Devices_Desc_Setting);
@@ -830,9 +830,7 @@ public class Contact extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"zhanxun01");
 		//拨号
 		excute(Object_Text,Operation_ClickWait,"10086");
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
-		Wait(10000);
+		CallCommon.makeCall();
 		CallCommon.endCall();
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -847,7 +845,7 @@ public class Contact extends UiAutomatorTestCase
 		
 	}
 	//联系人界面查看最近拨号
-	public void test_055() throws UiObjectNotFoundException, RemoteException 
+	public void test_055() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		DeviceCommon.enterApp(Devices_Desc_Setting);
@@ -867,9 +865,7 @@ public class Contact extends UiAutomatorTestCase
 		//主体
 		//拨号
 		excute(Object_Text,Operation_ClickWait,"10086");
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
-		Wait(10000);
+		CallCommon.makeCall();
 		CallCommon.endCall();
 		Wait(1000);
 		check(Object_Text,Operation_checkExist,"最近");

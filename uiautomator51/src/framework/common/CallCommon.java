@@ -73,7 +73,7 @@ public class CallCommon {
         	excute(Object_Text, Operation_WaitForExists, "用于外拨电话的帐户", "30000");
         	CallCommon.makeCallByDualcard(1);
         }
-        excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/holdButton", "100000");
+        excute(Object_ResourceId, Operation_WaitForExists, "com.android.dialer:id/floating_end_call_action_button", "100000");
 	}
 	/**
 	 * 挂断电话 
