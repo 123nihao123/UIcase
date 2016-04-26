@@ -426,7 +426,21 @@ public class Clock extends UiAutomatorTestCase
         check(Object_Description,Operation_checkNoExist,"删除");
     }
 	
-	
+	/**
+	 * 进入倒计时--添加倒计时图标
+	 */
+	public void test_038(){  
+		//主体
+		ClockCommon.switchMode("计时器");
+        excute(Object_Text,Operation_ClickWait,"3");
+        excute(Object_ResIdText,Operation_ClickWait,"com.android.deskclock:id/key_middle","0");
+        excute(Object_Description,Operation_ClickWait,"开始");
+        excute(Object_Description,Operation_ClickWait,"添加计时器");
+        check(Object_ResourceId,Operation_checkExist,"com.android.deskclock:id/timer_time_text");
+        //清场
+        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/timer_cancel");
+        excute(Object_Description,Operation_ClickWait,"删除");
+    }
 	
 	/**
 	 * 进入计时
