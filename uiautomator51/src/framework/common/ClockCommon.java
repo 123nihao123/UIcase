@@ -67,7 +67,12 @@ public class ClockCommon
 	{
 		excute(Object_Device, Operation_PressHome);
 		excute(Object_Description, Operation_ClickWait, "Apps");
-		excute(Object_Description, Operation_ClickWait, "Settings");
+		if((boolean) excute(Object_Description, Operation_Exists, "Settings"))
+		{
+			excute(Object_Description, Operation_ClickWait, "Settings");
+		}else{
+			excute(Object_DescScroll, Operation_ClickWait, "Settings", "vertical");
+		}
         excute(Object_TextScroll, Operation_ClickWait, "Language & input", "vertical");
         excute(Object_Text, Operation_ClickWait, "Language");
 		excute(Object_Text, Operation_ClickWait, "中文 (简体)");
@@ -75,22 +80,11 @@ public class ClockCommon
 	public static String extractFileTime(String info)
 	{
 		//System.out.println(info);
-		String strReturn= extractField(info,"-\\d\\d");
+		String strReturn= DeviceCommon.extractField(info,"\\d+(?=\\:)");
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
 	}
-	public static String extractField(String info, String ptn)
-	{
-		String strReturn="";
-		Pattern p = Pattern.compile(ptn);
-		Matcher m = p.matcher(info);
-		while (m.find())
-		{
-			strReturn = m.group();
-			//System.out.println("in while strReturn: " +strReturn);
-		}
-		return strReturn;
-	}
+	
 	/**
 	 * 菜单按钮
 	 * @param menu

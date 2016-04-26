@@ -103,9 +103,9 @@ public class FileExplorerCommon
  */
 	public static float stringToSize(String strSize)
 	{
-		String strNum= extractField(strSize,"\\d+(\\.\\d+)?" );
+		String strNum= DeviceCommon.extractField(strSize,"\\d+(\\.\\d+)?" );
 		System.out.println("strNum: " +strNum);
-		String strUnit = extractField(strSize,"[K|M|G]?B$" );
+		String strUnit = DeviceCommon.extractField(strSize,"[K|M|G]?B$" );
 		System.out.println("strUnit: " +strUnit);
 		float num = Float.parseFloat(strNum);
 		if(strUnit.equals("B"))
@@ -126,23 +126,10 @@ public class FileExplorerCommon
 		}
 		return num;
 	}
-	public static String extractField(String info, String ptn)
-	{
-		String strReturn="";
-		Pattern p = Pattern.compile(ptn);
-		Matcher m = p.matcher(info);
-		while (m.find())
-		{
-			strReturn = m.group();
-			//System.out.println("in while strReturn: " +strReturn);
-		}
-		return strReturn;
-	}
-
 	public static String extractFileType(String info)
 	{
 		//System.out.println(info);
-		String strReturn=extractField(info,"(?<=\\.)\\w+");
+		String strReturn=DeviceCommon.extractField(info,"(?<=\\.)\\w+");
 		return strReturn;
 	}
 	/**
@@ -153,7 +140,7 @@ public class FileExplorerCommon
 	public static String extractFileSize(String info)
 	{
 		//System.out.println(info);
-		String strReturn= extractField(info,"\\d+(\\.\\d+)?[K|M|G]?B$");
+		String strReturn= DeviceCommon.extractField(info,"\\d+(\\.\\d+)?[K|M|G]?B$");
 		return strReturn;
 	}
 
@@ -165,7 +152,7 @@ public class FileExplorerCommon
 	public static String extractFileTime(String info)
 	{
 		//System.out.println(info);
-		String strReturn= extractField(info,"\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d");
+		String strReturn= DeviceCommon.extractField(info,"\\d\\d\\d\\d-\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d");
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
 	}

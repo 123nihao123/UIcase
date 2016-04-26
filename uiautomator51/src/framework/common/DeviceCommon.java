@@ -653,4 +653,16 @@ public class DeviceCommon
 			break;
 		}
 	}
+	public static String extractField(String info, String ptn)
+	{
+		String strReturn="";
+		Pattern p = Pattern.compile(ptn);
+		Matcher m = p.matcher(info);
+		while (m.find())
+		{
+			strReturn = m.group();
+			//System.out.println("in while strReturn: " +strReturn);
+		}
+		return strReturn;
+	}
 }

@@ -160,10 +160,13 @@ public class Clock extends UiAutomatorTestCase
         int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "com.android.deskclock:id/cities_list");
 		for(int i = 0; i<num; i++)
 		{
-			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.deskclock:id/index", String.valueOf(i));
-			int nue = Integer.valueOf((ClockCommon.extractFileTime(Time))).intValue();
-			System.out.println(nue);
-			list.add(nue);
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.deskclock:id/city_tz", String.valueOf(i));
+			int j = Integer.parseInt((ClockCommon.extractFileTime(Time)));
+			list.add(j);
+		}
+		for(int k = 1; k<num-1; k++)
+		{
+			Assert.assertTrue(list.get(k)>=list.get(k+1));
 		}
 		}finally{
 			ClockCommon.cityMenu( "按名称排序");
