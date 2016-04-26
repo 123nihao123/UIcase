@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules" default="help">
+    
+    <target name="compile" depends="-build-setup, -pre-compile">
+		<javac encoding="${java.encoding}" source="${java.source}"
+			target="${java.target}" debug="true" extdirs="" includeantruntime="false"
+			destdir="${out.classes.absolute.dir}" bootclasspathref="project.target.class.path"
+			verbose="${verbose}" fork="${need.javac.fork}">
+			<src path="${source.absolute.dir}" />
+			<compilerarg line="${java.compilerargs}" />
+			<!-- 
+				refer to third party lib, when compile .class files
+			-->
+			<classpath>
+				<fileset dir="${jar.libs.dir}" includes="**/*.jar" />
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- Converts this project's .class files into .dex files -->
+	<target name="-dex" depends="compile, -post-compile">
+		<dex executable="${dx}" output="${intermediate.dex.file}"
+			nolocals="@{nolocals}" verbose="${verbose}">
+			<path path="${out.classes.absolute.dir}" />
+			<!--
+				convert third party lib to .dex files, only include the lib that is not in android system or sdk
+			-->
+			<fileset dir="${jar.libs.dir}" includes="ITestLib.jar socketutil.jar" />
+		</dex>
+	</target>
+	
+</project>

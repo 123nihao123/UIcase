@@ -1,11 +1,8 @@
 package testcase;
 
 import android.os.RemoteException;
-
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
-
-import static framework.data.DeviceParameter.*;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
@@ -15,7 +12,6 @@ import framework.common.SettingCommon;
 
 public class PreSetup extends UiAutomatorTestCase
 {
-	
 	protected void setUp() 
     {
 		System.out.println("Enter the setUp!!!");	
@@ -27,8 +23,9 @@ public class PreSetup extends UiAutomatorTestCase
     {
 		
     }
+	
 	public void test_000() throws UiObjectNotFoundException, RemoteException 
-	{
+	{	
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		DeviceCommon.removePermissions();
 		ClearBackgroundApp();
@@ -43,6 +40,4 @@ public class PreSetup extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "休眠");
 		excute(Object_Text, Operation_ClickWait, "30分钟");
 	}
-	
-	
 }

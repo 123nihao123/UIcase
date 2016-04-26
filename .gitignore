@@ -4,4 +4,5 @@ bin/
 build.xml
 local.properties
 project.properties
-
+ITestLib-*.jar
+socketutil-*.jar

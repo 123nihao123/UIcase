@@ -4,18 +4,14 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
-
 import junit.framework.Assert;
 import android.graphics.Rect;
 import android.os.RemoteException;
-
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
-
 import framework.common.CameraCommon;
 import framework.common.DeviceCommon;
-import framework.common.SettingCommon;
 
 public class Camera extends UiAutomatorTestCase
 {
@@ -652,8 +648,9 @@ public class Camera extends UiAutomatorTestCase
 	}
 	/**
 	 * 调节美化程度
+	 * @throws UiObjectNotFoundException
 	 */
-	public static void test_046() throws UiObjectNotFoundException 
+	public static void test_046() throws UiObjectNotFoundException
 	{
 		//前提
 		CameraCommon.switchMode("相机");
