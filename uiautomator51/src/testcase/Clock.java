@@ -6,6 +6,12 @@ import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 import junit.framework.Assert;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
+import junit.framework.Assert;
+
 
 import android.graphics.Rect;
 import android.os.RemoteException;
@@ -16,6 +22,8 @@ import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 import framework.common.DeviceCommon;
 import framework.common.ClockCommon;
+import framework.common.FileExplorerCommon;
+import framework.common.MessageCommon;
 
 public class Clock extends UiAutomatorTestCase
 {
@@ -33,8 +41,163 @@ public class Clock extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
-	
-
+	/**
+	 * 进入时钟
+	 */
+	public void test_001(){  
+		//主体
+        check(Object_ResourceId, Operation_checkExist, "com.android.deskclock:id/decor_content_parent");//时钟整个界面id
+    }
+	/**
+	 * 查看布局
+	 */
+	public void test_002(){  
+		//主体
+        check(Object_Description, Operation_checkExist, "闹钟");
+        check(Object_Description, Operation_checkExist, "时钟");
+        check(Object_Description, Operation_checkExist, "计时器");
+        check(Object_Description, Operation_checkExist, "秒表");
+        check(Object_ResourceId, Operation_checkExist, "com.android.deskclock:id/main_clock_frame");//时间id
+        check(Object_Description, Operation_checkExist, "城市");
+    }
+	/**
+	 * 进入添加城市
+	 */
+	public void test_003(){  
+		//主体
+		ClockCommon.switchMode("城市");
+        check(Object_ResourceId, Operation_checkExist, "com.android.deskclock:id/cities_list");//城市列表
+    }
+	/**
+	 * 添加城市
+	 */
+	public void test_004(){  
+		//主体
+		ClockCommon.switchMode("城市");
+		String cutyname =  (String) excute(Object_ResourceId, Operation_GetText, "com.android.deskclock:id/city_name");
+		excute(Object_Text, Operation_ClickWait, cutyname);
+		excute(Object_Device, Operation_PressBack);
+        check(Object_Text, Operation_checkExist, cutyname);
+        //清场
+        ClockCommon.switchMode("城市");
+        excute(Object_Text, Operation_ClickWait, cutyname);
+    }
+	/**
+	 * 搜索
+	 */
+	public void test_005(){  
+		//主体
+		ClockCommon.switchMode("城市");
+		excute(Object_Description, Operation_ClickWait, "搜索");
+        check(Object_Text, Operation_checkExist, "搜索…");
+    }
+	/**
+	 * 输入搜索
+	 * @throws UiObjectNotFoundException 
+	 * @throws RemoteException 
+	 */
+	public void test_116() throws UiObjectNotFoundException, RemoteException{
+		try{
+		//前提
+		ClockCommon.changetoEnglish();
+		excute(Object_Description, Operation_ClickWait, "Apps");
+		excute(Object_Description, Operation_ClickWait, "Clock");
+		//主体
+		ClockCommon.switchMode("Cities");
+		excute(Object_Description, Operation_ClickWait, "Search");
+		excute(Object_ResourceId, Operation_SetText, "com.android.deskclock:id/search_src_text", "shanghai");
+        check(Object_ResIdText, Operation_checkExist, "com.android.deskclock:id/city_name", "Shanghai");
+        }finally{
+        //清场
+    	ClockCommon.changetoChinese();
+		}
+    }
+	/**
+	 * 删除搜索内容
+	 * @throws UiObjectNotFoundException 
+	 * @throws RemoteException 
+	 */
+	public void test_117() throws UiObjectNotFoundException, RemoteException{
+		try{
+		//前提
+		ClockCommon.changetoEnglish();
+		excute(Object_Description, Operation_ClickWait, "Apps");
+		excute(Object_Description, Operation_ClickWait, "Clock");
+		//主体
+		ClockCommon.switchMode("Cities");
+		excute(Object_Description, Operation_ClickWait, "Search");
+		excute(Object_ResourceId, Operation_SetText, "com.android.deskclock:id/search_src_text", "shanghai");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.deskclock:id/search_close_btn");
+        check(Object_ResIdText, Operation_checkNoExist, "com.android.deskclock:id/city_name", "Shanghai");
+        }finally{
+        //清场
+    	ClockCommon.changetoChinese();
+		}
+    }
+	/**
+	 * 菜单列表
+	 * @throws UiObjectNotFoundException 
+	 */
+	public void test_008() throws UiObjectNotFoundException{
+		//主体
+		ClockCommon.switchMode("城市");
+		excute(Object_Device, Operation_PressMenu);
+        check(Object_Text, Operation_checkExist, "按时间排序");
+        check(Object_Text, Operation_checkExist, "设置");
+    }
+	/**
+	 * 按时间排序
+	 * @throws UiObjectNotFoundException 
+	 * @throws ParseException 
+	 */
+	public void test_009() throws UiObjectNotFoundException, ParseException
+	{
+		try{
+		//主体
+		List<Integer> list=new ArrayList<Integer>();
+		ClockCommon.switchMode("城市");
+		ClockCommon.cityMenu( "按时间排序");
+        int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "com.android.deskclock:id/cities_list");
+		for(int i = 0; i<num; i++)
+		{
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.deskclock:id/index", String.valueOf(i));
+			int nue = Integer.valueOf((ClockCommon.extractFileTime(Time))).intValue();
+			System.out.println(nue);
+			list.add(nue);
+		}
+		}finally{
+			ClockCommon.cityMenu( "按名称排序");
+		}
+    }
+	/**
+	 * 按名称排序
+	 * @throws UiObjectNotFoundException 
+	 * @throws ParseException 
+	 */
+	public void test_010() throws UiObjectNotFoundException, ParseException
+	{
+		//主体
+		ClockCommon.switchMode("城市");
+		ClockCommon.cityMenu( "按名称排序");
+        int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "com.android.deskclock:id/cities_list");
+		String [] tim=new String[num];
+		for(int i = 0; i<num; i++)
+		{
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.deskclock:id/city_name", String.valueOf(i));
+			tim[i]=Time;
+		}
+		Assert.assertTrue(FileExplorerCommon.isSortedByName(tim));
+    }
+	/**
+	 * 设置
+	 */
+	public void test_011()
+	{
+		//主体
+		ClockCommon.switchMode("城市");
+		ClockCommon.cityMenu( "设置");
+		check(Object_Text, Operation_checkExist, "样式");
+    }
 	/**
 	 * 进入闹钟界面
 	 */
@@ -279,30 +442,6 @@ public class Clock extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"设置");
 		check(Object_Text,Operation_checkExist,"时钟");
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * 进入倒计时
 	 */
@@ -590,21 +729,90 @@ public class Clock extends UiAutomatorTestCase
         excute(Object_Device, Operation_PressBack);
         excute(Object_Description,Operation_ClickWait,"重置");
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	/**
+	 * 进入设置
+	 */
+	public void test_049()
+	{
+		//主体
+		ClockCommon.cityMenu("设置");
+		check(Object_Text, Operation_checkExist, "样式");
+    }
+	/**
+	 * 进入设置样式
+	 */
+	public void test_050()
+	{
+		//主体
+		ClockCommon.settingMenu("样式");
+		check(Object_ResourceId, Operation_checkExist, "android:id/select_dialog_listview");//选择框
+    }
+	/**
+	 * 进入设置样式指针
+	 */
+	public void test_051()
+	{
+		//主体
+		ClockCommon.settingMenu("样式");
+		excute(Object_Text, Operation_ClickWait, "指针");
+		excute(Object_Device, Operation_PressBack);
+		check(Object_ResourceId, Operation_checkExist, "com.android.deskclock:id/analog_clock");//指针id
+		//清场
+		ClockCommon.settingMenu("样式");
+		excute(Object_Text, Operation_ClickWait, "数字");
+    }
+	/**
+	 * 自动显示家中时间
+	 */
+	public void test_052()
+	{
+		//主体
+		ClockCommon.cityMenu("设置");
+		if(!(boolean) excute(Object_ResourceId, Operation_IsChecked, "android:id/checkbox"))
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/checkbox");
+		check(Object_ResourceId, Operation_CheckedTrue, "android:id/checkbox");
+    }
+	/**
+	 * 家中时间
+	 */
+	public void test_053()
+	{
+		//主体
+		ClockCommon.cityMenu("设置");
+		if(!(boolean) excute(Object_ResourceId, Operation_IsChecked, "android:id/checkbox"))
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/checkbox");
+		excute(Object_Text, Operation_ClickWait, "家中时区");
+		check(Object_ResourceId, Operation_checkExist, "android:id/select_dialog_listview");//选择框
+    }
+	/**
+	 * 暂停时长
+	 */
+	public void test_054()
+	{
+		//主体
+		ClockCommon.settingMenu("暂停时长");
+		check(Object_Text, Operation_checkExist, "确定");
+    }
+	/**
+	 * 音量按钮
+	 */
+	public void test_056()
+	{
+		//主体
+		ClockCommon.settingMenu("音量按钮");
+		check(Object_Text, Operation_checkExist, "暂停");
+		check(Object_Text, Operation_checkExist, "关闭");
+		check(Object_Text, Operation_checkExist, "不进行任何操作");
+    }
+	/**
+	 * 一周的第一天
+	 */
+	public void test_057()
+	{
+		//主体
+		ClockCommon.settingMenu("一周的第一天");
+		check(Object_Text, Operation_checkExist, "星期六");
+		check(Object_Text, Operation_checkExist, "星期日");
+		check(Object_Text, Operation_checkExist, "星期一");
+    }
 }
