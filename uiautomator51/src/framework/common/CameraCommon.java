@@ -1,9 +1,5 @@
 package framework.common;
 
-import java.io.IOException;
-
-import android.graphics.Rect;
-
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import static framework.data.ObjectType.*;

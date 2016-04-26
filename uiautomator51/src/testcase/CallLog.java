@@ -7,6 +7,9 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+
+import java.io.IOException;
+
 import junit.framework.Assert;
 import android.graphics.Rect;
 import android.os.RemoteException;
@@ -733,24 +736,24 @@ public class CallLog extends UiAutomatorTestCase
 	 * 查看通话记录详情拨打电话
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
+	 * @throws IOException 
 	 */
-	public static void test_052() throws UiObjectNotFoundException, RemoteException 
+	public static void test_052() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_back_button");
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/label","10000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
-		Wait(10000);
+		CallCommon.makeCall();
 		CallCommon.endCall();
 	}
 	/**
 	 * 查看通话记录详情拨打IP电话
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
+	 * @throws IOException 
 	 */
-	public static void test_053() throws UiObjectNotFoundException, RemoteException 
+	public static void test_053() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
 		//前提
 		DeviceCommon.enterApp(Devices_Desc_Call);
@@ -765,9 +768,7 @@ public class CallLog extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_back_button");
-		if((Boolean) excute(Object_ResourceId,Operation_Exists, "com.android.dialer:id/label"))
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/label");
-		Wait(10000);
+		CallCommon.makeCall();
 		CallCommon.endCall();
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Call);
