@@ -9,6 +9,7 @@ import com.spreadtrum.itestapi.ITestApi;
 import com.spreadtrum.itestapi.ITestApp;
 
 import static framework.data.ObjectType.Object_Device;
+import static framework.data.ObjectType.Object_ResIdInstance;
 import static framework.data.OperationType.*;
 import static framework.excute.Excute.*;
 import framework.common.DeviceCommon;
@@ -22,10 +23,16 @@ public class Interaction {
 	private boolean isWakeup = true;
 	private String [] EndCall = {"EndCall"};
 	
+	public static String mtCall_answer = "answer";
+	public static String mtCall_reject = "reject";
+	public static String mtCall_rejectBySMS = "rejectBySMS";
+	public static String mtCall_wakeUp = "mtCall_wakeUp";
+	public static String mtCall_sleep = "mtCall_sleep";
+	
 	public Interaction(){}
 	
 	public Interaction(String option) throws IOException, InterruptedException{
-		if(option.contains("mtcall"))
+		if(option.contains("mtCall"))
 		{
 			Process proc = Runtime.getRuntime().exec("am start -n com.spreadtrum.itestapp/com.spreadtrum.itestapp.TestClientActivity");
 		    int ret = proc.waitFor();
@@ -37,6 +44,32 @@ public class Interaction {
 				isWakeup = false;
 				excute(Object_Device, Operation_Sleep);
 			}
+		}
+	}
+	/**
+	 * 兼容所有SIM卡状况
+	 * @param option
+	 * @throws IOException
+	 */
+	public void CmtCall(String option) throws IOException{
+		switch(DeviceCommon.simFlag){
+		case "00":
+			Assert.assertTrue("No SIMCard in phone !!!",false);
+			break;
+		case "10":
+			mtCall(DeviceCommon.sim1Num,option);
+			break;
+		case "01":
+			mtCall(DeviceCommon.sim2Num,option);
+			break;
+		case "11":
+			mtCall(DeviceCommon.sim1Num,option);
+			Wait(2000);
+			mtCall(DeviceCommon.sim2Num,option);
+			break;
+		default:
+			Assert.assertTrue("Error: simFlag got error!!!",false);
+			break;
 		}
 	}
 	
@@ -63,26 +96,33 @@ public class Interaction {
 	}
 	
 	public void action(String option) throws IOException{
+		int DisplayWidth = UiDevice.getInstance().getDisplayWidth();
+		int	DisplayHeight = UiDevice.getInstance().getDisplayHeight();	
+		//灭屏滑动的初始位置
+		int start_x = DisplayWidth * 1/2;
+		int start_y = DisplayHeight * 12/17;
 		int x=0,y=0;
 		switch(option){
 		case "answer":
 			if(isWakeup){
-				x = UiDevice.getInstance().getDisplayWidth() * 7 / 10;
-				y = UiDevice.getInstance().getDisplayHeight() * 4 / 25;
+				//弹出框无法识别，先写死
+				x = DisplayWidth * 7/10;
+				y = DisplayHeight * 4/25;
 			}
 			else{
-				//x =
-				//y =
+				x = DisplayWidth;
+				y = start_y;
 			}
 			break;
 		case "reject":
 			if(isWakeup){
-				x = UiDevice.getInstance().getDisplayWidth() * 3 / 10;
-				y = UiDevice.getInstance().getDisplayHeight() * 4 / 25;
+				//弹出框无法识别，先写死
+				x = DisplayWidth * 3/10;
+				y = DisplayHeight * 4/25;
 			}
 			else{
-				//x =
-				//y =
+				x = 0;
+				y = start_y;
 			}
 			break;
 		case "rejectBySMS":
@@ -90,8 +130,8 @@ public class Interaction {
 				Assert.assertTrue("Error: no rejectBySMS mode!!!",false);
 			}
 			else{
-				//x =
-				//y =
+				x = start_x;
+				y = DisplayHeight * 1/2;
 			}
 			break;
 		}
@@ -100,7 +140,10 @@ public class Interaction {
 			UiDevice.getInstance().click(x,y);
 		}
 		else{
-			//UiDevice.getInstance().drag(startX, startY, x, y, 10);
+			UiDevice.getInstance().drag(start_x, start_y, x, y, 10);
+			if(option.equals("rejectBySMS")){
+				excute(Object_ResIdInstance,Operation_ClickWait,"android:id/text1","0");
+			}
 		}	
 		Assert.assertTrue(simNum + option + " fail!!!", getStatus(option));
 		System.out.println(simNum + option + " success ~~");
@@ -149,33 +192,6 @@ public class Interaction {
 		return true;
 	}
 	
-	private void receiveCall(String simNumber) throws IOException {
-		Wait(1500);
-		UiDevice.getInstance().click(
-				UiDevice.getInstance().getDisplayWidth() * 7 / 10,
-				UiDevice.getInstance().getDisplayHeight() * 4 / 25);
-		Assert.assertTrue(simNumber + " receiveCall Fail", getAnswerStatus());
-		System.out.println(simNumber + " mtCall answer success!");
-	}
-	
-	private void rejectCall(String simNumber) throws IOException {
-		Wait(1500);
-		UiDevice.getInstance().click(
-				UiDevice.getInstance().getDisplayWidth() * 3 / 10,
-				UiDevice.getInstance().getDisplayHeight() * 4 / 25);
-		Assert.assertTrue(simNumber + " mtCall reject Fail", getRejectStatus());
-		System.out.println(simNumber + " mtCall reject success!");
-	}
-	
-	private void rejectBySMS(String simNumber) throws IOException {
-		Wait(1500);
-		UiDevice.getInstance().click(
-				UiDevice.getInstance().getDisplayWidth() * 1 / 2,
-				UiDevice.getInstance().getDisplayHeight() * 1 / 2);
-		Assert.assertTrue(simNumber + " mtCall rejectBySMS Fail", getRejectStatus());
-		System.out.println(simNumber + " mtCall rejectBySMS success!");
-	}
-	
 	private boolean getIncomingStatus() {
 		int counts = 0;
 		boolean result = false;
@@ -213,44 +229,6 @@ public class Interaction {
 				break;
 			}
 			if (condition) {
-				result = true;
-				break;
-			} else {
-				Wait(1000);
-				counts += 1;
-				if (counts > 30) {
-					break;
-				}
-			}
-		}
-		return result;
-	}
-	
-	private boolean getAnswerStatus() {
-		int counts = 0;
-		boolean result = false;
-		while (true) {
-			String Status = itest.getCommandReturn("GetCallState");
-			if (Status.equals("OFFHOOK") || Status.equals("ACTIVE")) {
-				result = true;
-				break;
-			} else {
-				Wait(1000);
-				counts += 1;
-				if (counts > 30) {
-					break;
-				}
-			}
-		}
-		return result;
-	}
-	
-	private boolean getRejectStatus() {
-		int counts = 0;
-		boolean result = false;
-		while (true) {
-			String Status = itest.getCommandReturn("GetCallState");
-			if (Status.equals("DISCONNECTING") || Status.equals("DISCONNECTED") || Status.equals("IDLE")) {
 				result = true;
 				break;
 			} else {
