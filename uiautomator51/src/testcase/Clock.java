@@ -66,7 +66,7 @@ public class Clock extends UiAutomatorTestCase
 	 */
 	public void test_003(){  
 		//主体
-		ClockCommon.switchMode("城市");
+		excute(Object_Description,Operation_ClickWait,"城市");
         check(Object_ResourceId, Operation_checkExist, "com.android.deskclock:id/cities_list");//城市列表
     }
 	/**
@@ -74,7 +74,7 @@ public class Clock extends UiAutomatorTestCase
 	 */
 	public void test_004(){  
 		//主体
-		ClockCommon.switchMode("城市");
+		excute(Object_Description,Operation_ClickWait,"城市");
 		String cutyname =  (String) excute(Object_ResourceId, Operation_GetText, "com.android.deskclock:id/city_name");
 		excute(Object_Text, Operation_ClickWait, cutyname);
 		excute(Object_Device, Operation_PressBack);
@@ -88,7 +88,7 @@ public class Clock extends UiAutomatorTestCase
 	 */
 	public void test_005(){  
 		//主体
-		ClockCommon.switchMode("城市");
+		excute(Object_Description,Operation_ClickWait,"城市");
 		excute(Object_Description, Operation_ClickWait, "搜索");
         check(Object_Text, Operation_checkExist, "搜索…");
     }
@@ -103,7 +103,7 @@ public class Clock extends UiAutomatorTestCase
 		//前提
 		ClockCommon.changeLanguage("English");
 		//主体
-		ClockCommon.switchMode("Cities");
+		excute(Object_Description,Operation_ClickWait,"Cities");
 		excute(Object_Description, Operation_ClickWait, "Search");
 		excute(Object_ResourceId, Operation_SetText, "com.android.deskclock:id/search_src_text", "shanghai");
         check(Object_ResIdText, Operation_checkExist, "com.android.deskclock:id/city_name", "Shanghai");
@@ -123,7 +123,7 @@ public class Clock extends UiAutomatorTestCase
 		//前提
 		ClockCommon.changeLanguage("English");
 		//主体
-		ClockCommon.switchMode("Cities");
+		excute(Object_Description,Operation_ClickWait,"Cities");
 		excute(Object_Description, Operation_ClickWait, "Search");
 		excute(Object_ResourceId, Operation_SetText, "com.android.deskclock:id/search_src_text", "shanghai");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.deskclock:id/search_close_btn");
@@ -139,7 +139,7 @@ public class Clock extends UiAutomatorTestCase
 	 */
 	public void test_008() throws UiObjectNotFoundException{
 		//主体
-		ClockCommon.switchMode("城市");
+		excute(Object_Description,Operation_ClickWait,"城市");
 		excute(Object_Device, Operation_PressMenu);
         check(Object_Text, Operation_checkExist, "按时间排序");
         check(Object_Text, Operation_checkExist, "设置");
@@ -154,7 +154,7 @@ public class Clock extends UiAutomatorTestCase
 		try{
 		//主体
 		List<Integer> list=new ArrayList<Integer>();
-		ClockCommon.switchMode("城市");
+		excute(Object_Description,Operation_ClickWait,"城市");
 		ClockCommon.cityMenu( "按时间排序");
         int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "com.android.deskclock:id/cities_list");
 		for(int i = 0; i<num; i++)
@@ -179,7 +179,7 @@ public class Clock extends UiAutomatorTestCase
 	public void test_010() throws UiObjectNotFoundException, ParseException
 	{
 		//主体
-		ClockCommon.switchMode("城市");
+		excute(Object_Description,Operation_ClickWait,"城市");
 		ClockCommon.cityMenu( "按名称排序");
         int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "com.android.deskclock:id/cities_list");
 		String [] tim=new String[num];
@@ -196,7 +196,7 @@ public class Clock extends UiAutomatorTestCase
 	public void test_011()
 	{
 		//主体
-		ClockCommon.switchMode("城市");
+		excute(Object_Description,Operation_ClickWait,"城市");
 		ClockCommon.cityMenu( "设置");
 		check(Object_Text, Operation_checkExist, "样式");
     }
