@@ -606,8 +606,7 @@ public class Clock extends UiAutomatorTestCase
         Assert.assertFalse(time.equals(time1));
         //清场
         excute(Object_Description,Operation_ClickWait,"停止");
-        excute(Object_Description,Operation_WaitForExists,"重置", "10000");
-        excute(Object_Description,Operation_ClickWait,"重置");
+        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
@@ -638,7 +637,7 @@ public class Clock extends UiAutomatorTestCase
         check(Object_Description,Operation_checkExist,"开始");
         check(Object_Description,Operation_checkExist,"分享");
         //清场
-        excute(Object_Description,Operation_ClickWait,"重置");
+        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
@@ -665,9 +664,9 @@ public class Clock extends UiAutomatorTestCase
         excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/fab");
         String time =  (String) excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
         String time1 =  (String) excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
-        Assert.assertEquals(time, time1);
+        Assert.assertTrue(time.equals(time1));
         //清场
-        excute(Object_Description,Operation_ClickWait,"重置");
+        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
@@ -694,11 +693,12 @@ public class Clock extends UiAutomatorTestCase
         //主体
         excute(Object_Description,Operation_ClickWait,"开始");
         String time =  (String) excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
+        excute(Object_Description,Operation_WaitForExists,"0 分钟 10 秒","50000");
         String time1 =  (String) excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
-        Assert.assertTrue(time.equals(time1));
+        Assert.assertFalse(time.equals(time1));
         //清场
         excute(Object_Description,Operation_ClickWait,"停止");
-        excute(Object_Description,Operation_ClickWait,"重置");
+        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
