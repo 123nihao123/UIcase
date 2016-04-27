@@ -5289,7 +5289,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait,"大号字体");
 		check(Object_ResIdText,Operation_checkExist,"android:id/switchWidget","开启");
 		Rect bound1 = (Rect) excute(Object_Text,Operation_GetBounds,"大号字体");
-		Assert.assertNotSame(bound, bound1);
+		Assert.assertFalse(bound.equals(bound1));
 		//清场
 		excute(Object_Text, Operation_ClickWait,"大号字体");
 	}
