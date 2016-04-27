@@ -62,7 +62,7 @@ public class ClockCommon
 	public static String getTimeZone(String info)
 	{
 		//System.out.println(info);
-		String strReturn= DeviceCommon.extractField(info,"\\d+(?=\\:)");
+		String strReturn= DeviceCommon.extractField(info,"-\\d+(?=\\:)");
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
 	}

@@ -166,7 +166,7 @@ public class Clock extends UiAutomatorTestCase
 		}
 		for(int k = 1; k<num-1; k++)
 		{
-			Assert.assertTrue(list.get(k)>=list.get(k+1));
+			Assert.assertTrue(list.get(k)<=list.get(k+1));
 		}
 		}finally{
 			ClockCommon.cityMenu( "按名称排序");
