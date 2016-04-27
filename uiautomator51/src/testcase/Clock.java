@@ -6,6 +6,7 @@ import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 import junit.framework.Assert;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,13 +96,12 @@ public class Clock extends UiAutomatorTestCase
 	 * 输入搜索
 	 * @throws UiObjectNotFoundException 
 	 * @throws RemoteException 
+	 * @throws IOException 
 	 */
-	public void test_116() throws UiObjectNotFoundException, RemoteException{
+	public void test_116() throws UiObjectNotFoundException, RemoteException, IOException{
 		try{
 		//前提
-		ClockCommon.changetoEnglish();
-		excute(Object_Description, Operation_ClickWait, "Apps");
-		excute(Object_Description, Operation_ClickWait, "Clock");
+		ClockCommon.changeLanguage("English");
 		//主体
 		ClockCommon.switchMode("Cities");
 		excute(Object_Description, Operation_ClickWait, "Search");
@@ -109,20 +109,19 @@ public class Clock extends UiAutomatorTestCase
         check(Object_ResIdText, Operation_checkExist, "com.android.deskclock:id/city_name", "Shanghai");
         }finally{
         //清场
-    	ClockCommon.changetoChinese();
+    	ClockCommon.changeLanguage("中文 (简体)");
 		}
     }
 	/**
 	 * 删除搜索内容
 	 * @throws UiObjectNotFoundException 
 	 * @throws RemoteException 
+	 * @throws IOException 
 	 */
-	public void test_117() throws UiObjectNotFoundException, RemoteException{
+	public void test_117() throws UiObjectNotFoundException, RemoteException, IOException{
 		try{
 		//前提
-		ClockCommon.changetoEnglish();
-		excute(Object_Description, Operation_ClickWait, "Apps");
-		excute(Object_Description, Operation_ClickWait, "Clock");
+		ClockCommon.changeLanguage("English");
 		//主体
 		ClockCommon.switchMode("Cities");
 		excute(Object_Description, Operation_ClickWait, "Search");
@@ -131,7 +130,7 @@ public class Clock extends UiAutomatorTestCase
         check(Object_ResIdText, Operation_checkNoExist, "com.android.deskclock:id/city_name", "Shanghai");
         }finally{
         //清场
-    	ClockCommon.changetoChinese();
+    	ClockCommon.changeLanguage("中文 (简体)");
 		}
     }
 	/**
@@ -161,7 +160,7 @@ public class Clock extends UiAutomatorTestCase
 		for(int i = 0; i<num; i++)
 		{
 			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.deskclock:id/city_tz", String.valueOf(i));
-			int j = Integer.parseInt((ClockCommon.extractFileTime(Time)));
+			int j = Integer.parseInt((ClockCommon.getTimeZone(Time)));
 			list.add(j);
 		}
 		for(int k = 1; k<num-1; k++)

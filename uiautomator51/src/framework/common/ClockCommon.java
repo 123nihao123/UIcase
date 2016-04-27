@@ -7,6 +7,7 @@ import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 import static framework.excute.Excute.excute;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,38 +48,18 @@ public class ClockCommon
 	}
 
 	/**
-	 * 中文切英文
+	 * 切换语言
+	 * @param language 取值范围：中文 (繁體)，中文 (简体)，English
 	 * @throws UiObjectNotFoundException
-	 * @throws RemoteException 
+	 * @throws RemoteException
+	 * @throws IOException
 	 */
-	public static void changetoEnglish() throws UiObjectNotFoundException, RemoteException
+	public static void changeLanguage(String language) throws IOException, RemoteException, UiObjectNotFoundException
 	{
-		DeviceCommon.enterApp(Devices_Desc_Setting);
-		excute(Object_TextScroll, Operation_ClickWait, "语言和输入法", "vertical");
-		excute(Object_Text, Operation_ClickWait, "语言");
-		excute(Object_Text, Operation_ClickWait, "English");
-		ClearBackgroundApp();
+		DeviceCommon.runADBCommand("am start -a android.settings.LOCALE_SETTINGS");
+		excute(Object_Text, Operation_ClickWait, language);
 	}
-	/**
-	 * 中文切英文
-	 * @throws UiObjectNotFoundException
-	 */
-	public static void changetoChinese() throws UiObjectNotFoundException
-	{
-		excute(Object_Device, Operation_PressHome);
-		excute(Object_Description, Operation_ClickWait, "Apps");
-		if((boolean) excute(Object_Description, Operation_Exists, "Settings"))
-		{
-			excute(Object_Description, Operation_ClickWait, "Settings");
-		}else{
-			excute(Object_DescScroll, Operation_Exists, "Settings", "vertical");
-			excute(Object_Description, Operation_ClickWait, "Settings");
-		}
-        excute(Object_TextScroll, Operation_ClickWait, "Language & input", "vertical");
-        excute(Object_Text, Operation_ClickWait, "Language");
-		excute(Object_Text, Operation_ClickWait, "中文 (简体)");
-	}
-	public static String extractFileTime(String info)
+	public static String getTimeZone(String info)
 	{
 		//System.out.println(info);
 		String strReturn= DeviceCommon.extractField(info,"\\d+(?=\\:)");
