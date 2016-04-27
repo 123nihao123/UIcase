@@ -700,6 +700,7 @@ public class Clock extends UiAutomatorTestCase
         excute(Object_Description,Operation_ClickWait,"开始");
         excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/fab");
         //主体
+        //由于无法获取重置部件，需点到别的界面后方可刷新部件获取
         ClockCommon.switchMode("计时器");
         ClockCommon.switchMode("秒表");
         excute(Object_Description,Operation_ClickWait,"重置");
