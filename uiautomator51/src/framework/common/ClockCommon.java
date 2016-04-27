@@ -14,8 +14,10 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.graphics.Rect;
 import android.os.RemoteException;
 
+import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class ClockCommon

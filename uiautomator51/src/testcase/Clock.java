@@ -620,7 +620,6 @@ public class Clock extends UiAutomatorTestCase
         check(Object_ResourceId,Operation_checkExist,"com.android.deskclock:id/left_button");
         //清场
         excute(Object_Description,Operation_ClickWait,"停止");
-        
     }
 	
 	/**
@@ -631,7 +630,6 @@ public class Clock extends UiAutomatorTestCase
 		ClockCommon.switchMode("秒表");
         excute(Object_Description,Operation_ClickWait,"开始");
         excute(Object_Description,Operation_ClickWait,"停止");
-        check(Object_Description,Operation_checkExist,"重置");
         check(Object_Description,Operation_checkExist,"开始");
         check(Object_Description,Operation_checkExist,"分享");
     }
@@ -698,12 +696,12 @@ public class Clock extends UiAutomatorTestCase
 		//前提
 		ClockCommon.switchMode("秒表");
         excute(Object_Description,Operation_ClickWait,"开始");
+        Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.deskclock:id/left_button");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
         excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/fab");
         //主体
-        //由于无法获取重置部件，需点到别的界面后方可刷新部件获取
-        ClockCommon.switchMode("计时器");
-        ClockCommon.switchMode("秒表");
-        excute(Object_Description,Operation_ClickWait,"重置");
+        UiDevice.getInstance().click(x, y);
         check(Object_ResIdDesc,Operation_checkExist,"com.android.deskclock:id/stopwatch_time_text","0 分钟 0 秒");
     }
 	

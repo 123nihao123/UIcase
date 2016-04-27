@@ -182,4 +182,15 @@ public class Calendar extends UiAutomatorTestCase
 		UiDevice.getInstance().click(x / 2, y / 2);
 		check(Object_Text, Operation_checkExist, "完成");
 	}
+	public static void test_023()
+	{
+		CalendarCommon.switchMode("日程");
+		check(Object_ResIdContainsText, Operation_checkExist, "触摸可查看");
+	}
+	public static void test_024()
+	{
+		CalendarCommon.enternewCalendar();
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/start_date");
+		check(Object_Text, Operation_checkExist, "zhanxun");
+	}
 }
