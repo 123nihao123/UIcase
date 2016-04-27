@@ -601,12 +601,11 @@ public class Clock extends UiAutomatorTestCase
         ClockCommon.switchMode("秒表");
         excute(Object_Description,Operation_ClickWait,"开始");
         String time = (String)excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
-        Wait(7000);
+        Wait(3000);
         String time1 = (String)excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
         Assert.assertFalse(time.equals(time1));
         //清场
         excute(Object_Description,Operation_ClickWait,"停止");
-        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
@@ -618,10 +617,9 @@ public class Clock extends UiAutomatorTestCase
         excute(Object_Description,Operation_ClickWait,"开始");
         check(Object_ResIdDesc,Operation_checkExist,"com.android.deskclock:id/right_button","停止");
         check(Object_ResIdDesc,Operation_checkExist,"com.android.deskclock:id/fab","停止");
-        check(Object_ResIdDesc,Operation_checkExist,"com.android.deskclock:id/left_button","一圈");
+        check(Object_ResourceId,Operation_checkExist,"com.android.deskclock:id/left_button");
         //清场
         excute(Object_Description,Operation_ClickWait,"停止");
-        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
         
     }
 	
@@ -636,8 +634,6 @@ public class Clock extends UiAutomatorTestCase
         check(Object_Description,Operation_checkExist,"重置");
         check(Object_Description,Operation_checkExist,"开始");
         check(Object_Description,Operation_checkExist,"分享");
-        //清场
-        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
@@ -651,7 +647,6 @@ public class Clock extends UiAutomatorTestCase
         check(Object_ResIdText,Operation_checkExist,"com.android.deskclock:id/lap_number","# 2");
         //清场
         excute(Object_Description,Operation_ClickWait,"停止");
-        excute(Object_Description,Operation_ClickWait,"重置");
     }
 	
 	/**
@@ -665,8 +660,6 @@ public class Clock extends UiAutomatorTestCase
         String time =  (String) excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
         String time1 =  (String) excute(Object_ResourceId,Operation_GetDesc,"com.android.deskclock:id/stopwatch_time_text");
         Assert.assertTrue(time.equals(time1));
-        //清场
-        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
@@ -678,8 +671,6 @@ public class Clock extends UiAutomatorTestCase
         excute(Object_Description,Operation_ClickWait,"开始");
         excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/right_button");
         check(Object_Description,Operation_checkExist,"分享");
-        //清场
-        excute(Object_Description,Operation_ClickWait,"重置");
     }
 	
 	/**
@@ -698,7 +689,6 @@ public class Clock extends UiAutomatorTestCase
         Assert.assertFalse(time.equals(time1));
         //清场
         excute(Object_Description,Operation_ClickWait,"停止");
-        excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/left_button");
     }
 	
 	/**
@@ -710,6 +700,8 @@ public class Clock extends UiAutomatorTestCase
         excute(Object_Description,Operation_ClickWait,"开始");
         excute(Object_ResourceId,Operation_ClickWait,"com.android.deskclock:id/fab");
         //主体
+        ClockCommon.switchMode("计时器");
+        ClockCommon.switchMode("秒表");
         excute(Object_Description,Operation_ClickWait,"重置");
         check(Object_ResIdDesc,Operation_checkExist,"com.android.deskclock:id/stopwatch_time_text","0 分钟 0 秒");
     }
