@@ -71,7 +71,8 @@ public class ClockCommon
 		{
 			excute(Object_Description, Operation_ClickWait, "Settings");
 		}else{
-			excute(Object_DescScroll, Operation_ClickWait, "Settings", "vertical");
+			excute(Object_DescScroll, Operation_Exists, "Settings", "vertical");
+			excute(Object_Description, Operation_ClickWait, "Settings");
 		}
         excute(Object_TextScroll, Operation_ClickWait, "Language & input", "vertical");
         excute(Object_Text, Operation_ClickWait, "Language");
