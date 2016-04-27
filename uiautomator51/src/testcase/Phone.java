@@ -12,6 +12,7 @@ import framework.common.CallCommon;
 import framework.common.CallLogCommon;
 import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
+import framework.common.InteractionCommon;
 import framework.common.PhoneCommon;
 
 public class Phone extends UiAutomatorTestCase
@@ -937,8 +938,8 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_067() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = Interaction.mtCall_reject;
-		Interaction IMtCall = new Interaction(Interaction.mtCall_wakeUp);
+		String option = InteractionCommon.mtCall_reject;
+		InteractionCommon IMtCall = new InteractionCommon(InteractionCommon.mtCall_wakeUp);
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
@@ -952,8 +953,8 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_068() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = Interaction.mtCall_answer;
-		Interaction IMtCall = new Interaction(Interaction.mtCall_wakeUp);
+		String option = InteractionCommon.mtCall_answer;
+		InteractionCommon IMtCall = new InteractionCommon(InteractionCommon.mtCall_wakeUp);
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
@@ -967,8 +968,8 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_069() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = Interaction.mtCall_answer;
-		Interaction IMtCall = new Interaction(Interaction.mtCall_sleep);
+		String option = InteractionCommon.mtCall_answer;
+		InteractionCommon IMtCall = new InteractionCommon(InteractionCommon.mtCall_sleep);
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
@@ -982,8 +983,8 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_070() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = Interaction.mtCall_reject;
-		Interaction IMtCall = new Interaction(Interaction.mtCall_sleep);
+		String option = InteractionCommon.mtCall_reject;
+		InteractionCommon IMtCall = new InteractionCommon(InteractionCommon.mtCall_sleep);
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
@@ -997,8 +998,8 @@ public class Phone extends UiAutomatorTestCase
 	public static void test_071() throws IOException, InterruptedException 
 	{
 		//前提
-		String option = Interaction.mtCall_rejectBySMS;
-		Interaction IMtCall = new Interaction(Interaction.mtCall_sleep);
+		String option = InteractionCommon.mtCall_rejectBySMS;
+		InteractionCommon IMtCall = new InteractionCommon(InteractionCommon.mtCall_sleep);
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
