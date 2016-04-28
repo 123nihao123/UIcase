@@ -18,7 +18,7 @@ public class CalendarCommon
 	/**
 	 * 进入新建日程界面
 	 */
-	public static void enternewCalendar()
+	public static void createEvent()
 	{
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "新建活动");
