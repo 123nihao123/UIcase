@@ -341,16 +341,15 @@ public class Calendar extends UiAutomatorTestCase
 		//主体
 		CalendarCommon.repeat("每年重复");
 		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/spinner_item", "每年重复");
-		if(!(boolean) excute(Object_Text, Operation_IsChecked, "在每个月的同一天"))
-		{
-			excute(Object_Text, Operation_ClickWait, "在每个月的同一天");
-			check(Object_Text, Operation_CheckedTrue, "在每个月的同一天");
-		}	
-		if(!(boolean) excute(Object_ResourceId, Operation_IsChecked, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek"))
-		{
-			excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek");
-			check(Object_ResourceId, Operation_CheckedTrue, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek");
-		}
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "无限重复");
+		check(Object_Text, Operation_checkExist, "无限重复");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "直到某个日期");
+		check(Object_Text, Operation_checkExist, "直到");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "限定次数");
+		check(Object_Text, Operation_checkExist, "重复");
 	}
 	/**
 	 * 提醒设置
