@@ -224,20 +224,8 @@ public class MessageCommon {
 	public static String extractFileTime(String info)
 	{
 		//System.out.println(info);
-		String strReturn= extractField(info,"\\d\\d\\d\\d/\\d/\\d\\d\\s\\d\\d:\\d\\d");
+		String strReturn= DeviceCommon.extractField(info,"\\d\\d\\d\\d/\\d/\\d\\d\\s\\d\\d:\\d\\d");
 		//System.out.println("FileTime is"+strReturn);
-		return strReturn;
-	}
-	public static String extractField(String info, String ptn)
-	{
-		String strReturn="";
-		Pattern p = Pattern.compile(ptn);
-		Matcher m = p.matcher(info);
-		while (m.find())
-		{
-			strReturn = m.group();
-			//System.out.println("in while strReturn: " +strReturn);
-		}
 		return strReturn;
 	}
 	/**

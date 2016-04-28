@@ -1106,8 +1106,9 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
 		String time = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		Wait(1000);
 		String time1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
-		Assert.assertNotSame(time, time1);
+		Assert.assertFalse(time.equals(time1));
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
 	}
@@ -1229,8 +1230,9 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/btn_video_pause");
 		String time = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
+		Wait(1000);
 		String time1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.camera2:id/recording_time");
-		Assert.assertNotSame(time, time1);
+		Assert.assertFalse(time.equals(time1));
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.camera2:id/shutter_button");
 		excute(Object_Description,Operation_ClickWait,"选项");
