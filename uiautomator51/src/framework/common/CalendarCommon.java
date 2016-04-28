@@ -23,4 +23,15 @@ public class CalendarCommon
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "新建活动");
 	}
+	
+	/**
+	 * 进入设置界面
+	 */
+	public static void enterSettings(String name)
+	{
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text,Operation_ClickWait,"设置");
+		excute(Object_Text,Operation_ClickWait,name);
+	}
+	
 }
