@@ -5,8 +5,7 @@ import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 import android.os.RemoteException;
 
@@ -14,8 +13,8 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
-import framework.common.CalendarCommon;
-import framework.common.CameraCommon;
+
+import framework.common.BrowserCommon;
 import framework.common.DeviceCommon;
 
 public class Browser extends UiAutomatorTestCase
@@ -29,11 +28,13 @@ public class Browser extends UiAutomatorTestCase
 		ClearBackgroundApp();
 		Wait(1000);
 		DeviceCommon.enterApp(Devices_Desc_Browser);
+
    }
 	@Override
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
+
 	
 	/**
 	 * 进入浏览器
@@ -263,4 +264,110 @@ public class Browser extends UiAutomatorTestCase
 	}
 	
 	
+	/**
+	 * 主页设置
+	 */
+	public static void test_057()
+	{
+		//主体
+		BrowserCommon.settingMenu("常规");
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		check(Object_Text, Operation_checkExist, "当前页");
+		check(Object_Text, Operation_checkExist, "空白页");
+		check(Object_Text, Operation_checkExist, "默认页");
+		check(Object_Text, Operation_checkExist, "页面导航");
+		check(Object_Text, Operation_checkExist, "其他");
+	}
+	/**
+	 * 当前页
+	 */
+	public static void test_058()
+	{
+		//主体
+		BrowserCommon.settingMenu("常规");
+		String hmoepage = (String) excute(Object_ResourceId, Operation_GetText, "android:id/summary");
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		excute(Object_Text, Operation_ClickWait, "当前页");
+		excute(Object_Text, Operation_WaitForExists, hmoepage, "10000");
+		check(Object_Text, Operation_checkExist, hmoepage);
+	}
+	/**
+	 * 空白页
+	 */
+	public static void test_059()
+	{
+		//主体
+		BrowserCommon.settingMenu("常规");
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		excute(Object_Text, Operation_ClickWait, "空白页");
+		check(Object_Text, Operation_checkExist, "空白页");
+	}
+	/**
+	 * 默认页
+	 */
+	public static void test_060()
+	{
+		//主体
+		BrowserCommon.settingMenu("常规");
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		excute(Object_Text, Operation_ClickWait, "默认页");
+		excute(Object_Text, Operation_WaitForExists, "http://www.wo.com.cn", "10000");
+		check(Object_Text, Operation_checkExist, "http://www.wo.com.cn");
+	}
+	/**
+	 * 页面导航
+	 */
+	public static void test_061()
+	{
+		//主体
+		BrowserCommon.settingMenu("常规");
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		excute(Object_Text, Operation_ClickWait, "页面导航");
+		excute(Object_Text, Operation_WaitForExists, "页面导航", "10000");
+		check(Object_Text, Operation_checkExist, "页面导航");
+	}
+	/**
+	 * 其它主页
+	 */
+	public static void test_062()
+	{
+		//主体
+		BrowserCommon.settingMenu("常规");
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		excute(Object_Text, Operation_ClickWait, "其他");
+		excute(Object_ResourceId, Operation_SetText, "android:id/custom", "www.baidu.com");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		excute(Object_Text, Operation_WaitForExists, "http://www.baidu.com/", "10000");
+		check(Object_Text, Operation_checkExist, "http://www.baidu.com/");
+	}
+	/**
+	 * 清除缓存
+	 */
+	public static void test_063()
+	{
+		//主体
+		BrowserCommon.PrivacySecurity("清除缓存");
+	}
+	/**
+	 * 清除缓存
+	 */
+	public static void test_064()
+	{
+		//主体
+		BrowserCommon.PrivacySecurity("清除历史记录");
+	}
+	/**
+	 * 显示安全警告
+	 */
+	public static void test_065()
+	{
+		//主体
+		BrowserCommon.settingMenu("隐私和安全");
+		if((boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/checkbox", "0"))
+			excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
+		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/checkbox", "0");
+		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
+		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/checkbox", "0");
+	}
 }
