@@ -56,7 +56,7 @@ public class ResIdTextAndDesc {
 	public static final String Devices_Text_Fm = "FM 电台";
 	public static final String Devices_Text_Camera = "相机";
 	public static final String Devices_Desc_Clock = "时钟";
-	
+	public static final String Devices_Desc_Browser = "浏览器";
 	
 	//Call
 	public static final String CMCCNum = "10086";
