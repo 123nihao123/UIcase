@@ -170,30 +170,286 @@ public class Calendar extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"常规设置");
 	}
 	/**
-	 * 新建日程
+	 * 新建日程界面
 	 */
 	public static void test_019()
 	{
+		//主体
 		CalendarCommon.switchMode("日");
 		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calendar:id/switcher");
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x / 2, y / 2);
 		UiDevice.getInstance().click(x / 2, y / 2);
+		excute(Object_Text, Operation_WaitForExists, "完成", "10000");
 		check(Object_Text, Operation_checkExist, "完成");
 	}
+	/**
+	 * 日程模式
+	 */
 	public static void test_023()
 	{
+		//主体
 		CalendarCommon.switchMode("日程");
-		check(Object_ResIdContainsText, Operation_checkExist, "触摸可查看");
+		check(Object_ClassContainsText, Operation_checkExist, "android.widget.TextView", "触摸可查看");
 	}
+	/**
+	 * 新建日程
+	 */
 	public static void test_024()
 	{
-		CalendarCommon.enternewCalendar();
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/start_date");
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_ResourceId, Operation_SetText, "com.android.calendar:id/title", "zhanxun");
+		excute(Object_ResourceId, Operation_SetText, "com.android.calendar:id/location", "Nanjing");
+		excute(Object_Text, Operation_ClickWait, "完成");
+		CalendarCommon.switchMode("日程");
 		check(Object_Text, Operation_checkExist, "zhanxun");
 	}
-	
+	/**
+	 * 开始日期
+	 */
+	public static void test_025()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/start_date");
+		check(Object_ResourceId, Operation_checkExist, "com.android.calendar:id/date_picker_month");//月id
+	}
+	/**
+	 * 开始时间
+	 */
+	public static void test_026()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/start_time");
+		check(Object_ResourceId, Operation_checkExist, "com.android.calendar:id/time_display");//时间id
+	}
+	/**
+	 * 点击时区
+	 */
+	public static void test_027()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/timezone_button");
+		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/searchBox", "   输入国家/地区名称");
+	}
+	/**
+	 * 重复
+	 */
+	public static void test_028()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_TextScroll, Operation_Exists, "重复", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/rrule");
+		check(Object_Text, Operation_checkExist, "每周重复");
+	}
+	/**
+	 * 重复开关状态
+	 */
+	public static void test_029()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_TextScroll, Operation_Exists, "重复", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/rrule");
+		if(!(boolean) excute(Object_ResourceId, Operation_IsChecked, "com.android.calendar:id/repeat_switch"))
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/repeat_switch");
+		check(Object_ResourceId, Operation_CheckedTrue, "com.android.calendar:id/repeat_switch");//重复按钮
+		//清场
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/repeat_switch");
+	}
+	/**
+	 * 重复选项
+	 */
+	public static void test_030()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_TextScroll, Operation_Exists, "重复", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/rrule");
+		if(!(boolean) excute(Object_ResourceId, Operation_IsChecked, "com.android.calendar:id/repeat_switch"))
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/repeat_switch");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/spinner_item");
+		check(Object_Text, Operation_checkExist, "每天重复");
+		check(Object_Text, Operation_checkExist, "每周重复");
+		check(Object_Text, Operation_checkExist, "每月重复");
+		check(Object_Text, Operation_checkExist, "每年重复");
+		//清场
+		excute(Object_Device, Operation_PressBack);
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/repeat_switch");
+	}
+	/**
+	 * 每天重复
+	 */
+	public static void test_031()
+	{
+		//主体
+		CalendarCommon.repeat("每天重复");
+		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/spinner_item", "每天重复");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "无限重复");
+		check(Object_Text, Operation_checkExist, "无限重复");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "直到某个日期");
+		check(Object_Text, Operation_checkExist, "直到");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "限定次数");
+		check(Object_Text, Operation_checkExist, "重复");
+	}
+	/**
+	 * 每周重复
+	 */
+	public static void test_032()
+	{
+		//主体
+		CalendarCommon.repeat("每周重复");
+		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/spinner_item", "每周重复");
+		if(!(boolean) excute(Object_Text, Operation_IsChecked, "周日"))
+			excute(Object_Text, Operation_ClickWait, "周日");
+		if(!(boolean) excute(Object_Text, Operation_IsChecked, "周一"))
+			excute(Object_Text, Operation_ClickWait, "周一");
+		excute(Object_Text, Operation_ClickWait, "完成");
+		check(Object_ResIdContainsText, Operation_checkExist, "com.android.calendar:id/rrule", "每1周的周日, 周一");
+	}
+	/**
+	 * 每个月重复
+	 */
+	public static void test_033()
+	{
+		//主体
+		CalendarCommon.repeat("每月重复");
+		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/spinner_item", "每月重复");
+		if(!(boolean) excute(Object_Text, Operation_IsChecked, "在每个月的同一天"))
+		{
+			excute(Object_Text, Operation_ClickWait, "在每个月的同一天");
+			check(Object_Text, Operation_CheckedTrue, "在每个月的同一天");
+		}	
+		if(!(boolean) excute(Object_ResourceId, Operation_IsChecked, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek"))
+		{
+			excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek");
+			check(Object_ResourceId, Operation_CheckedTrue, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek");
+		}
+	}
+	/**
+	 * 每年重复
+	 */
+	public static void test_034()
+	{
+		//主体
+		CalendarCommon.repeat("每年重复");
+		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/spinner_item", "每年重复");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "无限重复");
+		check(Object_Text, Operation_checkExist, "无限重复");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "直到某个日期");
+		check(Object_Text, Operation_checkExist, "直到");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "限定次数");
+		check(Object_Text, Operation_checkExist, "重复");
+	}
+	/**
+	 * 提醒设置
+	 */
+	public static void test_035()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_TextScroll, Operation_Exists, "提醒", "vertical");
+		excute(Object_ResIdText, Operation_ClickWait, "android:id/text1", "10 分钟");
+		check(Object_Text, Operation_checkExist, "15 分钟");
+		check(Object_Text, Operation_checkExist, "20 分钟");
+	}
+	/**
+	 * 将我的状态设置为
+	 */
+	public static void test_036()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_TextScroll, Operation_Exists, "将我的状态显示为", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/availability");
+		check(Object_Text, Operation_checkExist, "忙碌");
+		check(Object_Text, Operation_checkExist, "有空");
+	}
+	/**
+	 * 活动性质
+	 */
+	public static void test_037()
+	{
+		//主体
+		CalendarCommon.createEvent();
+		excute(Object_TextScroll, Operation_Exists, "活动性质", "vertical");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/visibility");
+		check(Object_Text, Operation_checkExist, "默认");
+		check(Object_Text, Operation_checkExist, "不公开");
+		check(Object_Text, Operation_checkExist, "公开");
+	}
+	/**
+	 * 选择日期
+	 */
+	public static void test_039()
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "选择日期");
+		String desc = (String) excute(Object_ClassIndex, Operation_GetDesc, "android.view.View", "15");
+		System.out.println(desc);
+		String[] name =desc.split(" ");
+		excute(Object_Description, Operation_ClickWait, desc);
+		excute(Object_Text, Operation_ClickWait, "完成");
+		check(Object_ResIdContainsText, Operation_checkExist, "com.android.calendar:id/top_button_date", name[0]);
+	}
+	/**
+	 * 搜索
+	 */
+	public static void test_040()
+	{
+		//前提
+		CalendarCommon.createEvent();
+		excute(Object_ResourceId, Operation_SetText, "com.android.calendar:id/title", "zhanxun");
+		excute(Object_ResourceId, Operation_SetText, "com.android.calendar:id/location", "Nanjing");
+		excute(Object_Text, Operation_ClickWait, "完成");
+		//主体
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "搜索");
+		excute(Object_ResourceId, Operation_SetText, "android:id/search_src_text", "zhanxun");
+		excute(Object_Device, Operation_PressEnter);
+		check(Object_ResIdText, Operation_WaitForExists, "com.android.calendar:id/title", "zhanxun", "10000");
+		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/title", "zhanxun");
+	}
+	/**
+	 * 清除搜索
+	 */
+	public static void test_041()
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "搜索");
+		excute(Object_ResourceId, Operation_SetText, "android:id/search_src_text", "zhanxun");
+		excute(Object_ResourceId, Operation_ClickWait, "android:id/search_close_btn");
+		check(Object_ResIdText, Operation_checkNoExist, "android:id/search_src_text", "zhanxun");
+	}
+	/**
+	 * 搜索菜单
+	 */
+	public static void test_042()
+	{
+		//主体
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		excute(Object_Text, Operation_ClickWait, "搜索");
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_Text, Operation_checkExist, "今天");
+		check(Object_Text, Operation_checkExist, "新建活动");
+		check(Object_Text, Operation_checkExist, "刷新");
+		check(Object_Text, Operation_checkExist, "选择日期");
+		check(Object_Text, Operation_checkExist, "显示的日历");
+		check(Object_Text, Operation_checkExist, "设置");
+	}
 	/**
 	 * 同步日历
 	 */
@@ -423,5 +679,7 @@ public class Calendar extends UiAutomatorTestCase
 		excute(Object_Text,Operation_WaitForExists,"帐户设置","3000");
 		check(Object_Text,Operation_checkExist,"帐户设置");
 	}
+	
+
 	
 }
