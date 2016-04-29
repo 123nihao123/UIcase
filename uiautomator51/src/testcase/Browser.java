@@ -363,11 +363,7 @@ public class Browser extends UiAutomatorTestCase
 	{
 		//主体
 		BrowserCommon.settingMenu("隐私和安全");
-<<<<<<< HEAD
-		if((boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/checkbox", "0"))
-=======
 		if(!(boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/checkbox", "0"))
->>>>>>> Fix bug by Sanyang
 			excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
 		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
 		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/checkbox", "0");
