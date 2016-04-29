@@ -181,6 +181,7 @@ public class Calendar extends UiAutomatorTestCase
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x / 2, y / 2);
 		UiDevice.getInstance().click(x / 2, y / 2);
+		excute(Object_Text, Operation_WaitForExists, "完成", "10000");
 		check(Object_Text, Operation_checkExist, "完成");
 	}
 	/**
@@ -418,6 +419,7 @@ public class Calendar extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "android:id/search_src_text", "zhanxun");
 		excute(Object_Device, Operation_PressEnter);
+		check(Object_ResIdText, Operation_WaitForExists, "com.android.calendar:id/title", "zhanxun", "10000");
 		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/title", "zhanxun");
 	}
 	/**
