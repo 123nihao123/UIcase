@@ -206,6 +206,7 @@ public class ResIdTextAndDesc {
 	
 	//图库
 	public static final String PictureStore_ResId_Changeto_Camera = "com.android.gallery3d:id/action_camera";
+	public static final String Camera_Text_Operator_camera = "图库";
 	
 	
 	//相机

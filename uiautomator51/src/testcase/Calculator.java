@@ -40,6 +40,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_001()
 	{
+		//主体
 		check(Object_ResourceId,Operation_checkExist,"com.android.calculator2:id/pad_operator");
 		//通过判断页面的加减乘除的ID判断
 	}
@@ -48,6 +49,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_002()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_0");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_2");
@@ -66,6 +68,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_003()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/op_add");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -78,6 +81,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_004()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/op_sub");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -90,6 +94,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_008()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/op_mul");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -102,6 +107,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_005()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/op_div");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -114,6 +120,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_007()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_2");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_3");
@@ -127,6 +134,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_009()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -141,6 +149,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_010_1()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -162,6 +171,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_010_2()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -182,6 +192,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_011()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -202,6 +213,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_012()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -222,6 +234,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_013()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -243,6 +256,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_014()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -256,6 +270,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_015()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());
@@ -277,6 +292,7 @@ public class Calculator extends UiAutomatorTestCase
 	 */
 	public static void test_016()
 	{
+		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
 		String x = Integer.toString(advanced.centerX());
 		String y = Integer.toString(advanced.centerY());

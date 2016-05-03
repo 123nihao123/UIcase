@@ -45,6 +45,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_001() 
 	{
+		//主体
 		check(Object_Description,Operation_WaitForExists,"停止播放 FM 电台","10000");
 	}
 	/**
@@ -52,6 +53,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_002() //Operation_GetText 
 	{
+		//主体
 		String  figure1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/button_prevstation");
 		String  figure2 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
@@ -63,6 +65,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_003()
 	{
+		//主体
 		String  figure1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/button_decrease");
 		String  figure2 = (String)  excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
@@ -77,6 +80,7 @@ public class Fm extends UiAutomatorTestCase
 	
 	public static void test_004()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"添加到收藏");
 		check(Object_ResourceId,Operation_checkExist,"com.android.fmradio:id/favorite_text");
 		//清场
@@ -88,6 +92,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_008()
 	{
+		//主体
 		String  figure1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/button_increase");
 		String  figure2 = (String)  excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
@@ -101,6 +106,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_005() //Operation_GetText 
 	{
+		//主体
 		String  figure1 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/button_nextstation");
 		String  figure2 = (String) excute(Object_ResourceId,Operation_GetText,"com.android.fmradio:id/station_value");
@@ -112,6 +118,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_007() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		if((Boolean) excute(Object_Text,Operation_Exists,"正在搜索电台"))
 		{	
@@ -124,6 +131,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_009() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		check(Object_ResourceId,Operation_checkExist,"com.android.fmradio:id/lv_station_type");
 		//查看搜索图标的ResourceId
@@ -133,6 +141,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_010_1() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.fmradio:id/lv_station_type","0");
 		excute(Object_Device,Operation_PressBack);
@@ -160,6 +169,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_011() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		String  figure1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.android.fmradio:id/lv_station_freq","0");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.fmradio:id/list_item_left","0");
@@ -172,6 +182,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_012() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"刷新");
@@ -182,6 +193,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_013_1() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 	    excute(Object_Text,Operation_ClickWait,"刷新");
@@ -192,6 +204,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_013_2() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		String  figure1 = (String) excute(Object_ResIdInstance,Operation_GetText,"com.android.fmradio:id/lv_station_freq","0");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.fmradio:id/list_item_left","0");
@@ -204,6 +217,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_014() 
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 	    excute(Object_Text,Operation_ClickWait,"从当前频道开始搜台");
@@ -214,6 +228,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_015()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_headset");
 		check(Object_Text,Operation_checkExist,"耳机");
 		check(Object_Text,Operation_checkExist,"扬声器");
@@ -223,6 +238,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_016()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_headset");
 		check(Object_Text,Operation_ClickWait,"耳机");
 	}
@@ -231,6 +247,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_017()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_headset");
 		check(Object_Text,Operation_ClickWait,"扬声器");
 	}
@@ -239,6 +256,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_018()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"开始录音");
 		check(Object_Text,Operation_checkExist,"已保存的录音");
@@ -250,6 +268,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_019()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"开始录音");
 		check(Object_Text,Operation_checkExist,"录音");
@@ -259,6 +278,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_020()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"已保存的录音");
 		check(Object_Text,Operation_checkExist,"音乐");
@@ -268,6 +288,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_021()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"录音格式");
 		check(Object_Text,Operation_checkExist,"amr");
@@ -278,6 +299,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_022()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"录音格式");
 		excute(Object_Text,Operation_ClickWait,"amr");
@@ -291,6 +313,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_023()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"录音格式");
 		excute(Object_Text,Operation_ClickWait,"3gpp");
@@ -304,6 +327,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_024()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"设置保存路径");
 		check(Object_ResourceId,Operation_checkExist,"android:id/select_dialog_listview");	
@@ -313,6 +337,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_025()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"设置保存路径");
 		excute(Object_Text,Operation_ClickWait,"内置存储");
@@ -322,6 +347,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_026()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"设置保存路径");
 		excute(Object_Text,Operation_ClickWait,"外置存储");
@@ -331,6 +357,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_027()
 	{
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/play_button");
 		//检查没有电台，所以是关闭的
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
@@ -356,6 +383,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_029()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"添加到收藏");
 		check(Object_ResourceId,Operation_checkExist,"com.android.fmradio:id/favorite_text");
 		//清场
@@ -367,7 +395,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_030()
 	{
-		
+		//主体
 		excute(Object_Description,Operation_ClickWait,"添加到收藏");
 		check(Object_ResourceId,Operation_checkExist,"com.android.fmradio:id/favorite_text");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/station_more");
@@ -381,6 +409,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_031()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"添加到收藏");
 		check(Object_ResourceId,Operation_checkExist,"com.android.fmradio:id/favorite_text");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/station_more");
@@ -393,7 +422,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_032()
 	{
-		
+		//主体
 		excute(Object_Description,Operation_ClickWait,"添加到收藏");
 		check(Object_ResourceId,Operation_checkExist,"com.android.fmradio:id/favorite_text");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/station_more");
@@ -410,10 +439,9 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_033() throws UiObjectNotFoundException
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"添加到收藏");
-		
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/station_value");
-	
 		excute(Object_ResourceId,Operation_SetText,"com.android.fmradio:id/edit_freq","100.0");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		//检查
@@ -429,6 +457,7 @@ public class Fm extends UiAutomatorTestCase
 	 */
 	public static void test_034()
 	{
+		//主体
 		excute(Object_Description,Operation_ClickWait,"添加到收藏");
 		check(Object_ResourceId,Operation_checkExist,"com.android.fmradio:id/favorite_text");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/card_view");
@@ -436,10 +465,7 @@ public class Fm extends UiAutomatorTestCase
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/station_more");
 		excute(Object_ResIdText,Operation_ClickWait,"android:id/title","取消收藏");
-		
 	}
-	
-	
 }
 	
 	

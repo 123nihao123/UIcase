@@ -1,4 +1,4 @@
-package testcase;
+package framework.common;
 
 import java.io.IOException;
 import junit.framework.Assert;
@@ -12,9 +12,8 @@ import static framework.data.ObjectType.Object_Device;
 import static framework.data.ObjectType.Object_ResIdInstance;
 import static framework.data.OperationType.*;
 import static framework.excute.Excute.*;
-import framework.common.DeviceCommon;
 
-public class Interaction {
+public class InteractionCommon {
 	//mtCall
 	private String testSN = DeviceCommon.getSerialNumber();
 	private String simNum;
@@ -29,9 +28,9 @@ public class Interaction {
 	public static String mtCall_wakeUp = "mtCall_wakeUp";
 	public static String mtCall_sleep = "mtCall_sleep";
 	
-	public Interaction(){}
+	public InteractionCommon(){}
 	
-	public Interaction(String option) throws IOException, InterruptedException{
+	public InteractionCommon(String option) throws IOException, InterruptedException{
 		if(option.contains("mtCall"))
 		{
 			Process proc = Runtime.getRuntime().exec("am start -n com.spreadtrum.itestapp/com.spreadtrum.itestapp.TestClientActivity");
