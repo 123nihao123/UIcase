@@ -665,4 +665,19 @@ public class DeviceCommon
 		}
 		return strReturn;
 	}
+	/**
+	 * 清除ID内容
+	 * @param ID
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void ClearTextField(String ID) throws UiObjectNotFoundException
+	{
+		UiObject obj = (UiObject) excute(Object_ResourceId, Operate_ReturnObject, ID);
+		  String text = obj.getText();
+		  obj.clickBottomRight();
+		  for (int i=0;i<text.length();i++) {
+			  excute(Object_Device, Operation_PressDelete);
+		  }
+	}
+	
 }

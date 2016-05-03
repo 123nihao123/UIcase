@@ -4,7 +4,9 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+
 import junit.framework.Assert;
+
 import android.graphics.Rect;
 import android.os.RemoteException;
 import com.android.uiautomator.core.UiDevice;
@@ -909,13 +911,275 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_065()
 	{
 		//主体
-		BrowserCommon.settingMenu("隐私和安全");
-		if(!(boolean) excute(Object_ResIdInstance, Operation_IsChecked, "android:id/checkbox", "0"))
-			excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
-		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
-		check(Object_ResIdInstance, Operation_CheckedFalse, "android:id/checkbox", "0");
-		excute(Object_ResIdInstance, Operation_ClickWait, "android:id/checkbox", "0");
-		check(Object_ResIdInstance, Operation_CheckedTrue, "android:id/checkbox", "0");
+		BrowserCommon.switchSecurityWidget("隐私和安全", "显示安全警告");
+	}
+	/**
+	 * 接受Cookie
+	 */
+	public static void test_066()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("隐私和安全", "接受 Cookie");
+	}
+	/**
+	 * 清除所有cookie数据
+	 */
+	public static void test_067()
+	{
+		//主体
+		BrowserCommon.PrivacySecurity("清除所有 Cookie 数据");
+	}
+	public static void test_068()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("隐私和安全", "记住表单数据");
+		
+	}
+	/**
+	 * 清除表单数据
+	 */
+	public static void test_069()
+	{
+		//主体
+		BrowserCommon.PrivacySecurity("清除表单数据");
+	}
+	/**
+	 * 启用位置信息功能
+	 */
+	public static void test_070()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("隐私和安全", "启用位置信息功能");
+	}
+	/**
+	 * 启用位置信息功能
+	 */
+	public static void test_071()
+	{
+		//主体
+		BrowserCommon.PrivacySecurity("取消获取位置信息的权限");
+	}
+	/**
+	 * 记住密码
+	 */
+	public static void test_072()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("隐私和安全", "记住密码");
+	}
+	/**
+	 * 清除密码
+	 */
+	public static void test_073()
+	{
+		//主体
+		BrowserCommon.PrivacySecurity("清除密码");
+	}
+	/**
+	 * 强制启用缩放
+	 */
+	public static void test_074()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("辅助功能", "强制启用缩放");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "强制启用缩放", "vertical");
+	}
+	/**
+	 * 横屏
+	 */
+	public static void test_075()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("辅助功能", "横屏");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "横屏", "vertical");
+	}
+	/**
+	 * 文字样式
+	 */
+	public static void test_076()
+	{
+		//主体
+		BrowserCommon.settingMenu("辅助功能");
+		excute(Object_TextScroll, Operation_ClickWait, "文字样式", "vertical");
+		check(Object_Text, Operation_checkExist, "取消");
+	}
+	/**
+	 * 设置搜索引擎
+	 */
+	public static void test_077()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
+		check(Object_Text, Operation_checkExist, "取消");
+	}
+	/**
+	 * 设置搜索引擎为Google
+	 */
+	public static void test_078()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
+		excute(Object_Text, Operation_ClickWait, "Google");
+		check(Object_ResIdText, Operation_checkExist, "android:id/summary", "Google");
+	}
+	/**
+	 * 设置搜索引擎为百度
+	 */
+	public static void test_079()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
+		excute(Object_Text, Operation_ClickWait, "百度");
+		check(Object_ResIdText, Operation_checkExist, "android:id/summary", "百度");
+	}
+	/**
+	 * 设置搜索引擎为Bing
+	 */
+	public static void test_081()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
+		excute(Object_Text, Operation_ClickWait, "Bing");
+		check(Object_ResIdText, Operation_checkExist, "android:id/summary", "Bing");
+	}
+	/**
+	 * 存储位置
+	 */
+	public static void test_082()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "存储位置", "vertical");
+		check(Object_Text, Operation_checkExist, "选择存储设备");
+	}
+	/**
+	 * 取消设置存储位置
+	 */
+	public static void test_083()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "存储位置", "vertical");
+		excute(Object_Text, Operation_ClickWait, "返回");
+		check(Object_Text, Operation_checkNoExist, "选择存储设备");
+	}
+	/**
+	 * 设置内部存储位置
+	 */
+	public static void test_084()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "存储位置", "vertical");
+		excute(Object_Text, Operation_ClickWait, "内部存储");
+		check(Object_ResIdContainsText, Operation_checkExist, "com.android.browser:id/custom_title", "emulated");
+	}
+	/**
+	 * 设置SD存储位置
+	 */
+	public static void test_085()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "存储位置", "vertical");
+		excute(Object_Text, Operation_ClickWait, "SD卡");
+		check(Object_ResIdContainsText, Operation_checkNoExist, "com.android.browser:id/custom_title", "emulated");
+	}
+	/**
+	 * 在后方打开
+	 */
+	public static void test_086()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("高级", "在后方打开");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "在后方打开", "vertical");
+	}
+	/**
+	 * 启用 JavaScript
+	 */
+	public static void test_087()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("高级", "启用 JavaScript");
+	}
+	/**
+	 * 允许一个应用使用多个标签页
+	 */
+	public static void test_088()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("高级", "允许一个应用使用多个标签页");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "允许一个应用使用多个标签页", "vertical");
+	}
+	/**
+	 * 启用插件
+	 */
+	public static void test_089()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "启用插件", "vertical");
+		excute(Object_Text, Operation_ClickWait, "始终启用（打开）");
+		excute(Object_TextScroll, Operation_ClickWait, "启用插件", "vertical");
+		check(Object_Text, Operation_CheckedTrue, "始终启用（打开）");
+	}
+	/**
+	 * 在需要时打开
+	 */
+	public static void test_091()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "启用插件", "vertical");
+		excute(Object_Text, Operation_ClickWait, "在需要时打开");
+		excute(Object_TextScroll, Operation_ClickWait, "启用插件", "vertical");
+		check(Object_Text, Operation_CheckedTrue, "在需要时打开");
+	}
+	/**
+	 * 关闭插件
+	 */
+	public static void test_092()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "启用插件", "vertical");
+		excute(Object_Text, Operation_ClickWait, "关闭");
+		excute(Object_TextScroll, Operation_ClickWait, "启用插件", "vertical");
+		check(Object_Text, Operation_CheckedTrue, "关闭");
+	}
+	/**
+	 * 以概览模式打开网页
+	 */
+	public static void test_094()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("高级", "以概览模式打开网页");
+	}
+	/**
+	 * 自动调整页面
+	 */
+	public static void test_095()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("高级", "自动调整页面");
+		//清场
+		excute(Object_TextScroll, Operation_ClickWait, "自动调整页面", "vertical");
+	}
+	/**
+	 * 阻止弹出式窗口
+	 */
+	public static void test_096()
+	{
+		//主体
+		BrowserCommon.switchSecurityWidget("高级", "阻止弹出式窗口");
 	}
 }
 	

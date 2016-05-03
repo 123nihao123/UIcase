@@ -138,37 +138,14 @@ public class SettingCommon {
 		return true;
 	}
 
-	public static void SIMsetting(String SIMName)
-			throws UiObjectNotFoundException {
-		System.out
-				.println("======Start to excute CallContactsCommon: SIMsettings======");
-
-		excute(Object_Text, Operation_ClickWait, SIMName);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/sim_name", "");
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/sim_name", "");
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/sim_name", "");
-		Wait(500);
-	}
+	
 
 	// 修改SIM卡名称
-	public static void SIMNames(String SIMCard, String SIMName)
-			throws UiObjectNotFoundException {
-		System.out
-				.println("======Start to excute CallContactsCommon: SIMName======");
+	public static void SIMNames(String SIMName) throws UiObjectNotFoundException 
+	{
 		excute(Object_ResourceId, Operation_SetText,
 				"com.android.settings:id/sim_name", SIMName);
 		excute(Object_Text, Operation_ClickWait, "确定");
-		Wait(1000);
-		excute(Object_Text, Operation_ClickWait, SIMCard);
-		Wait(1000);
-		check(Object_ResourceId, Operation_TextEqualTrue,
-				"com.android.settings:id/sim_name", SIMName);
-		Wait(1000);
-		excute(Object_Text, Operation_ClickWait, "确定");
-		Wait(1000);
 	}
 
 	// 开关SIM1
@@ -1108,20 +1085,7 @@ public class SettingCommon {
 		Wait(2000);
 	}
 
-	public static void SIMsettings(String SIMName)
-			throws UiObjectNotFoundException {
-		System.out
-				.println("======Start to excute CallContactsCommon: SIMsettings======");
-
-		excute(Object_Text, Operation_ClickWait, SIMName);
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/sim_name", "");
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/sim_name", "");
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/sim_name", "");
-		Wait(500);
-	}
+	
 
 	/**
 	 * 删除默认的SIM卡号码

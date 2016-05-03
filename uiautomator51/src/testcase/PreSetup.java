@@ -31,10 +31,12 @@ public class PreSetup extends UiAutomatorTestCase
 		ClearBackgroundApp();
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		SettingCommon.SIMsettings("SIM 卡插槽 1");
-		SettingCommon.SIMNames("SIM 卡插槽 1","SIM1");
-		SettingCommon.SIMsettings("SIM 卡插槽 2");
-		SettingCommon.SIMNames("SIM 卡插槽 2","SIM2");
+		excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
+		DeviceCommon.ClearTextField("com.android.settings:id/sim_name");
+		SettingCommon.SIMNames("SIM1");
+		excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 2");
+		DeviceCommon.ClearTextField("com.android.settings:id/sim_name");
+		SettingCommon.SIMNames("SIM2");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_TextScroll, Operation_ClickWait, "显示", "vertical");
 		excute(Object_Text, Operation_ClickWait, "休眠");
