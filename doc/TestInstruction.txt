@@ -14,8 +14,8 @@ SDK环境更改：
 
 
 Setting模块操作须知：
-(1更改支持机热点名字为Testteam,密码：test12345678，用作WIFI的支持
-(2)更改蓝牙支持机名字为SupportBT
+(1)在SettingCommon.java文件中，按需更改wifi名称（目前为Testteam）和密码（目前为test12345678），用作WIFI支持
+(2)在SettingCommon.java文件中，更改蓝牙名称（目前为SupportBT），用作BT支持
 
 MusicPLayer模块操作须知：
 必须把testresource\Music下面的音乐文件拷到手机上
@@ -39,3 +39,4 @@ Phone模块操作须知：
   命令：adb shell uiautomator runtest Android51.jar -c testcase.PreSetup
 4.运行其他模块case，例如Contact：
 	adb shell uiautomator runtest Android51.jar -c testcase.Contact
+注：如果不是运行整套模块case（单条或几条case），对于模块中有test_000的（CallLog模块和Phone模块），需首先运行test_000，再运行挑选的case

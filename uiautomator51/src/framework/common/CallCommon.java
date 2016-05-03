@@ -1,17 +1,12 @@
 package framework.common;
+
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
-
 import java.io.IOException;
-
-import testcase.PreSetup;
-
 import junit.framework.Assert;
-
 import android.os.RemoteException;
-
 import com.android.uiautomator.core.UiObjectNotFoundException;
 
 public class CallCommon {
@@ -80,7 +75,12 @@ public class CallCommon {
 	public static void endCall() throws UiObjectNotFoundException {
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/floating_end_call_action_button");
 	}
-	
+	/**
+	 * 增加快速拨号
+	 * @param name
+	 * @param index
+	 * @throws UiObjectNotFoundException
+	 */
 	public static void addFastDail(String name,int index) throws UiObjectNotFoundException {
 		DeviceCommon.enterApp(Devices_Desc_Call);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -97,7 +97,11 @@ public class CallCommon {
 		Assert.assertTrue("Error: FastDail add failed!!!",
 				(Boolean) check(Object_ResIdInstance,Operation_TextEqualTrue,"com.android.phone:id/contacts_cell_name",Integer.toString(index-1),name));
 	 }
-	 
+	 /**
+	  * 删除快速拨号
+	  * @param index
+	  * @throws UiObjectNotFoundException
+	  */
 	 public static void deleteFastDail(int index) throws UiObjectNotFoundException {
 		 DeviceCommon.enterApp(Devices_Desc_Call);
 		 excute(Object_Description,Operation_ClickWait,"更多选项");

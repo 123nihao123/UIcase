@@ -1,15 +1,5 @@
 package framework.data;
 
-import static framework.data.ObjectType.Object_Description;
-import static framework.data.ObjectType.Object_ResIdText;
-import static framework.data.ObjectType.Object_ResourceId;
-import static framework.data.ObjectType.Object_Text;
-import static framework.data.OperationType.Operation_ClickWait;
-import static framework.data.OperationType.Operation_checkExist;
-import static framework.data.OperationType.Operation_SetText;
-import static framework.excute.Excute.check;
-import static framework.excute.Excute.excute;
-
 public class ObjectType 
 {
 	

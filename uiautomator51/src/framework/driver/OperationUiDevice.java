@@ -97,31 +97,5 @@ public class OperationUiDevice
 		}
 		File screen = new File("/sdcard/Pictures/"+timeStr+"_"+failcase+".png") ;
 		uiDevice.takeScreenshot(screen);
-		//UiDevice.getInstance().takeScreenshot(screen);
-		//return uiDevice.takeScreenshot(storePath);
 	}	
-	
-			
-//	public static boolean unLock(UiObject uiObject) throws UiObjectNotFoundException
-//	{
-//		int x = uiObject.getBounds().centerX();
-//		int y = uiObject.getBounds().centerY();
-//		return UiDevice.getInstance().drag(x, y, x, 0, 10);
-//	}
-//		
-//	public void clearBackGround()
-//	{
-//		UiDevice.getInstance().pressRecentApps();
-//		new Wait(4000).action();
-//		if (new GetObjectStatusByResId(Devices_ResId_ClearButton).getObjectStatus("isExist")) {
-//			AndroidCommon.findAppByResourceId(Devices_ResId_ClearButton).clickAndWaitForNewWindow();
-//		}else {
-//			while (new GetObjectStatusByResId("com.android.systemui:id/task_view_thumbnail").getObjectStatus("isExist")) {
-//				new FindAppByResIdAndClick("com.android.systemui:id/dismiss_task").action();
-//			}
-//		}
-//	}
-	
-	
-			
 }

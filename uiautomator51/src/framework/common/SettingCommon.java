@@ -1,36 +1,28 @@
 package framework.common;
 
-import static framework.data.DeviceParameter.*;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import junit.framework.Assert;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.RemoteException;
-import android.view.KeyEvent;
-import android.widget.TextView;
-
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiSelector;
-
-import framework.data.OperationType;
 import framework.driver.OperationUiObject;
 
 public class SettingCommon {
-
+	
+	public static String wifiName = "testteam";
+	public static String wifiPassWord = "test12345678";
+	public static String assistantBTName = "SupportBT";
+	
 	public static void addContextualModel(String name)
 			throws UiObjectNotFoundException {
 		System.out

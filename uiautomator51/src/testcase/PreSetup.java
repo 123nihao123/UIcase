@@ -12,7 +12,7 @@ import framework.common.SettingCommon;
 
 public class PreSetup extends UiAutomatorTestCase
 {
-	protected void setUp() 
+	protected void setUp()
     {
 		System.out.println("Enter the setUp!!!");	
 		excute(Object_Device, Operation_WakeUp);

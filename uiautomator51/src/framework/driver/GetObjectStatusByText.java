@@ -1,8 +1,5 @@
 package framework.driver;
 
-
-import static framework.data.ObjectType.Object_Scrollable;
-import static framework.data.OperationType.Operate_ReturnObject;
 import static framework.excute.Excute.excute;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
