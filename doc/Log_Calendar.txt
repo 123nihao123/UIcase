@@ -1,0 +1,1161 @@
+TestResult startTest: test_001(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_001
+TestResult startTest package: testcase class: testcase.Calendar method: test_001
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+testcase.Calendar:
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_001
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_001
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_002(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_002
+TestResult startTest package: testcase class: testcase.Calendar method: test_002
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_002
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_002
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_003(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_003
+TestResult startTest package: testcase class: testcase.Calendar method: test_003
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_003
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_003
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_004(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_004
+TestResult startTest package: testcase class: testcase.Calendar method: test_004
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_004
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_004
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_005(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_005
+TestResult startTest package: testcase class: testcase.Calendar method: test_005
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_005
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_005
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_006(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_006
+TestResult startTest package: testcase class: testcase.Calendar method: test_006
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_006
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_006
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_007(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_007
+TestResult startTest package: testcase class: testcase.Calendar method: test_007
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_007
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_007
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_007
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_011(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_011
+TestResult startTest package: testcase class: testcase.Calendar method: test_011
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_011
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_011
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_012(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_012
+TestResult startTest package: testcase class: testcase.Calendar method: test_012
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_012
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_012
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_012
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_014(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_014
+TestResult startTest package: testcase class: testcase.Calendar method: test_014
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_014
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_014
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_014
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_015(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_015
+TestResult startTest package: testcase class: testcase.Calendar method: test_015
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_015
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_015
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_015
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_016(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_016
+TestResult startTest package: testcase class: testcase.Calendar method: test_016
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_016
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_016
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_016
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_017(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_017
+TestResult startTest package: testcase class: testcase.Calendar method: test_017
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_017
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_017
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_017
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_019(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_019
+TestResult startTest package: testcase class: testcase.Calendar method: test_019
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_019
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_019
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_019
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_023(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_023
+TestResult startTest package: testcase class: testcase.Calendar method: test_023
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_023
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_023
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_023
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_024(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_024
+TestResult startTest package: testcase class: testcase.Calendar method: test_024
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_024
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_024
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_024
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=16
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_025(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_025
+TestResult startTest package: testcase class: testcase.Calendar method: test_025
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_025
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_025
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_025
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=17
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_026(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_026
+TestResult startTest package: testcase class: testcase.Calendar method: test_026
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_026
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_026
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_026
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=18
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_027(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_027
+TestResult startTest package: testcase class: testcase.Calendar method: test_027
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_027
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_027
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_027
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=19
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_028(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_028
+TestResult startTest package: testcase class: testcase.Calendar method: test_028
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_028
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_028
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_028
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=20
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_029(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_029
+TestResult startTest package: testcase class: testcase.Calendar method: test_029
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_029
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_029
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_029
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=21
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_030(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_030
+TestResult startTest package: testcase class: testcase.Calendar method: test_030
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_030
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_030
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_030
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=22
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_031(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_031
+TestResult startTest package: testcase class: testcase.Calendar method: test_031
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_031
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_031
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_031
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=23
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_032(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_032
+TestResult startTest package: testcase class: testcase.Calendar method: test_032
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_032
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_032
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_032
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=24
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_033(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_033
+TestResult startTest package: testcase class: testcase.Calendar method: test_033
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_033
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_033
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_033
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=25
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_034(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_034
+TestResult startTest package: testcase class: testcase.Calendar method: test_034
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_034
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_034
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_034
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=26
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_035(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_035
+TestResult startTest package: testcase class: testcase.Calendar method: test_035
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_035
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=27
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_035
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_035
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=27
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_036(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_036
+TestResult startTest package: testcase class: testcase.Calendar method: test_036
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_036
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=28
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_036
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_036
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=28
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_037(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_037
+TestResult startTest package: testcase class: testcase.Calendar method: test_037
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_037
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=29
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_037
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_037
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=29
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_039(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_039
+TestResult startTest package: testcase class: testcase.Calendar method: test_039
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_039
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=30
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+16 一月 2012
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_039
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_039
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=30
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_040(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_040
+TestResult startTest package: testcase class: testcase.Calendar method: test_040
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_040
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=31
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_040
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_040
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=31
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_041(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_041
+TestResult startTest package: testcase class: testcase.Calendar method: test_041
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_041
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=32
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_041
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_041
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=32
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_042(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_042
+TestResult startTest package: testcase class: testcase.Calendar method: test_042
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_042
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=33
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_042
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_042
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=33
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_044(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_044
+TestResult startTest package: testcase class: testcase.Calendar method: test_044
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_044
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=34
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_044
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_044
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=34
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_047(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_047
+TestResult startTest package: testcase class: testcase.Calendar method: test_047
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_047
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=35
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_047
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_047
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=35
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_048(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_048
+TestResult startTest package: testcase class: testcase.Calendar method: test_048
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_048
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=36
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_048
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_048
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=36
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_049(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_049
+TestResult startTest package: testcase class: testcase.Calendar method: test_049
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_049
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=37
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_049
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_049
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=37
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_050(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_050
+TestResult startTest package: testcase class: testcase.Calendar method: test_050
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_050
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=38
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_050
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_050
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=38
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_052(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_052
+TestResult startTest package: testcase class: testcase.Calendar method: test_052
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_052
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=39
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_052
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_052
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=39
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_053(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_053
+TestResult startTest package: testcase class: testcase.Calendar method: test_053
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_053
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=40
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_053
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_053
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=40
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_054(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_054
+TestResult startTest package: testcase class: testcase.Calendar method: test_054
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_054
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=41
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_054
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_054
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=41
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_055(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_055
+TestResult startTest package: testcase class: testcase.Calendar method: test_055
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_055
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=42
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_055
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_055
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=42
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_056(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_056
+TestResult startTest package: testcase class: testcase.Calendar method: test_056
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_056
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=43
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_056
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_056
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=43
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_057(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_057
+TestResult startTest package: testcase class: testcase.Calendar method: test_057
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_057
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=44
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_057
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_057
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=44
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_058(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_058
+TestResult startTest package: testcase class: testcase.Calendar method: test_058
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_058
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=45
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_058
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_058
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=45
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_059(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_059
+TestResult startTest package: testcase class: testcase.Calendar method: test_059
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_059
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=46
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_059
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_059
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=46
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_060(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_060
+TestResult startTest package: testcase class: testcase.Calendar method: test_060
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_060
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=47
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_060
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_060
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=47
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_061(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_061
+TestResult startTest package: testcase class: testcase.Calendar method: test_061
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_061
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=48
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_061
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_061
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=48
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_062(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_062
+TestResult startTest package: testcase class: testcase.Calendar method: test_062
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_062
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=49
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_062
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_062
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=49
+INSTRUMENTATION_STATUS_CODE: 0
+TestResult startTest: test_063(testcase.Calendar)
+setCtsPackage mPackage:testcase
+preferCtsCase mClass:testcase.Calendar mMethod:test_063
+TestResult startTest package: testcase class: testcase.Calendar method: test_063
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_063
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=50
+INSTRUMENTATION_STATUS_CODE: 1
+Enter the setUp!!!
+Clear Background
+======Start to excute DeviceCommon: enterApp======
+TestResult endThead
+preferCtsCase mClass:testcase.Calendar mMethod:test_063
+INSTRUMENTATION_STATUS: numtests=50
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: id=UiAutomatorTestRunner
+INSTRUMENTATION_STATUS: test=test_063
+INSTRUMENTATION_STATUS: class=testcase.Calendar
+INSTRUMENTATION_STATUS: current=50
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: stream=
+Test results for WatcherResultPrinter=.........................................
+.........
+Time: 861.293
+
+OK (50 tests)
+
+
+INSTRUMENTATION_STATUS_CODE: -1

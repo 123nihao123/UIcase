@@ -181,6 +181,7 @@ public class Calendar extends UiAutomatorTestCase
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x / 2, y / 2);
 		UiDevice.getInstance().click(x / 2, y / 2);
+		excute(Object_Text, Operation_WaitForExists, "完成", "10000");
 		check(Object_Text, Operation_checkExist, "完成");
 	}
 	/**
@@ -341,16 +342,15 @@ public class Calendar extends UiAutomatorTestCase
 		//主体
 		CalendarCommon.repeat("每年重复");
 		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/spinner_item", "每年重复");
-		if(!(boolean) excute(Object_Text, Operation_IsChecked, "在每个月的同一天"))
-		{
-			excute(Object_Text, Operation_ClickWait, "在每个月的同一天");
-			check(Object_Text, Operation_CheckedTrue, "在每个月的同一天");
-		}	
-		if(!(boolean) excute(Object_ResourceId, Operation_IsChecked, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek"))
-		{
-			excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek");
-			check(Object_ResourceId, Operation_CheckedTrue, "com.android.calendar:id/repeatMonthlyByNthDayOfTheWeek");
-		}
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "无限重复");
+		check(Object_Text, Operation_checkExist, "无限重复");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "直到某个日期");
+		check(Object_Text, Operation_checkExist, "直到");
+		excute(Object_ResourceId, Operation_ClickWait, "com.android.calendar:id/endSpinner");
+		excute(Object_Text, Operation_ClickWait, "限定次数");
+		check(Object_Text, Operation_checkExist, "重复");
 	}
 	/**
 	 * 提醒设置
@@ -419,6 +419,7 @@ public class Calendar extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "搜索");
 		excute(Object_ResourceId, Operation_SetText, "android:id/search_src_text", "zhanxun");
 		excute(Object_Device, Operation_PressEnter);
+		check(Object_ResIdText, Operation_WaitForExists, "com.android.calendar:id/title", "zhanxun", "10000");
 		check(Object_ResIdText, Operation_checkExist, "com.android.calendar:id/title", "zhanxun");
 	}
 	/**
