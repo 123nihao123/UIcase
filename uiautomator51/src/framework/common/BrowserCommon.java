@@ -2,11 +2,20 @@ package framework.common;
 
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
-import static framework.excute.Excute.check;
-import static framework.excute.Excute.excute;
+import static framework.excute.Excute.*;
+
 
 public class BrowserCommon 
 {
+	/**
+	 * 进入到收藏界面的各个Tab
+	 * @param name 取值范围：书签，历史记录，保存的网页
+	 */
+	public static void enterCollectionTab(String name)
+	{
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/bookmarks");
+		excute(Object_Text,Operation_ClickWait,name);
+	}
 	/**
 	 * 设置菜单
 	 * @param menu
@@ -37,3 +46,5 @@ public class BrowserCommon
 		check(Object_Text, Operation_EnabledFalse, menu);
 	}
 }
+
+
