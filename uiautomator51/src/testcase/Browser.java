@@ -705,6 +705,8 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_046()
 	{
 		//主体
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device,Operation_PressEnter);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"停止");
 		check(Object_ResourceId,Operation_checkNoExist,"com.android.browser:id/stop");
@@ -716,12 +718,19 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_047()
 	{
 		//主体
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","http://open.baidu.com/special/time/");
+		excute(Object_Device,Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"北京时间 - 国家授时中心标准时间","100000");
+		String time1=(String)excute(Object_ResourceId,Operation_GetDesc,"time");
+		Wait(3000);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"刷新");
-		check(Object_ResourceId,Operation_checkExist,"com.android.browser:id/stop");	
+		excute(Object_Description,Operation_WaitForExists,"时间校对","100000");
+		String time2=(String)excute(Object_ResourceId,Operation_GetDesc,"time");
+		Assert.assertFalse(time1.equals(time2));
 	}
 	
-	/**
+	/**s
 	 * 点击页面右上角的更多按钮 前进
 	 */
 	public static void test_048()
