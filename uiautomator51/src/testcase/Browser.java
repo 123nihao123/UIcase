@@ -906,10 +906,19 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "设置主页");
 		excute(Object_Text, Operation_ClickWait, "默认页");
 		String hmoepage = (String) excute(Object_ResourceId, Operation_GetText, "android:id/summary");
-		ClearBackgroundApp();
-		Wait(1000);
+		String hmoepage2[]=hmoepage.split("www.");
+		String hmoepage3[]=hmoepage2[1].split(".com");
 		DeviceCommon.enterApp(Devices_Desc_Browser);
-		check(Object_ResIdContainsText, Operation_checkExist, "com.android.browser:id/url", hmoepage);
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/tabs");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/newtab");
+		System.out.println(hmoepage3[0]);
+		check(Object_ResIdContainsText, Operation_checkExist, "com.android.browser:id/url", hmoepage3[0]);
+		//清场
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/tabs");
+		if ((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.browser:id/closetab"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","1");
+		}
 	}
 	/**
 	 * 页面导航

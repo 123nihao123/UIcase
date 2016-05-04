@@ -32,7 +32,7 @@ public class PreSetup extends UiAutomatorTestCase
 		if(DeviceCommon.simFlag.equals("11"))
 	    {
 			DeviceCommon.enterApp(Devices_Desc_Setting);
-			excute(Object_Text,Operation_ClickWait,"SIM 卡");
+			excute(Object_TextScroll,Operation_ClickWait,"SIM 卡", "vertical");
 			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
 			changeSIMName("SIM1");
 			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 2");
@@ -40,13 +40,13 @@ public class PreSetup extends UiAutomatorTestCase
 		}else if(DeviceCommon.simFlag.equals("10"))
 		{
 			DeviceCommon.enterApp(Devices_Desc_Setting);
-			excute(Object_Text,Operation_ClickWait,"SIM 卡");
+			excute(Object_TextScroll,Operation_ClickWait,"SIM 卡", "vertical");
 			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
 			changeSIMName("SIM1");
 		}else if(DeviceCommon.simFlag.equals("01"))
 		{
 			DeviceCommon.enterApp(Devices_Desc_Setting);
-			excute(Object_Text,Operation_ClickWait,"SIM 卡");
+			excute(Object_TextScroll,Operation_ClickWait,"SIM 卡", "vertical");
 			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 2");
 			changeSIMName("SIM2");
 		}
