@@ -26,8 +26,9 @@ public class MusicPlayerCommon
 {
 	/**
 	 * 新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void addnewplaylist(String playlistName)
+	public static void addnewplaylist(String playlistName) throws UiObjectNotFoundException
 	{
 		excute(Object_Text, Operation_ClickWait, "播放列表");
 		if((Boolean) excute(Object_Text, Operation_Exists, playlistName))
@@ -40,9 +41,10 @@ public class MusicPlayerCommon
 		excute(Object_ResourceId, Operation_LongClick, "com.android.music:id/line1");
 		excute(Object_Text, Operation_ClickWait, "添加到播放列表");
 		excute(Object_Text, Operation_ClickWait, "新建播放列表");
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/playlist");
-		for (int i=0; i<7; i++)
-			excute(Object_Device, Operation_PressDelete);	
+//		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/playlist");
+//		for (int i=0; i<7; i++)
+//			excute(Object_Device, Operation_PressDelete);	
+		DeviceCommon.ClearTextField("com.android.music:id/playlist");
 		excute(Object_ResourceId, Operation_SetText, "com.android.music:id/playlist", playlistName);
 		excute(Object_Text, Operation_ClickWait, "保存");
 	}

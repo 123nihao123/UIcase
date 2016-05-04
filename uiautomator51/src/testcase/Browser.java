@@ -332,17 +332,15 @@ public class Browser extends UiAutomatorTestCase
 	}
 	/**
 	 * 新建一个文件夹
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_022()
+	public static void test_022() throws UiObjectNotFoundException
 	{
 		//主体
 		BrowserCommon.enterCollectionTab("书签");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"新建文件夹");
-		for(int i=0;i<=20;i++)
-		{
-			excute(Object_Device, Operation_PressDelete);
-		}
+		DeviceCommon.ClearTextField("com.android.browser:id/title");
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/title","NewFolder");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_ResIdText,Operation_checkExist,"com.android.browser:id/label","NewFolder");

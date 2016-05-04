@@ -909,8 +909,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 长按新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_072() 
+	public static void test_072() throws UiObjectNotFoundException 
 	{
 		//前提
 		MusicPlayerCommon.addnewplaylist(playlistName);
@@ -925,8 +926,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 播放新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_073() 
+	public static void test_073() throws UiObjectNotFoundException 
 	{
 		//前提
 		MusicPlayerCommon.addnewplaylist(playlistName);
@@ -941,8 +943,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 删除新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_074() 
+	public static void test_074() throws UiObjectNotFoundException 
 	{
 		//主体
 		MusicPlayerCommon.addnewplaylist(playlistName);
@@ -954,8 +957,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 取消删除新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_075() 
+	public static void test_075() throws UiObjectNotFoundException 
 	{
 		//主体
 		MusicPlayerCommon.addnewplaylist(playlistName);
@@ -968,8 +972,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 确定删除新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_076() 
+	public static void test_076() throws UiObjectNotFoundException 
 	{
 		//前提
 		MusicPlayerCommon.addnewplaylist(playlistName);
@@ -981,8 +986,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 重命名新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_077() 
+	public static void test_077() throws UiObjectNotFoundException 
 	{
 		//前提
 		MusicPlayerCommon.addnewplaylist(playlistName);	
@@ -1020,8 +1026,9 @@ public class MusicPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 新建播放列表
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_079() 
+	public static void test_079() throws UiObjectNotFoundException 
 	{
 		//主体
 		MusicPlayerCommon.addnewplaylist(playlistName);
