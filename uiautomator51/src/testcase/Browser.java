@@ -766,6 +766,12 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_050()
 	{
+		//前提
+		BrowserCommon.settingMenu("常规");
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		excute(Object_Text, Operation_ClickWait, "默认页");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Device,Operation_PressBack);
 		//主体
 		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -778,6 +784,11 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"常规");	
 		String urlName2=(String)excute(Object_ResourceId,Operation_GetText,"android:id/summary");
 		Assert.assertEquals(urlName1, urlName2);	
+		//清场
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Text,Operation_ClickWait,"常规");	
+		excute(Object_Text, Operation_ClickWait, "设置主页");
+		excute(Object_Text, Operation_ClickWait, "空白页");
 	}
 	/**
 	 * 点击页面右上角的更多按钮 历史记录
