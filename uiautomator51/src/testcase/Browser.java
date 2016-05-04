@@ -13,7 +13,6 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import framework.common.BrowserCommon;
-import framework.common.CameraCommon;
 import framework.common.DeviceCommon;
 
 public class Browser extends UiAutomatorTestCase
@@ -357,7 +356,7 @@ public class Browser extends UiAutomatorTestCase
 		BrowserCommon.enterCollectionTab("书签");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/label");
 		String[] str={"打开","在新标签页中打开","编辑书签","向主屏幕添加快捷方式","分享链接","复制链接网址","删除书签","设置为主页"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 	}
 	/**
 	 * 长按书签 打开
@@ -407,7 +406,7 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_Device,Operation_PressHome);
 		excute(Object_Text,Operation_WaitForExists,tabName,"3000");
 		check(Object_Text,Operation_checkExist,tabName);
-		//清场
+		//清场  目前，在主屏幕的快捷方式可能删除不掉
 		Rect bounds = (Rect) excute(Object_Text, Operation_GetBounds, tabName);
 	    String x = Integer.toString(bounds.centerX());
 		String y = Integer.toString(bounds.centerY());
@@ -430,10 +429,9 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_029()
 	{
-		//主体
+		//主体    网址复制后，粘贴时获取不到粘贴的控件信息，无法验证复制的内容
 		BrowserCommon.enterCollectionTab("书签");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/label");
-		String str=(String)excute(Object_ResourceId,Operation_GetText,"com.android.browser:id/url");
 		excute(Object_Text,Operation_ClickWait,"复制链接网址");
 		excute(Object_Device,Operation_PressBack);
 	}
@@ -491,6 +489,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_033()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -502,6 +505,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_034()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -529,6 +537,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_035()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+	    excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -537,12 +550,12 @@ public class Browser extends UiAutomatorTestCase
 		if (isStar)
 		{
 			String[] str={"打开","在新标签页中打开","从书签中删除","分享链接","复制链接网址","从历史记录中删除","设置为主页"};
-			CameraCommon.checkForExist(str);
+			DeviceCommon.checkForExist(str);
 		}
 		else
 		{
 			String[] str={"打开","在新标签页中打开","保存到书签","分享链接","复制链接网址","从历史记录中删除","设置为主页"};
-			CameraCommon.checkForExist(str);
+			DeviceCommon.checkForExist(str);
 		}	
 	}
 	/**
@@ -550,6 +563,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_036()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -562,6 +580,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_037()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		String tabCount1=(String)excute(Object_ResourceId,Operation_GetText,"com.android.browser:id/tabcount");
 		BrowserCommon.enterCollectionTab("历史记录");
@@ -576,6 +599,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_038()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -594,6 +622,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_039()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -606,7 +639,12 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_040()
 	{
-		//主体
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
+		//主体 网址复制后，粘贴时获取不到粘贴的控件信息，无法验证复制的内容
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/url");
@@ -617,6 +655,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_041()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -630,6 +673,11 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_042()
 	{
+		//前提
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
@@ -649,7 +697,7 @@ public class Browser extends UiAutomatorTestCase
 	{
 		//主体
 		BrowserCommon.enterCollectionTab("保存的网页");
-		check(Object_Text,Operation_checkNoExist,"没有保存的网页。");
+		check(Object_Text,Operation_checkExist,"没有保存的网页。");
 	}
 	/**
 	 * 长按一个保存的网页

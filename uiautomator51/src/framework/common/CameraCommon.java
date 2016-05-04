@@ -91,16 +91,6 @@ public class CameraCommon
 		excute(Object_Text,Operation_ClickWait,"高级");
 	}
 	/**
-	 * check数组中text元素存在
-	 */
-	public static void checkForExist(String[] name)
-	{
-		for(int i=0;i<name.length;i++)
-		{
-			check(Object_Text,Operation_checkExist,name[i]);
-		}
-	}
-	/**
 	 * 切换前后摄像头
 	 * @param Camera 取值范围：后置摄像头，前置摄像头
 	 */

@@ -678,7 +678,7 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		String[] str={"新信息","转发","编辑","删除"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 	}
 	/**
      * 收件箱菜单新建信息

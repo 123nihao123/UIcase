@@ -681,5 +681,15 @@ public class DeviceCommon {
 			  excute(Object_Device, Operation_PressDelete);
 		  }
 	}
+	/**
+	 * check数组中text元素存在
+	 */
+	public static void checkForExist(String[] name)
+	{
+		for(int i=0;i<name.length;i++)
+		{
+			check(Object_Text,Operation_checkExist,name[i]);
+		}
+	}
 	
 }

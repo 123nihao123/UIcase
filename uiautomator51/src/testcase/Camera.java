@@ -47,7 +47,7 @@ public class Camera extends UiAutomatorTestCase
 		Wait(5000);
 		DeviceCommon.swipe("Right",10, 1);
 		String[] mode={"全景","相机","视频","动画"};
-		CameraCommon.checkForExist(mode);
+		DeviceCommon.checkForExist(mode);
 	}
 	/**
 	 * 进入全景模式
@@ -118,7 +118,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"后置摄像头照片");
 		str=CameraCommon.chooseCameraPixelByScreenSize();
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -134,7 +134,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"前置摄像头照片");
 		String[] str={"(4:3) 1.9百万像素","(4:3) 0.3百万像素","(4:3) 0.1百万像素","(16:9) 0.9百万像素"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -151,7 +151,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"后置摄像头视频");
 		str=CameraCommon.chooseVideoPixelByScreenSize();
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -167,7 +167,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterResQaSubSetting();
 		excute(Object_Text,Operation_ClickWait,"前置摄像头视频");
 		String[] str={"SD 480p","CIF","QCIF"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -267,7 +267,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_Text,Operation_ClickWait,"防闪烁");
 		String[] str={"50Hz","60Hz"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -282,7 +282,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_Text,Operation_ClickWait,"照片质量");
 		String[] str={"极精细","精细","正常"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -297,7 +297,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_Text,Operation_ClickWait,"智能检测");
 		String[] str={"关闭","人脸检测","笑脸拍照"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -314,7 +314,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_Exists,"取景模式","vertical");
 		excute(Object_TextScroll,Operation_ClickWait,"色彩效果","vertical");
 		String[] str={"关闭","黑白","反色","旧照片","冷色","怀旧"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -329,7 +329,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"取景模式","vertical");
 		String[] str={"运动","夜间","自动","正常","肖像","风景"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -344,7 +344,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"白平衡","vertical");	
 		String[] str={"白炽灯","日光灯","自动","晴天","阴天"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -359,7 +359,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"连续拍摄","vertical");	
 		String[] str={"3","6","10","关闭"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -374,7 +374,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"对比度","vertical");	
 		String[] str={"3","2","1","0","-1","-2","-3"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -389,7 +389,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"亮度","vertical");	
 		String[] str={"6","5","4","3","2","1","0"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -406,7 +406,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_Exists,"测光","vertical");	
 		excute(Object_TextScroll,Operation_ClickWait,"感光度","vertical");	
 		String[] str={"自动","1600","800","400","200","100"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -421,7 +421,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"测光","vertical");	
 		String[] str={"帧平均","中心测光","点"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
@@ -436,7 +436,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"饱和度","vertical");	
 		String[] str={"3","2","1","0","-1","-2","-3"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
@@ -466,7 +466,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"编码类型","vertical");	
 		String[] str={"MPEG4","H.264"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
@@ -483,7 +483,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_Exists,"延时","vertical");	
 		excute(Object_TextScroll,Operation_ClickWait,"防闪烁","vertical");	
 		String[] str={"50Hz","60Hz"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
@@ -516,7 +516,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"慢录","vertical");	
 		String[] str={"3","2","关闭"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
@@ -546,7 +546,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"GIF大小","vertical");	
 		String[] str={"140x140","200x200","260x260"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
@@ -561,7 +561,7 @@ public class Camera extends UiAutomatorTestCase
 		CameraCommon.enterAdvSubSetting();
 		excute(Object_TextScroll,Operation_ClickWait,"GIF帧数","vertical");	
 		String[] str={"10","15","20"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场

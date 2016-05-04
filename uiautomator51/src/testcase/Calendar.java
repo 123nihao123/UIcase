@@ -63,7 +63,7 @@ public class Calendar extends UiAutomatorTestCase
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calendar:id/top_button_date");
 		String [] str={"日","周","月","日程"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 	}
 	/**
 	 * 点击下拉框上的“日”功能项
@@ -117,7 +117,7 @@ public class Calendar extends UiAutomatorTestCase
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		String [] str={"新建活动","刷新","选择日期","搜索","显示的日历","设置"};
-		CameraCommon.checkForExist(str);
+		DeviceCommon.checkForExist(str);
 	}
 	/**
 	 * 点击新建活动功能项
