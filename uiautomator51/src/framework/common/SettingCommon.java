@@ -135,8 +135,7 @@ public class SettingCommon {
 	// 修改SIM卡名称
 	public static void SIMNames(String SIMName) throws UiObjectNotFoundException 
 	{
-		excute(Object_ResourceId, Operation_SetText,
-				"com.android.settings:id/sim_name", SIMName);
+		excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/sim_name", SIMName);
 		excute(Object_Text, Operation_ClickWait, "确定");
 	}
 

@@ -28,18 +28,48 @@ public class PreSetup extends UiAutomatorTestCase
 	{	
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		DeviceCommon.removePermissions();
-		ClearBackgroundApp();
+//		ClearBackgroundApp();
+		if(DeviceCommon.simFlag.equals("11"))
+	    {
+			DeviceCommon.enterApp(Devices_Desc_Setting);
+			excute(Object_Text,Operation_ClickWait,"SIM 卡");
+			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
+			changeSIMName("SIM1");
+			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 2");
+			changeSIMName("SIM2");
+		}else if(DeviceCommon.simFlag.equals("10"))
+		{
+			DeviceCommon.enterApp(Devices_Desc_Setting);
+			excute(Object_Text,Operation_ClickWait,"SIM 卡");
+			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
+			changeSIMName("SIM1");
+		}else if(DeviceCommon.simFlag.equals("01"))
+		{
+			DeviceCommon.enterApp(Devices_Desc_Setting);
+			excute(Object_Text,Operation_ClickWait,"SIM 卡");
+			excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 2");
+			changeSIMName("SIM2");
+		}
 		DeviceCommon.enterApp(Devices_Desc_Setting);
-		excute(Object_Text,Operation_ClickWait,"SIM 卡");
-		excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 1");
-		DeviceCommon.ClearTextField("com.android.settings:id/sim_name");
-		SettingCommon.SIMNames("SIM1");
-		excute(Object_Text, Operation_ClickWait, "SIM 卡插槽 2");
-		DeviceCommon.ClearTextField("com.android.settings:id/sim_name");
-		SettingCommon.SIMNames("SIM2");
-		excute(Object_Device, Operation_PressBack);
 		excute(Object_TextScroll, Operation_ClickWait, "显示", "vertical");
 		excute(Object_Text, Operation_ClickWait, "休眠");
 		excute(Object_Text, Operation_ClickWait, "30分钟");
 	}
+	/**
+	 * 查看SIM卡名称，如果不是需要的名称，修改SIM名称
+	 * @param SIMName SIM卡名称
+	 * @throws UiObjectNotFoundException
+	 */
+	protected void changeSIMName(String SIMName) throws UiObjectNotFoundException 
+    {
+		String Name = (String) excute(Object_ResourceId, Operation_GetText, "com.android.settings:id/sim_name");
+		if(!Name.equals(SIMName))
+		{
+			DeviceCommon.ClearTextField("com.android.settings:id/sim_name");
+			SettingCommon.SIMNames(SIMName);
+		}else{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_Text, Operation_ClickWait, "取消");
+		}
+    }
 }
