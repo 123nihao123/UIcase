@@ -680,6 +680,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_044()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_TextScroll,Operation_ClickWait,"保存以供离线阅读","vertical");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/title");
@@ -694,6 +695,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_045()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		String[] str={"停止","刷新","前进","退出","主页","历史记录","书签","保存到书签","分享网页","在网页上查找","请求桌面版网站","保存以供离线阅读","设置"};
 		for (int i=0;i<str.length;i++)
@@ -705,7 +707,8 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_046()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.taobao.com");
 		excute(Object_Device,Operation_PressEnter);
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"停止");
@@ -741,6 +744,7 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","100000");
 		excute(Object_Device,Operation_PressBack);
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"前进");
 		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","100000");
@@ -752,6 +756,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_049()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"退出");
 		check(Object_ResourceId,Operation_checkNoExist,"com.android.browser:id/url");
@@ -762,6 +767,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_050()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"主页");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/url");
@@ -779,6 +785,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_051()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"历史记录");
 		check(Object_Text,Operation_checkExist,"书签和历史");	
@@ -789,8 +796,10 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_052()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"分享网页");
+		excute(Object_Text,Operation_WaitForExists,"分享方式","10000");
 		check(Object_Text,Operation_checkExist,"分享方式");	
 	}
 	/**
@@ -799,6 +808,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_053()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"在网页上查找");
 		check(Object_ResourceId,Operation_checkExist,"android:id/edit");
@@ -811,6 +821,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_054()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_TextScroll,Operation_ClickWait,"请求桌面版网站","vertical");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -825,6 +836,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_055()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_TextScroll,Operation_ClickWait,"保存以供离线阅读","vertical");
 		check(Object_Text,Operation_checkExist,"书签和历史");
@@ -839,6 +851,7 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_056()
 	{
 		//主体
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_TextScroll,Operation_ClickWait,"设置","vertical");
 		check(Object_Text,Operation_checkExist,"常规");	
