@@ -33,7 +33,7 @@ public class Browser extends UiAutomatorTestCase
     }
 	
 	/**
-	 * 进入浏览器
+	 * 更改主页为空白页，避免主页是其他页面因响应时间过长引起的超时等现象
 	 */
 	public static void test_000()
 	{
@@ -1203,6 +1203,37 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait, "启用插件", "vertical");
 		check(Object_Text, Operation_CheckedTrue, "关闭");
 	}
+	
+	/**
+	 * 以概览模式打开网页
+	 */
+	public static void test_093()
+	{
+		//前提
+		BrowserCommon.switchSecurityWidget("隐私和安全", "启用位置信息功能");
+		excute(Object_Device, Operation_PressBack);
+		//主体
+		excute(Object_Text, Operation_ClickWait, "高级");
+		if(!(Boolean)excute(Object_Text, Operation_IsEnabled, "网站设置"))
+		{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+			excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+			excute(Object_Device, Operation_PressEnter);
+			excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
+			excute(Object_Text,Operation_WaitForExists,"共享位置信息","50000");
+			excute(Object_Text,Operation_ClickWait,"共享位置信息");
+			BrowserCommon.settingMenu("高级");
+		}
+		excute(Object_Text, Operation_ClickWait, "网站设置");
+		check(Object_Text, Operation_checkExist, "全部清除");
+		//清场
+		excute(Object_Text, Operation_ClickWait, "全部清除");
+		excute(Object_Text, Operation_ClickWait, "确定");
+	}
+	
+	
 	/**
 	 * 以概览模式打开网页
 	 */
