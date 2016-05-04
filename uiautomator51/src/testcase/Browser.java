@@ -901,15 +901,20 @@ public class Browser extends UiAutomatorTestCase
 	}
 	/**
 	 * 默认页
+	 * @throws UiObjectNotFoundException 
+	 * @throws RemoteException 
 	 */
-	public static void test_060()
+	public static void test_060() throws RemoteException, UiObjectNotFoundException
 	{
 		//主体
 		BrowserCommon.settingMenu("常规");
 		excute(Object_Text, Operation_ClickWait, "设置主页");
 		excute(Object_Text, Operation_ClickWait, "默认页");
-		excute(Object_Text, Operation_WaitForExists, "http://www.wo.com.cn", "10000");
-		check(Object_Text, Operation_checkExist, "http://www.wo.com.cn");
+		String hmoepage = (String) excute(Object_ResourceId, Operation_GetText, "android:id/summary");
+		ClearBackgroundApp();
+		Wait(1000);
+		DeviceCommon.enterApp(Devices_Desc_Browser);
+		check(Object_ResIdContainsText, Operation_checkExist, "com.android.browser:id/url", hmoepage);
 	}
 	/**
 	 * 页面导航
@@ -1064,17 +1069,6 @@ public class Browser extends UiAutomatorTestCase
 		check(Object_Text, Operation_checkExist, "取消");
 	}
 	/**
-	 * 设置搜索引擎为Google
-	 */
-	public static void test_078()
-	{
-		//主体
-		BrowserCommon.settingMenu("高级");
-		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
-		excute(Object_Text, Operation_ClickWait, "Google");
-		check(Object_ResIdText, Operation_checkExist, "android:id/summary", "Google");
-	}
-	/**
 	 * 设置搜索引擎为百度
 	 */
 	public static void test_079()
@@ -1084,17 +1078,6 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
 		excute(Object_Text, Operation_ClickWait, "百度");
 		check(Object_ResIdText, Operation_checkExist, "android:id/summary", "百度");
-	}
-	/**
-	 * 设置搜索引擎为Bing
-	 */
-	public static void test_081()
-	{
-		//主体
-		BrowserCommon.settingMenu("高级");
-		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
-		excute(Object_Text, Operation_ClickWait, "Bing");
-		check(Object_ResIdText, Operation_checkExist, "android:id/summary", "Bing");
 	}
 	/**
 	 * 存储位置
@@ -1260,35 +1243,47 @@ public class Browser extends UiAutomatorTestCase
 		//主体
 		BrowserCommon.switchSecurityWidget("高级", "阻止弹出式窗口");
 	}
+	/**
+	 * 文字编码
+	 */
+	public static void test_097()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "文字编码", "vertical");
+		check(Object_ResIdText, Operation_checkExist, "android:id/alertTitle", "文字编码");
+	}
+	/**
+	 * 重置
+	 */
+	public static void test_098()
+	{
+		//主体
+		BrowserCommon.settingMenu("高级");
+		excute(Object_TextScroll, Operation_ClickWait, "重置为默认设置", "vertical");
+		check(Object_Text, Operation_checkExist, "取消");
+		excute(Object_Text, Operation_ClickWait, "取消");
+		check(Object_Text, Operation_checkNoExist, "取消");
+		excute(Object_TextScroll, Operation_ClickWait, "重置为默认设置", "vertical");
+		excute(Object_Text, Operation_ClickWait, "确定");
+		check(Object_Text, Operation_checkNoExist, "重置为默认设置");
+	}
+	/**
+	 * 带宽管理
+	 */
+	public static void test_099()
+	{
+		//主体
+		BrowserCommon.settingMenu("带宽管理");
+		check(Object_Text, Operation_checkExist, "搜索结果预加载");
+	}
+	/**
+	 * 宽带管理
+	 */
+	public static void test_100()
+	{
+		//主体
+		BrowserCommon.settingMenu("实验室");
+		check(Object_Text, Operation_checkExist, "快速控制");
+	}
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
