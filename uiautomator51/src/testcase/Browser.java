@@ -106,17 +106,18 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_005() throws UiObjectNotFoundException
 	{
 		//前提
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/tabs");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/closetab");
-		//主体
-		DeviceCommon.enterApp(Devices_Desc_Browser);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.meituan.com");
+		excute(Object_Device, Operation_PressEnter);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.browser:id/favicon","50000");
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/back");
-		excute(Object_Text,Operation_WaitForExists,"about:blank","50000");
-		check(Object_Description,Operation_checkNoExist,"百度一下,你就知道");
+		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
+		check(Object_Description,Operation_checkExist,"百度一下,你就知道");
 	}
 	
 	/**
@@ -125,18 +126,21 @@ public class Browser extends UiAutomatorTestCase
 	 */
 	public static void test_006() throws UiObjectNotFoundException
 	{
-		//主体
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
-		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
-		excute(Object_Device, Operation_PressEnter);
-		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
-		//主体
+		//前提
+		if(!(Boolean)excute(Object_Description,Operation_Exists,"百度一下,你就知道"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+			excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.baidu.com");
+			excute(Object_Device, Operation_PressEnter);
+			excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
+		}
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.meituan.com");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.browser:id/favicon","50000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/back");
 		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
+		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/forward");
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.browser:id/favicon","50000");
 		check(Object_Description,Operation_checkNoExist,"百度一下,你就知道");

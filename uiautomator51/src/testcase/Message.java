@@ -1410,18 +1410,7 @@ public class Message extends UiAutomatorTestCase
 		check(Object_ResIdText,Operation_checkExist,"com.android.messaging:id/compose_message_text","稍后给你回电话。");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
-		for(int i=0;i<=20;i++)
-		{
-			excute(Object_Device, Operation_PressDelete);
-		}
-		if(!(Boolean)excute(Object_ResIdContainsText,Operation_Exists,"com.android.messaging:id/compose_message_text","发送信息"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/compose_message_text");
-			for(int i=0;i<=20;i++)
-			{
-				excute(Object_Device, Operation_PressDelete);
-			}
-		}
+		DeviceCommon.ClearTextField("com.android.messaging:id/compose_message_text");
 	}
 	
 	/**
