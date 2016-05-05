@@ -196,9 +196,12 @@ public class Browser extends UiAutomatorTestCase
 		check(Object_ResIdText,Operation_checkExist,"com.android.browser:id/tabcount","2");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/tabs");
-		if ((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.browser:id/closetab"))
+		if ((Boolean)excute(Object_ResIdInstance,Operation_Exists,"com.android.browser:id/closetab","1"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","1");
+		}else
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","0");
 		}
 	}
 	
@@ -212,7 +215,13 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/newtab");
 		excute(Object_Text,Operation_WaitForExists,"about:blank","50000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/tabs");
-		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","1");
+		if ((Boolean)excute(Object_ResIdInstance,Operation_Exists,"com.android.browser:id/closetab","1"))
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","1");
+		}else
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","0");
+		}
 		excute(Object_Device, Operation_PressBack);
 		check(Object_ResIdText,Operation_checkExist,"com.android.browser:id/tabcount","1");
 	}
@@ -967,9 +976,12 @@ public class Browser extends UiAutomatorTestCase
 		check(Object_ResIdContainsText, Operation_checkExist, "com.android.browser:id/url", hmoepage3[0]);
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/tabs");
-		if ((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.browser:id/closetab"))
+		if ((Boolean)excute(Object_ResIdInstance,Operation_Exists,"com.android.browser:id/closetab","1"))
 		{
 			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","1");
+		}else
+		{
+			excute(Object_ResIdInstance,Operation_ClickWait,"com.android.browser:id/closetab","0");
 		}
 	}
 	/**
