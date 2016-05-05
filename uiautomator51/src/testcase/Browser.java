@@ -340,6 +340,8 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/title","Baidu");
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/address","www.baidu.com");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"目标目录存在一个相同名称或网址的书签，是否覆盖？"))
+			excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_ResIdText,Operation_checkExist,"com.android.browser:id/label","Baidu");
 		//清场
 		excute(Object_Text,Operation_LongClick,"Baidu");
@@ -424,23 +426,38 @@ public class Browser extends UiAutomatorTestCase
 	}
 	/**
 	 * 长按书签 向主屏幕添加快捷方式
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_027()
+	public static void test_027() throws UiObjectNotFoundException
 	{
-		//主体
+		//前提
 		BrowserCommon.enterCollectionTab("书签");
-		String tabName=(String)excute(Object_ResourceId,Operation_GetText,"com.android.browser:id/label");
-		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/label");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"添加书签");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/title","Baidu");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/address","www.baidu.com");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"目标目录存在一个相同名称或网址的书签，是否覆盖？"))
+			excute(Object_Text,Operation_ClickWait,"确定");
+		//主体
+		excute(Object_Text,Operation_LongClick,"Baidu");
 		excute(Object_Text,Operation_ClickWait,"向主屏幕添加快捷方式");
 		excute(Object_Device,Operation_PressHome);
-		excute(Object_Text,Operation_WaitForExists,tabName,"3000");
-		check(Object_Text,Operation_checkExist,tabName);
-		//清场  目前，在主屏幕的快捷方式可能删除不掉
-		Rect bounds = (Rect) excute(Object_Text, Operation_GetBounds, tabName);
-	    String x = Integer.toString(bounds.centerX());
-		String y = Integer.toString(bounds.centerY());
-		int width=UiDevice.getInstance().getDisplayWidth();
-		excute(Object_Device, Operation_DiviceDrag, x, y,String.valueOf(width/2),"0", "10");
+		excute(Object_Text,Operation_WaitForExists,"Baidu","3000");
+		check(Object_Text,Operation_checkExist,"Baidu");
+		//清场 
+		Rect bound = (Rect) excute(Object_Description, Operation_GetBounds,"Baidu");
+		String x = Integer.toString(bound.centerX());
+		String y = Integer.toString(bound.centerY());
+		Rect bounds = (Rect) excute(Object_ClassName, Operation_GetBounds,"android.view.ViewGroup");
+		String x1 = Integer.toString(bounds.centerX());
+		String y1 = Integer.toString(bounds.top);
+		excute(Object_Device, Operation_DiviceDrag, x, y, x1, y1, "10");
+		DeviceCommon.enterApp(Devices_Desc_Browser);
+		BrowserCommon.enterCollectionTab("书签");
+		excute(Object_Text,Operation_LongClick,"Baidu");
+		excute(Object_Text,Operation_ClickWait,"删除书签");
+		excute(Object_Text,Operation_ClickWait,"确定");
 	}
 	/**
 	 * 长按书签 分享链接
@@ -616,6 +633,8 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"保存到书签");
 		check(Object_Text,Operation_checkExist,"将此页加为书签");
 		excute(Object_Text,Operation_ClickWait,"确定");
+		if ((Boolean)excute(Object_Text,Operation_Exists,"目标目录存在一个相同名称或网址的书签，是否覆盖？"))
+			excute(Object_Text,Operation_ClickWait,"确定");
 		excute(Object_Text,Operation_ClickWait,"书签");
 		check(Object_Text,Operation_checkExist,name);
 	}
