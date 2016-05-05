@@ -101,6 +101,11 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","100000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		if(!(Boolean)excute(Object_Description,Operation_Exists,"刷新网页"))
+		{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+		}
 		excute(Object_Description,Operation_ClickWait,"刷新网页");
 		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","100000");
 		check(Object_Description,Operation_checkExist,"百度一下,你就知道");
@@ -145,7 +150,7 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.meituan.com");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.browser:id/favicon","50000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/back");
+		excute(Object_Device, Operation_PressBack);
 		excute(Object_Description,Operation_WaitForExists,"百度一下,你就知道","50000");
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/forward");
