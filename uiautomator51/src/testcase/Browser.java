@@ -635,8 +635,8 @@ public class Browser extends UiAutomatorTestCase
 		//主体
 		BrowserCommon.enterCollectionTab("历史记录");
 		excute(Object_Text,Operation_ClickWait,"今天");
-		String urlName=(String)excute(Object_ResourceId,Operation_GetText,"com.android.browser:id/url");
-		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/url");
+		String urlName=(String)excute(Object_ResIdInstance,Operation_GetText,"com.android.browser:id/url","0");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.android.browser:id/title","0");
 		excute(Object_Text,Operation_ClickWait,"从历史记录中删除");
 		check(Object_Text,Operation_checkNoExist,urlName);	
 	}
@@ -688,7 +688,8 @@ public class Browser extends UiAutomatorTestCase
 		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_TextScroll,Operation_ClickWait,"保存以供离线阅读","vertical");
-		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/title");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.browser:id/thumb","5000");
+		excute(Object_ResourceId,Operation_LongClick,"com.android.browser:id/thumb");
 		check(Object_Text,Operation_checkExist,"删除已保存的网页");
 		//清场
 		excute(Object_Text,Operation_ClickWait,"删除已保存的网页");
