@@ -22,6 +22,8 @@ import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
+
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
@@ -486,9 +488,24 @@ public class DeviceCommon {
 			System.out.println(simSlot + " iccID is: " + iccID);
 		}
 		cursor.close();
+		closeDatabase(database);
 		return iccID;
 	}
 
+	public static void changeSIMName()  throws IOException {
+		String dbPath = "/data/data/com.android.providers.telephony/databases/telephony.db";
+		SQLiteDatabase database = openDatabase(dbPath,
+				SQLiteDatabase.OPEN_READWRITE);
+		//直接改名不查询判断，反正都要一条sql语句
+		//能兼容单双卡，where语句能确保条件不成立时不执行操作
+		ContentValues values=new ContentValues();
+		String[] simID = { "SIM1", "SIM2"};
+		for (int i = 0; i < simID.length; i++) {
+			values.put("display_name", simID[i]);
+			database.update("siminfo", values,"sim_id=?",new String[]{String.valueOf(i)});
+		}
+		closeDatabase(database);
+	}
 	/**
 	 * 得到某个目录下文件数目
 	 * @param folder
@@ -581,6 +598,7 @@ public class DeviceCommon {
 		}
 		return map;
 	}
+
 
 	/**
 	 * 单独获取simNum的接口
