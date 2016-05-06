@@ -25,7 +25,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 		ClearBackgroundApp();
 		Wait(1000);
 		DeviceCommon.enterApp(Devices_Desc_VideoPlayer);
-		//VideoPlayerCommon.deleteAllVideo();
    }
 	@Override
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
@@ -52,8 +51,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_002()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		check(Object_Text,Operation_checkNoExist,"相机");	
 	}
@@ -62,8 +59,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_003()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
 		excute(Object_Text,Operation_ClickWait,"视频");
@@ -74,8 +69,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_004()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
 		excute(Object_Text,Operation_ClickWait,"地点");
@@ -86,8 +79,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_005()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
 		excute(Object_Text,Operation_ClickWait,"时间");
@@ -98,8 +89,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_006()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
 		excute(Object_Text,Operation_ClickWait,"人物");
@@ -110,8 +99,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_007()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
 		excute(Object_Text,Operation_ClickWait,"标签");
@@ -132,8 +119,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_009()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		excute(Object_Device,Operation_PressMenu);
 		check(Object_Text, Operation_checkExist,"选择视频");
@@ -143,8 +128,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_010()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait,"选择视频");
@@ -155,8 +138,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_011()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		check(Object_Text,Operation_checkExist,"选中了 1 项");
@@ -167,8 +148,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_012()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
@@ -181,8 +160,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_013()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"分享方式","5000");
@@ -217,8 +194,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_014()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		VideoPlayerCommon.shareVideoGroupBy("蓝牙");
@@ -230,8 +205,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_015()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		VideoPlayerCommon.shareVideoGroupBy("信息");
@@ -243,8 +216,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_016()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		VideoPlayerCommon.shareVideoGroupBy("电子邮件");
@@ -256,8 +227,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_017()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
@@ -270,8 +239,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_018()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
@@ -279,7 +246,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait,"删除");
 		excute(Object_Text, Operation_ClickWait,"确定");
 	}
-	
 	
 	/**
 	 * 点击一个视频
