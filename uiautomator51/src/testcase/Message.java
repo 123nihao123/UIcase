@@ -322,11 +322,25 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
 		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
 			excute(Object_Text, Operation_ClickWait, "关闭");
+		if (!(Boolean)excute(Object_Text, Operation_IsEnabled, "设置日期"))
+			excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
 		excute(Object_Text, Operation_ClickWait, "设置日期");
 		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
 		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
 		excute(Object_Text, Operation_ClickWait, "确定");
-		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "使用 24 小时制");
+	    int i = 0;
+	    do{
+	        Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+	        if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 38)
+	            break;
+	        i++;
+	    }
+	    while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+		{
+			excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+		}
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		//主体
 		MessageCommon.switchView("文件夹视图");
@@ -335,10 +349,10 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "按时间降序");
 		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
 		String [] tim=new String[num];
-		for(int i = 0; i<num; i++)
+		for(int j = 0; j<num; j++)
 		{
-			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
-			tim[i]=Time;
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(j));
+			tim[j]=Time;
 			MessageCommon.extractFileTime(Time);
 			System.out.println(MessageCommon.extractFileTime(Time));
 			System.out.println(MessageCommon.stringToTime(Time));
@@ -364,11 +378,25 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
 		if ((Boolean)excute(Object_Text, Operation_Exists, "使用GPS提供时间"))
 			excute(Object_Text, Operation_ClickWait, "关闭");
+		if (!(Boolean)excute(Object_Text, Operation_IsEnabled, "设置日期"))
+			excute(Object_Text, Operation_ClickWait, "自动确定日期和时间");
 		excute(Object_Text, Operation_ClickWait, "设置日期");
 		excute(Object_ResourceId, Operation_ClickWait, "android:id/date_picker_header_year");
 		excute(Object_ResIdIndex, Operation_ClickWait, "android:id/text1", "5");
 		excute(Object_Text, Operation_ClickWait, "确定");
-		excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+		Rect textArea = (Rect) excute(Object_Text, Operation_GetBounds, "使用 24 小时制");
+	    int i = 0;
+	    do{
+	        Rect switchButton = (Rect) excute(Object_ResIdInstance, Operation_GetBounds, "android:id/switchWidget",Integer.toString(i));
+	        if(Math.abs(textArea.centerY() - switchButton.centerY()) <= 38)
+	            break;
+	        i++;
+	    }
+	    while(true);
+		if (!(Boolean)excute(Object_ResIdInstance, Operation_IsChecked, "android:id/switchWidget", Integer.toString(i))) 
+		{
+			excute(Object_Text, Operation_ClickWait, "使用 24 小时制");
+		}
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		//主体
 		MessageCommon.switchView("文件夹视图");
@@ -377,10 +405,10 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "按时间升序");
 		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
 		String [] tim=new String[num];
-		for(int i = 0; i<num; i++)
+		for(int j = 0; j<num; j++)
 		{
-			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(i));
-			tim[i]=Time;
+			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(j));
+			tim[j]=Time;
 			MessageCommon.extractFileTime(Time);
 			System.out.println(MessageCommon.extractFileTime(Time));
 			System.out.println(MessageCommon.stringToTime(Time));
