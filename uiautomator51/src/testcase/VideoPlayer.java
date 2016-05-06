@@ -31,6 +31,10 @@ public class VideoPlayer extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
+	public static void test_000()
+	{
+		VideoPlayerCommon.addVideo(1);
+	}
 	/**
 	 * 无视频资源
 	 */
@@ -274,6 +278,208 @@ public class VideoPlayer extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text, Operation_ClickWait,"删除");
 		excute(Object_Text, Operation_ClickWait,"确定");
+	}
+	
+	
+	/**
+	 * 点击一个视频
+	 */
+	public static void test_021()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		check(Object_ResourceId,Operation_checkExist,"android:id/action_bar_title");
+		check(Object_Description,Operation_checkExist,"分享方式");
+		check(Object_Description,Operation_checkExist,"更多选项");
+	}
+	
+	/**
+	 * 点击一个视频 -点击名称
+	 */
+	public static void test_022()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
+		check(Object_ResourceId,Operation_checkExist,"android:id/action_bar_spinner");
+	}
+	
+	/**
+	 * 点击一个视频 -点击名称-视图
+	 */
+	public static void test_023()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+		check(Object_Text,Operation_checkExist,"幻灯片视图");
+		check(Object_Text,Operation_checkExist,"网格视图");
+	}
+	
+	/**
+	 * 幻灯片视图
+	 */
+	public static void test_024()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+		excute(Object_Text,Operation_ClickWait,"幻灯片视图");
+		check(Object_ResIdText,Operation_checkExist,"android:id/text2","幻灯片视图");
+	}
+	
+	/**
+	 * 网格视图
+	 */
+	public static void test_025()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
+		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+		excute(Object_Text,Operation_ClickWait,"网格视图");
+		check(Object_ResIdText,Operation_checkExist,"android:id/text2","网格视图");
+	}
+	
+	/**
+	 * 点击一个视频，分享
+	 */
+	public static void test_026()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Description,Operation_ClickWait,"分享方式");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+		check(Object_Text,Operation_checkExist,"信息");
+		check(Object_Text,Operation_checkExist,"电子邮件");
+	}
+	
+	/**
+	 * 点击一个视频，分享-蓝牙
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_027() throws UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		}
+		//主体
+		DeviceCommon.enterApp(Devices_Desc_VideoPlayer);
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		if(!(Boolean)excute(Object_Description,Operation_Exists,"使用蓝牙分享"))
+		{
+			excute(Object_Description,Operation_ClickWait,"分享方式");
+			excute(Object_Text,Operation_ClickWait,"蓝牙");
+		}else
+		{
+			excute(Object_Description,Operation_ClickWait,"使用蓝牙分享");
+		}
+		check(Object_Text,Operation_checkExist,"选择蓝牙设备");
+		//清场
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","开启"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		}
+	}
+	
+	/**
+	 * 点击一个视频，分享-信息
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_028() 
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Description,Operation_ClickWait,"分享方式");
+		if((Boolean)excute(Object_Text,Operation_Exists,"信息"))
+		{
+			excute(Object_Text,Operation_ClickWait,"信息");
+		}else
+		{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/default_activity_button");
+		}
+		excute(Object_Text,Operation_ClickWait,"新消息");
+		check(Object_Text,Operation_checkExist,"收件人");
+	}
+	
+	/**
+	 * 点击一个视频，分享-电子邮件
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_029() 
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Description,Operation_ClickWait,"分享方式");
+		if((Boolean)excute(Object_Text,Operation_Exists,"电子邮件"))
+		{
+			excute(Object_Text,Operation_ClickWait,"电子邮件");
+		}else
+		{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/default_activity_button");
+		}
+		excute(Object_Text,Operation_WaitForExists,"帐户设置","5000");
+		check(Object_Text,Operation_checkExist,"帐户设置");
+	}
+	
+	/**
+	 * 点击一个视频，菜单
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_030() 
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"删除");
+		check(Object_Text,Operation_checkExist,"详细信息");
+	}
+	
+	/**
+	 * 点击一个视频，菜单-删除（取消）
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_031()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 * 点击一个视频，菜单-删除
+	 */
+	public static void test_032()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkExist,"相机");
 		//清场
 		VideoPlayerCommon.addVideo(1);
@@ -291,6 +497,181 @@ public class VideoPlayer extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text, Operation_ClickWait,"详细信息");
 		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle");
+	}
+	
+	
+	/**
+	 * 点击一个视频，菜单-详细信息
+	 */
+	public static void test_033()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"详细信息");
+		check(Object_Text,Operation_checkExist,"关闭");
+	}
+	
+	/**
+	 * 点击一个视频，菜单-详细信息
+	 */
+	public static void test_034()
+	{
+		//前提
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Device, Operation_PressBack);
+		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+			excute(Object_Text,Operation_ClickWait,"网格视图");
+		}
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		check(Object_Text,Operation_checkExist,"播放幻灯片");
+		check(Object_Text,Operation_checkExist,"选择条目");
+		check(Object_Text,Operation_checkExist,"分组依据");
+	}
+	
+	/**
+	 * 点击一个视频，播放幻灯片
+	 */
+	public static void test_036()
+	{
+		//前提
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Device, Operation_PressBack);
+		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+			excute(Object_Text,Operation_ClickWait,"网格视图");
+		}
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"播放幻灯片");
+		check(Object_ResourceId,Operation_checkNoExist,"android:id/action_bar");
+	}
+	
+	/**
+	 * 点击一个视频，选择条目
+	 */
+	public static void test_037()
+	{
+		//前提
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Device, Operation_PressBack);
+		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+			excute(Object_Text,Operation_ClickWait,"网格视图");
+		}
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		check(Object_Description,Operation_checkExist,"选中了 0 项");
+	}
+	
+	/**
+	 * 点击一个视频，选择条目-选中一条视频
+	 */
+	public static void test_038()
+	{
+		//前提
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Device, Operation_PressBack);
+		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+			excute(Object_Text,Operation_ClickWait,"网格视图");
+		}
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		check(Object_Text,Operation_checkExist,"选中了 1 项");
+		check(Object_Description,Operation_checkExist,"分享方式");
+	}
+	
+	/**
+	 * 选择条目-选中一条视频，分享
+	 */
+	public static void test_039()
+	{
+		//前提
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Device, Operation_PressBack);
+		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+			excute(Object_Text,Operation_ClickWait,"网格视图");
+		}
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_Description,Operation_ClickWait,"分享方式");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+		check(Object_Text,Operation_checkExist,"电子邮件");
+	}
+	
+	/**
+	 * 选择条目-选中一条视频分享-蓝牙
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_040() throws UiObjectNotFoundException
+	{
+		//前提
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		}
+		DeviceCommon.enterApp(Devices_Desc_VideoPlayer);
+		VideoPlayerCommon.clickVideo();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Device, Operation_PressBack);
+		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+			excute(Object_Text,Operation_ClickWait,"网格视图");
+		}
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_Description,Operation_ClickWait,"分享方式");
+		if((Boolean)excute(Object_Text,Operation_Exists,"蓝牙"))
+		{
+			excute(Object_Text,Operation_ClickWait,"蓝牙");
+		}else
+		{
+			excute(Object_Description,Operation_ClickWait,"使用蓝牙分享");
+		}
+		check(Object_Text,Operation_checkExist,"选择蓝牙设备");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+		
+		//清场
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		}
 	}
 	/**
 	 * 点击播放视频

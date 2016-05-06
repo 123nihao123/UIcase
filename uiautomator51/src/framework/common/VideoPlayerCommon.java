@@ -46,7 +46,7 @@ public class VideoPlayerCommon
 		{
 			excute(Object_Description,Operation_WaitForExists,"快门","5000");
 			excute(Object_Description,Operation_ClickWait,"快门");
-			Wait(5000);
+			Wait(20000);
 			excute(Object_Description,Operation_ClickWait,"快门");
 		}	
 		excute(Object_Device,Operation_PressBack);
