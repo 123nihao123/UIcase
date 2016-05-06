@@ -40,15 +40,15 @@ public class VideoPlayerCommon
 	 */
 	public static void addVideo(int num)
 	{
+		excute(Object_Description,Operation_ClickWait,"切换到相机");
 		for(int i=0;i<num;i++)
 		{
-			excute(Object_Description,Operation_ClickWait,"切换到相机");
 			excute(Object_Description,Operation_WaitForExists,"快门","5000");
 			excute(Object_Description,Operation_ClickWait,"快门");
 			Wait(5000);
 			excute(Object_Description,Operation_ClickWait,"快门");
-			excute(Object_Device,Operation_PressBack);
-		}		
+		}	
+		excute(Object_Device,Operation_PressBack);
 	}
 	/**
 	 * 点击一个视频
@@ -81,5 +81,41 @@ public class VideoPlayerCommon
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x , y);		
 	}
-   
+	/**
+	 * 选择分享视频群组的方式
+	 */
+	public static void shareVideoGroupBy(String name)
+	{
+		excute(Object_Description,Operation_WaitForExists,"分享方式","5000");
+		if (name.equals("信息"))		
+		{
+			if((Boolean)excute(Object_Description,Operation_Exists,"使用信息分享"))
+				excute(Object_Description,Operation_WaitForExists,"使用信息分享");
+			else
+			{
+				excute(Object_Description,Operation_ClickWait,"分享方式");
+				excute(Object_Text, Operation_ClickWait,"信息");
+			}
+		}
+		else if(name.equals("蓝牙"))	
+		{
+			if ((Boolean)excute(Object_Description,Operation_Exists,"使用蓝牙分享"))
+				excute(Object_Description,Operation_WaitForExists,"使用信息分享");
+			else
+			{
+				excute(Object_Description,Operation_ClickWait,"分享方式");
+				excute(Object_Text, Operation_ClickWait,"蓝牙");
+			}
+		}
+		else if (name.equals("电子邮件"))	
+		{
+			if ((Boolean)excute(Object_Description,Operation_Exists,"使用电子邮件分享"))
+				excute(Object_Description,Operation_WaitForExists,"使用电子邮件分享");
+			else
+			{
+				excute(Object_Description,Operation_ClickWait,"分享方式");
+				excute(Object_Text, Operation_ClickWait,"电子邮件");
+			}
+		}
+	}
 }
