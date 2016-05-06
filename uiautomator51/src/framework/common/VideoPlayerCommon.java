@@ -55,11 +55,19 @@ public class VideoPlayerCommon
 	 */
 	public static void clickVideo()
 	{
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.gallery3d:id/gl_root_view", "10000");
 		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x , y);
+		Wait(1000);
 		UiDevice.getInstance().click(x , y);
+		Wait(1000);
+		if(!(boolean) excute(Object_Description, Operation_Exists,"播放视频"))
+		{
+			UiDevice.getInstance().click(x, y);
+			Wait(1000);
+		}
 	}
    /**
     * 点击页面上的一个群组

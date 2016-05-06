@@ -1144,8 +1144,9 @@ public class Browser extends UiAutomatorTestCase
 		//主体
 		BrowserCommon.settingMenu("高级");
 		excute(Object_TextScroll, Operation_ClickWait, "设置搜索引擎", "vertical");
-		excute(Object_Text, Operation_ClickWait, "百度");
-		check(Object_ResIdText, Operation_checkExist, "android:id/summary", "百度");
+		String Searchname = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1" ,"1");
+		excute(Object_Text, Operation_ClickWait, Searchname);
+		check(Object_ResIdText, Operation_checkExist, "android:id/summary", Searchname);
 	}
 	/**
 	 * 存储位置
