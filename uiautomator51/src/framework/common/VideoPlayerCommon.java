@@ -3,6 +3,7 @@ package framework.common;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.excute.Excute.Wait;
+import static framework.excute.Excute.check;
 import static framework.excute.Excute.excute;
 
 import android.graphics.Rect;
@@ -117,5 +118,35 @@ public class VideoPlayerCommon
 				excute(Object_Text, Operation_ClickWait,"电子邮件");
 			}
 		}
+		}
+	/**
+	 * 播放界面菜单
+	 * @param menulist 菜单列表：更多选项，分享方式
+	 * @param menu
+	 */
+	public static void Playscreenmenu(String menulist, String menu)
+	{
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.gallery3d:id/gl_root_view", "10000");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		Wait(1000);
+		UiDevice.getInstance().click(x , y);
+		Wait(1000);
+		if(!(boolean) excute(Object_Description, Operation_Exists,"播放视频"))
+		{
+			UiDevice.getInstance().click(x, y);
+			Wait(1000);
+		}
+		excute(Object_Description, Operation_ClickWait, menulist);
+		if((boolean) excute(Object_Text, Operation_Exists, menu))
+		{
+			excute(Object_Text, Operation_ClickWait, menu);
+		}else{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/default_activity_button");
+		}
+			
 	}
 }

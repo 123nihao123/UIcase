@@ -297,8 +297,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_052()
 	{
-		//前提
-//		VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideo();
 		check(Object_ResourceId, Operation_checkExist, "android:id/action_bar_title");
@@ -311,28 +309,183 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_054()
 	{
-		//前提
-//		VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideo();
+		
 		Rect ModArea = (Rect) excute(Object_Description, Operation_GetBounds, "视频播放器时间栏");
 		int x = ModArea.centerX();
 		int y = ModArea.top;
+		Wait(5000);
+		check(Object_Description, Operation_checkNoExist, "播放视频");
 		UiDevice.getInstance().click(x , y-10);
+		UiDevice.getInstance().click(x , y-10);
+		Wait(5000);
+		check(Object_Description, Operation_checkExist, "播放视频");
 	}
 	/**
 	 * 分享
 	 */
 	public static void test_056()
 	{
-		//前提
-//		VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideo();
-		excute(Object_Description, Operation_GetBounds, "分享方式");
+		excute(Object_Description, Operation_ClickWait, "分享方式");
 		check(Object_Text, Operation_checkExist, "信息");
 		check(Object_Text, Operation_checkExist, "蓝牙");
 		check(Object_Text, Operation_checkExist, "电子邮件");
 	}
-	
+	/**
+	 * 信息分享
+	 */
+	public static void test_058()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("分享方式", "信息");
+		excute(Object_Text, Operation_WaitForExists, "新消息", "10000");
+		check(Object_Text, Operation_checkExist, "新消息");
+	}
+	/**
+	 * 信息分享
+	 */
+	public static void test_059()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("分享方式","蓝牙");
+		if((boolean) excute(Object_Text, Operation_Exists, "开启"))
+			excute(Object_Text, Operation_ClickWait, "开启");
+		excute(Object_Text, Operation_WaitForExists, "选择蓝牙设备", "10000");
+		check(Object_Text, Operation_checkExist, "选择蓝牙设备");
+	}
+	/**
+	 * 信息分享
+	 */
+	public static void test_060()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("分享方式","电子邮件");
+		excute(Object_Text, Operation_WaitForExists, "帐户设置", "10000");
+		check(Object_Text, Operation_checkExist, "帐户设置");
+	}
+	/**
+	 * 更多菜单
+	 */
+	public static void test_061()
+	{
+		//主体
+		VideoPlayerCommon.clickVideo();
+		Rect Area = (Rect) excute(Object_Description, Operation_GetBounds, "视频播放器时间栏");
+		int x1 = Area.centerX();
+		int y1 = Area.top;
+		UiDevice.getInstance().click(x1 , y1-10);
+		excute(Object_Description, Operation_ClickWait, "更多选项");
+		check(Object_Text, Operation_checkExist, "跳转至");
+		check(Object_Text, Operation_checkExist, "原始尺寸");
+		check(Object_Text, Operation_checkExist, "参数设置");
+		check(Object_Text, Operation_checkExist, "回放模式");
+		check(Object_Text, Operation_checkExist, "声道设置");
+		check(Object_Text, Operation_checkExist, "耳机");
+	}
+	/**
+	 * 跳转至
+	 */
+	public static void test_062()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "跳转至");
+		excute(Object_Text, Operation_WaitForExists, "搜索全部", "10000");
+		check(Object_Text, Operation_checkExist, "搜索全部");
+	}
+	/**
+	 * 原始尺寸
+	 */
+	public static void test_063()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "原始尺寸");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "全屏播放");
+	}
+	/**
+	 * 全屏播放
+	 */
+	public static void test_064()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "原始尺寸");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "全屏播放");
+		excute(Object_Device, Operation_PressMenu);
+		check(Object_Text, Operation_checkExist, "原始尺寸");
+	}
+	/**
+	 * 参数设置
+	 */
+	public static void test_065()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "参数设置");
+		excute(Object_Text, Operation_WaitForExists, "参数设置", "10000");
+		check(Object_Text, Operation_checkExist, "参数设置");
+	}
+	/**
+	 * 回放模式
+	 */
+	public static void test_066()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "回放模式");
+		excute(Object_Text, Operation_WaitForExists, "回放模式", "10000");
+		check(Object_Text, Operation_checkExist, "不回放");
+		check(Object_Text, Operation_checkExist, "单曲回放");
+		check(Object_Text, Operation_checkExist, "全部回放");
+	}
+	/**
+	 * 不回放
+	 */
+	public static void test_067()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "回放模式");
+		excute(Object_Text, Operation_WaitForExists, "回放模式", "10000");
+		excute(Object_Text, Operation_ClickWait, "不回放");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "回放模式");
+		check(Object_Text, Operation_CheckedTrue, "不回放");
+	}
+	/**
+	 * 单曲回放
+	 */
+	public static void test_068()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "回放模式");
+		excute(Object_Text, Operation_WaitForExists, "回放模式", "10000");
+		excute(Object_Text, Operation_ClickWait, "单曲回放");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "回放模式");
+		check(Object_Text, Operation_CheckedTrue, "单曲回放");
+	}
+	/**
+	 * 全部回放
+	 */
+	public static void test_069()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "回放模式");
+		excute(Object_Text, Operation_WaitForExists, "回放模式", "10000");
+		excute(Object_Text, Operation_ClickWait, "全部回放");
+		excute(Object_Device, Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait, "回放模式");
+		check(Object_Text, Operation_CheckedTrue, "全部回放");
+	}
+	/**
+	 * 全部回放
+	 */
+	public static void test_070()
+	{
+		//主体
+		VideoPlayerCommon.Playscreenmenu("更多选项", "声道设置");
+		excute(Object_Text, Operation_WaitForExists, "声道设置", "10000");
+		check(Object_Text, Operation_checkExist, "声道设置");
+	}
 }
