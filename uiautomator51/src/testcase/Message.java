@@ -347,15 +347,16 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.Menuoption("收件箱");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
 		excute(Object_Text, Operation_ClickWait, "按时间降序");
-		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
-		String [] tim=new String[num];
-		for(int j = 0; j<num; j++)
+		//不能排序一整屏，有可能最后一个消息只显示一部分
+		//int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		String [] tim=new String[3];
+		for(int j = 0; j<3; j++)
 		{
 			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(j));
 			tim[j]=Time;
-			MessageCommon.extractFileTime(Time);
-			System.out.println(MessageCommon.extractFileTime(Time));
-			System.out.println(MessageCommon.stringToTime(Time));
+			//MessageCommon.extractFileTime(Time);
+			//System.out.println(MessageCommon.extractFileTime(Time));
+			//System.out.println(MessageCommon.stringToTime(Time));
 		}
 		Assert.assertTrue(MessageCommon.isSortedByTime(tim,true));
 		//清场
@@ -403,15 +404,16 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.Menuoption("收件箱");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
 		excute(Object_Text, Operation_ClickWait, "按时间升序");
-		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
-		String [] tim=new String[num];
-		for(int j = 0; j<num; j++)
+		//不能排序一整屏，有可能最后一个消息只显示一部分
+		//int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
+		String [] tim=new String[3];
+		for(int j = 0; j<3; j++)
 		{
 			String Time = (String) excute(Object_ResIdInstance, Operation_GetText, "com.android.mmsfolderview:id/conversation_timestamp", String.valueOf(j));
 			tim[j]=Time;
-			MessageCommon.extractFileTime(Time);
-			System.out.println(MessageCommon.extractFileTime(Time));
-			System.out.println(MessageCommon.stringToTime(Time));
+			//MessageCommon.extractFileTime(Time);
+			//System.out.println(MessageCommon.extractFileTime(Time));
+			//System.out.println(MessageCommon.stringToTime(Time));
 		}
 		Assert.assertTrue(MessageCommon.isSortedByTime(tim,false));
 		//清场

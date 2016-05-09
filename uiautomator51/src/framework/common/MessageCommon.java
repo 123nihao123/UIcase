@@ -224,7 +224,7 @@ public class MessageCommon {
 	public static String extractFileTime(String info)
 	{
 		//System.out.println(info);
-		String strReturn= DeviceCommon.extractField(info,"\\d\\d\\d\\d/\\d/\\d\\d\\s\\d\\d:\\d\\d");
+		String strReturn= DeviceCommon.extractField(info,"\\d\\d\\d\\d/\\d+/\\d+\\s\\d\\d:\\d\\d");
 		//System.out.println("FileTime is"+strReturn);
 		return strReturn;
 	}
@@ -287,7 +287,7 @@ public class MessageCommon {
 	{
 		SimpleDateFormat format =  new SimpleDateFormat("yyyy/MM/dd HH:mm");        
 		Date date = format.parse(strTime);
-		//System.out.print("Format To times:"+date.getTime());
+		//System.out.println("Format To times:"+date.getTime());
 		return date.getTime();
 	}
 	
