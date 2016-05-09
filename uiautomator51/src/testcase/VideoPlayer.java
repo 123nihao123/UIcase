@@ -164,31 +164,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"分享方式","5000");
-		if((Boolean)excute(Object_Description,Operation_Exists,"使用信息分享"))
-		{
-			excute(Object_Description,Operation_ClickWait,"分享方式");
-			check(Object_Text,Operation_checkExist,"蓝牙");
-			check(Object_Text,Operation_checkExist,"电子邮件");
-		}
-		else if ((Boolean)excute(Object_Description,Operation_Exists,"使用蓝牙分享"))
-		{
-			excute(Object_Description,Operation_ClickWait,"分享方式");
-			check(Object_Text,Operation_checkExist,"信息");
-			check(Object_Text,Operation_checkExist,"电子邮件");
-		}
-		else if((Boolean)excute(Object_Description,Operation_Exists,"使用电子邮件分享"))
-		{
-			excute(Object_Description,Operation_ClickWait,"分享方式");
-			check(Object_Text,Operation_checkExist,"信息");
-			check(Object_Text,Operation_checkExist,"蓝牙");
-		}
-		else
-		{
-			excute(Object_Description,Operation_ClickWait,"分享方式");
-			check(Object_Text,Operation_checkExist,"信息");
-			check(Object_Text,Operation_checkExist,"蓝牙");
-			check(Object_Text,Operation_checkExist,"电子邮件");
-		}
+		VideoPlayerCommon.checksharemenu();
 	}
 	/**
 	 * 选择一个群组,分享功能——蓝牙
