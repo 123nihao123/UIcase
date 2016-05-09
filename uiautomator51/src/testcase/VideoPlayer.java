@@ -353,14 +353,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		if(!(Boolean)excute(Object_Description,Operation_Exists,"使用蓝牙分享"))
-		{
-			excute(Object_Description,Operation_ClickWait,"分享方式");
-			excute(Object_Text,Operation_ClickWait,"蓝牙");
-		}else
-		{
-			excute(Object_Description,Operation_ClickWait,"使用蓝牙分享");
-		}
+		VideoPlayerCommon.shareType("蓝牙");
 		if((Boolean)excute(Object_Text,Operation_Exists,"开启"))
 		{
 			excute(Object_Text,Operation_ClickWait,"开启");
@@ -385,15 +378,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Description,Operation_ClickWait,"分享方式");
-		if((Boolean)excute(Object_Text,Operation_Exists,"信息"))
-		{
-			excute(Object_Text,Operation_ClickWait,"信息");
-		}else
-		{
-			excute(Object_Device, Operation_PressBack);
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/default_activity_button");
-		}
+		VideoPlayerCommon.shareType("信息");
 		excute(Object_Text,Operation_ClickWait,"新消息");
 		check(Object_Text,Operation_checkExist,"收件人");
 	}
@@ -407,15 +392,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Description,Operation_ClickWait,"分享方式");
-		if((Boolean)excute(Object_Text,Operation_Exists,"电子邮件"))
-		{
-			excute(Object_Text,Operation_ClickWait,"电子邮件");
-		}else
-		{
-			excute(Object_Device, Operation_PressBack);
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/default_activity_button");
-		}
+		VideoPlayerCommon.shareType("电子邮件");
 		excute(Object_Text,Operation_WaitForExists,"帐户设置","5000");
 		check(Object_Text,Operation_checkExist,"帐户设置");
 	}
@@ -570,14 +547,8 @@ public class VideoPlayer extends UiAutomatorTestCase
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x , y);
-		excute(Object_Description,Operation_ClickWait,"分享方式");
-		if((Boolean)excute(Object_Text,Operation_Exists,"蓝牙"))
-		{
-			excute(Object_Text,Operation_ClickWait,"蓝牙");
-		}else
-		{
-			excute(Object_Description,Operation_ClickWait,"使用蓝牙分享");
-		}
+		excute(Object_Description, Operation_WaitForExists, "分享方式", "10000");
+		VideoPlayerCommon.shareType("蓝牙");
 		if((Boolean)excute(Object_Text,Operation_Exists,"开启"))
 		{
 			excute(Object_Text,Operation_ClickWait,"开启");
@@ -587,7 +558,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
-		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","开启"))
 		{
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
@@ -608,14 +579,8 @@ public class VideoPlayer extends UiAutomatorTestCase
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x , y);
-		excute(Object_Description,Operation_ClickWait,"分享方式");
-		if((Boolean)excute(Object_Text,Operation_Exists,"信息"))
-		{
-			excute(Object_Text,Operation_ClickWait,"信息");
-		}else
-		{
-			excute(Object_Description,Operation_ClickWait,"使用信息分享");
-		}
+		excute(Object_Description, Operation_WaitForExists, "分享方式", "10000");
+		VideoPlayerCommon.shareType("信息");
 		check(Object_Text,Operation_checkExist,"新消息");
 	}
 	
@@ -634,14 +599,8 @@ public class VideoPlayer extends UiAutomatorTestCase
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x , y);
-		excute(Object_Description,Operation_ClickWait,"分享方式");
-		if((Boolean)excute(Object_Text,Operation_Exists,"电子邮件"))
-		{
-			excute(Object_Text,Operation_ClickWait,"电子邮件");
-		}else
-		{
-			excute(Object_Description,Operation_ClickWait,"使用电子邮件分享");
-		}
+		excute(Object_Description, Operation_WaitForExists, "分享方式", "10000");
+		VideoPlayerCommon.shareType("电子邮件");
 		excute(Object_Text,Operation_WaitForExists,"帐户设置","5000");
 		check(Object_Text,Operation_checkExist,"帐户设置");
 	}

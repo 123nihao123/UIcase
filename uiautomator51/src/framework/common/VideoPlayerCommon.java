@@ -6,6 +6,8 @@ import static framework.excute.Excute.Wait;
 import static framework.excute.Excute.check;
 import static framework.excute.Excute.excute;
 
+import java.lang.reflect.Array;
+
 import android.graphics.Rect;
 
 import com.android.uiautomator.core.UiDevice;
@@ -183,4 +185,15 @@ public class VideoPlayerCommon
 		Wait(1000);
 	}
 	
+	public static void shareType(String type)
+	{
+		excute(Object_Description, Operation_ClickWait, "分享方式");
+		if((boolean) excute(Object_Text, Operation_Exists, type))
+		{
+			excute(Object_Text, Operation_ClickWait, type);
+		}else{
+			excute(Object_Device, Operation_PressBack);
+			excute(Object_ResourceId, Operation_ClickWait, "android:id/default_activity_button");
+		}
+	}
 }
