@@ -495,7 +495,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择条目");
-		check(Object_Description,Operation_checkExist,"选中了 0 项");
+		check(Object_Text,Operation_checkExist,"选中了 0 项");
 	}
 	
 	/**
@@ -506,12 +506,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
+		VideoPlayerCommon.chooseMenu();
 		check(Object_Text,Operation_checkExist,"选中了 1 项");
 		check(Object_Description,Operation_checkExist,"分享方式");
 	}
@@ -524,12 +519,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
+		VideoPlayerCommon.chooseMenu();
 		excute(Object_ResourceId, Operation_WaitForExists, "android:id/default_activity_button","2000");
 		VideoPlayerCommon.checksharemenu();
 	}
@@ -544,11 +534,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
+		VideoPlayerCommon.chooseMenu();
 		excute(Object_Description, Operation_WaitForExists, "分享方式", "10000");
 		VideoPlayerCommon.shareType("蓝牙");
 		if((Boolean)excute(Object_Text,Operation_Exists,"开启"))
@@ -575,12 +561,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
+		VideoPlayerCommon.chooseMenu();
 		excute(Object_Description, Operation_WaitForExists, "分享方式", "10000");
 		VideoPlayerCommon.shareType("信息");
 		check(Object_Text,Operation_checkExist,"新消息");
@@ -595,12 +576,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
+		VideoPlayerCommon.chooseMenu();
 		excute(Object_Description, Operation_WaitForExists, "分享方式", "10000");
 		VideoPlayerCommon.shareType("电子邮件");
 		excute(Object_Text,Operation_WaitForExists,"帐户设置","5000");
@@ -616,14 +592,17 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		VideoPlayerCommon.chooseMenu();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/expand_activities_button","5000");
+		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.gallery3d:id/action_delete"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		}
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text,Operation_ClickWait,"删除");
+		}
 		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
 	
@@ -636,14 +615,17 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		VideoPlayerCommon.chooseMenu();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/expand_activities_button","5000");
+		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.gallery3d:id/action_delete"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		}
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text,Operation_ClickWait,"删除");
+		}
 		excute(Object_Text,Operation_ClickWait,"取消");
 		check(Object_Text,Operation_checkNoExist,"相机");
 	}
@@ -657,14 +639,17 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		VideoPlayerCommon.chooseMenu();
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/expand_activities_button","5000");
+		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.gallery3d:id/action_delete"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		}
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text,Operation_ClickWait,"删除");
+		}
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkExist,"相机");
 		//清场
@@ -680,12 +665,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"选择条目");
-		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
-		int x = ModArea.centerX();
-		int y = ModArea.centerY();
-		UiDevice.getInstance().click(x , y);
+		VideoPlayerCommon.chooseMenu();
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"详细信息");

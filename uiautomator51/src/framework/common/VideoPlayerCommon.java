@@ -189,6 +189,10 @@ public class VideoPlayerCommon
 		Wait(1000);
 	}
 	
+	/**
+	 * 分享方式：当选中一个分享方式后，则下拉列表里不会再出现该方式
+	 * @param type
+	 */
 	public static void shareType(String type)
 	{
 		excute(Object_Description, Operation_ClickWait, "分享方式");
@@ -225,5 +229,18 @@ public class VideoPlayerCommon
 			check(Object_Text, Operation_checkExist, "电子邮件");
 		}	
 		
+	}
+	
+	/**
+	 * 网格视图中选择条目
+	 */
+	public static void chooseMenu()
+	{
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
 	}
 }
