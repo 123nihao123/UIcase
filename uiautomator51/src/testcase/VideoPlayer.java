@@ -808,10 +808,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		VideoPlayerCommon.clickVideo();
-		excute(Object_Description, Operation_ClickWait, "分享方式");
-		check(Object_Text, Operation_checkExist, "信息");
-		check(Object_Text, Operation_checkExist, "蓝牙");
-		check(Object_Text, Operation_checkExist, "电子邮件");
+		VideoPlayerCommon.checksharemenu();
 	}
 	/**
 	 * 信息分享
@@ -819,29 +816,29 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_058()
 	{
 		//主体
-		VideoPlayerCommon.Playscreenmenu("分享方式", "信息");
+		VideoPlayerCommon.Playscreenshare("信息");
 		excute(Object_Text, Operation_WaitForExists, "新消息", "10000");
 		check(Object_Text, Operation_checkExist, "新消息");
 	}
 	/**
-	 * 信息分享
+	 * 蓝牙分享
 	 */
 	public static void test_059()
 	{
 		//主体
-		VideoPlayerCommon.Playscreenmenu("分享方式","蓝牙");
+		VideoPlayerCommon.Playscreenshare("蓝牙");
 		if((boolean) excute(Object_Text, Operation_Exists, "开启"))
 			excute(Object_Text, Operation_ClickWait, "开启");
 		excute(Object_Text, Operation_WaitForExists, "选择蓝牙设备", "10000");
 		check(Object_Text, Operation_checkExist, "选择蓝牙设备");
 	}
 	/**
-	 * 信息分享
+	 * 电子邮件分享
 	 */
 	public static void test_060()
 	{
 		//主体
-		VideoPlayerCommon.Playscreenmenu("分享方式","电子邮件");
+		VideoPlayerCommon.Playscreenshare("电子邮件");
 		excute(Object_Text, Operation_WaitForExists, "帐户设置", "10000");
 		check(Object_Text, Operation_checkExist, "帐户设置");
 	}
@@ -958,7 +955,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		check(Object_Text, Operation_CheckedTrue, "全部回放");
 	}
 	/**
-	 * 全部回放
+	 * 声道设置
 	 */
 	public static void test_070()
 	{

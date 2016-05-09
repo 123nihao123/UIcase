@@ -145,12 +145,38 @@ public class VideoPlayerCommon
 		if((boolean) excute(Object_Text, Operation_Exists, menu))
 		{
 			excute(Object_Text, Operation_ClickWait, menu);
+		}	
+	}
+	/**
+	 * 播放界面分享菜单
+	 * @param menu：蓝牙，电子邮件，信息
+	 */
+	public static void Playscreenshare(String menu)
+	{
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.gallery3d:id/gl_root_view", "10000");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		Wait(1000);
+		UiDevice.getInstance().click(x , y);
+		Wait(1000);
+		if(!(boolean) excute(Object_Description, Operation_Exists,"播放视频"))
+		{
+			UiDevice.getInstance().click(x, y);
+			Wait(1000);
+		}
+		excute(Object_Description, Operation_ClickWait, "分享方式");
+		if((boolean) excute(Object_Text, Operation_Exists, menu))
+		{
+			excute(Object_Text, Operation_ClickWait, menu);
 		}else{
 			excute(Object_Device, Operation_PressBack);
 			excute(Object_ResourceId, Operation_ClickWait, "android:id/default_activity_button");
 		}
 			
 	}
+
 	/**
 	 * 切换模式：幻灯片视图，网格视图
 	 * @param mode
@@ -195,5 +221,31 @@ public class VideoPlayerCommon
 			excute(Object_Device, Operation_PressBack);
 			excute(Object_ResourceId, Operation_ClickWait, "android:id/default_activity_button");
 		}
+	}
+	/**
+	 * 分享模式
+	 */
+	public static void checksharemenu()
+	{
+		String type[] = {"信息", "蓝牙", "电子邮件"};
+		if((boolean) excute(Object_ResourceId, Operation_Exists, "android:id/default_activity_button"))
+		{
+			excute(Object_Description, Operation_ClickWait, "分享方式");
+			String text1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/list_item", "0");
+			String text2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/list_item", "1");
+			for (int i=0; i<2; i++)
+			{
+				if(text1.equals(type[i]))
+					check(Object_Text, Operation_checkExist, type[i]);
+				if(text2.equals(type[i]))
+					check(Object_Text, Operation_checkExist, type[i]);
+			}
+		}else{
+			excute(Object_Description, Operation_ClickWait, "分享方式");
+			check(Object_Text, Operation_checkExist, "信息");
+			check(Object_Text, Operation_checkExist, "蓝牙");
+			check(Object_Text, Operation_checkExist, "电子邮件");
+		}	
+		
 	}
 }
