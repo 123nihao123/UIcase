@@ -238,7 +238,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	/**
 	 * 选择一个群组,更多——删除——确定
 	 */
-	public static void test_018()
+	public static void test_118()
 	{
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
@@ -246,6 +246,8 @@ public class VideoPlayer extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text, Operation_ClickWait,"删除");
 		excute(Object_Text, Operation_ClickWait,"确定");
+		//清场
+		VideoPlayerCommon.addVideo(1);
 	}
 
 	/**
@@ -253,8 +255,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_020()
 	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
