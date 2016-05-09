@@ -592,6 +592,226 @@ public class VideoPlayer extends UiAutomatorTestCase
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
 	}
+	
+	/**
+	 * 选择条目-选中一条视频分享-信息
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_041() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_Description,Operation_ClickWait,"分享方式");
+		if((Boolean)excute(Object_Text,Operation_Exists,"信息"))
+		{
+			excute(Object_Text,Operation_ClickWait,"信息");
+		}else
+		{
+			excute(Object_Description,Operation_ClickWait,"使用信息分享");
+		}
+		check(Object_Text,Operation_checkExist,"新消息");
+	}
+	
+	/**
+	 * 选择条目-选中一条视频分享-电子邮件
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_042() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_Description,Operation_ClickWait,"分享方式");
+		if((Boolean)excute(Object_Text,Operation_Exists,"电子邮件"))
+		{
+			excute(Object_Text,Operation_ClickWait,"电子邮件");
+		}else
+		{
+			excute(Object_Description,Operation_ClickWait,"使用电子邮件分享");
+		}
+		excute(Object_Text,Operation_WaitForExists,"帐户设置","5000");
+		check(Object_Text,Operation_checkExist,"帐户设置");
+	}
+	
+	/**
+	 * 选择条目-选中一条视频删除
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_043() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
+	}
+	
+	/**
+	 * 选择条目-选中一条视频删除
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_044() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		excute(Object_Text,Operation_ClickWait,"取消");
+		check(Object_Text,Operation_checkNoExist,"相机");
+	}
+	
+	/**
+	 * 选择条目-选中一条视频删除
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_045() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkExist,"相机");
+		//清场
+		VideoPlayerCommon.addVideo(1);
+	}
+	
+	/**
+	 * 选择条目-选中一条视频,详细信息
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_046() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"选择条目");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/action_delete","5000");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"详细信息");
+		check(Object_Text,Operation_checkExist,"关闭");
+	}
+	
+	/**
+	 * 分组依据
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_047() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"分组依据");
+		check(Object_Text,Operation_checkExist,"时间");
+		check(Object_Text,Operation_checkExist,"地点");
+		check(Object_Text,Operation_checkExist,"人物");
+		check(Object_Text,Operation_checkExist,"标签");
+	}
+	
+	/**
+	 * 分组依据-地点
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_048() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"分组依据");
+		excute(Object_Text,Operation_ClickWait,"地点");
+		excute(Object_Text,Operation_WaitForExists,"按位置分组","5000");
+		check(Object_Text,Operation_checkExist,"按位置分组");
+	}
+	
+	/**
+	 * 分组依据-时间
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_049() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"分组依据");
+		excute(Object_Text,Operation_ClickWait,"时间");
+		excute(Object_Text,Operation_WaitForExists,"按时间分组","5000");
+		check(Object_Text,Operation_checkExist,"按时间分组");
+	}
+	
+	/**
+	 * 分组依据-人物
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_050() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"分组依据");
+		excute(Object_Text,Operation_ClickWait,"人物");
+		excute(Object_Text,Operation_WaitForExists,"按人物","5000");
+		check(Object_Text,Operation_checkExist,"按人物");
+	}
+	
+	/**
+	 * 分组依据-标签
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_051() throws UiObjectNotFoundException
+	{
+		//前提
+		VideoPlayerCommon.switchMode("网格视图");
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"分组依据");
+		excute(Object_Text,Operation_ClickWait,"标签");
+		excute(Object_Text,Operation_WaitForExists,"按标签分组","5000");
+		check(Object_Text,Operation_checkExist,"按标签分组");
+	}
+	
 	/**
 	 * 点击播放视频
 	 */
