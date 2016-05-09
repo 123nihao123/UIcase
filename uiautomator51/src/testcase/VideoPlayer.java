@@ -152,9 +152,15 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
+		Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		check(Object_Text,Operation_checkExist,"删除");
-		check(Object_Text,Operation_checkExist,"详细信息");
+		if (bool)
+			check(Object_Text,Operation_checkExist,"详细信息");
+		else
+		{
+			check(Object_Text,Operation_checkExist,"删除");
+			check(Object_Text,Operation_checkExist,"详细信息");
+		}
 	}
 	/**
 	 * 选择一个群组,分享功能
@@ -168,14 +174,26 @@ public class VideoPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 选择一个群组,分享功能——蓝牙
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_014()
+	public static void test_014() throws UiObjectNotFoundException
 	{
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		VideoPlayerCommon.shareVideoGroupBy("蓝牙");
-		excute(Object_Text,Operation_WaitForExists,"开启","5000");
-		check(Object_Text,Operation_checkExist,"开启");
+		if((Boolean)excute(Object_Text,Operation_Exists,"开启"))
+		{
+			excute(Object_Text,Operation_ClickWait,"开启");
+		}
+		excute(Object_Text,Operation_WaitForExists,"选择蓝牙设备","5000");
+		check(Object_Text,Operation_checkExist,"选择蓝牙设备");
+		//清场
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","开启"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		}
 	}
 	/**
 	 * 选择一个群组,分享功能——信息
@@ -207,8 +225,14 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text, Operation_ClickWait,"删除");
+		Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+		if (bool)
+			excute(Object_Description,Operation_ClickWait,"删除");
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text, Operation_ClickWait,"删除");
+		}
 		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
 	/**
@@ -219,9 +243,16 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//主体
 		VideoPlayerCommon.clickVideoGroup();
 		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text, Operation_ClickWait,"删除");
+		Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+		if (bool)
+			excute(Object_Description,Operation_ClickWait,"删除");
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text, Operation_ClickWait,"删除");
+		}
 		excute(Object_Text, Operation_ClickWait,"确定");
+		check(Object_Text,Operation_checkExist,"相机");
 		//清场
 		VideoPlayerCommon.addVideo(1);
 	}
