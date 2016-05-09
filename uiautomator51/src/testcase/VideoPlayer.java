@@ -337,11 +337,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	{
 		//主体
 		VideoPlayerCommon.comeToVideoScreen();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Description,Operation_ClickWait,"分享方式");
-		check(Object_Text,Operation_checkExist,"蓝牙");
-		check(Object_Text,Operation_checkExist,"信息");
-		check(Object_Text,Operation_checkExist,"电子邮件");
+		VideoPlayerCommon.checksharemenu();
 	}
 	
 	/**
@@ -527,9 +523,8 @@ public class VideoPlayer extends UiAutomatorTestCase
 		int x = ModArea.centerX();
 		int y = ModArea.centerY();
 		UiDevice.getInstance().click(x , y);
-		excute(Object_Description,Operation_ClickWait,"分享方式");
-		check(Object_Text,Operation_checkExist,"蓝牙");
-		check(Object_Text,Operation_checkExist,"电子邮件");
+		excute(Object_ResourceId, Operation_WaitForExists, "android:id/default_activity_button","2000");
+		VideoPlayerCommon.checksharemenu();
 	}
 	
 	/**

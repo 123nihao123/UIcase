@@ -233,7 +233,7 @@ public class VideoPlayerCommon
 			excute(Object_Description, Operation_ClickWait, "分享方式");
 			String text1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/list_item", "0");
 			String text2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/list_item", "1");
-			for (int i=0; i<2; i++)
+			for (int i=0; i<3; i++)
 			{
 				if(text1.equals(type[i]))
 					check(Object_Text, Operation_checkExist, type[i]);
