@@ -90,37 +90,15 @@ public class VideoPlayerCommon
 	public static void shareVideoGroupBy(String name)
 	{
 		excute(Object_Description,Operation_WaitForExists,"分享方式","5000");
-		if (name.equals("信息"))		
+		String text="使用"+name+"分享";
+		if((Boolean)excute(Object_Description,Operation_Exists,text))
+			excute(Object_Description,Operation_ClickWait,text);
+		else
 		{
-			if((Boolean)excute(Object_Description,Operation_Exists,"使用信息分享"))
-				excute(Object_Description,Operation_WaitForExists,"使用信息分享");
-			else
-			{
-				excute(Object_Description,Operation_ClickWait,"分享方式");
-				excute(Object_Text, Operation_ClickWait,"信息");
-			}
+			excute(Object_Description,Operation_ClickWait,"分享方式");
+			excute(Object_Text, Operation_ClickWait,name);
 		}
-		else if(name.equals("蓝牙"))	
-		{
-			if ((Boolean)excute(Object_Description,Operation_Exists,"使用蓝牙分享"))
-				excute(Object_Description,Operation_WaitForExists,"使用信息分享");
-			else
-			{
-				excute(Object_Description,Operation_ClickWait,"分享方式");
-				excute(Object_Text, Operation_ClickWait,"蓝牙");
-			}
-		}
-		else if (name.equals("电子邮件"))	
-		{
-			if ((Boolean)excute(Object_Description,Operation_Exists,"使用电子邮件分享"))
-				excute(Object_Description,Operation_WaitForExists,"使用电子邮件分享");
-			else
-			{
-				excute(Object_Description,Operation_ClickWait,"分享方式");
-				excute(Object_Text, Operation_ClickWait,"电子邮件");
-			}
-		}
-		}
+	}
 	/**
 	 * 播放界面菜单
 	 * @param menulist 菜单列表：更多选项，分享方式

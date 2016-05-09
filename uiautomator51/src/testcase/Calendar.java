@@ -9,6 +9,8 @@ import android.graphics.Rect;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import junit.framework.Assert;
+
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiDevice;
@@ -479,8 +481,10 @@ public class Calendar extends UiAutomatorTestCase
 	{
 		//主体
 		CalendarCommon.enterSettings("常规设置");
+		Boolean state1=(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"android:id/checkbox","0");
 		excute(Object_Text,Operation_ClickWait,"隐藏您不参加的活动");
-		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/checkbox","0");
+		Boolean state2=(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"android:id/checkbox","0");
+		Assert.assertFalse(state1.equals(state2));
 		//清场
 		excute(Object_Text,Operation_ClickWait,"隐藏您不参加的活动");
 	}
@@ -492,8 +496,10 @@ public class Calendar extends UiAutomatorTestCase
 	{
 		//主体
 		CalendarCommon.enterSettings("常规设置");
+		Boolean state1=(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"android:id/checkbox","1");
 		excute(Object_Text,Operation_ClickWait,"显示周数");
-		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/checkbox","1");
+		Boolean state2=(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"android:id/checkbox","1");
+		Assert.assertFalse(state1.equals(state2));
 		//清场
 		excute(Object_Text,Operation_ClickWait,"显示周数");
 	}
