@@ -32,6 +32,7 @@ public class VideoPlayer extends UiAutomatorTestCase
     }
 	public static void test_000()
 	{
+		VideoPlayerCommon.deleteAllVideo();
 		VideoPlayerCommon.addVideo(1);
 	}
 	/**
@@ -246,6 +247,21 @@ public class VideoPlayer extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait,"删除");
 		excute(Object_Text, Operation_ClickWait,"确定");
 	}
+
+	/**
+	 * 选择一个群组,更多——详细信息
+	 */
+	public static void test_020()
+	{
+		//前提
+		//VideoPlayerCommon.addVideo(1);
+		//主体
+		VideoPlayerCommon.clickVideoGroup();
+		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text, Operation_ClickWait,"详细信息");
+		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle");
+	}
 	
 	/**
 	 * 点击一个视频
@@ -253,7 +269,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_021()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		check(Object_ResourceId,Operation_checkExist,"android:id/action_bar_title");
 		check(Object_Description,Operation_checkExist,"分享方式");
@@ -266,7 +282,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_022()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
 		check(Object_ResourceId,Operation_checkExist,"android:id/action_bar_spinner");
@@ -278,7 +294,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_023()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
@@ -292,7 +308,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_024()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
@@ -306,7 +322,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_025()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_title");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
@@ -320,7 +336,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_026()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_Description,Operation_ClickWait,"分享方式");
 		check(Object_Text,Operation_checkExist,"蓝牙");
@@ -334,16 +350,8 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 */
 	public static void test_027() throws UiObjectNotFoundException
 	{
-		//前提
-		DeviceCommon.enterApp(Devices_Desc_Setting);
-		excute(Object_Text,Operation_ClickWait,"蓝牙");
-		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-		}
 		//主体
-		DeviceCommon.enterApp(Devices_Desc_VideoPlayer);
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		if(!(Boolean)excute(Object_Description,Operation_Exists,"使用蓝牙分享"))
 		{
@@ -353,6 +361,11 @@ public class VideoPlayer extends UiAutomatorTestCase
 		{
 			excute(Object_Description,Operation_ClickWait,"使用蓝牙分享");
 		}
+		if((Boolean)excute(Object_Text,Operation_Exists,"开启"))
+		{
+			excute(Object_Text,Operation_ClickWait,"开启");
+		}
+		excute(Object_Text,Operation_WaitForExists,"选择蓝牙设备","5000");
 		check(Object_Text,Operation_checkExist,"选择蓝牙设备");
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Setting);
@@ -370,7 +383,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_028() 
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_Description,Operation_ClickWait,"分享方式");
 		if((Boolean)excute(Object_Text,Operation_Exists,"信息"))
@@ -392,7 +405,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_029() 
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_Description,Operation_ClickWait,"分享方式");
 		if((Boolean)excute(Object_Text,Operation_Exists,"电子邮件"))
@@ -414,7 +427,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_030() 
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"删除");
@@ -428,7 +441,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_031()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -441,7 +454,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_032()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -449,20 +462,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 		check(Object_Text,Operation_checkExist,"相机");
 		//清场
 		VideoPlayerCommon.addVideo(1);
-	}
-	/**
-	 * 选择一个群组,更多——详细信息
-	 */
-	public static void test_020()
-	{
-		//前提
-		//VideoPlayerCommon.addVideo(1);
-		//主体
-		VideoPlayerCommon.clickVideoGroup();
-		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text, Operation_ClickWait,"详细信息");
-		check(Object_ResourceId,Operation_checkExist,"android:id/alertTitle");
 	}
 	
 	
@@ -472,7 +471,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_033()
 	{
 		//主体
-		VideoPlayerCommon.clickVideo();
+		VideoPlayerCommon.comeToVideoScreen();
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"详细信息");
@@ -485,14 +484,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_034()
 	{
 		//前提
-		VideoPlayerCommon.clickVideo();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Device, Operation_PressBack);
-		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
-			excute(Object_Text,Operation_ClickWait,"网格视图");
-		}
+		VideoPlayerCommon.switchMode("网格视图");
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_Text,Operation_checkExist,"播放幻灯片");
@@ -506,14 +498,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_036()
 	{
 		//前提
-		VideoPlayerCommon.clickVideo();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Device, Operation_PressBack);
-		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
-			excute(Object_Text,Operation_ClickWait,"网格视图");
-		}
+		VideoPlayerCommon.switchMode("网格视图");
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"播放幻灯片");
@@ -526,14 +511,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_037()
 	{
 		//前提
-		VideoPlayerCommon.clickVideo();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Device, Operation_PressBack);
-		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
-			excute(Object_Text,Operation_ClickWait,"网格视图");
-		}
+		VideoPlayerCommon.switchMode("网格视图");
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择条目");
@@ -546,14 +524,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_038()
 	{
 		//前提
-		VideoPlayerCommon.clickVideo();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Device, Operation_PressBack);
-		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
-			excute(Object_Text,Operation_ClickWait,"网格视图");
-		}
+		VideoPlayerCommon.switchMode("网格视图");
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择条目");
@@ -571,14 +542,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_039()
 	{
 		//前提
-		VideoPlayerCommon.clickVideo();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Device, Operation_PressBack);
-		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
-			excute(Object_Text,Operation_ClickWait,"网格视图");
-		}
+		VideoPlayerCommon.switchMode("网格视图");
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择条目");
@@ -598,21 +562,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_040() throws UiObjectNotFoundException
 	{
 		//前提
-		DeviceCommon.enterApp(Devices_Desc_Setting);
-		excute(Object_Text,Operation_ClickWait,"蓝牙");
-		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","关闭"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
-		}
-		DeviceCommon.enterApp(Devices_Desc_VideoPlayer);
-		VideoPlayerCommon.clickVideo();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Device, Operation_PressBack);
-		if(!(Boolean)excute(Object_Text,Operation_Exists,"网格视图"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
-			excute(Object_Text,Operation_ClickWait,"网格视图");
-		}
+		VideoPlayerCommon.switchMode("网格视图");
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"选择条目");
@@ -628,9 +578,12 @@ public class VideoPlayer extends UiAutomatorTestCase
 		{
 			excute(Object_Description,Operation_ClickWait,"使用蓝牙分享");
 		}
+		if((Boolean)excute(Object_Text,Operation_Exists,"开启"))
+		{
+			excute(Object_Text,Operation_ClickWait,"开启");
+		}
+		excute(Object_Text,Operation_WaitForExists,"选择蓝牙设备","5000");
 		check(Object_Text,Operation_checkExist,"选择蓝牙设备");
-		check(Object_Text,Operation_checkExist,"蓝牙");
-		
 		//清场
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_Text,Operation_ClickWait,"蓝牙");

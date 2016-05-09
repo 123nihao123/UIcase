@@ -149,4 +149,38 @@ public class VideoPlayerCommon
 		}
 			
 	}
+	/**
+	 * 切换模式：幻灯片视图，网格视图
+	 * @param mode
+	 */
+	public static void switchMode(String mode)
+	{
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.gallery3d:id/gl_root_view", "10000");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		Wait(1000);
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+		excute(Object_Device, Operation_PressBack);
+		if(!(Boolean)excute(Object_Text,Operation_Exists,mode))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"android:id/action_bar_spinner");
+			excute(Object_Text,Operation_ClickWait,mode);
+		}
+	}
+	
+	/**
+	 * 进入一个视频文件里（不播放）
+	 */
+	public static void comeToVideoScreen()
+	{
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.gallery3d:id/gl_root_view", "10000");
+		Rect ModArea = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.gallery3d:id/gl_root_view");
+		int x = ModArea.centerX();
+		int y = ModArea.centerY();
+		UiDevice.getInstance().click(x , y);
+		Wait(1000);
+	}
+	
 }
