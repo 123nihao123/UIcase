@@ -533,7 +533,6 @@ public class VideoPlayer extends UiAutomatorTestCase
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		excute(Object_Description,Operation_ClickWait,"更多选项");
 		VideoPlayerCommon.chooseMenu();
 		excute(Object_Description, Operation_WaitForExists, "分享方式", "10000");
 		VideoPlayerCommon.shareType("蓝牙");
