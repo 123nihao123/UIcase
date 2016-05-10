@@ -38,7 +38,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	/**
 	 * 无视频资源
 	 */
-	public static void test_1101()
+	public static void test_901()
 	{
 		//前提
 		VideoPlayerCommon.deleteAllVideo();
