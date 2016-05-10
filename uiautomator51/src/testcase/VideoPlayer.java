@@ -389,6 +389,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
 		VideoPlayerCommon.shareType("信息");
 		excute(Object_Text,Operation_ClickWait,"新消息");
+		excute(Object_Text,Operation_WaitForExists,"收件人","5000");
 		check(Object_Text,Operation_checkExist,"收件人");
 	}
 	
@@ -821,8 +822,9 @@ public class VideoPlayer extends UiAutomatorTestCase
 	}
 	/**
 	 * 蓝牙分享
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_059()
+	public static void test_059() throws UiObjectNotFoundException
 	{
 		//主体
 		VideoPlayerCommon.Playscreenshare("蓝牙");
@@ -830,6 +832,13 @@ public class VideoPlayer extends UiAutomatorTestCase
 			excute(Object_Text, Operation_ClickWait, "开启");
 		excute(Object_Text, Operation_WaitForExists, "选择蓝牙设备", "10000");
 		check(Object_Text, Operation_checkExist, "选择蓝牙设备");
+		//清场
+		DeviceCommon.enterApp(Devices_Desc_Setting);
+		excute(Object_Text,Operation_ClickWait,"蓝牙");
+		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.settings:id/switch_widget","开启"))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
+		}
 	}
 	/**
 	 * 电子邮件分享
