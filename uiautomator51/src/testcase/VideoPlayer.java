@@ -38,7 +38,7 @@ public class VideoPlayer extends UiAutomatorTestCase
 	/**
 	 * 无视频资源
 	 */
-	public static void test_101()
+	public static void test_1101()
 	{
 		//前提
 		VideoPlayerCommon.deleteAllVideo();
@@ -241,20 +241,26 @@ public class VideoPlayer extends UiAutomatorTestCase
 	public static void test_118()
 	{
 		//主体
-		VideoPlayerCommon.clickVideoGroup();
-		excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
-		Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
-		if (bool)
-			excute(Object_Description,Operation_ClickWait,"删除");
-		else
+		try
 		{
-			excute(Object_Description,Operation_ClickWait,"更多选项");
-			excute(Object_Text, Operation_ClickWait,"删除");
+			VideoPlayerCommon.clickVideoGroup();
+			excute(Object_Description,Operation_WaitForExists,"更多选项","5000");
+			Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+			if (bool)
+				excute(Object_Description,Operation_ClickWait,"删除");
+			else
+			{
+				excute(Object_Description,Operation_ClickWait,"更多选项");
+				excute(Object_Text, Operation_ClickWait,"删除");
+			}
+			excute(Object_Text, Operation_ClickWait,"确定");
+			check(Object_Text,Operation_checkExist,"相机");
 		}
-		excute(Object_Text, Operation_ClickWait,"确定");
-		check(Object_Text,Operation_checkExist,"相机");
-		//清场
-		VideoPlayerCommon.addVideo(1);
+		finally
+		{
+			//清场
+			VideoPlayerCommon.addVideo(1);
+		}
 	}
 
 	/**
@@ -431,17 +437,23 @@ public class VideoPlayer extends UiAutomatorTestCase
 	/**
 	 * 点击一个视频，菜单-删除
 	 */
-	public static void test_032()
+	public static void test_132()
 	{
 		//主体
-		VideoPlayerCommon.comeToVideoScreen();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"删除");
-		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_Text,Operation_checkExist,"相机");
+		try{
+			VideoPlayerCommon.comeToVideoScreen();
+			excute(Object_ResourceId,Operation_WaitForExists,"android:id/action_bar_title","5000");
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text,Operation_ClickWait,"删除");
+			excute(Object_Text,Operation_ClickWait,"确定");
+			check(Object_Text,Operation_checkExist,"相机");
+		}
 		//清场
-		VideoPlayerCommon.addVideo(1);
+		finally
+		{
+			VideoPlayerCommon.addVideo(1);
+		}
+		
 	}
 	
 	
@@ -633,26 +645,32 @@ public class VideoPlayer extends UiAutomatorTestCase
 	 * 选择条目-选中一条视频删除
 	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_045() throws UiObjectNotFoundException
+	public static void test_145() throws UiObjectNotFoundException
 	{
 		//前提
 		VideoPlayerCommon.switchMode("网格视图");
 		//主体
-		VideoPlayerCommon.chooseMenu();
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/expand_activities_button","5000");
-		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.gallery3d:id/action_delete"))
+		try
 		{
-			excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+			VideoPlayerCommon.chooseMenu();
+			excute(Object_ResourceId,Operation_WaitForExists,"android:id/expand_activities_button","5000");
+			if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.gallery3d:id/action_delete"))
+			{
+				excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/action_delete");
+			}
+			else
+			{
+				excute(Object_Description,Operation_ClickWait,"更多选项");
+				excute(Object_Text,Operation_ClickWait,"删除");
+			}
+			excute(Object_Text,Operation_ClickWait,"确定");
+			check(Object_Text,Operation_checkExist,"相机");
 		}
-		else
+		finally
 		{
-			excute(Object_Description,Operation_ClickWait,"更多选项");
-			excute(Object_Text,Operation_ClickWait,"删除");
+			//清场
+			VideoPlayerCommon.addVideo(1);
 		}
-		excute(Object_Text,Operation_ClickWait,"确定");
-		check(Object_Text,Operation_checkExist,"相机");
-		//清场
-		VideoPlayerCommon.addVideo(1);
 	}
 	
 	/**
