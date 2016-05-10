@@ -1239,7 +1239,8 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "网络共享与便携式热点");
 		excute(Object_Text, Operation_ClickWait , "WLAN热点设置及用户管理");
-		excute(Object_ResIdText, Operation_ClickWait ,"com.android.settings:id/switch_widget","关闭");
+		if(!(Boolean) excute(Object_ResourceId, Operation_IsChecked, "com.android.settings:id/switch_widget"))
+			excute(Object_ResIdText, Operation_ClickWait ,"com.android.settings:id/switch_widget","关闭");
 		check(Object_ResIdText, Operation_CheckedTrue ,"com.android.settings:id/switch_widget","开启");//页面开关判断
 		String num1 = DeviceCommon.runADBCommand("settings get global softap_enabling_or_enabled");//底层真实状态判断
 		String num2 = num1.substring(0, 1);
@@ -4587,6 +4588,8 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
 		excute(Object_Text,Operation_ClickWait,"拼写检查工具");
+		if (!(Boolean)excute(Object_ResourceId,Operation_IsChecked,"com.android.settings:id/switch_widget"))
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		excute(Object_ResIdText,Operation_ClickWait,"com.android.settings:id/switch_widget","开启");
 		check(Object_ResIdText,Operation_checkExist,"com.android.settings:id/switch_widget","关闭");
 		//清场
