@@ -49,6 +49,22 @@ public class CallFireWallCommon
 		//System.out.println("call log'count : " + total); 
 		database.close();
 	}
+	
+	/**
+	 * Description:添加三条黑名单联系人
+	 */
+	public static void fillThreeBlockContact(){
+		String dbPath = "/data/data/com.sprd.firewall/databases/block.db"; 
+		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
+		DeviceCommon.deleteAllFromDatabase(database,"black_mumbers");
+		DeviceCommon.insertToDatabase(database,"black_mumbers","mumber_value,block_type,name","'123456','3','TestForBoth'"); 
+		DeviceCommon.insertToDatabase(database,"black_mumbers","mumber_value,block_type,name","'1234567','2','TestForTele'"); 
+		DeviceCommon.insertToDatabase(database,"black_mumbers","mumber_value,block_type,name","'1234568','1','TestForSMS'"); 
+		//int total = DeviceCommon.getRecordCountInDatabase(database,"sms_block_recorded"); 
+		//System.out.println("call log'count : " + total); 
+		database.close();
+	}
+	
 	/**
 	 * Description: 根据数据库中的时间毫秒转换为以秒来计算
 	 * @param day 前天  昨天  今天

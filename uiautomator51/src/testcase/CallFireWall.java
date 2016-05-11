@@ -39,6 +39,7 @@ public class CallFireWall extends UiAutomatorTestCase
 		//主体
 		CallFireWallCommon.fillIncomingCallData();
 		CallFireWallCommon.fillSMSData();
+		CallFireWallCommon.fillThreeBlockContact();
 	}
 	/**
 	 * 进入电话记录
