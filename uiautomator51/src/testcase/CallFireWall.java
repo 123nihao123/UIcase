@@ -195,8 +195,8 @@ public class CallFireWall extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		String[] str={"添加","批量删除","添加拦截电话","添加拦截短信","添加拦截电话和短信"};
-		DeviceCommon.checkForExist(str);
+		excute(Object_Text, Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"添加联系人");
 	}
 	/**
 	 * 有一个黑名单——点击菜单——批量删除
