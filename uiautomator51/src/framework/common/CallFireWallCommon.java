@@ -30,7 +30,7 @@ public class CallFireWallCommon
 		String dbPath = "/data/data/com.sprd.firewall/databases/block.db"; 
 		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
 		DeviceCommon.deleteAllFromDatabase(database,"block_recorded");
-		DeviceCommon.insertToDatabase(database,"block_recorded","mumber_value,block_date","'10086',"+getDate("今天")+""); 
+		DeviceCommon.insertToDatabase(database,"block_recorded","mumber_value,block_date","'10086',"+DeviceCommon.getDate("今天")+""); 
 		//int total = DeviceCommon.getRecordCountInDatabase(database,"block_recorded"); 
 		//System.out.println("call log'count : " + total); 
 		database.close();
@@ -42,7 +42,7 @@ public class CallFireWallCommon
 		String dbPath = "/data/data/com.sprd.firewall/databases/block.db"; 
 		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
 		DeviceCommon.deleteAllFromDatabase(database,"sms_block_recorded");
-		DeviceCommon.insertToDatabase(database,"sms_block_recorded","mumber_value,sms_content,block_date","'10086','123',"+getDate("今天")+""); 
+		DeviceCommon.insertToDatabase(database,"sms_block_recorded","mumber_value,sms_content,block_date","'10086','123',"+DeviceCommon.getDate("今天")+""); 
 		//int total = DeviceCommon.getRecordCountInDatabase(database,"sms_block_recorded"); 
 		//System.out.println("call log'count : " + total); 
 		database.close();
@@ -61,34 +61,6 @@ public class CallFireWallCommon
 		//int total = DeviceCommon.getRecordCountInDatabase(database,"sms_block_recorded"); 
 		//System.out.println("call log'count : " + total); 
 		database.close();
-	}
-	
-	/**
-	 * Description: 根据数据库中的时间毫秒转换为以秒来计算
-	 * @param day 前天  昨天  今天
-	 * @return Beforeyesterdaytime，Yesterdaytime，Todaytime;
-	 */
-	public static long getDate(String day) 
-	{
-		if (day.equals("前天"))
-		{
-			long Beforeyesterdaytime = System.currentTimeMillis()-2*24*3600*1000;
-			System.out.println(Beforeyesterdaytime);
-			return Beforeyesterdaytime;
-		}
-		else if(day.equals("昨天"))
-		{
-			long Yesterdaytime = System.currentTimeMillis()-1*24*3600*1000;
-			System.out.println(Yesterdaytime);
-			return Yesterdaytime;
-		} 
-		else if(day.equals("今天"))
-		{
-			long Todaytime = System.currentTimeMillis()-0*24*3600*1000;
-			System.out.println(Todaytime);
-			return Todaytime;
-		}
-		return 0;
 	}
 	
 	/**

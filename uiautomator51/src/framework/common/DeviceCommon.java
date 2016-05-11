@@ -710,4 +710,32 @@ public class DeviceCommon {
 		}
 	}
 	
+	/**
+	 * Description: 根据数据库中的时间毫秒转换为以秒来计算
+	 * @param day 前天  昨天  今天
+	 * @return Beforeyesterdaytime，Yesterdaytime，Todaytime;
+	 */
+	public static long getDate(String day) 
+	{
+		if (day.equals("前天"))
+		{
+			long Beforeyesterdaytime = System.currentTimeMillis()-2*24*3600*1000;
+			System.out.println(Beforeyesterdaytime);
+			return Beforeyesterdaytime;
+		}
+		else if(day.equals("昨天"))
+		{
+			long Yesterdaytime = System.currentTimeMillis()-1*24*3600*1000;
+			System.out.println(Yesterdaytime);
+			return Yesterdaytime;
+		} 
+		else if(day.equals("今天"))
+		{
+			long Todaytime = System.currentTimeMillis()-0*24*3600*1000;
+			System.out.println(Todaytime);
+			return Todaytime;
+		}
+		return 0;
+	}
+	
 }
