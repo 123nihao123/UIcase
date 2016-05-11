@@ -265,7 +265,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.enterAdvSubSetting();
-		excute(Object_Text,Operation_ClickWait,"防闪烁");
+		excute(Object_TextScroll,Operation_ClickWait,"防闪烁","vertical");
 		String[] str={"50Hz","60Hz"};
 		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
@@ -280,7 +280,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.enterAdvSubSetting();
-		excute(Object_Text,Operation_ClickWait,"照片质量");
+		excute(Object_TextScroll,Operation_ClickWait,"照片质量","vertical");
 		String[] str={"极精细","精细","正常"};
 		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
@@ -295,7 +295,7 @@ public class Camera extends UiAutomatorTestCase
 	{
 		//主体
 		CameraCommon.enterAdvSubSetting();
-		excute(Object_Text,Operation_ClickWait,"智能检测");
+		excute(Object_TextScroll,Operation_ClickWait,"智能检测","vertical");
 		String[] str={"关闭","人脸检测","笑脸拍照"};
 		DeviceCommon.checkForExist(str);
 		excute(Object_Text,Operation_ClickWait,str[1]);
