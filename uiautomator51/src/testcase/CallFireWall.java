@@ -4,11 +4,13 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+import junit.framework.Assert;
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
+import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
 import framework.common.CallFireWallCommon;
 import framework.common.MessageCommon;
@@ -29,8 +31,6 @@ public class CallFireWall extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
-	
-	
 	/**
 	 * 进入电话记录
 	 */
@@ -40,6 +40,229 @@ public class CallFireWall extends UiAutomatorTestCase
 		CallFireWallCommon.fillIncomingCallData();
 		CallFireWallCommon.fillSMSData();
 		CallFireWallCommon.fillThreeBlockContact();
+	}
+	/**
+	 * 进入来电防火墙页面
+	 */
+	public static void test_001()
+	{
+		//主体
+		check(Object_Text,Operation_checkExist,"来电防火墙");
+	}
+	/**
+	 * 页面上有3个tab“黑名单'"电话记录”“短信记录”
+	 */
+	public static void test_002()
+	{
+		//主体
+		check(Object_Text,Operation_checkExist,"黑名单");
+		check(Object_Text,Operation_checkExist,"电话记录");
+		check(Object_Text,Operation_checkExist,"短信记录");
+	}
+	/**
+	 * 点击页面上的“黑名单”
+	 */
+	public static void test_003()
+	{
+		//主体
+		excute(Object_Text,Operation_ClickWait,"黑名单");
+		check(Object_Text,Operation_checkExist,"黑名单为空。");
+	}
+	/**
+	 * 黑名单——菜单
+	 */
+	public static void test_008()
+	{
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		String[] str={"添加","批量删除","添加拦截电话","添加拦截短信","添加拦截电话和短信"};
+		DeviceCommon.checkForExist(str);
+		check(Object_ClassInstance,Operation_EnabledFalse,"android.widget.LinearLayout","1");
+	}
+	/**
+	 * 黑名单——菜单——添加
+	 */
+	public static void test_010()
+	{
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		excute(Object_Text,Operation_ClickWait,"添加");
+		check(Object_Text,Operation_checkExist,"添加联系人");
+	}
+	/**
+	 * 黑名单——菜单——添加——确定
+	 */
+	public static void test_011()
+	{
+		//主体
+		CallFireWallCommon.addBlackContact("Black", "1008611", true, true);
+		check(Object_ResIdText,Operation_checkExist,"com.sprd.firewall:id/phone_name","Black");
+	}
+	/**
+	 * 查看黑名单的拦截类型(短信、电话)
+	 */
+	public static void test_012()
+	{
+		//前提
+		//CallFireWallCommon.addBlackContact("Black", "1008611", true, true);
+		//主体
+		check(Object_ResourceId,Operation_checkExist,"com.sprd.firewall:id/image_block_sms");
+		check(Object_ResourceId,Operation_checkExist,"com.sprd.firewall:id/image_block_call");
+		//清场
+		//CallFireWallCommon.deleteAllBlack();
+	}
+	/**
+	 * 查看黑名单的拦截类型(短信)
+	 */
+	public static void test_013()
+	{
+		//前提
+		//CallFireWallCommon.addBlackContact("Black", "1008611", true, false);
+		//主体
+		
+		
+		//清场
+	    //CallFireWallCommon.deleteAllBlack();
+	}
+	/**
+	 * 查看黑名单的拦截类型(电话)
+	 */
+	public static void test_014()
+	{
+		//前提
+		CallFireWallCommon.addBlackContact("Black", "1008611", false, true);
+		//主体
+		
+		
+		//清场
+		//CallFireWallCommon.deleteAllBlack();
+	}
+	/**
+	 * 长按一个黑名单
+	 */
+	public static void test_015()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		String[] str={"删除","编辑","详情"};
+		DeviceCommon.checkForExist(str);
+	}
+	/**
+	 * 长按一个黑名单——删除
+	 */
+	public static void test_016()
+	{
+		//主体
+		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		excute(Object_Text,Operation_ClickWait,"删除");
+		check(Object_Text,Operation_checkExist,"要移除黑名单吗？");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		Assert.assertTrue(num2==num1-1);
+	}
+	/**
+	 * 长按一个黑名单——编辑
+	 */
+	public static void test_017()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		excute(Object_Text,Operation_ClickWait,"编辑");
+		check(Object_Text,Operation_checkExist,"添加联系人");
+	}
+	/**
+	 * 长按一个黑名单——详情
+	 */
+	public static void test_018()
+	{
+		//主体
+		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		excute(Object_Text,Operation_ClickWait,"详情");
+		check(Object_ResourceId,Operation_TextContainsTrue,"android:id/message","姓名:");
+		check(Object_ResourceId,Operation_TextContainsTrue,"android:id/message","号码:");
+	}
+	/**
+	 * 有一个黑名单——点击菜单
+	 */
+	public static void test_019()
+	{
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		String[] str={"添加","批量删除","添加拦截电话","添加拦截短信","添加拦截电话和短信"};
+		DeviceCommon.checkForExist(str);
+	}
+	/**
+	 * 有一个黑名单——点击菜单——添加
+	 */
+	public static void test_020()
+	{
+		//主体
+		excute(Object_Description,Operation_ClickWait,"更多选项");
+		String[] str={"添加","批量删除","添加拦截电话","添加拦截短信","添加拦截电话和短信"};
+		DeviceCommon.checkForExist(str);
+	}
+	/**
+	 * 有一个黑名单——点击菜单——批量删除
+	 */
+	public static void test_021()
+	{
+		//主体
+		check(Object_ResourceId,Operation_checkNoExist,"com.sprd.firewall:id/phone_name");
+	}
+	/**
+	 * “添加拦截电话”功能项
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_022() throws UiObjectNotFoundException
+	{
+		//前提
+		ContactCommon.addNameAndTel("本机", "tele", "1008611");
+		//主体
+		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait,"添加拦截电话");
+		check(Object_Text,Operation_checkExist,"选择联系人");
+		excute(Object_Text,Operation_ClickWait,"tele");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		Assert.assertTrue(num2==num1+1);
+	}
+	/**
+	 * 添加拦截短信”功能项
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_023() throws UiObjectNotFoundException
+	{
+		//前提
+		ContactCommon.addNameAndTel("本机", "sms", "1008612");
+		//主体
+		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait,"添加拦截电话");
+		check(Object_Text,Operation_checkExist,"选择联系人");
+		excute(Object_Text,Operation_ClickWait,"sms");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		Assert.assertTrue(num2==num1+1);
+	}
+	/**
+	 * “添加拦截电话和短信”功能项
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_024() throws UiObjectNotFoundException
+	{
+		//前提
+		ContactCommon.addNameAndTel("本机", "teleandsms", "1008613");
+		//主体
+		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait,"添加拦截电话和短信");
+		check(Object_Text,Operation_checkExist,"选择联系人");
+		excute(Object_Text,Operation_ClickWait,"teleandsms");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		Assert.assertTrue(num2==num1+1);
 	}
 	/**
 	 * 进入电话记录

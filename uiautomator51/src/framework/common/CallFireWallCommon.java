@@ -23,7 +23,6 @@ public class CallFireWallCommon
 			excute(Object_Text, Operation_ClickWait,"电话");
 		excute(Object_Text, Operation_ClickWait,"确定");
 	}
-
 	/**
 	 * Description:添加电话拦截一条记录
 	 */
@@ -35,8 +34,7 @@ public class CallFireWallCommon
 		//int total = DeviceCommon.getRecordCountInDatabase(database,"block_recorded"); 
 		//System.out.println("call log'count : " + total); 
 		database.close();
-	}
-	
+	}	
 	/**
 	 * Description:添加短信拦截一条记录
 	 */
