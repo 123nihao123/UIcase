@@ -81,4 +81,52 @@ public class CallFireWallCommon
 		excute(Object_Text, Operation_ClickWait, "完成");
 		excute(Object_Text, Operation_ClickWait, "确定");
 	}
+	/**
+	 * 通过长按编辑一条记录查看拦截方式
+	 * @param name 姓名
+	 * @param isSMS 是否短信拦截
+	 * @param isCall 是否电话拦截
+	 */
+	public static void checkInterceptionType(String name,Boolean isSMS,Boolean isCall)
+	{
+		excute(Object_Text,Operation_LongClick,name);
+		excute(Object_Text, Operation_ClickWait, "编辑");
+		excute(Object_Device,Operation_PressBack);
+		if(isSMS && isCall)
+		{
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","0");
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","1");
+		}
+		else if(isSMS && !isCall)
+		{
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","0");
+			check(Object_ResIdInstance,Operation_CheckedFalse,"com.sprd.firewall:id/type_checkbox","1");
+		}
+		else if(!isSMS && isCall)
+		{
+			check(Object_ResIdInstance,Operation_CheckedFalse,"com.sprd.firewall:id/type_checkbox","0");
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","1");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

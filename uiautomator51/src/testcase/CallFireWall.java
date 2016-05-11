@@ -13,7 +13,6 @@ import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
 import framework.common.CallFireWallCommon;
-import framework.common.MessageCommon;
 
 public class CallFireWall extends UiAutomatorTestCase
 {
@@ -33,13 +32,26 @@ public class CallFireWall extends UiAutomatorTestCase
     }
 	/**
 	 * 进入电话记录
+	 * @throws UiObjectNotFoundException 
 	 */
-	public static void test_000()
+	public static void test_000() throws UiObjectNotFoundException
 	{
 		//主体
 		CallFireWallCommon.fillIncomingCallData();
 		CallFireWallCommon.fillSMSData();
 		CallFireWallCommon.fillThreeBlockContact();
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.addNameAndTel("本机", "forBoth", "10086111");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addNameAndTel("本机", "forCall", "10086112");
+		excute(Object_Device,Operation_PressBack);
+		ContactCommon.addNameAndTel("本机", "forSms", "10086113");
+	}
+	public static void test_999() throws UiObjectNotFoundException
+	{
+		//主体
+		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.BatchDelete("所有联系人");
 	}
 	/**
 	 * 进入来电防火墙页面
@@ -62,16 +74,17 @@ public class CallFireWall extends UiAutomatorTestCase
 	/**
 	 * 点击页面上的“黑名单”
 	 */
-	public static void test_003()
+	public static void test_103()
 	{
+		//前提
+		CallFireWallCommon.BatchDelete("黑名单");
 		//主体
-		excute(Object_Text,Operation_ClickWait,"黑名单");
 		check(Object_Text,Operation_checkExist,"黑名单为空。");
 	}
 	/**
 	 * 黑名单——菜单
 	 */
-	public static void test_008()
+	public static void test_108()
 	{
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -82,7 +95,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	/**
 	 * 黑名单——菜单——添加
 	 */
-	public static void test_010()
+	public static void test_110()
 	{
 		//主体
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -92,7 +105,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	/**
 	 * 黑名单——菜单——添加——确定
 	 */
-	public static void test_011()
+	public static void test_111()
 	{
 		//主体
 		CallFireWallCommon.addBlackContact("Black", "1008611", true, true);
@@ -103,39 +116,22 @@ public class CallFireWall extends UiAutomatorTestCase
 	 */
 	public static void test_012()
 	{
-		//前提
-		//CallFireWallCommon.addBlackContact("Black", "1008611", true, true);
 		//主体
-		check(Object_ResourceId,Operation_checkExist,"com.sprd.firewall:id/image_block_sms");
-		check(Object_ResourceId,Operation_checkExist,"com.sprd.firewall:id/image_block_call");
-		//清场
-		//CallFireWallCommon.deleteAllBlack();
+		CallFireWallCommon.checkInterceptionType("TestForBoth", true, true);
 	}
 	/**
 	 * 查看黑名单的拦截类型(短信)
 	 */
 	public static void test_013()
 	{
-		//前提
-		//CallFireWallCommon.addBlackContact("Black", "1008611", true, false);
-		//主体
-		
-		
-		//清场
-	    //CallFireWallCommon.deleteAllBlack();
+		CallFireWallCommon.checkInterceptionType("TestForSMS", true, false);
 	}
 	/**
 	 * 查看黑名单的拦截类型(电话)
 	 */
 	public static void test_014()
 	{
-		//前提
-		CallFireWallCommon.addBlackContact("Black", "1008611", false, true);
-		//主体
-		
-		
-		//清场
-		//CallFireWallCommon.deleteAllBlack();
+		CallFireWallCommon.checkInterceptionType("TestForTele", false, true);
 	}
 	/**
 	 * 长按一个黑名单
@@ -143,7 +139,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	public static void test_015()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.firewall:id/phone_name","0");
 		String[] str={"删除","编辑","详情"};
 		DeviceCommon.checkForExist(str);
 	}
@@ -154,7 +150,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	{
 		//主体
 		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
-		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.firewall:id/phone_name","0");
 		excute(Object_Text,Operation_ClickWait,"删除");
 		check(Object_Text,Operation_checkExist,"要移除黑名单吗？");
 		excute(Object_Text,Operation_ClickWait,"确定");
@@ -167,7 +163,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	public static void test_017()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.firewall:id/phone_name","0");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		check(Object_Text,Operation_checkExist,"添加联系人");
 	}
@@ -177,7 +173,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	public static void test_018()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_LongClick,"com.sprd.firewall:id/phone_name");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.firewall:id/phone_name","0");
 		excute(Object_Text,Operation_ClickWait,"详情");
 		check(Object_ResourceId,Operation_TextContainsTrue,"android:id/message","姓名:");
 		check(Object_ResourceId,Operation_TextContainsTrue,"android:id/message","号码:");
@@ -208,7 +204,14 @@ public class CallFireWall extends UiAutomatorTestCase
 	public static void test_021()
 	{
 		//主体
-		check(Object_ResourceId,Operation_checkNoExist,"com.sprd.firewall:id/phone_name");
+		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		excute(Object_Device,Operation_PressMenu);
+		excute(Object_Text, Operation_ClickWait,"批量删除");
+		excute(Object_ResIdInstance,Operation_LongClick,"com.sprd.firewall:id/select","0");
+		excute(Object_Text,Operation_ClickWait,"完成");
+		excute(Object_Text,Operation_ClickWait,"确定");
+		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		Assert.assertTrue(num2==num1-1);
 	}
 	/**
 	 * “添加拦截电话”功能项
@@ -216,16 +219,15 @@ public class CallFireWall extends UiAutomatorTestCase
 	 */
 	public static void test_022() throws UiObjectNotFoundException
 	{
-		//前提
-		ContactCommon.addNameAndTel("本机", "tele", "1008611");
 		//主体
 		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait,"添加拦截电话");
 		check(Object_Text,Operation_checkExist,"选择联系人");
-		excute(Object_Text,Operation_ClickWait,"tele");
+		excute(Object_Text,Operation_ClickWait,"forCall");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		CallFireWallCommon.checkInterceptionType("forCall", false, true);
 		Assert.assertTrue(num2==num1+1);
 	}
 	/**
@@ -234,16 +236,15 @@ public class CallFireWall extends UiAutomatorTestCase
 	 */
 	public static void test_023() throws UiObjectNotFoundException
 	{
-		//前提
-		ContactCommon.addNameAndTel("本机", "sms", "1008612");
 		//主体
 		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
 		excute(Object_Device,Operation_PressMenu);
-		excute(Object_Text, Operation_ClickWait,"添加拦截电话");
+		excute(Object_Text, Operation_ClickWait,"添加拦截短信");
 		check(Object_Text,Operation_checkExist,"选择联系人");
-		excute(Object_Text,Operation_ClickWait,"sms");
+		excute(Object_Text,Operation_ClickWait,"forSms");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		CallFireWallCommon.checkInterceptionType("forSms", true, false);
 		Assert.assertTrue(num2==num1+1);
 	}
 	/**
@@ -252,16 +253,15 @@ public class CallFireWall extends UiAutomatorTestCase
 	 */
 	public static void test_024() throws UiObjectNotFoundException
 	{
-		//前提
-		ContactCommon.addNameAndTel("本机", "teleandsms", "1008613");
 		//主体
 		int num1=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait,"添加拦截电话和短信");
 		check(Object_Text,Operation_checkExist,"选择联系人");
-		excute(Object_Text,Operation_ClickWait,"teleandsms");
+		excute(Object_Text,Operation_ClickWait,"forBoth");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
+		CallFireWallCommon.checkInterceptionType("forBoth", true, true);
 		Assert.assertTrue(num2==num1+1);
 	}
 	/**
