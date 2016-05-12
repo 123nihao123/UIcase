@@ -84,25 +84,24 @@ public class CallFireWallCommon
 	/**
 	 * 通过长按编辑一条记录查看拦截方式
 	 * @param name 姓名
-	 * @param isSMS 是否短信拦截
-	 * @param isCall 是否电话拦截
+	 * @param type 拦截方式：11表示短信和电话拦截，10表示短信拦截，01表示电话拦截
 	 */
-	public static void checkInterceptionType(String name,Boolean isSMS,Boolean isCall)
+	public static void checkInterceptionType(String name,String type)
 	{
 		excute(Object_Text,Operation_LongClick,name);
 		excute(Object_Text, Operation_ClickWait, "编辑");
 		excute(Object_Device,Operation_PressBack);
-		if(isSMS && isCall)
+		if(type.equals("11"))
 		{
 			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","0");
 			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","1");
 		}
-		else if(isSMS && !isCall)
+		else if(type.equals("10"))
 		{
 			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","0");
 			check(Object_ResIdInstance,Operation_CheckedFalse,"com.sprd.firewall:id/type_checkbox","1");
 		}
-		else if(!isSMS && isCall)
+		else if(type.equals("01"))
 		{
 			check(Object_ResIdInstance,Operation_CheckedFalse,"com.sprd.firewall:id/type_checkbox","0");
 			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","1");

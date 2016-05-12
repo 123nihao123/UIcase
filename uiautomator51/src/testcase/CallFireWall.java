@@ -117,21 +117,21 @@ public class CallFireWall extends UiAutomatorTestCase
 	public static void test_012()
 	{
 		//主体
-		CallFireWallCommon.checkInterceptionType("TestForBoth", true, true);
+		CallFireWallCommon.checkInterceptionType("TestForBoth", "11");
 	}
 	/**
 	 * 查看黑名单的拦截类型(短信)
 	 */
 	public static void test_013()
 	{
-		CallFireWallCommon.checkInterceptionType("TestForSMS", true, false);
+		CallFireWallCommon.checkInterceptionType("TestForSMS", "10");
 	}
 	/**
 	 * 查看黑名单的拦截类型(电话)
 	 */
 	public static void test_014()
 	{
-		CallFireWallCommon.checkInterceptionType("TestForTele", false, true);
+		CallFireWallCommon.checkInterceptionType("TestForTele", "01");
 	}
 	/**
 	 * 长按一个黑名单
@@ -227,7 +227,7 @@ public class CallFireWall extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"forCall");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
-		CallFireWallCommon.checkInterceptionType("forCall", false, true);
+		CallFireWallCommon.checkInterceptionType("forCall", "01");
 		Assert.assertTrue(num2==num1+1);
 	}
 	/**
@@ -244,7 +244,7 @@ public class CallFireWall extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"forSms");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
-		CallFireWallCommon.checkInterceptionType("forSms", true, false);
+		CallFireWallCommon.checkInterceptionType("forSms","10");
 		Assert.assertTrue(num2==num1+1);
 	}
 	/**
@@ -261,7 +261,7 @@ public class CallFireWall extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"forBoth");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		int num2=(int)excute(Object_ResourceId,Operation_GetChildCount,"android:id/list");
-		CallFireWallCommon.checkInterceptionType("forBoth", true, true);
+		CallFireWallCommon.checkInterceptionType("forBoth", "11");
 		Assert.assertTrue(num2==num1+1);
 	}
 	/**
