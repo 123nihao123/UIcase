@@ -41,6 +41,7 @@ public class CallFireWall extends UiAutomatorTestCase
 		CallFireWallCommon.fillSMSData();
 		CallFireWallCommon.fillThreeBlockContact();
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
+		ContactCommon.BatchDelete("所有联系人");
 		ContactCommon.addNameAndTel("本机", "forBoth", "10086111");
 		excute(Object_Device,Operation_PressBack);
 		ContactCommon.addNameAndTel("本机", "forCall", "10086112");
