@@ -23,7 +23,6 @@ public class CallFireWallCommon
 			excute(Object_Text, Operation_ClickWait,"电话");
 		excute(Object_Text, Operation_ClickWait,"确定");
 	}
-
 	/**
 	 * Description:添加电话拦截一条记录
 	 */
@@ -31,12 +30,11 @@ public class CallFireWallCommon
 		String dbPath = "/data/data/com.sprd.firewall/databases/block.db"; 
 		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
 		DeviceCommon.deleteAllFromDatabase(database,"block_recorded");
-		DeviceCommon.insertToDatabase(database,"block_recorded","mumber_value,block_date","'10086',"+getDate("今天")+""); 
+		DeviceCommon.insertToDatabase(database,"block_recorded","mumber_value,block_date","'10086',"+DeviceCommon.getDate("今天")+""); 
 		//int total = DeviceCommon.getRecordCountInDatabase(database,"block_recorded"); 
 		//System.out.println("call log'count : " + total); 
 		database.close();
-	}
-	
+	}	
 	/**
 	 * Description:添加短信拦截一条记录
 	 */
@@ -44,37 +42,25 @@ public class CallFireWallCommon
 		String dbPath = "/data/data/com.sprd.firewall/databases/block.db"; 
 		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
 		DeviceCommon.deleteAllFromDatabase(database,"sms_block_recorded");
-		DeviceCommon.insertToDatabase(database,"sms_block_recorded","mumber_value,sms_content,block_date","'10086','123',"+getDate("今天")+""); 
+		DeviceCommon.insertToDatabase(database,"sms_block_recorded","mumber_value,sms_content,block_date","'10086','123',"+DeviceCommon.getDate("今天")+""); 
 		//int total = DeviceCommon.getRecordCountInDatabase(database,"sms_block_recorded"); 
 		//System.out.println("call log'count : " + total); 
 		database.close();
 	}
+	
 	/**
-	 * Description: 根据数据库中的时间毫秒转换为以秒来计算
-	 * @param day 前天  昨天  今天
-	 * @return Beforeyesterdaytime，Yesterdaytime，Todaytime;
+	 * Description:添加三条黑名单联系人
 	 */
-	public static long getDate(String day) 
-	{
-		if (day.equals("前天"))
-		{
-			long Beforeyesterdaytime = System.currentTimeMillis()-2*24*3600*1000;
-			System.out.println(Beforeyesterdaytime);
-			return Beforeyesterdaytime;
-		}
-		else if(day.equals("昨天"))
-		{
-			long Yesterdaytime = System.currentTimeMillis()-1*24*3600*1000;
-			System.out.println(Yesterdaytime);
-			return Yesterdaytime;
-		} 
-		else if(day.equals("今天"))
-		{
-			long Todaytime = System.currentTimeMillis()-0*24*3600*1000;
-			System.out.println(Todaytime);
-			return Todaytime;
-		}
-		return 0;
+	public static void fillThreeBlockContact(){
+		String dbPath = "/data/data/com.sprd.firewall/databases/block.db"; 
+		SQLiteDatabase database = DeviceCommon.openDatabase(dbPath); 
+		DeviceCommon.deleteAllFromDatabase(database,"black_mumbers");
+		DeviceCommon.insertToDatabase(database,"black_mumbers","mumber_value,block_type,name","'123456','3','TestForBoth'"); 
+		DeviceCommon.insertToDatabase(database,"black_mumbers","mumber_value,block_type,name","'1234567','2','TestForTele'"); 
+		DeviceCommon.insertToDatabase(database,"black_mumbers","mumber_value,block_type,name","'1234568','1','TestForSMS'"); 
+		//int total = DeviceCommon.getRecordCountInDatabase(database,"sms_block_recorded"); 
+		//System.out.println("call log'count : " + total); 
+		database.close();
 	}
 	
 	/**
@@ -95,4 +81,51 @@ public class CallFireWallCommon
 		excute(Object_Text, Operation_ClickWait, "完成");
 		excute(Object_Text, Operation_ClickWait, "确定");
 	}
+	/**
+	 * 通过长按编辑一条记录查看拦截方式
+	 * @param name 姓名
+	 * @param type 拦截方式：11表示短信和电话拦截，10表示短信拦截，01表示电话拦截
+	 */
+	public static void checkInterceptionType(String name,String type)
+	{
+		excute(Object_Text,Operation_LongClick,name);
+		excute(Object_Text, Operation_ClickWait, "编辑");
+		excute(Object_Device,Operation_PressBack);
+		if(type.equals("11"))
+		{
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","0");
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","1");
+		}
+		else if(type.equals("10"))
+		{
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","0");
+			check(Object_ResIdInstance,Operation_CheckedFalse,"com.sprd.firewall:id/type_checkbox","1");
+		}
+		else if(type.equals("01"))
+		{
+			check(Object_ResIdInstance,Operation_CheckedFalse,"com.sprd.firewall:id/type_checkbox","0");
+			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","1");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
