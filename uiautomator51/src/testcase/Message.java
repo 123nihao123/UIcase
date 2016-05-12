@@ -1563,7 +1563,7 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Description,Operation_ClickWait,"拍照或录像");
 		excute(Object_Description,Operation_ClickWait,"拍照");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/send_message_button");
-		excute(Object_Text,Operation_WaitForExists,"刚刚","5000");
+		excute(Object_Text,Operation_WaitForExists,"刚刚","10000");
 		check(Object_Text,Operation_checkExist,"刚刚");
 		//清场
 		excute(Object_Device, Operation_PressBack);
