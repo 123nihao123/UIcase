@@ -771,16 +771,16 @@ public class Browser extends UiAutomatorTestCase
 	public static void test_047()
 	{
 		//主体
-		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","http://open.baidu.com/special/time/");
+		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","www.google.com");
 		excute(Object_Device,Operation_PressEnter);
-		excute(Object_Description,Operation_WaitForExists,"北京时间 - 国家授时中心标准时间","100000");
-		String time1=(String)excute(Object_ResourceId,Operation_GetDesc,"time");
-		Wait(3000);
+		excute(Object_Text,Operation_WaitForExists,"与服务器的连接超时。","100000");
+		excute(Object_Text,Operation_ClickWait,"确定");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"刷新");
-		excute(Object_Description,Operation_WaitForExists,"时间校对","100000");
-		String time2=(String)excute(Object_ResourceId,Operation_GetDesc,"time");
-		Assert.assertFalse(time1.equals(time2));
+		if((Boolean)excute(Object_Description,Operation_Exists,"停止网页加载"))
+			check(Object_Description,Operation_checkExist,"停止网页加载");
+		else
+			check(Object_Text,Operation_checkExist,"与服务器的连接超时。");
 	}
 	
 	/**s
