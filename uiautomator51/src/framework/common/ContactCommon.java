@@ -84,6 +84,7 @@ public class ContactCommon {
 	public static void addNameAndTel(String position, String name,String number) throws UiObjectNotFoundException{
 		selectContactPosition(position);
 		excute(Object_Text,Operation_SetText,"姓名",name);
+		excute(Object_Device,Operation_PressEnter);
 		excute(Object_Text,Operation_SetText,"电话",number);
 		excute(Object_ResIdDesc,Operation_ClickWait,"com.android.contacts:id/menu_save", "保存");
 	}
