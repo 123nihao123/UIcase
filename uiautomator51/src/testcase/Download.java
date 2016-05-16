@@ -38,15 +38,6 @@ public class Download extends UiAutomatorTestCase
     {
     }
 	
-//	/**
-//	 * 去手机助手下载APP
-//	 * @throws UiObjectNotFoundException 
-//	 */
-//	public static void test_000() throws UiObjectNotFoundException{
-//		//主体
-//		DownloadCommon.downloadAPP(4);
-//	}
-//	
 	/**
 	 * 进入下载界面
 	 */

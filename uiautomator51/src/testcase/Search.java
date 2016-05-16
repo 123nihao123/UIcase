@@ -129,6 +129,7 @@ public class Search extends UiAutomatorTestCase
 	{
 		//主体
 		SearchCommon.setSearchEngine("谷歌");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.browser:id/url","5000");
 		check(Object_ResourceId,Operation_checkExist,"com.android.browser:id/url");
 		check(Object_ResourceId,Operation_TextContainsTrue,"com.android.browser:id/url","google");
 	}
@@ -197,7 +198,8 @@ public class Search extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_SetText,"com.android.quicksearchbox:id/search_src_text","s");
 		check(Object_Text,Operation_checkExist,"SIM卡工具包");
 		excute(Object_Text,Operation_ClickWait,"SIM卡工具包");
-		check(Object_ResIdText,Operation_checkExist,"com.android.stk:id/title_text","SIM卡工具包");
+		excute(Object_Text,Operation_WaitForExists,"SIM卡工具包","5000");
+		check(Object_Text,Operation_checkExist,"SIM卡工具包");
 	}
 	/**
 	 * 搜索范围——日历
@@ -222,6 +224,7 @@ public class Search extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_SetText,"com.android.quicksearchbox:id/search_src_text","search");
 		check(Object_Text,Operation_checkExist,"SearchContact");
 		excute(Object_Text,Operation_ClickWait,"SearchContact");
+		excute(Object_Text,Operation_WaitForExists,"添加电话号码","5000");
 		check(Object_Text,Operation_checkExist,"添加电话号码");
 	}
 	/**
@@ -246,6 +249,7 @@ public class Search extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_SetText,"com.android.quicksearchbox:id/search_src_text","search");
 		check(Object_Text,Operation_checkExist,"SearchMusic");
 		excute(Object_Text,Operation_ClickWait,"SearchMusic");
+		excute(Object_ResourceId, Operation_WaitForExists, "com.android.music:id/pause","5000");
 		check(Object_ResourceId, Operation_checkExist, "com.android.music:id/pause");
 		//清场
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.music:id/pause");
