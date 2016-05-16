@@ -148,13 +148,12 @@ public class Download extends UiAutomatorTestCase
 	}
 	
 	/**
-	 * 
-	 * @throws ParseException 
+	 * 切换至网格视图
 	 */
 	public static void test_008(){
 		//主体
 		DownloadCommon.SwitchMode("网格视图");
-		
+		check(Object_ResourceId, Operation_checkNoExist, "android:id/summary");
 	}
 	
 	/**
