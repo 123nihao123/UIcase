@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -738,4 +741,54 @@ public class DeviceCommon {
 		return 0;
 	}
 	
+	/**
+	 * Description: 根据时间排序
+	 * @param timeArray 时间数组，比如”下午2:22”“ 2016/5/6 12:30”，格式要一致
+	 * @param formatStr 时间格式,比如 yyyy-MM-dd HH:mm:ss
+	 * @param isReverse true- 降序; false-升序
+	 * @return
+	 * @throws ParseException
+	 */
+	public static boolean isSortedByTime(String[] timeArray, String formatStr, boolean isReverse) throws ParseException
+	{
+		boolean valReturn=true;
+
+		if (timeArray.length==1) return valReturn;
+
+		SimpleDateFormat format = new SimpleDateFormat(formatStr);
+
+		Date sourcedate;
+		Date targetdate;
+
+		if(isReverse)
+		{
+			//降序
+			for(int i=0;i<timeArray.length-1;i++)
+			{
+				sourcedate = format.parse(timeArray[i]);
+				targetdate = format.parse(timeArray[i+1]);
+				if(sourcedate.compareTo(targetdate)<0)
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+		else
+		{
+			//升序
+			for(int i=0;i<timeArray.length-1;i++)
+			{
+				sourcedate = format.parse(timeArray[i]);
+				targetdate = format.parse(timeArray[i+1]);
+				if(sourcedate.compareTo(targetdate)>0)
+				{
+					valReturn = false;
+					break;
+				}
+			}
+		}
+	return valReturn;
+	}
+
 }

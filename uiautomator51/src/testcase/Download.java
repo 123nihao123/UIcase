@@ -113,7 +113,7 @@ public class Download extends UiAutomatorTestCase
 		String scename = (String)excute(Object_ResIdInstance, Operation_GetText, "com.android.documentsui:id/date", "1");
 		String thrname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.android.documentsui:id/date", "2");
 		String bname[] = {firname, scename, thrname};
-		Assert.assertTrue(DownloadCommon.isSortedByTime(bname, true));
+		Assert.assertTrue(DeviceCommon.isSortedByTime(bname, "ahh:mm", true));
 	}
 	
 	/**
