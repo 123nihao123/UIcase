@@ -38,15 +38,15 @@ public class Download extends UiAutomatorTestCase
     {
     }
 	
-	/**
-	 * 去手机助手下载APP
-	 * @throws UiObjectNotFoundException 
-	 */
-	public static void test_000() throws UiObjectNotFoundException{
-		//主体
-		DownloadCommon.downloadAPP(4);
-	}
-	
+//	/**
+//	 * 去手机助手下载APP
+//	 * @throws UiObjectNotFoundException 
+//	 */
+//	public static void test_000() throws UiObjectNotFoundException{
+//		//主体
+//		DownloadCommon.downloadAPP(4);
+//	}
+//	
 	/**
 	 * 进入下载界面
 	 */
@@ -239,12 +239,13 @@ public class Download extends UiAutomatorTestCase
 	public static void test_015(){
 		//主体
 		DownloadCommon.SwitchMode("网格视图");
-		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.documentsui:id/icon_mime");
+		excute(Object_ResIdInstance, Operation_ClickWait, "com.android.documentsui:id/icon_mime","0");
+		Wait(2000);
 		if((Boolean)excute(Object_Text, Operation_Exists, "禁止安装"))
 		{
 			check(Object_Text,Operation_checkExist,"禁止安装");
 		}else{
-			check(Object_Text,Operation_checkExist,"安装");
+			check(Object_Text,Operation_checkExist,"取消");
 		}
 	}
 	

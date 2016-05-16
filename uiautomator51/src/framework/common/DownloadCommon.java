@@ -296,7 +296,7 @@ public class DownloadCommon {
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","shouji.baidu.com");
 		excute(Object_Device, Operation_PressEnter);
 		excute(Object_Description,Operation_WaitForExists,"百度手机助手 最具人气的应用商店","100000");
-		Rect download = (Rect) excute(Object_DescInstance,Operation_GetBounds,"下载",String.valueOf(num));
+		Rect download = (Rect) excute(Object_DescInstance,Operation_GetBounds,"下载",String.valueOf(i));
 		int x = download.centerX();
 		int y = download.bottom;
 		UiDevice.getInstance().click(x, y);
