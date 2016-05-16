@@ -767,6 +767,7 @@ public class Browser extends UiAutomatorTestCase
 	
 	/**
 	 * 点击页面右上角的 更多按钮 刷新
+	 * 打开Google网页等出现超时框点击确认之后再刷新，防止普通网页刷新太快，捕捉不到刷新过程中的控件信息
 	 */
 	public static void test_047()
 	{
