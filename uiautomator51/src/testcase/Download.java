@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Assert;
+import android.graphics.Rect;
 import android.os.RemoteException;
 
+import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
@@ -46,8 +48,11 @@ public class Download extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
 		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","shouji.baidu.com");
 		excute(Object_Device, Operation_PressEnter);
-		excute(Object_Text,Operation_WaitForExists,"百度手机助手 最具人气的应用商店","100000");
-		excute(Object_DescInstance,Operation_ClickWait,"下载","0");
+		excute(Object_Description,Operation_WaitForExists,"百度手机助手 最具人气的应用商店","100000");
+		Rect download = (Rect) excute(Object_DescInstance,Operation_GetBounds,"下载","0");
+		int x = download.centerX();
+		int y = download.bottom;
+		UiDevice.getInstance().click(x, y);
 		excute(Object_ResourceId,Operation_WaitForExists,"android:id/alertTitle","100000");
 		excute(Object_Text,Operation_ClickWait,"下载");
 	}
