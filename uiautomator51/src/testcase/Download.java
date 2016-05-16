@@ -44,17 +44,18 @@ public class Download extends UiAutomatorTestCase
 	 */
 	public static void test_000() throws UiObjectNotFoundException{
 		//主体
-		DeviceCommon.enterApp(Devices_Desc_Browser);
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
-		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","shouji.baidu.com");
-		excute(Object_Device, Operation_PressEnter);
-		excute(Object_Description,Operation_WaitForExists,"百度手机助手 最具人气的应用商店","100000");
-		Rect download = (Rect) excute(Object_DescInstance,Operation_GetBounds,"下载","0");
-		int x = download.centerX();
-		int y = download.bottom;
-		UiDevice.getInstance().click(x, y);
-		excute(Object_ResourceId,Operation_WaitForExists,"android:id/alertTitle","100000");
-		excute(Object_Text,Operation_ClickWait,"下载");
+//		DeviceCommon.enterApp(Devices_Desc_Browser);
+//		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/url");
+//		excute(Object_ResourceId,Operation_SetText,"com.android.browser:id/url","shouji.baidu.com");
+//		excute(Object_Device, Operation_PressEnter);
+//		excute(Object_Description,Operation_WaitForExists,"百度手机助手 最具人气的应用商店","100000");
+		DownloadCommon.downloadAPP(4);
+//		Rect download = (Rect) excute(Object_DescInstance,Operation_GetBounds,"下载","0");
+//		int x = download.centerX();
+//		int y = download.bottom;
+//		UiDevice.getInstance().click(x, y);
+//		excute(Object_ResourceId,Operation_WaitForExists,"android:id/alertTitle","100000");
+//		excute(Object_Text,Operation_ClickWait,"下载");
 	}
 	
 	/**
