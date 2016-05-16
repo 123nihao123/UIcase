@@ -29,6 +29,13 @@ Phone模块操作须知：
   执行代码如下：adb push 路径 data/local/tmp
 3.case(67-71)涉及到交互系统，需要配备相应的运行环境。测试机终端需要安装iTestApp.apk。
 
+Search模块操作须知：
+必须把testresource\SearchResource下面的文件拷到手机上
+
+Browser模块操作须知：
+测试之前，必须保证网络连接是可用的
+
+
 
 运行步骤
 打开命令窗口：
