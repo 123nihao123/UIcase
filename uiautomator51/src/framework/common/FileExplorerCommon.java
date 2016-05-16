@@ -140,7 +140,7 @@ public class FileExplorerCommon
 	public static String extractFileSize(String info)
 	{
 		//System.out.println(info);
-		String strReturn= DeviceCommon.extractField(info,"\\d+(\\.\\d+)?[K|M|G]?B$");
+		String strReturn= DeviceCommon.extractField(info,"\\d+(\\.\\d+)?\\s*[K|M|G]?B$");
 		return strReturn;
 	}
 

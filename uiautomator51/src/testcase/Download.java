@@ -122,7 +122,7 @@ public class Download extends UiAutomatorTestCase
 	 */
 	public static void test_006(){
 		//主体
-		List<Integer> list=new ArrayList<Integer>();
+		//List<Integer> list=new ArrayList<Integer>();
 		DownloadCommon.SwitchMode("列表视图");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.documentsui:id/menu_sort");
 		excute(Object_Text,Operation_ClickWait,"按大小");
@@ -130,7 +130,7 @@ public class Download extends UiAutomatorTestCase
 		String scename = (String)excute(Object_ResIdInstance, Operation_GetText, "com.android.documentsui:id/size", "1");
 		String thrname = (String)excute(Object_ResIdInstance, Operation_GetText, "com.android.documentsui:id/size", "2");
 		String bname[] = {firname, scename, thrname};
-		Assert.assertTrue(DownloadCommon.isSortedBySize(bname,true));
+		Assert.assertTrue(FileExplorerCommon.isSortedBySize(bname,true));
 	}
 	
 	/**
