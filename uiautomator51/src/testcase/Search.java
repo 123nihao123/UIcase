@@ -187,6 +187,7 @@ public class Search extends UiAutomatorTestCase
 		SearchCommon.searchRange("网络");
 		excute(Object_ResourceId,Operation_SetText,"com.android.quicksearchbox:id/search_src_text","search");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.quicksearchbox:id/search_go_btn");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.browser:id/url","5000");
 		check(Object_ResourceId,Operation_checkExist,"com.android.browser:id/url");
 	}
 	/**
