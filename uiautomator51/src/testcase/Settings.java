@@ -250,6 +250,8 @@ public class Settings extends UiAutomatorTestCase
 			excute(Object_ResIdText, Operation_Exists,"com.android.settings:id/switch_text","开启");
 		}
 		SettingCommon.connectWifi(SettingCommon.wifiName, "WPA/WPA2 PSK", SettingCommon.wifiPassWord);
+		excute(Object_Text,Operation_WaitForExists,"已连接","30000");
+		check(Object_Text,Operation_checkExist,"已连接");
 		//清场
 		SettingCommon.disConnectWifi(SettingCommon.wifiName);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
