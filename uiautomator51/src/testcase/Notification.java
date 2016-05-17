@@ -107,7 +107,7 @@ public class Notification extends UiAutomatorTestCase
 		UiDevice.getInstance().openQuickSettings();
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.systemui:id/slider","5000");
 		excute(Object_Text,Operation_ClickWait,"数据");
-		check(Object_Text,Operation_checkExist,"移动数据网络");
+		check(Object_Text,Operation_checkExist,"流量使用情况");
 	}
 	/**
 	 * 点击页面右上角的 设置 图标
@@ -117,7 +117,8 @@ public class Notification extends UiAutomatorTestCase
 		//主体
 		UiDevice.getInstance().openQuickSettings();
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.systemui:id/slider","5000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.systemui:id/settings_button");
+		excute(Object_Description,Operation_ClickWait,"设置");
+		excute(Object_Text,Operation_WaitForExists,"设置","5000");
 		check(Object_Text,Operation_checkExist,"设置");
 	}
 	/**
