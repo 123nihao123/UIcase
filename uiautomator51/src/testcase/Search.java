@@ -173,7 +173,8 @@ public class Search extends UiAutomatorTestCase
 		//主体
 		SearchCommon.searchRange("全部");
 		excute(Object_ResourceId,Operation_SetText,"com.android.quicksearchbox:id/search_src_text","search");
-		excute(Object_Text,Operation_WaitForExists,"SearchMusic","20000");
+		excute(Object_Device,Operation_PressBack);
+		excute(Object_Text,Operation_WaitForExists,"SearchMusic","25000");
 		check(Object_Text,Operation_checkExist,"SearchContact");
 		check(Object_Text,Operation_checkExist,"SearchMusic");
 	}
