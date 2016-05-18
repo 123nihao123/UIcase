@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class CallFireWallCommon 
 {
+	public static String BlackNum = "13920907811";
 	/**
 	 * 添加一个黑名单
 	 */
@@ -68,6 +69,9 @@ public class CallFireWallCommon
 	 */
 	public static void BatchDelete(String type){
 		excute(Object_Text, Operation_ClickWait, type);
+		if((Boolean)excute(Object_ResourceId,Operation_Exists,"android:id/empty")){
+			return;
+		}
 		excute(Object_Description, Operation_ClickWait, "更多选项");
 		excute(Object_Text, Operation_ClickWait, "批量删除");
 		if(type.equals("电话记录")){
@@ -107,7 +111,6 @@ public class CallFireWallCommon
 			check(Object_ResIdInstance,Operation_CheckedTrue,"com.sprd.firewall:id/type_checkbox","1");
 		}
 	}
-	
 	
 	
 	

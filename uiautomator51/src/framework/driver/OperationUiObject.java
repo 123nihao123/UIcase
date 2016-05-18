@@ -24,12 +24,7 @@ public class OperationUiObject
 	
 	public static boolean exists(UiObject uiObject)
 	{
-		try{
-			return uiObject.exists();
-		} catch(Exception e) {
-			return false;
-		}
-		
+		return uiObject.exists();
 	}
 	
 	public static boolean isCheckable(UiObject uiObject) throws UiObjectNotFoundException

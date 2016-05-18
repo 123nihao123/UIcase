@@ -175,6 +175,10 @@ public class MessageCommon {
 	 */
 	public static  void deleteAllMessageIn(String BoxName)
 	{
+		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.mmsfolderview:id/empty_image_hint")){
+			return;
+		}
+		
 		if(BoxName.equals("收件箱"))
 		{
 			MessageCommon.enterInbox();

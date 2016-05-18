@@ -944,7 +944,7 @@ public class Phone extends UiAutomatorTestCase
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
-		IMtCall.mtCallClose();
+		IMtCall.interactionClose(InteractionCommon.normalMtCall);
 	}
 	/**
 	 * 亮屏接电话
@@ -959,7 +959,7 @@ public class Phone extends UiAutomatorTestCase
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
-		IMtCall.mtCallClose();
+		IMtCall.interactionClose(InteractionCommon.normalMtCall);
 	}
 	/**
 	 * 灭屏接电话
@@ -974,7 +974,7 @@ public class Phone extends UiAutomatorTestCase
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
-		IMtCall.mtCallClose();
+		IMtCall.interactionClose(InteractionCommon.normalMtCall);
 	}
 	/**
 	 * 灭屏据电话
@@ -989,7 +989,7 @@ public class Phone extends UiAutomatorTestCase
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
-		IMtCall.mtCallClose();
+		IMtCall.interactionClose(InteractionCommon.normalMtCall);
 	}
 	/**
 	 * 灭屏用短信据电话
@@ -1004,7 +1004,7 @@ public class Phone extends UiAutomatorTestCase
 		//主体
 		IMtCall.CmtCall(option);
 		//清场
-		IMtCall.mtCallClose();
+		IMtCall.interactionClose(InteractionCommon.normalMtCall);
 	}
 	/**
 	 * 进入设置界面

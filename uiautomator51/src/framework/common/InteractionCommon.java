@@ -27,11 +27,18 @@ public class InteractionCommon {
 	public static String mtCall_rejectBySMS = "rejectBySMS";
 	public static String mtCall_wakeUp = "mtCall_wakeUp";
 	public static String mtCall_sleep = "mtCall_sleep";
+	public static String normalMtCall = "mtCall";
+	public static String FireWall = "FireWall";
 	
 	public InteractionCommon(){}
-	
+	/**
+	 * 交互初始化
+	 * @param option
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	public InteractionCommon(String option) throws IOException, InterruptedException{
-		if(option.contains("mtCall"))
+		if(option.contains(normalMtCall))
 		{
 			Process proc = Runtime.getRuntime().exec("am start -n com.spreadtrum.itestapp/com.spreadtrum.itestapp.TestClientActivity");
 		    int ret = proc.waitFor();
@@ -39,14 +46,30 @@ public class InteractionCommon {
 		    	System.out.println("initial itestapp result:" + ret);
 			itest = ITestApp.newInstance();
 			socketUtil.startSocket();
+			UiDevice.getInstance().pressHome();
 			if(option.contains("sleep")){
 				isWakeup = false;
 				excute(Object_Device, Operation_Sleep);
 			}
 		}
+		else if(option.contains(FireWall)){
+			socketUtil.startSocket();
+		}
 	}
 	/**
-	 * 兼容所有SIM卡状况
+	 * 短信交互主函数
+	 * @param option
+	 * @throws IOException
+	 */
+	public void SMS(String simNumber) throws IOException{
+		simNum = simNumber;
+		int timeout = 7;//min
+		socketUtil.sendMsg("sprdtest sms " + simNum + " 2 "+ testSN);
+		Assert.assertTrue("send cmd fail!!!", readServerBack(simNumber,timeout,"SMS"));
+		System.out.println("SMS request send to assistantDevice ok~~");
+	}
+	/**
+	 * 兼容所有SIM卡情况
 	 * @param option
 	 * @throws IOException
 	 */
@@ -71,13 +94,21 @@ public class InteractionCommon {
 			break;
 		}
 	}
-	
+	/**
+	 * 被叫主函数
+	 * @param simNumber
+	 * @param option:"answer","reject","rejectBySMS"
+	 * @throws IOException
+	 */
 	public void mtCall(String simNumber,String option) throws IOException{
 		simNum = simNumber;
 		int timeout = 7;//min
 		socketUtil.sendMsg("sprdtest call " + simNum + " 2 "+ testSN);
-		Assert.assertTrue("send cmd fail!!!", readmtCallBack(simNum,timeout));
+		Assert.assertTrue("send cmd fail!!!", readServerBack(simNum,timeout,normalMtCall));
+		System.out.println("mtCall request send to assistantDevice ok~~");
 		
+		if(option.equals(InteractionCommon.FireWall))
+			return;
 		if(getIncomingStatus()){
 			action(option);
 		} 
@@ -89,11 +120,20 @@ public class InteractionCommon {
 				action(option);
 		}
 		Wait(2000);
-		if(option.equals("answer"))
+		if(option.equals("answer")){
 			itest.sendCommand(EndCall);
+		}
+		else{
+			System.out.println("Because of reject, wait for 20s.");
+			Wait(20000);
+		}
 		socketUtil.sendMsg("sprdtest assistant client status update "+ testSN + " true");
 	}
-	
+	/**
+	 * 被叫电话打过来时，通过界面接听或拒接
+	 * @param option
+	 * @throws IOException
+	 */
 	public void action(String option) throws IOException{
 		int DisplayWidth = UiDevice.getInstance().getDisplayWidth();
 		int	DisplayHeight = UiDevice.getInstance().getDisplayHeight();	
@@ -147,39 +187,62 @@ public class InteractionCommon {
 		Assert.assertTrue(simNum + option + " fail!!!", getStatus(option));
 		System.out.println(simNum + option + " success ~~");
 	}
-	
-	public void mtCallClose(){
-		itest.sendCommand(EndCall);
-		itest.finish();
-		Wait(5000);
+	/**
+	 * 被叫流程结束后，关闭所有服务
+	 */
+	public void interactionClose(String option){
+		if(option.contains(normalMtCall)){
+			itest.sendCommand(EndCall);
+			itest.finish();
+			isWakeup = true;
+			Wait(5000);
+		}
 		socketUtil.sendMsg("sprdtest assistant client status update "+ simNum + " true");
 		socketUtil.closeSocket();
-		isWakeup = true;
 	}
-	
-	private boolean readmtCallBack(String simNum, int timeout){
-		String mtCallBack = "";
-		String assistantDeviceOK= "[mtCall]OK";
-		String noassistantDevices = "[mtCall]assistantDeviceNum is 0";
-		String allDevicesBusy = "[mtCall]all assistantDevices are busy";
+	/**
+	 * 读取服务器是否成功分配辅助机进行被叫服务的状态
+	 * 	"[serverBack]OK"：成功分配了辅助机进行被叫服务；
+	 * 	"[serverBack]assistantDeviceNum is 0"：辅助机数量为0，终止被叫服务；
+	 * 	"[serverBack]all assistantDevices are busy"：所有辅助机全忙，等待30s，待辅助机释放
+	 * @param simNum
+	 * @param timeout
+	 * @return
+	 */
+	private boolean readServerBack(String simNum, int timeout, String interactionAction){
+		String serverBack = "";
+		String assistantDeviceOK= "[serverBack]OK";
+		String noassistantDevices = "[serverBack]assistantDeviceNum is 0";
+		String allDevicesBusy = "[serverBack]all assistantDevices are busy";
 		long initialTime = System.currentTimeMillis();
 		do{
 			try{
-				mtCallBack = socketUtil.readTestClientBack();
-				System.out.println("[readmtCallBack] = " + mtCallBack);
-				if(mtCallBack.contains(noassistantDevices)){
-					System.out.println("[readmtCallBack]" + noassistantDevices);
+				serverBack = socketUtil.readTestClientBack();
+				System.out.println(">>>>>>>>>serverBack = "+serverBack);
+				System.out.println("[readServerBack] = " + serverBack);
+				if(serverBack.contains(noassistantDevices)){
+					System.out.println("[readServerBack]" + noassistantDevices);
 					return false;
 				}
-				else if(mtCallBack.contains(allDevicesBusy)){
-					System.out.println("[readmtCallBack]" + allDevicesBusy + ", wait 30s!!!");
+				else if(serverBack.contains(allDevicesBusy)){
+					System.out.println("[readServerBack]" + allDevicesBusy + ", wait 30s!!!");
 					Wait(30 * 1000);
 					socketUtil.sendMsg("sprdtest assistant client status update "+ testSN + " true");
 					Wait(1000);
-					socketUtil.sendMsg("sprdtest call " + simNum + " 2 "+ testSN);
+					switch(interactionAction){
+					case "mtCall":
+						socketUtil.sendMsg("sprdtest call " + simNum + " 2 "+ testSN);
+						break;
+					case "SMS":
+						socketUtil.sendMsg("sprdtest sms " + simNum + " 2 "+ testSN);
+						break;
+					default:
+						Assert.assertTrue("Error: no this interactionAction!!!",false);
+						break;
+					}
 				}
 				if(System.currentTimeMillis() - initialTime > timeout * 60 * 1000){
-					System.out.println("[readmtCallBack]" + "timeout!!!" + "value = " + timeout);
+					System.out.println("[readServerBack]" + "timeout!!!" + "value = " + timeout);
 					return false;
 				}
 			}catch(IOException e){
@@ -187,10 +250,13 @@ public class InteractionCommon {
 				e.printStackTrace();
 			}
 		}
-		while(!mtCallBack.contains(assistantDeviceOK));
+		while(!serverBack.contains(assistantDeviceOK));
 		return true;
 	}
-	
+	/**
+	 * 判断是否来电
+	 * @return
+	 */
 	private boolean getIncomingStatus() {
 		int counts = 0;
 		boolean result = false;
@@ -211,7 +277,11 @@ public class InteractionCommon {
 		}
 		return result;
 	}
-
+	/**
+	 * 获取通话状态
+	 * @param option
+	 * @return
+	 */
 	private boolean getStatus(String option) {
 		int counts = 0;
 		boolean result = false;

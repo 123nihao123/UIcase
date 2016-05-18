@@ -3,16 +3,26 @@ package testcase;
 import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
-import static framework.excute.Excute.*;
+import static framework.excute.Excute.ClearBackgroundApp;
+import static framework.excute.Excute.Wait;
+import static framework.excute.Excute.check;
+import static framework.excute.Excute.excute;
+
+import java.io.IOException;
+
 import junit.framework.Assert;
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiScrollable;
+import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
+import framework.common.CallFireWallCommon;
 import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
-import framework.common.CallFireWallCommon;
+import framework.common.InteractionCommon;
+import framework.common.MessageCommon;
 
 public class CallFireWall extends UiAutomatorTestCase
 {
@@ -452,6 +462,116 @@ public class CallFireWall extends UiAutomatorTestCase
 			check(Object_Text, Operation_checkExist, "短信拦截记录为空。");
 		}finally{
 			CallFireWallCommon.fillSMSData();
+		}
+	}
+	/**
+	 * 将一个电话号码添加到电话黑名单中,用此号码呼叫测试机，验证黑名单功能
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 */
+	public static void test_035() throws IOException, InterruptedException
+	{
+		String BlackName = "callBlack";
+		//前提
+		CallFireWallCommon.BatchDelete("电话记录");
+		CallFireWallCommon.BatchDelete("黑名单");
+		CallFireWallCommon.addBlackContact(BlackName, CallFireWallCommon.BlackNum, false, true);
+		InteractionCommon callFireWall = new InteractionCommon(InteractionCommon.FireWall);
+		//主体
+		try{
+			callFireWall.mtCall(DeviceCommon.getOneSIMNum(), InteractionCommon.FireWall);
+			Wait(20000);
+			excute(Object_Text, Operation_ClickWait, "电话记录");
+			check(Object_Text, Operation_checkExist, BlackName);
+		}finally{
+			//清场
+			callFireWall.interactionClose(InteractionCommon.FireWall);
+			CallFireWallCommon.BatchDelete("黑名单");
+			CallFireWallCommon.BatchDelete("电话记录");
+		}
+	}
+	/**
+	 * 号码未在黑名单,被叫成功
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_036() throws IOException, InterruptedException, UiObjectNotFoundException
+	{
+		//前提
+		String option = InteractionCommon.mtCall_reject;
+		InteractionCommon IMtCall = new InteractionCommon(InteractionCommon.mtCall_wakeUp);
+		//主体
+		try {
+			DeviceCommon.enterApp(Devices_Desc_CallFireWall);
+			excute(Object_Text, Operation_ClickWait, "黑名单");
+			if(new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView(CallFireWallCommon.BlackNum)){
+				excute(Object_Text,Operation_LongClick,CallFireWallCommon.BlackNum);
+				excute(Object_Text, Operation_ClickWait, "删除");
+				excute(Object_Text, Operation_ClickWait, "确定");
+			}
+			IMtCall.mtCall(DeviceCommon.getOneSIMNum(), option);
+		}finally{
+			//清场
+			IMtCall.interactionClose(InteractionCommon.normalMtCall);
+		}
+	}
+	/**
+	 * 将一个电话号码添加到短信黑名单中,用此号码发送短信给测试机，验证黑名单功能
+	 * @throws InterruptedException 
+	 * @throws IOException 
+	 */
+	public static void test_037() throws IOException, InterruptedException
+	{
+		String BlackName = "SMSBlack";
+		//前提
+		CallFireWallCommon.BatchDelete("短信记录");
+		CallFireWallCommon.BatchDelete("黑名单");
+		CallFireWallCommon.addBlackContact(BlackName, CallFireWallCommon.BlackNum, true, false);
+		InteractionCommon SMSFireWall = new InteractionCommon(InteractionCommon.FireWall);
+		//主体
+		try{
+			SMSFireWall.SMS(DeviceCommon.getOneSIMNum());
+			Wait(20000);
+			excute(Object_Text, Operation_ClickWait, "短信记录");
+			check(Object_Text, Operation_checkExist, BlackName);
+		}finally{
+			//清场
+			SMSFireWall.interactionClose(InteractionCommon.FireWall);
+			CallFireWallCommon.BatchDelete("黑名单");
+			CallFireWallCommon.BatchDelete("短信记录");
+		}
+	}
+	/**
+	 * 号码未在黑名单,请求发送短信成功
+	 * @throws IOException
+	 * @throws InterruptedException
+	 * @throws UiObjectNotFoundException 
+	 */
+	public static void test_038() throws IOException, InterruptedException, UiObjectNotFoundException
+	{
+		//前提
+		InteractionCommon SMSFireWall = new InteractionCommon(InteractionCommon.FireWall);
+		DeviceCommon.enterApp(Devices_Desc_Message);
+		MessageCommon.deleteAllMessageIn("收件箱");
+		//主体
+		try{
+			DeviceCommon.enterApp(Devices_Desc_CallFireWall);
+			excute(Object_Text, Operation_ClickWait, "黑名单");
+			if(new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView(CallFireWallCommon.BlackNum)){
+				excute(Object_Text,Operation_LongClick,CallFireWallCommon.BlackNum);
+				excute(Object_Text, Operation_ClickWait, "删除");
+				excute(Object_Text, Operation_ClickWait, "确定");
+			}
+			SMSFireWall.SMS(DeviceCommon.getOneSIMNum());
+			Wait(20000);
+			DeviceCommon.enterApp(Devices_Desc_Message);
+			MessageCommon.enterInbox();
+			Assert.assertTrue("The message needed isn't exist!!!",(Boolean)excute(Object_Text,Operation_Exists,"短信内容"));
+		}finally{
+			//清场
+			SMSFireWall.interactionClose(InteractionCommon.FireWall);
+			MessageCommon.deleteAllMessageIn("收件箱");
 		}
 	}
 }

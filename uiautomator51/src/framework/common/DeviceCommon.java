@@ -737,5 +737,32 @@ public class DeviceCommon {
 		}
 		return 0;
 	}
-	
+	/**
+	 * 从手机已插的卡中获取sim卡卡号(若两张卡，则随机返回一个号)
+	 * @return
+	 */
+	public static String getOneSIMNum(){
+		String Num = null;
+
+		switch(DeviceCommon.simFlag){
+		case "00":
+			Assert.assertTrue("No SIMCard in phone !!!",false);
+			break;
+		case "10":
+			Num = sim1Num;
+			break;
+		case "01":
+			Num = sim2Num;
+			break;
+		case "11":
+			java.util.Random random = new java.util.Random();
+			Num = random.nextInt(2) == 0 ? sim1Num : sim2Num;
+			break;
+		default:
+			Assert.assertTrue("Error: simFlag got error!!!",false);
+			break;
+		}
+		
+		return Num;
+	}
 }
