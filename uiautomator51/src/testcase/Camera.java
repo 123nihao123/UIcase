@@ -230,7 +230,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","0");
 		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","0");  
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 * 定格显示开关默认关闭
@@ -243,7 +243,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","1");
 		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","1");  
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 * 时间戳开关默认关闭
@@ -256,7 +256,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_ResIdInstance,Operation_ClickWait,"android:id/switchWidget","2");
 		check(Object_ResIdInstance,Operation_CheckedTrue,"android:id/switchWidget","2");  
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 * 防闪烁
@@ -271,7 +271,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 * 照片质量
@@ -286,7 +286,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 * 智能检测
@@ -301,7 +301,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();	
+		CameraCommon.restoreSetting("还原拍照默认设置");	
 	}
 	/**
 	 * 色彩效果
@@ -318,7 +318,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 * 取景模式
@@ -333,7 +333,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 *白平衡
@@ -348,7 +348,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 *连续拍摄
@@ -363,7 +363,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 *对比度
@@ -378,7 +378,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 *亮度
@@ -393,7 +393,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();	
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 *感光度
@@ -410,7 +410,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 *测光
@@ -425,7 +425,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
-		CameraCommon.restoreCameraSetting();	
+		CameraCommon.restoreSetting("还原拍照默认设置");	
 	}
 	/**
 	 *饱和度
@@ -440,7 +440,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
-		CameraCommon.restoreCameraSetting();
+		CameraCommon.restoreSetting("还原拍照默认设置");
 	}
 	/**
 	 *还原拍照默认设置
@@ -470,7 +470,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
-		CameraCommon.restoreVideoSetting();	
+		CameraCommon.restoreSetting("还原视频默认设置");
 	}
 	/**
 	 *防闪烁(视频中)
@@ -487,7 +487,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[1]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreVideoSetting();	
+		CameraCommon.restoreSetting("还原视频默认设置");
 	}
 	/**
 	 *延时
@@ -505,7 +505,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_TextScrollWithResId,Operation_ClickWait,"android:id/select_dialog_listview",str[1],"vertical");
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[1]);
 		//清场
-		CameraCommon.restoreVideoSetting();		
+		CameraCommon.restoreSetting("还原视频默认设置");
 	}
 	/**
 	 *慢录
@@ -520,7 +520,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
-		CameraCommon.restoreVideoSetting();		
+		CameraCommon.restoreSetting("还原视频默认设置");	
 	}
 	/**
 	 *还原视频默认设置
@@ -550,7 +550,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
-		CameraCommon.restoreGifSetting();	
+		CameraCommon.restoreSetting("还原动画默认设置");
 	}
 	/**
 	 *GIF帧数
@@ -565,7 +565,7 @@ public class Camera extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,str[0]);
 		check(Object_ResIdText,Operation_checkExist,"android:id/summary",str[0]);
 		//清场
-		CameraCommon.restoreGifSetting();	
+		CameraCommon.restoreSetting("还原动画默认设置");	
 	}
 	/**
 	 *还原动画默认设置

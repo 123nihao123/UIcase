@@ -109,7 +109,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	public static void test_111()
 	{
 		//主体
-		CallFireWallCommon.addBlackContact("Black", "1008611", true, true);
+		CallFireWallCommon.addBlackContact("Black", "1008611", "11");
 		check(Object_ResIdText,Operation_checkExist,"com.sprd.firewall:id/phone_name","Black");
 	}
 	/**

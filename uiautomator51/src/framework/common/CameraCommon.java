@@ -247,27 +247,11 @@ public class CameraCommon
 		}	
 	}
 	/**
-	 * 还原拍照默认设置
+	 * type取值范围：还原拍照默认设置/还原视频默认设置/还原动画默认设置
 	 */
-	public static void restoreCameraSetting() throws UiObjectNotFoundException
+	public static void restoreSetting(String type) throws UiObjectNotFoundException
 	{
-		excute(Object_TextScroll,Operation_ClickWait,"还原拍照默认设置","vertical");	
-		excute(Object_Text,Operation_ClickWait,"确定");
-	}
-	/**
-	 * 还原视频默认设置
-	 */
-	public static void restoreVideoSetting() throws UiObjectNotFoundException
-	{
-		excute(Object_TextScroll,Operation_ClickWait,"还原视频默认设置","vertical");	
-		excute(Object_Text,Operation_ClickWait,"确定");
-	}
-	/**
-	 * 还原动画默认设置
-	 */
-	public static void restoreGifSetting() throws UiObjectNotFoundException
-	{
-		excute(Object_TextScroll,Operation_ClickWait,"还原动画默认设置","vertical");	
+		excute(Object_TextScroll,Operation_ClickWait,type,"vertical");
 		excute(Object_Text,Operation_ClickWait,"确定");
 	}
 

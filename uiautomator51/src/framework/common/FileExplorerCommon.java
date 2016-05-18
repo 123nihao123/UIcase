@@ -49,8 +49,7 @@ public class FileExplorerCommon
 	 */
 	public static void classmenu(String ClassName)
 	{
-		excute(Object_Text, Operation_ClickWait, ClassName);
-		excute(Object_Text, Operation_WaitForExists, ClassName, "10000");
+		FileExplorerCommon.Enterclass(ClassName);
 		excute(Object_Device, Operation_PressMenu);
 	}
 	/**
@@ -67,9 +66,7 @@ public class FileExplorerCommon
 	 */
 	public static void select(String ClassName)
 	{
-		excute(Object_Text, Operation_ClickWait, ClassName);
-		excute(Object_Text, Operation_WaitForExists, ClassName, "10000");
-		excute(Object_Device, Operation_PressMenu);
+		FileExplorerCommon.classmenu(ClassName);
 		excute(Object_Text, Operation_ClickWait, "选择多个");
 		excute(Object_Text, Operation_WaitForExists, "选择全部", "10000");
 		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/select_checkbox", "0");

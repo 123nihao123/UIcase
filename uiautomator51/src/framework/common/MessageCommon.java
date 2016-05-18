@@ -43,14 +43,7 @@ public class MessageCommon {
 	 */
 	public static void addNewMessageAttach(String num) throws UiObjectNotFoundException
 	{
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		if((Boolean)excute(Object_Text,Operation_Exists,"消息视图"))
-		{
-			excute(Object_Text,Operation_ClickWait,"消息视图");
-		}else
-		{
-			excute(Object_Device, Operation_PressBack);
-		}
+		MessageCommon.switchView("消息视图");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view",num);
 		excute(Object_Device, Operation_PressEnter);
@@ -88,71 +81,32 @@ public class MessageCommon {
 	}
 	/**
 	 * 文件夹视图长按消息操作
-	 * @param optionName 取值范围：转到上一层级，归档，删除，关闭通知，开启通知，添加到通讯录，屏蔽
+	 * @param optionName 取值范围：添加到联系人，呼叫，呼叫前编辑，删除
 	 */
 	public static void longclickmessage(String Name)
 	{
 		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
 		excute(Object_Text, Operation_ClickWait, Name);
 	}
-	/**
-	 * 文件视图下拉菜单操作
-	 * @param optionName 取值范围：收件箱，已发送，发件箱，草稿箱
-	 */
-	public static void Menuoption(String optionName)
-	{
-		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/actionbar_spinner");
-		excute(Object_Text, Operation_ClickWait, optionName);
-	}
      /**
-	 * 进入收件箱文件夹
-	 */
-	public static void enterInbox()
+      * 进入各个信箱
+      * @param boxName：收件箱、发件箱、已发送、草稿箱
+      */
+	public static void enterMessageBox(String boxName)
 	{
 		switchView("文件夹视图");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
-		excute(Object_Text,Operation_ClickWait,"收件箱");
-	}
-	/**
-	 * 进入已发送文件夹
-	 */
-	public static void enterOutBox()
-	{
-		switchView("文件夹视图");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
-		excute(Object_Text,Operation_ClickWait,"发件箱");
-	}
-	/**
-	 * 进入发件箱文件夹
-	 */
-	public static void enterSent()
-	{
-		switchView("文件夹视图");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
-		excute(Object_Text,Operation_ClickWait,"已发送");
-	}
-	/**
-	 * 进入草稿箱文件夹
-	 */
-	public static void enterDrafts()
-	{
-		switchView("文件夹视图");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
-		excute(Object_Text,Operation_ClickWait,"草稿箱");
+		if (!(Boolean)excute(Object_Text,Operation_Exists,boxName))
+		{
+			excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
+			excute(Object_Text,Operation_ClickWait,boxName);
+		}
 	}
 	/**
 	 * 添加短信号码和内容
 	 */
 	public static void newMessageWithNumAndContent(String Num ,String Content)
 	{
-		excute(Object_Description,Operation_ClickWait,"更多选项");
-		if((Boolean)excute(Object_Text,Operation_Exists,"消息视图"))
-		{
-			excute(Object_Text,Operation_ClickWait,"消息视图");
-		}else
-		{
-			excute(Object_Device, Operation_PressBack);
-		}
+		MessageCommon.switchView("消息视图");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/start_new_conversation_button");
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/recipient_text_view",Num);
 		excute(Object_Device, Operation_PressEnter);
@@ -177,19 +131,19 @@ public class MessageCommon {
 	{
 		if(BoxName.equals("收件箱"))
 		{
-			MessageCommon.enterInbox();
+			MessageCommon.enterMessageBox("收件箱");
 		}
 		else if(BoxName.equals("已发送"))
 		{
-			MessageCommon.enterSent();
+			MessageCommon.enterMessageBox("已发送");
 		}
 		else if(BoxName.equals("发件箱"))
 		{
-			MessageCommon.enterOutBox();
+			MessageCommon.enterMessageBox("发件箱");
 		}
 		else if(BoxName.equals("草稿箱"))
 		{
-			MessageCommon.enterDrafts();
+			MessageCommon.deleteAllMessageIn("草稿箱");
 		}
 		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.mmsfolderview:id/conversation_snippet"))
 		{
@@ -208,7 +162,7 @@ public class MessageCommon {
 		String Menu[] = {"收件箱", "已发送", "发件箱", "草稿箱"};
 		for (int i =0;i<Menu.length; i++)
 		{
-			MessageCommon.Menuoption(Menu[i]);
+			MessageCommon.enterMessageBox(Menu[i]);
 			excute(Object_Device, Operation_PressMenu);
 			excute(Object_Text, Operation_ClickWait, "删除信息");
 			if ((Boolean)excute(Object_Text, Operation_Exists, "全选"))
