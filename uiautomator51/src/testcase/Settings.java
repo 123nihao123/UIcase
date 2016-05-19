@@ -2602,7 +2602,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text, Operation_ClickWait, "删除");
 	}
 	/**
-	 * 添加事件规则
+	 * 添加时间规则
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */

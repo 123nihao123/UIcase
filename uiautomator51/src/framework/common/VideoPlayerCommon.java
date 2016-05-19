@@ -19,6 +19,9 @@ public class VideoPlayerCommon
 	 */
 	public static void deleteAllVideo()
     {
+		 if((Boolean)excute(Object_Text,Operation_Exists,"相机")){
+             return;
+         }
     	UiDevice.getInstance().pressMenu();
     	excute(Object_Text, Operation_ClickWait,"选择视频");
     	if ((Boolean) excute(Object_Text, Operation_Exists,"选中了 0 项"))
