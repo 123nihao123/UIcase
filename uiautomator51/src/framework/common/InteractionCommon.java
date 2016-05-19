@@ -21,6 +21,9 @@ public class InteractionCommon {
 	private ITestApi itest;
 	private boolean isWakeup = true;
 	private String [] EndCall = {"EndCall"};
+	private String cmdSMS = "sprdtest sms ";
+	private String cmdCall = "sprdtest call ";
+	private String cmdUpdate = "sprdtest assistant client status update ";
 	
 	public static String mtCall_answer = "answer";
 	public static String mtCall_reject = "reject";
@@ -28,6 +31,7 @@ public class InteractionCommon {
 	public static String mtCall_wakeUp = "mtCall_wakeUp";
 	public static String mtCall_sleep = "mtCall_sleep";
 	public static String normalMtCall = "mtCall";
+	public static String normalSMS = "SMS";
 	public static String FireWall = "FireWall";
 	
 	public InteractionCommon(){}
@@ -52,20 +56,24 @@ public class InteractionCommon {
 				excute(Object_Device, Operation_Sleep);
 			}
 		}
-		else if(option.contains(FireWall)){
+		else if(option.contains(FireWall) || option.contains(FireWall)){
 			socketUtil.startSocket();
+			if(option.contains(FireWall)){
+				cmdSMS = "[SP]" + CallFireWallCommon.assistantSN + cmdSMS;
+				cmdCall = "[SP]" + CallFireWallCommon.assistantSN + cmdCall;
+			}
 		}
 	}
 	/**
 	 * 短信交互主函数
-	 * @param option
+	 * @param simNumber
 	 * @throws IOException
 	 */
 	public void SMS(String simNumber) throws IOException{
 		simNum = simNumber;
 		int timeout = 7;//min
-		socketUtil.sendMsg("sprdtest sms " + simNum + " 2 "+ testSN);
-		Assert.assertTrue("send cmd fail!!!", readServerBack(simNumber,timeout,"SMS"));
+		socketUtil.sendMsg(cmdSMS + simNum + " 2 "+ testSN);
+		Assert.assertTrue("send cmd fail!!!", readServerBack(simNumber, timeout, "SMS"));
 		System.out.println("SMS request send to assistantDevice ok~~");
 	}
 	/**
@@ -97,25 +105,26 @@ public class InteractionCommon {
 	/**
 	 * 被叫主函数
 	 * @param simNumber
-	 * @param option:"answer","reject","rejectBySMS"
+	 * @param option:"answer","reject","rejectBySMS","FireWall"
 	 * @throws IOException
 	 */
 	public void mtCall(String simNumber,String option) throws IOException{
 		simNum = simNumber;
 		int timeout = 7;//min
-		socketUtil.sendMsg("sprdtest call " + simNum + " 2 "+ testSN);
-		Assert.assertTrue("send cmd fail!!!", readServerBack(simNum,timeout,normalMtCall));
+		socketUtil.sendMsg(cmdCall + simNum + " 2 "+ testSN);
+		Assert.assertTrue("send cmd fail!!!", readServerBack(simNum, timeout, "mtCall"));
 		System.out.println("mtCall request send to assistantDevice ok~~");
 		
-		if(option.equals(InteractionCommon.FireWall))
+		if(option.equals(FireWall))
 			return;
+		
 		if(getIncomingStatus()){
 			action(option);
 		} 
 		else{
-			socketUtil.sendMsg("sprdtest assistant client status update "+ testSN + " true");
+			socketUtil.sendMsg(cmdUpdate + testSN + " true");
 			Wait(3000);
-			socketUtil.sendMsg("sprdtest call " + simNum + " 2 "+ testSN);
+			socketUtil.sendMsg(cmdCall + simNum + " 2 "+ testSN);
 			if(getIncomingStatus())
 				action(option);
 		}
@@ -127,11 +136,11 @@ public class InteractionCommon {
 			System.out.println("Because of reject, wait for 20s.");
 			Wait(20000);
 		}
-		socketUtil.sendMsg("sprdtest assistant client status update "+ testSN + " true");
+		socketUtil.sendMsg(cmdUpdate+ testSN + " true");
 	}
 	/**
 	 * 被叫电话打过来时，通过界面接听或拒接
-	 * @param option
+	 * @param option:"answer","reject","rejectBySMS"
 	 * @throws IOException
 	 */
 	public void action(String option) throws IOException{
@@ -197,8 +206,12 @@ public class InteractionCommon {
 			isWakeup = true;
 			Wait(5000);
 		}
-		socketUtil.sendMsg("sprdtest assistant client status update "+ simNum + " true");
+		socketUtil.sendMsg(cmdUpdate+ simNum + " true");
 		socketUtil.closeSocket();
+		if(option.contains(FireWall)){
+			cmdSMS = "sprdtest sms ";
+			cmdCall = "sprdtest call ";
+		}
 	}
 	/**
 	 * 读取服务器是否成功分配辅助机进行被叫服务的状态
@@ -207,6 +220,7 @@ public class InteractionCommon {
 	 * 	"[serverBack]all assistantDevices are busy"：所有辅助机全忙，等待30s，待辅助机释放
 	 * @param simNum
 	 * @param timeout
+	 * @param interactionAction: "mtCall", "SMS"
 	 * @return
 	 */
 	private boolean readServerBack(String simNum, int timeout, String interactionAction){
@@ -218,7 +232,6 @@ public class InteractionCommon {
 		do{
 			try{
 				serverBack = socketUtil.readTestClientBack();
-				System.out.println(">>>>>>>>>serverBack = "+serverBack);
 				System.out.println("[readServerBack] = " + serverBack);
 				if(serverBack.contains(noassistantDevices)){
 					System.out.println("[readServerBack]" + noassistantDevices);
@@ -227,14 +240,14 @@ public class InteractionCommon {
 				else if(serverBack.contains(allDevicesBusy)){
 					System.out.println("[readServerBack]" + allDevicesBusy + ", wait 30s!!!");
 					Wait(30 * 1000);
-					socketUtil.sendMsg("sprdtest assistant client status update "+ testSN + " true");
+					socketUtil.sendMsg(cmdUpdate+ testSN + " true");
 					Wait(1000);
 					switch(interactionAction){
 					case "mtCall":
-						socketUtil.sendMsg("sprdtest call " + simNum + " 2 "+ testSN);
+						socketUtil.sendMsg(cmdCall + simNum + " 2 "+ testSN);
 						break;
 					case "SMS":
-						socketUtil.sendMsg("sprdtest sms " + simNum + " 2 "+ testSN);
+						socketUtil.sendMsg(cmdSMS + simNum + " 2 "+ testSN);
 						break;
 					default:
 						Assert.assertTrue("Error: no this interactionAction!!!",false);

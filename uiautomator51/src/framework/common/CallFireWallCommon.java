@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 public class CallFireWallCommon 
 {
 	public static String BlackNum = "13920907811";
+	public static String assistantSN = "SP9830A71005B301440";
 	/**
 	 * 添加一个黑名单
 	 * @param type 拦截方式：11表示短信和电话拦截，10表示短信拦截，01表示电话拦截

@@ -31,7 +31,7 @@ Phone模块操作须知：
 
 
 FireWall模块须知：
-1.在CallFireWallCommon.java文件中，添加黑名单号码（BlackNum）
+1.在CallFireWallCommon.java文件中，添加黑名单号码（BlackNum）以及此辅助机的SN号（assistantSN）
 2.需要至少一张SIM卡，并将准备插入的SIM卡CCID号和对应的号码添加到PhoneNumList.xml中（已有的不需要添加）
 3.将...\UIcase\uiautomator51下的PhoneNumList.xml文件push到data/local/tmp中
   执行代码如下：adb push 路径 data/local/tmp
