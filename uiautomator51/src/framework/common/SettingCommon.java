@@ -197,13 +197,21 @@ public class SettingCommon {
 		Wait(20000);
 	}
 
+	/**
+	 * 进入VPN界面
+	 * @throws UiObjectNotFoundException
+	 */
 	public static void EnterVPN() throws UiObjectNotFoundException {
 		System.out
 				.println("======Start to excute CallContactsCommon: EnterVPN======");
 		excute(Object_Text, Operation_ClickWait, "更多");
 		excute(Object_Text, Operation_ClickWait, "VPN");
 	}
-
+    
+	/**
+	 * 设置PIN码为1234
+	 * @throws UiObjectNotFoundException
+	 */
 	public static void SetPIN() throws UiObjectNotFoundException {
 		System.out
 				.println("======Start to excute CallContactsCommon: SetPIN======");
@@ -222,6 +230,12 @@ public class SettingCommon {
 		}
 	}
 
+	/**
+	 * 设置VPN
+	 * @param VPNName
+	 * @param Servicer
+	 * @throws UiObjectNotFoundException
+	 */
 	public static void SetVPN(String VPNName, String Servicer)
 			throws UiObjectNotFoundException {
 		System.out
