@@ -129,8 +129,9 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/one");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/two");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/three");
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/dialpad_overflow","2000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/dialpad_overflow");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/dialpad_overflow","20000");
+		excute(Object_ResourceId,Operation_ClickWait, "com.android.dialer:id/dialpad_overflow");
+		excute(Object_Text,Operation_WaitForExists,"延长暂停时间2秒","2000");
 		excute(Object_Text,Operation_ClickWait,"延长暂停时间2秒");
 		check(Object_ResIdText,Operation_checkExist,"com.android.dialer:id/digits","123,");	
 	}
@@ -144,8 +145,9 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/one");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/two");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/three");
-		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/dialpad_overflow","2000");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/dialpad_overflow");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/dialpad_overflow","20000");
+		excute(Object_ResourceId,Operation_ClickWait, "com.android.dialer:id/dialpad_overflow");
+		excute(Object_Text,Operation_WaitForExists,"延长等待时间","2000");
 		excute(Object_Text,Operation_ClickWait,"延长等待时间");
 		check(Object_ResIdText,Operation_checkExist,"com.android.dialer:id/digits","123;");	
 	}
@@ -161,6 +163,7 @@ public class Phone extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/three");
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.dialer:id/dialpad_overflow","2000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/dialpad_overflow");
+		excute(Object_Text,Operation_WaitForExists,"IP 拨号","2000");
 		excute(Object_Text,Operation_ClickWait,"IP 拨号");
 		check(Object_Text,Operation_checkExist,"IP 拨号列表");	
 	}

@@ -59,6 +59,7 @@ public class ResIdTextAndDesc {
 	public static final String Devices_Desc_Browser = "浏览器";
 	public static final String Devices_Desc_VideoPlayer = "视频播放器";
 	public static final String Devices_Desc_CallFireWall = "来电防火墙";
+	public static final String Devices_Desc_Download = "下载";
 	
 	//Call
 	public static final String CMCCNum = "10086";

@@ -19,7 +19,7 @@ import framework.driver.OperationUiObject;
 
 public class SettingCommon {
 	
-	public static String wifiName = "testteam";
+	public static String wifiName = "Testteam";
 	public static String wifiPassWord = "test12345678";
 	public static String assistantBTName = "SupportBT";
 	
@@ -941,13 +941,16 @@ public class SettingCommon {
 	// 以上为石亚辉*******************************************************************************************************
 	public static void connectWifi(String wifiname, String type, String password)
 			throws UiObjectNotFoundException {
-		if ((Boolean) excute(Object_Text, Operation_Exists, wifiname)) {
+		if ((Boolean) excute(Object_Text, Operation_Exists, wifiname))
+		{
 			excute(Object_Text, Operation_ClickWait, wifiname);
-			excute(Object_ResourceId, Operation_SetText,
-					"com.android.settings:id/password", password);
-			excute(Object_ResourceId, Operation_ClickWait,
-					"android:id/button1", "连接");
-			check(Object_ResIdText, Operation_WaitForExists,"android:id/summary", "已连接", "15000");
+			if((Boolean) excute(Object_Text, Operation_Exists, "取消保存"))
+			{
+				excute(Object_Text, Operation_ClickWait,"取消保存");
+				excute(Object_Text, Operation_ClickWait, wifiname);
+			}
+			excute(Object_ResourceId, Operation_SetText,"com.android.settings:id/password", password);
+			excute(Object_ResourceId, Operation_ClickWait,"android:id/button1", "连接");
 		} else {
 			excute(Object_Description, Operation_ClickWait, "更多选项");
 			excute(Object_Text, Operation_ClickWait, "添加网络");
@@ -960,7 +963,6 @@ public class SettingCommon {
 					"com.android.settings:id/password", password);
 			excute(Object_ResourceId, Operation_ClickWait,
 					"android:id/button1", "保存");
-			check(Object_ResIdText, Operation_WaitForExists, "android:id/summary","已连接", "15000");
 		}
 	}
 

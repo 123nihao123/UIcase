@@ -10,18 +10,24 @@ public class CallFireWallCommon
 	public static String BlackNum = "13920907811";
 	/**
 	 * 添加一个黑名单
+	 * @param type 拦截方式：11表示短信和电话拦截，10表示短信拦截，01表示电话拦截
 	 */
-	public static void addBlackContact(String name,String number,Boolean isSMS,Boolean isCalls)
+	public static void addBlackContact(String name,String number,String type)
 	{
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text, Operation_ClickWait,"添加");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_ResourceId,Operation_SetText,"com.sprd.firewall:id/black_calls_add_edit_label_name",name);
 		excute(Object_ResourceId,Operation_SetText,"com.sprd.firewall:id/black_calls_add_edit_label",number);
-		if (isSMS)
+		if (type.equals("10"))
 			excute(Object_Text, Operation_ClickWait,"短信");
-		if (isCalls)
+		else if (type.equals("01"))
 			excute(Object_Text, Operation_ClickWait,"电话");
+		else if (type.equals("11"))
+		{
+			excute(Object_Text, Operation_ClickWait,"短信");
+			excute(Object_Text, Operation_ClickWait,"电话");
+		}
 		excute(Object_Text, Operation_ClickWait,"确定");
 	}
 	/**

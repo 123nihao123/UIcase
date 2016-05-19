@@ -16,7 +16,8 @@ public class BrowserCommon
 	public static void enterCollectionTab(String name)
 	{
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.browser:id/bookmarks");
-		excute(Object_Text,Operation_ClickWait,name);
+		if(!(Boolean)excute(Object_Text,Operation_IsSelected,name))
+			excute(Object_Text,Operation_ClickWait,name);
 	}
 	/**
 	 * 设置菜单
@@ -36,10 +37,7 @@ public class BrowserCommon
 	 */
 	public static void PrivacySecurity(String menu)
 	{
-		excute(Object_Description, Operation_WaitForExists, "更多选项", "10000");
-		excute(Object_Description, Operation_ClickWait, "更多选项");
-		excute(Object_TextScroll, Operation_ClickWait, "设置", "vertical");
-		excute(Object_Text, Operation_ClickWait, "隐私和安全");
+		BrowserCommon.settingMenu("隐私和安全");
 		excute(Object_TextScroll, Operation_ClickWait, menu, "vertical");
 		excute(Object_Text, Operation_ClickWait, "取消");
 		check(Object_Text, Operation_EnabledTrue, menu);

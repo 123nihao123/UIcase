@@ -126,6 +126,12 @@ public class ObjectFind
 	{
 		return new UiObject(new UiSelector().text(text).instance(Integer.parseInt(instanceNum)));
 	}
+	
+	//通过Description + 属性，找到控件返回
+		public static UiObject byDescInstance(String desc, String instanceNum) 
+		{
+			return new UiObject(new UiSelector().description(desc).instance(Integer.parseInt(instanceNum)));
+		}
 		
 	
 	

@@ -49,8 +49,7 @@ public class FileExplorerCommon
 	 */
 	public static void classmenu(String ClassName)
 	{
-		excute(Object_Text, Operation_ClickWait, ClassName);
-		excute(Object_Text, Operation_WaitForExists, ClassName, "10000");
+		FileExplorerCommon.Enterclass(ClassName);
 		excute(Object_Device, Operation_PressMenu);
 	}
 	/**
@@ -67,9 +66,7 @@ public class FileExplorerCommon
 	 */
 	public static void select(String ClassName)
 	{
-		excute(Object_Text, Operation_ClickWait, ClassName);
-		excute(Object_Text, Operation_WaitForExists, ClassName, "10000");
-		excute(Object_Device, Operation_PressMenu);
+		FileExplorerCommon.classmenu(ClassName);
 		excute(Object_Text, Operation_ClickWait, "选择多个");
 		excute(Object_Text, Operation_WaitForExists, "选择全部", "10000");
 		excute(Object_ResIdInstance, Operation_ClickWait, "com.sprd.fileexplorer:id/select_checkbox", "0");
@@ -140,7 +137,7 @@ public class FileExplorerCommon
 	public static String extractFileSize(String info)
 	{
 		//System.out.println(info);
-		String strReturn= DeviceCommon.extractField(info,"\\d+(\\.\\d+)?[K|M|G]?B$");
+		String strReturn= DeviceCommon.extractField(info,"\\d+(\\.\\d+)?\\s*[K|M|G]?B$");
 		return strReturn;
 	}
 
@@ -238,44 +235,18 @@ public class FileExplorerCommon
 	public static boolean isSortedByTime(String[] strArray,boolean isReverse) throws ParseException
 	{
 		boolean valReturn =true;
-		float timeArray[]= new float[strArray.length];
 
 		if (strArray.length==1) return valReturn;
 
+		String timeArray[]= new String[strArray.length];
+
 		for(int i=0;i<strArray.length;i++)
 		{
-			timeArray[i] = stringToTime(extractFileTime(strArray[i]));
+			timeArray[i] = extractFileTime(strArray[i]);
 		}
 
-		for(float t : timeArray) {
-		System.out.println(t);
-		}
+		return DeviceCommon.isSortedByTime(timeArray, "yyyy-MM-dd HH:mm:ss", isReverse);
 
-		if(isReverse)
-		{
-			//降序
-			for(int i=0;i<timeArray.length-1;i++)
-			{
-				if(timeArray[i]<timeArray[i+1])
-				{
-					valReturn = false;
-					break;
-				}
-			}
-		}
-		else
-		{
-			//升序
-			for(int i=0;i<timeArray.length-1;i++)
-			{
-				if(timeArray[i]>timeArray[i+1])
-				{
-					valReturn = false;
-					break;
-				}
-			}
-		}
-		return valReturn;
 	}
 /**
  * 判断是否按文件大小排好序。缺省为升序。

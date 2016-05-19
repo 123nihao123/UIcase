@@ -67,7 +67,6 @@ public class Message extends UiAutomatorTestCase
 	public static void test_222()
 	{
 		//前提
-		MessageCommon.switchView("文件夹视图");
 		MessageCommon.deleteAllMessage();
 		MessageCommon.switchView("消息视图");
 		//主体
@@ -255,8 +254,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_018()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		check(Object_Text, Operation_checkExist, "收件箱");
 	}
 	/**
@@ -265,8 +263,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_019()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("已发送");
+		MessageCommon.enterMessageBox("已发送");
 		check(Object_Text, Operation_checkExist, "已发送");
 	}
 	/**
@@ -275,8 +272,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_020()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("发件箱");
+		MessageCommon.enterMessageBox("发件箱");
 		check(Object_Text, Operation_checkExist, "发件箱");
 	}
 	/**
@@ -285,8 +281,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_021()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("草稿箱");
+		MessageCommon.enterMessageBox("草稿箱");
 		check(Object_Text, Operation_checkExist, "草稿箱");
 	}
 	/**
@@ -343,8 +338,7 @@ public class Message extends UiAutomatorTestCase
 		}
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
 		excute(Object_Text, Operation_ClickWait, "按时间降序");
 		//不能排序一整屏，有可能最后一个消息只显示一部分
@@ -400,8 +394,7 @@ public class Message extends UiAutomatorTestCase
 		}
 		DeviceCommon.enterApp( Devices_Desc_Message);
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
 		excute(Object_Text, Operation_ClickWait, "按时间升序");
 		//不能排序一整屏，有可能最后一个消息只显示一部分
@@ -431,8 +424,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_026() throws ParseException
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
 		excute(Object_Text, Operation_ClickWait, "按号码降序");
 		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
@@ -452,8 +444,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_027() throws ParseException
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/action_sortby");
 		excute(Object_Text, Operation_ClickWait, "按号码升序");
 		int num = (int) excute(Object_ResourceId, Operation_GetChildCount, "android:id/list");
@@ -516,8 +507,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_032()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		MessageCommon.switchView("显示选项");
 		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
 		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
@@ -533,8 +523,7 @@ public class Message extends UiAutomatorTestCase
 		//主体
 		try
 		{
-			MessageCommon.switchView("文件夹视图");
-			MessageCommon.Menuoption("收件箱");
+			MessageCommon.enterMessageBox("收件箱");
 			MessageCommon.switchView("显示选项");
 			String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
 			excute(Object_ResourceId, Operation_ClickWait,"android:id/text1", "1");
@@ -555,8 +544,7 @@ public class Message extends UiAutomatorTestCase
 		try
 		{
 			//主体
-			MessageCommon.switchView("文件夹视图");
-			MessageCommon.Menuoption("收件箱");
+			MessageCommon.enterMessageBox("收件箱");
 			MessageCommon.switchView("显示选项");
 			String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
 			excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
@@ -575,8 +563,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_035()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		MessageCommon.switchView("删除信息");
 		check(Object_Text, Operation_checkExist, "全选");
 	}
@@ -586,8 +573,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_036()
 	{
 		//主体
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		MessageCommon.switchView("删除信息");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/swipeableContent");
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -599,8 +585,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_037()
 	{
 		//前提
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		//主体
 		MessageCommon.switchView("设置");
 		check(Object_Text, Operation_checkExist, "常规");
@@ -611,8 +596,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_038()
 	{
 		//前提
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		//主体
 		excute(Object_ResourceId, Operation_LongClick, "com.android.mmsfolderview:id/conversation_name");
 		check(Object_Text, Operation_checkExist, "呼叫");
@@ -629,8 +613,7 @@ public class Message extends UiAutomatorTestCase
 		DeviceCommon.enterApp(Devices_Desc_PhoneBook);
 		ContactCommon.BatchDelete("所有联系人");
 		DeviceCommon.enterApp( Devices_Desc_Message);
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		//主体
 		MessageCommon.longclickmessage("添加到联系人");
 		check(Object_Text, Operation_checkExist, "选择联系人");
@@ -644,8 +627,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_040() throws UiObjectNotFoundException, RemoteException, IOException
 	{
 		//前提
-		MessageCommon.switchView("文件夹视图");
-		MessageCommon.Menuoption("收件箱");
+		MessageCommon.enterMessageBox("收件箱");
 		//主体
 		MessageCommon.longclickmessage("呼叫");
 		CallCommon.makeCall();
@@ -683,7 +665,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_043()
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		check(Object_Text,Operation_checkExist,"信息详情");
 	}
@@ -693,7 +675,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_044() 
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Text,Operation_ClickWait,"回复");
 		check(Object_Description,Operation_checkExist,"添加附件");
@@ -704,7 +686,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_045()
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		String[] str={"新信息","转发","编辑","删除"};
@@ -716,7 +698,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_046() 
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"新信息");
@@ -728,7 +710,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_048() 
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"转发");
@@ -740,7 +722,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_049() 
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"编辑");
@@ -752,7 +734,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_050() 
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -764,7 +746,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_051() 
 	{
 		//主体
-		MessageCommon.enterInbox();
+		MessageCommon.enterMessageBox("收件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.messaging:id/content");
         check(Object_Text,Operation_checkExist,"复制文字");
@@ -777,7 +759,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_052() 
 	{
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterMessageBox("已发送");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		Rect ModArea0 = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.messaging:id/content");
 		int y0 = ModArea0.centerY();
@@ -798,7 +780,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_053() 
 	{
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterMessageBox("已发送");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Text,Operation_ClickWait,"转发");
 		check(Object_Text,Operation_checkExist,"转发信息");
@@ -809,7 +791,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_054() 
 	{
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterMessageBox("已发送");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"新信息");
@@ -821,7 +803,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_055() 
 	{
 		//主体
-		MessageCommon.enterSent();
+		MessageCommon.enterMessageBox("已发送");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -833,7 +815,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_056()  
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterMessageBox("发件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Text,Operation_ClickWait,"重发");
 		excute(Object_Text,Operation_WaitForExists,"正在发送…","5000");
@@ -845,7 +827,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_057()  
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterMessageBox("发件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"新信息");
@@ -857,7 +839,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_058() 
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterMessageBox("发件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"转发");
@@ -869,7 +851,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_059() 
 	{
 		//主体
-		MessageCommon.enterOutBox();
+		MessageCommon.enterMessageBox("发件箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");
@@ -886,7 +868,7 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
 		//主体
-		MessageCommon.enterDrafts();
+		MessageCommon.enterMessageBox("草稿箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/compose_message_text");
@@ -897,7 +879,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_061()
 	{
 		//主体
-		MessageCommon.enterDrafts();
+		MessageCommon.enterMessageBox("草稿箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"新信息");
@@ -909,7 +891,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_062()
 	{
 		//主体
-		MessageCommon.enterDrafts();
+		MessageCommon.enterMessageBox("草稿箱");
 		excute(Object_ResIdInstance,Operation_ClickWait,"com.android.mmsfolderview:id/conversation_snippet","0");
 		excute(Object_Device,Operation_PressMenu);
 		excute(Object_Text,Operation_ClickWait,"删除");

@@ -42,6 +42,7 @@ public class ObjectType
 	public static final int Object_ClassContainsText = Object_Checkable_InitValue + 21;
 	public static final int Object_PeerTextClass = Object_Checkable_InitValue + 22;
 	public static final int Object_PeerTextID = Object_Checkable_InitValue + 23;
+	public static final int Object_DescInstance = Object_Checkable_InitValue + 24;
 	
 	
 	//Object_UnCheckable_InitValue
