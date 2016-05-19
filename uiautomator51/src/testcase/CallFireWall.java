@@ -475,7 +475,7 @@ public class CallFireWall extends UiAutomatorTestCase
 		//前提
 		CallFireWallCommon.BatchDelete("电话记录");
 		CallFireWallCommon.BatchDelete("黑名单");
-		CallFireWallCommon.addBlackContact(BlackName, CallFireWallCommon.BlackNum, false, true);
+		CallFireWallCommon.addBlackContact(BlackName, CallFireWallCommon.BlackNum, "01");
 		InteractionCommon callFireWall = new InteractionCommon(InteractionCommon.FireWall);
 		//主体
 		try{
@@ -527,7 +527,7 @@ public class CallFireWall extends UiAutomatorTestCase
 		//前提
 		CallFireWallCommon.BatchDelete("短信记录");
 		CallFireWallCommon.BatchDelete("黑名单");
-		CallFireWallCommon.addBlackContact(BlackName, CallFireWallCommon.BlackNum, true, false);
+		CallFireWallCommon.addBlackContact(BlackName, CallFireWallCommon.BlackNum, "10");
 		InteractionCommon SMSFireWall = new InteractionCommon(InteractionCommon.FireWall);
 		//主体
 		try{
@@ -566,7 +566,7 @@ public class CallFireWall extends UiAutomatorTestCase
 			SMSFireWall.SMS(DeviceCommon.getOneSIMNum());
 			Wait(20000);
 			DeviceCommon.enterApp(Devices_Desc_Message);
-			MessageCommon.enterInbox();
+			MessageCommon.enterMessageBox("收件箱");
 			Assert.assertTrue("The message needed isn't exist!!!",(Boolean)excute(Object_Text,Operation_Exists,"短信内容"));
 		}finally{
 			//清场
