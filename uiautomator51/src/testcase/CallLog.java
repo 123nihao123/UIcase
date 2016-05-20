@@ -45,12 +45,12 @@ public class CallLog extends UiAutomatorTestCase
 	 * Workaround of  not working @BeforeClass @AfterClass
 	 * Compile is ok but @BeforeClass @AfterClass can not be recognized because of extending UiAutomatorTestCase
 	 */
-	public void test_0000(){  
+	public void test_000(){  
         System.out.println("before class!!!!!!!!!!!!!!!!!!!!!!!!");
         CallLogCommon.fillCallLogData();
     }
 	
-	public void test_9999(){  
+	public void test_999(){  
         System.out.println("after class...");
         CallLogCommon.deleteAllFromCallLog();
     }

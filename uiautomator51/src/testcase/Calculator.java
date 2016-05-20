@@ -92,7 +92,7 @@ public class Calculator extends UiAutomatorTestCase
 	/**
 	 *判断1*1=1
 	 */
-	public static void test_008()
+	public static void test_005()
 	{
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -105,7 +105,7 @@ public class Calculator extends UiAutomatorTestCase
 	/**
 	 *判断1/1=1
 	 */
-	public static void test_005()
+	public static void test_006()
 	{
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_1");
@@ -132,7 +132,7 @@ public class Calculator extends UiAutomatorTestCase
 	/**
 	 *进入高级计算页面
 	 */
-	public static void test_009()
+	public static void test_008()
 	{
 		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -147,7 +147,7 @@ public class Calculator extends UiAutomatorTestCase
 	/**
 	 *计算sin90  注：这个计算器算得是弧度！
 	 */
-	public static void test_010_1()
+	public static void test_009()
 	{
 		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -169,7 +169,7 @@ public class Calculator extends UiAutomatorTestCase
 	/**
 	 *计算cos0 = 1
 	 */
-	public static void test_010_2()
+	public static void test_010()
 	{
 		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -252,9 +252,22 @@ public class Calculator extends UiAutomatorTestCase
 		Assert.assertEquals("1", result);
 	}
 	/**
+	 * 计算3！
+	 */
+	public static void test_014(){
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.calculator2:id/digit_3");
+		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
+		String x = Integer.toString(advanced.centerX());
+		String y = Integer.toString(advanced.centerY());
+		excute(Object_Device, Operation_DiviceDrag, x, y, "0", y, "10");
+		excute(Object_Text,Operation_ClickWait,"!");
+		String number = (String) excute(Object_ResourceId,Operation_GetText,"com.android.calculator2:id/result");
+		Assert.assertEquals("6", number);
+	}
+	/**
 	 *计算π=3.1415926536
 	 */
-	public static void test_014()
+	public static void test_015()
 	{
 		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -268,7 +281,7 @@ public class Calculator extends UiAutomatorTestCase
 	/**
 	 *计算e^2的结果
 	 */
-	public static void test_015()
+	public static void test_016()
 	{
 		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");
@@ -290,7 +303,7 @@ public class Calculator extends UiAutomatorTestCase
 	/**
 	 *输入"（）"并判断
 	 */
-	public static void test_016()
+	public static void test_017()
 	{
 		//主体
 		Rect advanced = (Rect) excute(Object_ResourceId, Operation_GetBounds, "com.android.calculator2:id/pad_advanced");

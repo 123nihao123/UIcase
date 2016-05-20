@@ -20,7 +20,7 @@ import static framework.excute.Excute.*;
 import framework.common.DeviceCommon;
 
 //插耳机，FM电台无任何收藏的频道,Fm允许访问音乐，录音等媒体
-public class Fm extends UiAutomatorTestCase
+public class FM extends UiAutomatorTestCase
 {
 	
 	@Override

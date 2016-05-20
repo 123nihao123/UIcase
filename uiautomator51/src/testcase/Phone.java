@@ -40,13 +40,13 @@ public class Phone extends UiAutomatorTestCase
 	 * @throws UiObjectNotFoundException 
 	 * @throws RemoteException 
 	 */
-	public void test_0000() throws RemoteException, UiObjectNotFoundException, IOException{  
+	public void test_000() throws RemoteException, UiObjectNotFoundException, IOException{  
         System.out.println("before class!!!!!!!!!!!!!!!!!!!!!!!!");
         PhoneCommon.fillPhoneData();
 //      presetup = new PreSetup("SIM");
     }
 
-	public void test_9999(){  
+	public void test_999(){  
         System.out.println("after class...");
         CallLogCommon.deleteAllFromCallLog();
     }

@@ -51,7 +51,7 @@ public class Gallery extends UiAutomatorTestCase
 	protected void tearDown() throws UiObjectNotFoundException, RemoteException 
     {
     }
-	public static void test_0000() throws UiObjectNotFoundException 
+	public static void test_000() throws UiObjectNotFoundException 
 	{   //前提
 		DeviceCommon.enterApp(Devices_Desc_Setting);
 		excute(Object_TextScroll,Operation_ClickWait,"应用","vertical");
