@@ -1,4 +1,5 @@
-SDK环境更改：
+一、测试前准备
+1.SDK环境更改：
 更改sdk下的\tools\ant\uibuild.xml文件
 <property name="java.target" value="1.5" />
 <property name="java.source" value="1.5" />
@@ -7,54 +8,62 @@ SDK环境更改：
 <property name="java.source" value="1.7" />
 否则build不过
 
-前置条件：
-手动设置：
-1. 插入2张SIM卡
-2. 插入1张SD卡
+2.手动设置：
+（1）插入2张SIM卡
+（2）插入1张SD卡
+（3）系统语言设置成中文
 
+3.将准备插入的SIM卡CCID号和对应的号码添加到...\UIcase\uiautomator51下的PhoneNumList.xml文件中（已有的不需要添加）
+    可以直接运行...\UIcase\uiautomator51下getSIMID.bat获取SIM卡CCID号。
+  将PhoneNumList.xml文件push到data/local/tmp中
+    执行代码如下：adb push 路径 data/local/tmp 
 
-Setting模块操作须知：
+二.特殊模块测试前准备
+1.Setting模块操作须知：
 (1)在SettingCommon.java文件中，按需更改wifi名称（目前为Testteam）和密码（目前为test12345678），用作WIFI支持
 (2)在SettingCommon.java文件中，更改蓝牙名称（目前为SupportBT），用作BT支持
 
-MusicPLayer模块操作须知：
+2.MusicPLayer模块操作须知：
 必须把testresource\Music下面的音乐文件拷到手机上
 
-FileExplore模块操作须知：
+3.FileExplore模块操作须知：
 必须把testresource\FileExploreResource下的FileExplorer_Phone连目录拷到手机内置存储根目录下，把FileExplorer_SD连目录拷到存储卡根目录下
 
-Phone模块操作须知：
-1.将准备插入的SIM卡CCID号和对应的号码添加到PhoneNumList.xml中（已有的不需要添加）
-2.将...\UIcase\uiautomator51下的PhoneNumList.xml文件push到data/local/tmp中
+4.Phone模块操作须知：
+(1)将准备插入的SIM卡CCID号和对应的号码添加到PhoneNumList.xml中（已有的不需要添加）
+(2)将...\UIcase\uiautomator51下的PhoneNumList.xml文件push到data/local/tmp中
   执行代码如下：adb push 路径 data/local/tmp
-3.case(67-71)涉及到交互系统，需要配备相应的运行环境。测试机终端需要安装iTestApp.apk。
+(3)case(67-71)涉及到交互系统，需要配备相应的运行环境。测试机终端需要安装iTestApp.apk。
 
-
-FireWall模块须知：
-1.在CallFireWallCommon.java文件中，添加黑名单号码（BlackNum）以及此辅助机的SN号（assistantSN）
-2.需要至少一张SIM卡，并将准备插入的SIM卡CCID号和对应的号码添加到PhoneNumList.xml中（已有的不需要添加）
-3.将...\UIcase\uiautomator51下的PhoneNumList.xml文件push到data/local/tmp中
+5.FireWall模块须知：
+(1)在CallFireWallCommon.java文件中，添加黑名单号码（BlackNum）以及此辅助机的SN号（assistantSN）
+(2)需要至少一张SIM卡，并将准备插入的SIM卡CCID号和对应的号码添加到PhoneNumList.xml中（已有的不需要添加）
+(3)将...\UIcase\uiautomator51下的PhoneNumList.xml文件push到data/local/tmp中
   执行代码如下：adb push 路径 data/local/tmp
-4.case（35-38）涉及到交互系统，需要配备相应的运行环境。测试机终端需要安装iTestApp.apk。
+(4)case（35-38）涉及到交互系统，需要配备相应的运行环境。测试机终端需要安装iTestApp.apk。
 
-
-Search模块操作须知：
+6.Search模块操作须知：
 必须把testresource\SearchResource下面的文件拷到手机上
 
-Browser模块操作须知：
-测试之前，必须保证网络连接是可用的
+7.Browser模块操作须知：
+必须保证网络连接是可用的
 
-Download模块操作须知：
-测试之前，需手动从浏览器上下载3个APK
+8.Download模块操作须知：
+需手动从浏览器上下载3个APK
 
 
-运行步骤
-打开命令窗口：
+三、运行步骤
+打开命令窗口，切换目录到工程目录下：
 1.手机连接电脑，adb root 和adb remount 一下
 2.Push代码到手机
- 命令：adb push <project 路径>/bin/Android51.jar data/local/tmp
+  命令：adb push <project 路径>/bin/uiautomator.jar data/local/tmp
 3.运行前提条件（去除第一次权限，更改SIM卡名等问题）
-  命令：adb shell uiautomator runtest Android51.jar -c testcase.PreSetup
+  命令：adb shell uiautomator runtest uiautomator.jar -c testcase.PreSetup
 4.运行其他模块case，例如Contact：
-	adb shell uiautomator runtest Android51.jar -c testcase.Contact
-注：如果不是运行整套模块case（单条或几条case），对于模块中有test_000的（CallLog模块和Phone模块），需首先运行test_000，再运行挑选的case
+  命令：adb shell uiautomator runtest uiautomator.jar -c testcase.Contact
+注：如果不是运行整套模块case（单条或几条case），对于模块中有test_000的（如：CallLog模块和Phone模块），需首先运行test_000，再运行挑选的case
+
+
+
+
+
