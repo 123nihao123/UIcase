@@ -673,29 +673,6 @@ public class SettingCommon {
 		excute(Object_Device, Operation_PressBack);
 	}
 
-	public static void set_check_time(String info, String hour, String minute)
-			throws UiObjectNotFoundException {
-		// 设置时间
-		excute(Object_Text, Operation_ClickWait, "设置时间");
-		excute(Object_Text, Operation_ClickWait, info);
-		excute(Object_Description, Operation_ClickWait, hour);
-		excute(Object_Description, Operation_ClickWait, minute);
-		excute(Object_Text, Operation_ClickWait, "确定");
-		// 检测时间设置是否正确
-		excute(Object_Text, Operation_ClickWait, "设置时间");
-		UiObject hours = (UiObject) excute(Object_ResourceId,
-				Operate_ReturnObject, "android:id/hours");
-		UiObject minutes = (UiObject) excute(Object_ResourceId,
-				Operate_ReturnObject, "android:id/minutes");
-		if (info.equals("上午"))
-			check(Object_ResourceId, Operation_IsChecked, "android:id/am_label");
-		if (info.equals("下午"))
-			check(Object_ResourceId, Operation_IsChecked, "android:id/pm_label");
-		check(Object_Text, Operation_TextEqualTrue, hours.getText(), hour);
-		check(Object_Text, Operation_TextEqualTrue, minutes.getText(), minute);
-		excute(Object_Device, Operation_PressBack);
-	}
-
 	public static void open_close_auto_time_zone(String open_close)
 			throws UiObjectNotFoundException {
 		UiObject set_button = (UiObject) excute(Object_ResIdInstance,
@@ -722,39 +699,13 @@ public class SettingCommon {
 		if (set_button3.getText().equals(open_close))
 			excute(Object_Text, Operation_ClickWait, "使用24小时制");
 	}
-
-	public static void check_am_pm(String m, String hour, String min)
-			throws UiObjectNotFoundException {
-		excute(Object_Text, Operation_ClickWait, "设置时间");
-		UiObject hours = (UiObject) excute(Object_ResourceId,
-				Operate_ReturnObject, "android:id/hours");
-		UiObject minutes = (UiObject) excute(Object_ResourceId,
-				Operate_ReturnObject, "android:id/minutes");
-		if (m.equals("am")) {
-			check(Object_ResourceId, Operation_IsChecked, "android:id/am_label");
-			check(Object_Text, Operation_TextEqualTrue, hours.getText(), hour);
-			check(Object_Text, Operation_TextEqualTrue, minutes.getText(), min);
-		}
-		if (m.equals("pm")) {
-			check(Object_ResourceId, Operation_IsChecked, "android:id/pm_label");
-			check(Object_Text, Operation_TextEqualTrue, hours.getText(), hour);
-			check(Object_Text, Operation_TextEqualTrue, minutes.getText(), min);
-		}
-		excute(Object_Device, Operation_PressBack);
-	}
-
+	
 	public static void check_biggest_date() throws UiObjectNotFoundException {
 		// 检测日期设置是否正确
 		UiObject set_button3 = (UiObject) excute(Object_ResIdInstance,
 				Operate_ReturnObject, "android:id/summary", "2");
 		check(Object_Text, Operation_TextEqualTrue, set_button3.getText(),
 				"2038年1月1日");
-	}
-
-	public static void check_auto() throws UiObjectNotFoundException {
-		check(Object_Text, Operation_IsEnabled, "设置日期");
-		check(Object_Text, Operation_IsEnabled, "设置时间");
-		check(Object_Text, Operation_IsEnabled, "选择时区");
 	}
 
 	public static void install_apk(String name)
