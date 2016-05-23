@@ -301,10 +301,10 @@ public class Settings extends UiAutomatorTestCase
 		{	
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.settings:id/switch_widget");
 		}
-			String num = DeviceCommon.runADBCommand("settings get global wifi_on");
-			String num1 = num.substring(0, 1);
-			String num2 = "0";
-			Assert.assertEquals(num1, num2);
+		String num = DeviceCommon.runADBCommand("settings get global wifi_on");
+		String num1 = num.substring(0, 1);
+		String num2 = "0";
+		Assert.assertEquals(num1, num2);
 	}
 	
 	/**
@@ -381,7 +381,7 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_026() throws UiObjectNotFoundException, RemoteException, IOException 
 	{
-		//前提
+		//主体
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
 		if((Boolean) excute(Object_Text,Operation_Exists,"关闭"))
 		{	
@@ -533,6 +533,7 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_033() throws UiObjectNotFoundException, RemoteException 
 	{
+		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","0"))
 		{
@@ -656,6 +657,7 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_038() throws UiObjectNotFoundException, RemoteException 
 	{
+		//主体
 		excute(Object_Text,Operation_ClickWait,"SIM 卡");
 		if(!(Boolean)excute(Object_ResIdInstance,Operation_IsChecked,"com.android.settings:id/universal_switch","1"))
 		{
@@ -917,6 +919,7 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_054() throws UiObjectNotFoundException, RemoteException 
 	{
+		//主体
 		excute(Object_Text,Operation_ClickWait,"流量使用情况");
 		check(Object_Text,Operation_checkExist,"流量使用情况");	
 	}
@@ -928,6 +931,7 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_055() throws UiObjectNotFoundException, RemoteException 
 	{
+		//主体
 		excute(Object_Text,Operation_ClickWait,"流量使用情况");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		check(Object_ResIdText,Operation_checkExist,"android:id/title","限制后台流量");
@@ -943,6 +947,7 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_056() throws UiObjectNotFoundException, RemoteException 
 	{
+		//主体
 		excute(Object_Text,Operation_ClickWait,"流量使用情况");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"网络限制");
@@ -979,6 +984,7 @@ public class Settings extends UiAutomatorTestCase
 	 */
 	public void test_058() throws UiObjectNotFoundException, RemoteException 
 	{
+		//主体
 		excute(Object_Text,Operation_ClickWait,"流量使用情况");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"移动网络");
@@ -1077,16 +1083,14 @@ public class Settings extends UiAutomatorTestCase
 	 * 进入更多，关闭飞行模式
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
+	 * @throws IOException 
 	 */
-	public static void test_064() throws UiObjectNotFoundException, RemoteException 
+	public static void test_064() throws UiObjectNotFoundException, RemoteException, IOException
 	{
 		//前提
-		excute(Object_Text,Operation_ClickWait,"更多");
-		if(!(Boolean) excute(Object_ResourceId, Operation_IsChecked, "android:id/switchWidget"))
-		{
-			excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
-		}
+		DeviceCommon.runADBCommand("settings put global airplane_mode_on 1");
 		//主体
+		excute(Object_Text,Operation_ClickWait,"更多");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/switchWidget");
 		check(Object_ResourceId, Operation_CheckedFalse, "android:id/switchWidget");
 	}
@@ -1756,8 +1760,9 @@ public class Settings extends UiAutomatorTestCase
 	
 	/**
 	 * 设置休眠时间为15秒
+	 * @throws IOException 
 	 */
-	public static void test_109() 
+	public static void test_109() throws IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
@@ -1765,14 +1770,14 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"15秒");
 		check(Object_Text,Operation_checkExist,"无操作15秒后");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"休眠");
-		excute(Object_Text,Operation_ClickWait,"30分钟");
+		DeviceCommon.runADBCommand("settings put system screen_off_timeout 1800000");
 	}
 	
 	/**
 	 * 设置休眠时间为30秒
+	 * @throws IOException 
 	 */
-	public static void test_110() 
+	public static void test_110() throws IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
@@ -1780,14 +1785,14 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"30秒");
 		check(Object_Text,Operation_checkExist,"无操作30秒后");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"休眠");
-		excute(Object_Text,Operation_ClickWait,"30分钟");
+		DeviceCommon.runADBCommand("settings put system screen_off_timeout 1800000");
 	}
 	
 	/**
 	 * 设置休眠时间为1分钟
+	 * @throws IOException 
 	 */
-	public static void test_111() 
+	public static void test_111() throws IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
@@ -1795,14 +1800,14 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"1分钟");
 		check(Object_Text,Operation_checkExist,"无操作1分钟后");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"休眠");
-		excute(Object_Text,Operation_ClickWait,"30分钟");
+		DeviceCommon.runADBCommand("settings put system screen_off_timeout 1800000");
 	}
 	
 	/**
 	 * 设置休眠时间为2分钟
+	 * @throws IOException 
 	 */
-	public static void test_112() 
+	public static void test_112() throws IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
@@ -1810,14 +1815,14 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"2分钟");
 		check(Object_Text,Operation_checkExist,"无操作2分钟后");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"休眠");
-		excute(Object_Text,Operation_ClickWait,"30分钟");
+		DeviceCommon.runADBCommand("settings put system screen_off_timeout 1800000");
 	}
 	
 	/**
 	 * 设置休眠时间为5分钟
+	 * @throws IOException 
 	 */
-	public static void test_113() 
+	public static void test_113() throws IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
@@ -1825,14 +1830,14 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"5分钟");
 		check(Object_Text,Operation_checkExist,"无操作5分钟后");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"休眠");
-		excute(Object_Text,Operation_ClickWait,"30分钟");
+		DeviceCommon.runADBCommand("settings put system screen_off_timeout 1800000");
 	}
 	
 	/**
 	 * 设置休眠时间为10分钟
+	 * @throws IOException 
 	 */
-	public static void test_114() 
+	public static void test_114() throws IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
@@ -1840,14 +1845,14 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"10分钟");
 		check(Object_Text,Operation_checkExist,"无操作10分钟后");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"休眠");
-		excute(Object_Text,Operation_ClickWait,"30分钟");
+		DeviceCommon.runADBCommand("settings put system screen_off_timeout 1800000");
 	}
 	
 	/**
 	 * 设置休眠时间为30分钟
+	 * @throws IOException 
 	 */
-	public static void test_115() 
+	public static void test_115() throws IOException 
 	{
 		//主体
 		excute(Object_Text,Operation_ClickWait,"显示");
@@ -1855,8 +1860,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"30分钟");
 		check(Object_Text,Operation_checkExist,"无操作30分钟后");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"休眠");
-		excute(Object_Text,Operation_ClickWait,"30分钟");
+		DeviceCommon.runADBCommand("settings put system screen_off_timeout 1800000");
 	}
 	
 	/**
@@ -4005,7 +4009,6 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll, Operation_ClickWait, "内存","vertical");
 		excute(Object_Text, Operation_ClickWait, "各个应用使用的内存");
 		check(Object_Text, Operation_checkExist, "应用的内存使用量");
-		
 	}
 	
 	/**
@@ -4215,11 +4218,8 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
 		excute(Object_Text,Operation_ClickWait,"屏幕锁定方式");
-		check(Object_Text, Operation_checkExist, "无");
-		check(Object_Text, Operation_checkExist, "滑动");
-		check(Object_Text, Operation_checkExist, "图案");
-		check(Object_Text, Operation_checkExist, "PIN码");
-		check(Object_Text, Operation_checkExist, "密码");
+		String[] str={"无","滑动","图案","PIN码","密码"};
+		DeviceCommon.checkForExist(str);
 	}
 	
 	/**
@@ -4355,7 +4355,7 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
 		excute(Object_TextScroll,Operation_ClickWait,"设备管理器","vertical");
-		check(Object_Text,Operation_ClickWait,"设备管理器");
+		check(Object_Text,Operation_checkExist,"设备管理器");
 	}
 	
 	/**
@@ -4368,7 +4368,8 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
 		excute(Object_TextScroll,Operation_ClickWait,"信任的凭据","vertical");
-		check(Object_ResIdText,Operation_WaitForExists,"com.android.settings:id/trusted_credential_status","开启","1500");
+		excute(Object_ResIdText,Operation_WaitForExists,"com.android.settings:id/trusted_credential_status","开启","5000");
+		check(Object_Text,Operation_checkExist,"开启");
 	}
 	
 	/**
@@ -4381,7 +4382,8 @@ public class Settings extends UiAutomatorTestCase
 		//主体
 		excute(Object_TextScroll,Operation_ClickWait,"安全","vertical");
 		excute(Object_TextScroll,Operation_ClickWait,"从SD卡安装","vertical");
-		check(Object_Text,Operation_WaitForExists,"打开文件","3000");
+		excute(Object_Text,Operation_WaitForExists,"打开文件","3000");
+		check(Object_Text,Operation_checkExist,"打开文件");
 	}
 	
 	/**
@@ -4762,7 +4764,6 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_ClickWait,"语言和输入法","vertical");
 		excute(Object_Text,Operation_ClickWait,"当前输入法");
 		check(Object_ResIdText,Operation_checkExist,"android:id/alertTitle","更改键盘");
-		
 	}
 	
 
@@ -4902,7 +4903,7 @@ public class Settings extends UiAutomatorTestCase
 	}
 	
 	/**
-	 * 
+	 * 定时开关机
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
 	 */
@@ -4941,8 +4942,9 @@ public class Settings extends UiAutomatorTestCase
 	
 	/**
 	 * 关闭自动确定日期和时间，检查设置日期和设置时间为可用
+	 * @throws IOException 
 	 */
-	public static void test_331() 
+	public static void test_331() throws IOException 
 	{
 		//主体
 		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
@@ -4951,38 +4953,36 @@ public class Settings extends UiAutomatorTestCase
 		check(Object_Text,Operation_EnabledTrue,"设置日期");
 		check(Object_Text,Operation_EnabledTrue,"设置时间");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+		DeviceCommon.runADBCommand("settings put global auto_time 1");
 	}
 	
 	/**
 	 * 关闭自动确定日期和时间，进入设置日期界面
+	 * @throws IOException 
 	 */
-	public static void test_332() 
+	public static void test_332() throws IOException 
 	{
 		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"关闭");
+		DeviceCommon.runADBCommand("settings put global auto_time 0");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"设置日期");
 		check(Object_ResourceId,Operation_checkExist,"android:id/datePicker");
 		excute(Object_Device,Operation_PressBack);
 		//清场
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+		DeviceCommon.runADBCommand("settings put global auto_time 1");
 	}
 	
 	/**
 	 * 设置日期为2015年1月1日
+	 * @throws IOException 
 	 */
-	public static void test_333() throws UiObjectNotFoundException
+	public static void test_333() throws UiObjectNotFoundException, IOException
 	{
 		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"关闭");
+		DeviceCommon.runADBCommand("settings put global auto_time 0");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"设置日期");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/date_picker_header_year");
 		//Object_TextScroll和scrollTextIntoView接口有个未名原因的bug,在年列表中只能滑动一屏
@@ -5003,38 +5003,36 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkExist,"2015年1月1日");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+		DeviceCommon.runADBCommand("settings put global auto_time 1");
 	}
 	
 	/**
 	 * 关闭自动确定日期和时间，进入设置时间界面
+	 * @throws IOException 
 	 */
-	public static void test_334() 
+	public static void test_334() throws IOException 
 	{
 		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"关闭");
+		DeviceCommon.runADBCommand("settings put global auto_time 0");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"设置时间");
 		check(Object_ResourceId,Operation_checkExist,"android:id/timePicker");
 		excute(Object_Device,Operation_PressBack);
 		//清场
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+		DeviceCommon.runADBCommand("settings put global auto_time 1");
 	}
 	
 	/**
 	 * 设置时间为上午8点30分
+	 * @throws IOException 
 	 */
-	public static void test_335() 
+	public static void test_335() throws IOException 
 	{
 		//前提
-		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"关闭");
+		DeviceCommon.runADBCommand("settings put global auto_time 0");
 		//主体
+		excute(Object_TextScroll, Operation_ClickWait,"日期和时间", "vertical");
 		excute(Object_Text,Operation_ClickWait,"设置时间");
 		excute(Object_ResourceId,Operation_ClickWait,"android:id/am_label");
 		excute(Object_Description,Operation_ClickWait,"8");
@@ -5042,8 +5040,7 @@ public class Settings extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkExist,"上午8:30");
 		//清场
-		excute(Object_Text,Operation_ClickWait,"自动确定日期和时间");
-		excute(Object_Text,Operation_ClickWait,"使用网络提供时间");
+		DeviceCommon.runADBCommand("settings put global auto_time 1");
 	}
 	
 	/**
@@ -5284,7 +5281,6 @@ public class Settings extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text, Operation_ClickWait,"大号字体");
 	}
-	
 	
 	/**
 	 * 高对比度文字
