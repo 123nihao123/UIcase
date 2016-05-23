@@ -14,7 +14,7 @@
 （3）系统语言设置成中文
 
 3.将准备插入的SIM卡CCID号和对应的号码添加到...\UIcase\uiautomator51下的PhoneNumList.xml文件中（已有的不需要添加）
-    可以直接运行...\UIcase\uiautomator51下getSIMID.bat获取SIM卡CCID号。
+    可以直接运行...\UIcase\uiautomator51下getSIMID.bat获取SIM卡CCID号。（linux下可运行同目录下的getSIMID.sh）
   将PhoneNumList.xml文件push到data/local/tmp中
     执行代码如下：adb push 路径 data/local/tmp 
 
