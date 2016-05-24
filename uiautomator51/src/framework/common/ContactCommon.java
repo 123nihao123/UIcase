@@ -663,11 +663,11 @@ public class ContactCommon {
 	 */
 	public static void checkShare() 
 	{
-		if((Boolean) excute(Object_Text,Operation_Exists,"分享方式"))
-			check(Object_Text,Operation_checkExist,"分享方式");
-			//check(Object_Text,Operation_ClickWait,"分享方式");
-		if((Boolean) excute(Object_Text,Operation_Exists,"使用其他应用"))
-			check(Object_Text,Operation_checkExist,"使用其他应用");
+		boolean boo=(Boolean)excute(Object_Text,Operation_Exists,"分享方式")||(Boolean)excute(Object_Text,Operation_Exists,"使用其他应用");
+		Assert.assertTrue(boo);
+		//if((Boolean) excute(Object_Text,Operation_Exists,"分享方式"))
+			///check(Object_Text,Operation_ClickWait,"分享方式");
+		//if((Boolean) excute(Object_Text,Operation_Exists,"使用其他应用"))
 			//check(Object_Text,Operation_ClickWait,"使用其他应用");
 	}
 	

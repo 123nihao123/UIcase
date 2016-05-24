@@ -24,18 +24,27 @@ import com.android.uiautomator.core.UiObjectNotFoundException;
 public class MessageCommon {
 	/**
 	 * 切换视图模式
-	 * @param ViewName 取值范围：消息视图，文件夹视图,已归档的对话,设置，无线警报
+	 * @param ViewName 取值范围：消息视图，文件夹视图
 	 */
 	public static void switchView(String ViewName)
 	{
+		MessageCommon.chooseMenu(ViewName);
+	}
+	/**
+	 * 选择更多菜单选项
+	 * @param ViewName 取值范围：设置，无线警报，SIM卡短信，显示选项，删除信息
+	 */
+	public static void chooseMenu(String menuName)
+	{
 		excute(Object_Device, Operation_PressMenu);
-		if ((Boolean)excute(Object_Text, Operation_Exists, ViewName)) 
+		if ((Boolean)excute(Object_Text, Operation_Exists, menuName)) 
 		{
-			excute(Object_Text, Operation_ClickWait, ViewName);
+			excute(Object_Text, Operation_ClickWait, menuName);
 		}else{
 			excute(Object_Device, Operation_PressBack);
 		}
 	}
+	
 	/**
 	 * 消息模式，新建短信点击附件
 	 * @param num
@@ -94,7 +103,7 @@ public class MessageCommon {
       */
 	public static void enterMessageBox(String boxName)
 	{
-		switchView("文件夹视图");
+		MessageCommon.switchView("文件夹视图");
 		if (!(Boolean)excute(Object_Text,Operation_Exists,boxName))
 		{
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.mmsfolderview:id/actionbar_spinner");
@@ -129,9 +138,9 @@ public class MessageCommon {
 	 */
 	public static  void deleteAllMessageIn(String BoxName)
 	{
-		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.mmsfolderview:id/empty_image_hint")){
-			return;
-		}
+		//if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.mmsfolderview:id/empty_image_hint")){
+			//return;
+		//}
 		
 		if(BoxName.equals("收件箱"))
 		{
@@ -147,9 +156,9 @@ public class MessageCommon {
 		}
 		else if(BoxName.equals("草稿箱"))
 		{
-			MessageCommon.deleteAllMessageIn("草稿箱");
+			MessageCommon.enterMessageBox("草稿箱");
 		}
-		if((Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.mmsfolderview:id/conversation_snippet"))
+		if(!(Boolean)excute(Object_ResourceId,Operation_Exists,"com.android.mmsfolderview:id/empty_image_hint"))
 		{
 			excute(Object_Device,Operation_PressMenu);
 			excute(Object_Text,Operation_ClickWait,"删除信息");
