@@ -1178,7 +1178,8 @@ public class Contact extends UiAutomatorTestCase
 		{
 			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
-		check(Object_Text,Operation_WaitForExists,"账户设置","3000");
+		excute(Object_Text,Operation_WaitForExists,"账户设置","3000");
+		check(Object_Text,Operation_checkExist,"账户设置");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressBack);
 	}
@@ -1203,7 +1204,8 @@ public class Contact extends UiAutomatorTestCase
 			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
 		excute(Object_Text,Operation_ClickWait,"新消息");
-		check(Object_Text,Operation_WaitForExists,"收件人","2000");
+		excute(Object_Text,Operation_WaitForExists,"收件人","2000");
+		check(Object_Text,Operation_checkExist,"收件人");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressBack);
@@ -1228,7 +1230,8 @@ public class Contact extends UiAutomatorTestCase
 		{
 			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
-		check(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","2000");
+		excute(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","2000");
+		check(Object_Text,Operation_checkExist,"要现在开启蓝牙吗？");
 		excute(Object_Text,Operation_ClickWait,"取消");
 		excute(Object_Device,Operation_PressBack);
 	}
@@ -1406,7 +1409,8 @@ public class Contact extends UiAutomatorTestCase
 		{
 			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
-		check(Object_Text,Operation_WaitForExists,"账户设置","2000");
+		excute(Object_Text,Operation_WaitForExists,"账户设置","2000");
+		check(Object_Text,Operation_checkExist,"账户设置");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressBack);
 	}
@@ -1431,7 +1435,8 @@ public class Contact extends UiAutomatorTestCase
 			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
 		excute(Object_Text,Operation_ClickWait,"新消息");
-		check(Object_Text,Operation_WaitForExists,"收件人","3000");
+		excute(Object_Text,Operation_WaitForExists,"收件人","3000");
+		check(Object_Text,Operation_checkExist,"收件人");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressBack);
@@ -1455,7 +1460,8 @@ public class Contact extends UiAutomatorTestCase
 		{
 			excute(Object_Text,Operation_ClickWait,"仅此一次");
 		}
-		check(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","3000");
+		excute(Object_Text,Operation_WaitForExists,"要现在开启蓝牙吗？","3000");
+		check(Object_Text,Operation_checkExist,"要现在开启蓝牙吗？");
 		excute(Object_Text,Operation_ClickWait,"取消");
 		excute(Object_Device,Operation_PressBack);
 	}
