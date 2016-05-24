@@ -21,6 +21,7 @@ import static framework.data.ObjectType.*;
 import static framework.data.OperationType.*;
 import static framework.data.ResIdTextAndDesc.*;
 import static framework.excute.Excute.*;
+
 import framework.common.ContactCommon;
 import framework.common.DeviceCommon;
 import framework.common.CallLogCommon;
@@ -57,7 +58,7 @@ public class Gallery extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_ClickWait,"应用","vertical");
 		excute(Object_TextScroll,Operation_ClickWait,"图库","vertical");
 		excute(Object_Text,Operation_ClickWait,"存储空间");
-		check(Object_ResIdText, Operation_ClickWait, "com.android.settings:id/button", "清除数据");
+		excute(Object_ResIdText, Operation_ClickWait, "com.android.settings:id/button", "清除数据");
 		excute(Object_Text,Operation_ClickWait,"确定");
 	}
 	/**
@@ -179,8 +180,8 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 	    GalleryCommon.morePicture();
 	    GalleryCommon.clickGroup();
-	  //主体
-	    check(Object_ResourceId,Operation_WaitForExists,"android:id/image","30000");
+	    //主体
+	    excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","30000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    check(Object_Text,Operation_checkExist,"信息");
 	    check(Object_Text,Operation_checkExist,"电子邮件");
@@ -196,8 +197,8 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 	    GalleryCommon.morePicture();
 	    GalleryCommon.clickGroup();
-	  //主体
-	    check(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
+	    //主体
+	    excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    if(!(Boolean) excute(Object_Text,Operation_Exists,"蓝牙"))
 		{	
@@ -219,8 +220,8 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 	    GalleryCommon.morePicture();
 	    GalleryCommon.clickGroup();
-	  //主体
-	    check(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
+	    //主体
+	    excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    if(!(Boolean) excute(Object_Text,Operation_Exists,"电子邮件"))
 		{	
@@ -243,7 +244,7 @@ public class Gallery extends UiAutomatorTestCase
 	    GalleryCommon.morePicture();
 	    GalleryCommon.clickGroup();
 	    //主体
-	    check(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
+	    excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    if(!(Boolean) excute(Object_Text,Operation_Exists,"信息"))
 		{	
@@ -267,7 +268,7 @@ public class Gallery extends UiAutomatorTestCase
 	    GalleryCommon.morePicture();
 	    GalleryCommon.clickGroup();
 	    //主体
-	    check(Object_Description ,Operation_WaitForExists,"更多选项","10000");
+	    excute(Object_Description ,Operation_WaitForExists,"更多选项","10000");
 	    excute(Object_Description ,Operation_ClickWait,"更多选项");
 	    excute(Object_Text,Operation_ClickWait,"删除");
 	    check(Object_ResourceId ,Operation_checkExist,"android:id/content");
@@ -282,10 +283,11 @@ public class Gallery extends UiAutomatorTestCase
 	    GalleryCommon.morePicture();
 	    GalleryCommon.clickGroup();
 	    //主体
-	    check(Object_Description ,Operation_WaitForExists,"更多选项","10000");
+	    excute(Object_Description ,Operation_WaitForExists,"更多选项","10000");
 	    excute(Object_Description ,Operation_ClickWait,"更多选项");
 	    excute(Object_Text,Operation_ClickWait,"删除");
 	    excute(Object_Text,Operation_ClickWait,"取消");
+	    check(Object_Text ,Operation_checkNoExist,"取消");
 	 }
 	/**
 	 *群组的删除与取消
@@ -297,11 +299,11 @@ public class Gallery extends UiAutomatorTestCase
 	    GalleryCommon.morePicture();
 	    GalleryCommon.clickGroup();
 	    //主体
-	    check(Object_Description ,Operation_WaitForExists,"更多选项","10000");
+	    excute(Object_Description ,Operation_WaitForExists,"更多选项","10000");
 	    excute(Object_Description ,Operation_ClickWait,"更多选项");
 	    excute(Object_Text,Operation_ClickWait,"删除");
 	    excute(Object_Text,Operation_ClickWait,"确定");
-	    excute(Object_Text, Operation_checkExist,"相机");
+	    check(Object_Text, Operation_checkExist,"相机");
 	 }
 	/**
 	 *群组的详细信息
@@ -312,10 +314,10 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 	    GalleryCommon.clickGroup();
 	    //主体
-	    check(Object_Description ,Operation_WaitForExists,"更多选项","10000");
+	    excute(Object_Description ,Operation_WaitForExists,"更多选项","10000");
 	    excute(Object_Description ,Operation_ClickWait,"更多选项");
 	    excute(Object_Text,Operation_ClickWait,"详细信息");
-	    excute(Object_ResourceId, Operation_checkExist,"android:id/content");
+	    check(Object_ResourceId, Operation_checkExist,"android:id/content");
 	}
 	/**
 	 *进入群组内部
@@ -339,7 +341,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		GalleryCommon.clickGallery();
 		//主体
-	    check(Object_ResourceId ,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId ,Operation_WaitForExists,"android:id/text2","10000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/text2");
 	   
 	    check(Object_Text ,Operation_checkExist,"网格视图");
@@ -355,7 +357,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		GalleryCommon.clickGallery();
 		//主体
-	    check(Object_ResourceId ,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId ,Operation_WaitForExists,"android:id/text2","10000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/text2");
 	    excute(Object_Text ,Operation_ClickWait,"幻灯片视图");
 	    String view = (String) excute(Object_ResourceId,Operation_GetText,"android:id/text2");
@@ -371,7 +373,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		GalleryCommon.clickGallery();
 		//主体
-	    check(Object_ResourceId ,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId ,Operation_WaitForExists,"android:id/text2","10000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/text2");
 	    excute(Object_Text ,Operation_ClickWait,"网格视图");
 	    String view = (String) excute(Object_ResourceId,Operation_GetText,"android:id/text2");
@@ -418,8 +420,8 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.clickGallery();
 		//主体
 		excute(Object_Description ,Operation_ClickWait,"更多选项");
-	    check(Object_Text ,Operation_ClickWait,"选择条目");
-	    excute(Object_Text, Operation_Exists,"选中了 0 项");
+		excute(Object_Text ,Operation_ClickWait,"选择条目");
+		check(Object_Text, Operation_checkExist,"选中了 0 项");
 	 }
 	/**
 	 *选择条目的内容
@@ -432,9 +434,9 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.clickGallery();
 		//主体
 		excute(Object_Description ,Operation_ClickWait,"更多选项");
-	    check(Object_Text ,Operation_ClickWait,"选择条目");
+		excute(Object_Text ,Operation_ClickWait,"选择条目");
 	    GalleryCommon.clickGallery();
-	    check(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
+	    excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    if(!(Boolean) excute(Object_Text,Operation_Exists,"蓝牙"))
 		{	
@@ -489,7 +491,6 @@ public class Gallery extends UiAutomatorTestCase
 		//主体
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除");
-		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 		excute(Object_Text,Operation_ClickWait,"取消");
 		check(Object_Text,Operation_checkNoExist,"要删除所选内容吗？");
 	}
@@ -504,7 +505,6 @@ public class Gallery extends UiAutomatorTestCase
 		//主体
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除");
-		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text, Operation_ClickWait,"选择相册");
@@ -541,7 +541,7 @@ public class Gallery extends UiAutomatorTestCase
 		//通过详细信息里面的浏览模式来识别。
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"详细信息");
-		 check(Object_Text,Operation_checkExist,"浏览模式: 90");
+		check(Object_Text,Operation_checkExist,"浏览模式: 90");
 	}
 	/**
 	 *裁剪
@@ -579,7 +579,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Text,Operation_WaitForExists,"相机","10000");
+		excute(Object_Text,Operation_WaitForExists,"相机","10000");
 		GalleryCommon.clickGallery();
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"详细信息");
@@ -680,17 +680,17 @@ public class Gallery extends UiAutomatorTestCase
 		excute(Object_TextScroll,Operation_ClickWait,"应用","vertical");
 		excute(Object_TextScroll,Operation_ClickWait,"图库","vertical");
 		excute(Object_Text,Operation_ClickWait,"存储空间");
-		check(Object_ResIdText, Operation_ClickWait, "com.android.settings:id/button", "清除数据");
+		excute(Object_ResIdText, Operation_ClickWait, "com.android.settings:id/button", "清除数据");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		DeviceCommon.enterApp(Devices_Desc_PictureStore);
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"分享方式","10000");
+		excute(Object_Description,Operation_WaitForExists,"分享方式","10000");
 		excute(Object_Description ,Operation_ClickWait,"分享方式");
-		excute(Object_Text,Operation_checkExist,"蓝牙");
-		excute(Object_Text,Operation_checkExist,"电子邮件");
-		excute(Object_Text,Operation_checkExist,"信息");
+		check(Object_Text,Operation_checkExist,"蓝牙");
+		check(Object_Text,Operation_checkExist,"电子邮件");
+		check(Object_Text,Operation_checkExist,"信息");
 	}
 	/**
 	 *蓝牙分享
@@ -701,7 +701,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    if(!(Boolean) excute(Object_Text,Operation_Exists,"蓝牙"))
 		{	
@@ -723,7 +723,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    if(!(Boolean) excute(Object_Text,Operation_Exists,"信息"))
 		{	
@@ -745,7 +745,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/image","20000");
 	    excute(Object_ResourceId ,Operation_ClickWait,"android:id/image");
 	    if(!(Boolean) excute(Object_Text,Operation_Exists,"电子邮件"))
 		{	
@@ -767,15 +767,15 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_checkExist,"删除");
-		excute(Object_Text,Operation_checkExist,"播放幻灯片");
-		excute(Object_Text,Operation_checkExist,"编辑");
-		excute(Object_Text,Operation_checkExist,"向左旋转");
-		excute(Object_Text,Operation_checkExist,"向右旋转");
-		excute(Object_Text,Operation_checkExist,"详细信息");
-		excute(Object_Text,Operation_checkExist,"打印");
+		check(Object_Text,Operation_checkExist,"删除");
+		check(Object_Text,Operation_checkExist,"播放幻灯片");
+		check(Object_Text,Operation_checkExist,"编辑");
+		check(Object_Text,Operation_checkExist,"向左旋转");
+		check(Object_Text,Operation_checkExist,"向右旋转");
+		check(Object_Text,Operation_checkExist,"详细信息");
+		check(Object_Text,Operation_checkExist,"打印");
 	}
 	/**
 	 *图片的删除
@@ -786,7 +786,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除");
 		check(Object_ResourceId,Operation_checkExist,"android:id/content");
@@ -800,10 +800,9 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除");
-		check(Object_ResourceId,Operation_checkExist,"android:id/content");
 		excute(Object_Text,Operation_ClickWait,"取消");
 		check(Object_Text,Operation_checkNoExist,"相机");
 	}
@@ -816,10 +815,9 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"删除");
-		check(Object_ResourceId,Operation_checkExist,"android:id/content");
 		excute(Object_Text,Operation_ClickWait,"确定");
 		check(Object_Text,Operation_checkExist,"相机");
 		//删除之后无图片，故判断相机
@@ -834,7 +832,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
 		GalleryCommon.clickGallery();
 		//check(Object_Description,Operation_WaitForExists,"分享方式","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -851,7 +849,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		check(Object_ResourceId,Operation_checkExist,"com.android.gallery3d:id/bottom_panel");
@@ -866,7 +864,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
 		GalleryCommon.clickGallery();
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"向左旋转");
@@ -885,7 +883,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		//主体
 		GalleryCommon.clickGallery();
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
 		GalleryCommon.clickGallery();
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"向右旋转");
@@ -904,7 +902,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		//主体
 		GalleryCommon.clickGallery();
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
 		GalleryCommon.clickGallery();
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"剪裁");
@@ -920,7 +918,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.morePicture();
 		//主体
 		GalleryCommon.clickGallery();
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
 		GalleryCommon.clickGallery();
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"详细信息");
@@ -938,7 +936,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.morePicture();
 		GalleryCommon.clickGallery();
-		check(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
+		excute(Object_ResourceId,Operation_WaitForExists,"android:id/text2","10000");
 		GalleryCommon.clickGallery();
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"打印");
@@ -954,7 +952,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		check(Object_Text ,Operation_checkExist,"保存");
@@ -969,11 +967,11 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"冲压");
-		check(Object_Text ,Operation_ClickWait,"保存");
+		check(Object_Text ,Operation_checkExist,"保存");
 	}
 	/**
 	 *图片的编辑
@@ -984,11 +982,11 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"复古");
-		check(Object_Text ,Operation_ClickWait,"保存");
+		check(Object_Text ,Operation_checkExist,"保存");
 	}
 	/**
 	 *图片的编辑
@@ -999,11 +997,11 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
-		check(Object_Text ,Operation_ClickWait,"保存");
+		check(Object_Text ,Operation_checkExist,"保存");
 	}
 	/**
 	 *图片的编辑
@@ -1014,11 +1012,11 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"漂除银影");
-		check(Object_Text ,Operation_ClickWait,"保存");
+		check(Object_Text ,Operation_checkExist,"保存");
 	}
 	/**
 	 *图片的编辑状态下的更多
@@ -1029,7 +1027,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -1048,7 +1046,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
@@ -1066,7 +1064,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
@@ -1082,7 +1080,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
@@ -1100,7 +1098,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
@@ -1119,7 +1117,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
@@ -1127,7 +1125,7 @@ public class Gallery extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"导出");
 		excute(Object_Text,Operation_ClickWait,"完成");
 		excute(Object_Device,Operation_PressBack);
-		check(Object_Text,Operation_ClickWait,"退出");
+		excute(Object_Text,Operation_ClickWait,"退出");
 		//图片导出，完成之后（编辑完的），然后直接点击退出（不保存）
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_Device,Operation_PressBack);
@@ -1137,7 +1135,7 @@ public class Gallery extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"选择条目");
 		excute(Object_Text,Operation_ClickWait,"选中了 0 项");
 		excute(Object_Text,Operation_ClickWait,"全选");
-		excute(Object_Text,Operation_checkExist,"选中了 2 项");
+		check(Object_Text,Operation_checkExist,"选中了 2 项");
 		//因为是没保存退出，但是检测的是2张图片，故为导出的图片。
     }
 	/**
@@ -1149,7 +1147,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
@@ -1174,7 +1172,6 @@ public class Gallery extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
 		excute(Object_Device,Operation_PressBack);
-		check(Object_Text,Operation_checkExist,"保存并退出");
 		excute(Object_Device,Operation_PressBack);
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.gallery3d:id/undoButton");
 		excute(Object_Device,Operation_PressBack);
@@ -1187,7 +1184,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"编辑");
 		excute(Object_Description,Operation_ClickWait,"黑白");
@@ -1211,7 +1208,7 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		check(Object_Description,Operation_WaitForExists,"更多选项","10000");
+		excute(Object_Description,Operation_WaitForExists,"更多选项","10000");
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		excute(Object_Text,Operation_ClickWait,"剪裁");
 		check(Object_ResourceId,Operation_checkExist,"com.android.gallery3d:id/cropView");
