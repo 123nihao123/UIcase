@@ -254,6 +254,7 @@ public class Gallery extends UiAutomatorTestCase
 	    { 
 	    	excute(Object_Text,Operation_ClickWait,"信息");
 	    }
+	    Wait(2000);
 	    check(Object_ResourceId,Operation_checkExist,"android:id/list");
 	}
 	/**
