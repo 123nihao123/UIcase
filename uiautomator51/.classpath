@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="libs/uiautomator.jar"/>
 	<classpathentry kind="lib" path="libs/socketutil.jar"/>
 	<classpathentry kind="lib" path="libs/ITestLib.jar"/>
+	<classpathentry kind="src" path="/uiautomator"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
