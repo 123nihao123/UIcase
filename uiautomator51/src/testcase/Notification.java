@@ -89,14 +89,17 @@ public class Notification extends UiAutomatorTestCase
 	}
 	/**
 	 * 点击 蓝牙快捷方式 下边的小三角号(直接点击下边的蓝牙字样)
+	 * @throws IOException 
 	 */
-	public static void test_010() 
+	public static void test_010() throws IOException 
 	{
 		//主体
 		UiDevice.getInstance().openQuickSettings();
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.systemui:id/slider","5000");
 		excute(Object_Text,Operation_ClickWait,"蓝牙");
 		check(Object_ResIdText,Operation_checkExist,"android:id/title","蓝牙");
+		//清场
+		excute(Object_Text,Operation_ClickWait,"开启");
 	}
 	/**
 	 * 点击 数据快捷方式 下边的小三角号(直接点击下边的数据字样)

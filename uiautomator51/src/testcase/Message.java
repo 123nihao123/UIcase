@@ -102,7 +102,7 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.switchView("消息视图");
 		//主体
-		MessageCommon.switchView("已归档的对话");
+		MessageCommon.chooseMenu("已归档的对话");
 		check(Object_Text, Operation_checkExist, "已归档的对话");
 	}
 	/**
@@ -111,7 +111,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_006()
 	{
 		//主体
-		MessageCommon.switchView("设置");
+		MessageCommon.chooseMenu("设置");
 		check(Object_ClassText, Operation_checkExist, "android.widget.TextView", "设置");
 	}
 	/**
@@ -120,7 +120,7 @@ public class Message extends UiAutomatorTestCase
 	public static void test_007()
 	{
 		//主体
-		MessageCommon.switchView("无线警报");
+		MessageCommon.chooseMenu("无线警报");
 		check(Object_ClassText, Operation_checkExist, "android.widget.TextView", "小区广播");
 	}
 	/**
@@ -488,7 +488,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
-		MessageCommon.switchView("无线警报");
+		MessageCommon.chooseMenu("无线警报");
 		check(Object_Text, Operation_checkExist, "小区广播");
 	}
 	/**
@@ -498,7 +498,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.switchView("文件夹视图");
-		MessageCommon.switchView("显示选项");
+		MessageCommon.chooseMenu("显示选项");
 		check(Object_Text, Operation_checkExist, "取消");
 	}
 	/**
@@ -508,7 +508,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.enterMessageBox("收件箱");
-		MessageCommon.switchView("显示选项");
+		MessageCommon.chooseMenu("显示选项");
 		String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
 		String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
 		excute(Object_Text, Operation_ClickWait, "显示全部信息");
@@ -524,7 +524,7 @@ public class Message extends UiAutomatorTestCase
 		try
 		{
 			MessageCommon.enterMessageBox("收件箱");
-			MessageCommon.switchView("显示选项");
+			MessageCommon.chooseMenu("显示选项");
 			String SIM1 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "1");
 			excute(Object_ResourceId, Operation_ClickWait,"android:id/text1", "1");
 			check(Object_Text, Operation_checkExist, SIM1);
@@ -532,7 +532,7 @@ public class Message extends UiAutomatorTestCase
 		finally
 		{
 			//清场
-			MessageCommon.switchView("显示选项");
+			MessageCommon.chooseMenu("显示选项");
 			excute(Object_Text, Operation_ClickWait, "显示全部信息");
 		}
 	}
@@ -545,7 +545,7 @@ public class Message extends UiAutomatorTestCase
 		{
 			//主体
 			MessageCommon.enterMessageBox("收件箱");
-			MessageCommon.switchView("显示选项");
+			MessageCommon.chooseMenu("显示选项");
 			String SIM2 = (String) excute(Object_ResIdInstance, Operation_GetText, "android:id/text1", "2");
 			excute(Object_ResIdInstance, Operation_ClickWait,"android:id/text1", "2");
 			check(Object_Text, Operation_checkExist, SIM2);
@@ -553,7 +553,7 @@ public class Message extends UiAutomatorTestCase
 		finally
 		{
 			//清场
-			MessageCommon.switchView("显示选项");
+			MessageCommon.chooseMenu("显示选项");
 			excute(Object_Text, Operation_ClickWait, "显示全部信息");
 		}
 	}
@@ -564,7 +564,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.enterMessageBox("收件箱");
-		MessageCommon.switchView("删除信息");
+		MessageCommon.chooseMenu("删除信息");
 		check(Object_Text, Operation_checkExist, "全选");
 	}
 	/**
@@ -574,7 +574,7 @@ public class Message extends UiAutomatorTestCase
 	{
 		//主体
 		MessageCommon.enterMessageBox("收件箱");
-		MessageCommon.switchView("删除信息");
+		MessageCommon.chooseMenu("删除信息");
 		excute(Object_ResourceId, Operation_ClickWait, "com.android.mmsfolderview:id/swipeableContent");
 		excute(Object_Text,Operation_ClickWait,"删除");
 		check(Object_Text, Operation_checkExist, "确认要删除所选的信息？");
@@ -587,7 +587,7 @@ public class Message extends UiAutomatorTestCase
 		//前提
 		MessageCommon.enterMessageBox("收件箱");
 		//主体
-		MessageCommon.switchView("设置");
+		MessageCommon.chooseMenu("设置");
 		check(Object_Text, Operation_checkExist, "常规");
 	}
 	/**
@@ -1098,7 +1098,8 @@ public class Message extends UiAutomatorTestCase
 		{
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
 		}
-		check(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/video_thumbnail_play_button","3000");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/video_thumbnail_play_button","3000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/video_thumbnail_play_button");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 	}
@@ -1118,7 +1119,8 @@ public class Message extends UiAutomatorTestCase
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/camera_capture_button");
 		}
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/video_thumbnail_play_button");
-		check(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/surface_view","10000");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.gallery3d:id/surface_view","10000");
+		check(Object_ResourceId,Operation_checkExist,"com.android.gallery3d:id/surface_view");
 		//清场
 		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/close_button","10000");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
@@ -1153,7 +1155,8 @@ public class Message extends UiAutomatorTestCase
 		MessageCommon.addNewMessageAttach("10086");
 		excute(Object_Description,Operation_ClickWait,"录制语音");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.messaging:id/record_button_visual");
-		check(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/audio_attachment_view","1500");
+		excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/audio_attachment_view","1500");
+		check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/audio_attachment_view");
 		//清场
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 	}
@@ -1221,7 +1224,8 @@ public class Message extends UiAutomatorTestCase
 		}
 		else
 		{
-			check(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/video_thumbnail_play_button","1500");
+			excute(Object_ResourceId,Operation_WaitForExists,"com.android.messaging:id/video_thumbnail_play_button","1500");
+			check(Object_ResourceId,Operation_checkExist,"com.android.messaging:id/video_thumbnail_play_button");
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.messaging:id/close_button");
 		}
 	}
@@ -1578,7 +1582,8 @@ public class Message extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_SetText,"com.android.messaging:id/compose_message_text","abcd");
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_Device, Operation_PressBack);
-		check(Object_ResIdText,Operation_WaitForExists,"com.android.messaging:id/conversation_timestamp","草稿","3500");
+		excute(Object_ResIdText,Operation_WaitForExists,"com.android.messaging:id/conversation_timestamp","草稿","6000");
+		check(Object_Text,Operation_checkExist,"10086");
 		//清场
 		if((Boolean)excute(Object_ResIdText,Operation_Exists,"com.android.messaging:id/conversation_name","10086"))
 		{

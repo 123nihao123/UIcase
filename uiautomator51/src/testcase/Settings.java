@@ -415,7 +415,8 @@ public class Settings extends UiAutomatorTestCase
 		}
 		excute(Object_Description,Operation_ClickWait,"更多选项");
 		
-		check(Object_Text,Operation_WaitForExists,"刷新","15000");
+		excute(Object_Text,Operation_WaitForExists,"刷新","25000");
+		check(Object_Text,Operation_checkExist,"刷新");
 		check(Object_ResIdText,Operation_checkExist,"android:id/title","重命名此设备");
 		check(Object_ResIdText,Operation_checkExist,"android:id/title","显示收到的文件");
 		//清场
