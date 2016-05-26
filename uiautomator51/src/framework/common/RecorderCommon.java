@@ -31,7 +31,7 @@ public  class RecorderCommon {
 		if((boolean)check(Object_Text, Operation_Exists, "录音"))
 		{
 			excute(Object_ResourceId,Operation_ClickWait,"com.android.soundrecorder:id/stopButton");
-			if((boolean)check(Object_Text, Operation_Exists, "取消"))
+			if((boolean)excute(Object_Text, Operation_Exists, "取消"))
 			{
 				excute(Object_Text,Operation_ClickWait,"取消");
 			}

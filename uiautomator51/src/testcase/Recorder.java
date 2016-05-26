@@ -49,11 +49,11 @@ public class Recorder extends UiAutomatorTestCase
 		
 		//主体
 		check(Object_ResourceId, Operation_checkExist, "com.android.soundrecorder:id/recordButton");
-		if((boolean)check(Object_Text, Operation_Exists, "录音"))
+		if((boolean)excute(Object_Text, Operation_Exists, "录音"))
 		{
 			
 			UiDevice.getInstance().click(rect_stop.centerX(),rect_stop.centerY());
-			if((boolean)check(Object_Text, Operation_Exists, "取消"))
+			if((boolean)excute(Object_Text, Operation_Exists, "取消"))
 			{
 				excute(Object_Text,Operation_ClickWait,"取消");
 			}
@@ -61,7 +61,7 @@ public class Recorder extends UiAutomatorTestCase
 		UiDevice.getInstance().click(rect_stop.centerX(),rect_stop.centerY());
 		//Wait(1000);
 		UiDevice.getInstance().waitForWindowUpdate("com.android.soundrecorder", 2000);
-		if(!(boolean)check(Object_Text, Operation_Exists, "列表为空"))
+		if(!(boolean)excute(Object_Text, Operation_Exists, "列表为空"))
 		{
 			System.out.println("start");
 			excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
@@ -99,7 +99,7 @@ public class Recorder extends UiAutomatorTestCase
 		Wait(2000);
 		check(Object_Text, Operation_checkExist, "录音");
 		//清场
-		if((boolean)check(Object_Text, Operation_Exists, "录音"))
+		if((boolean)excute(Object_Text, Operation_Exists, "录音"))
 		{
 			UiDevice.getInstance().click(rect_stop.centerX(),rect_stop.centerY());
 			excute(Object_Text,Operation_ClickWait,"取消");
@@ -121,7 +121,7 @@ public class Recorder extends UiAutomatorTestCase
 		String new_time =(String)excute(Object_ResourceId, Operation_GetText, "com.android.soundrecorder:id/timerView");
 		Assert.assertTrue("time is same",old_time.equals(new_time));
 		//清场
-		if((boolean)check(Object_Text, Operation_Exists, "录音"))
+		if((boolean)excute(Object_Text, Operation_Exists, "录音"))
 		{
 			UiDevice.getInstance().click(rect_stop.centerX(),rect_stop.centerY());
 			excute(Object_Text,Operation_ClickWait,"取消");
@@ -145,7 +145,7 @@ public class Recorder extends UiAutomatorTestCase
 		String new_time =(String)excute(Object_ResourceId, Operation_GetText, "com.android.soundrecorder:id/timerView");
 		Assert.assertFalse("is start",old_time.equals(new_time));
 		//清场
-		if((boolean)check(Object_Text, Operation_Exists, "录音"))
+		if((boolean)excute(Object_Text, Operation_Exists, "录音"))
 		{
 			UiDevice.getInstance().click(rect_stop.centerX(),rect_stop.centerY());
 			excute(Object_Text,Operation_ClickWait,"取消");
@@ -206,7 +206,7 @@ public class Recorder extends UiAutomatorTestCase
 		
 		//清场
 		
-		if(!(boolean)check(Object_Text,Operation_Exists,"列表为空"))
+		if(!(boolean)excute(Object_Text,Operation_Exists,"列表为空"))
 		{
 			excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
 			UiObject object = new UiObject(new UiSelector().text("全选"));
@@ -245,7 +245,7 @@ public class Recorder extends UiAutomatorTestCase
 		UiDevice.getInstance().waitForWindowUpdate("com.android.soundrecorder", 2000);
 		check(Object_Text,Operation_checkExist,"录音列表");
 		//清场
-		if(!(boolean)check(Object_Text,Operation_Exists,"列表为空"))
+		if(!(boolean)excute(Object_Text,Operation_Exists,"列表为空"))
 		{
 			excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
 			UiObject object = new UiObject(new UiSelector().text("全选"));
@@ -433,7 +433,7 @@ public class Recorder extends UiAutomatorTestCase
 		//清场
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
-		if((boolean)excute(Object_Text,Operation_checkExist,"全选"))
+		if((boolean)excute(Object_Text,Operation_Exists,"全选"))
 		{
 			excute(Object_Text,Operation_ClickWait,"全选");
 		}
@@ -488,7 +488,7 @@ public class Recorder extends UiAutomatorTestCase
 		Assert.assertTrue("is ok",old_name.equals(new_name));
 		//清场
 		excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
-		if((boolean)excute(Object_Text,Operation_checkExist,"全选"))
+		if((boolean)excute(Object_Text,Operation_Exists,"全选"))
 		{
 			excute(Object_Text,Operation_ClickWait,"全选");
 		}
@@ -523,7 +523,7 @@ public class Recorder extends UiAutomatorTestCase
 		
 		//清场
 		excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
-		if((boolean)excute(Object_Text,Operation_checkExist,"全选"))
+		if((boolean)excute(Object_Text,Operation_Exists,"全选"))
 		{
 			excute(Object_Text,Operation_ClickWait,"全选");
 		}
@@ -569,7 +569,7 @@ public class Recorder extends UiAutomatorTestCase
 		check(Object_ResourceId,Operation_checkExist,"com.android.soundrecorder:id/recode_icon");
 		//清场
 		excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
-		if((boolean)excute(Object_Text,Operation_checkExist,"全选"))
+		if((boolean)excute(Object_Text,Operation_Exists,"全选"))
 		{
 			excute(Object_Text,Operation_ClickWait,"全选");
 		}
@@ -666,7 +666,7 @@ public class Recorder extends UiAutomatorTestCase
 		//清场
 		excute(Object_Text,Operation_ClickWait,"取消");
 		excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
-		if((boolean)excute(Object_Text,Operation_checkExist,"全选"))
+		if((boolean)excute(Object_Text,Operation_Exists,"全选"))
 		{
 			excute(Object_Text,Operation_ClickWait,"全选");
 		}
@@ -690,7 +690,7 @@ public class Recorder extends UiAutomatorTestCase
 		//清场
 		excute(Object_Device, Operation_PressBack);
 		excute(Object_ResourceId,Operation_LongClick,"com.android.soundrecorder:id/recode_icon");
-		if((boolean)excute(Object_Text,Operation_checkExist,"全选"))
+		if((boolean)excute(Object_Text,Operation_Exists,"全选"))
 		{
 			excute(Object_Text,Operation_ClickWait,"全选");
 		}
