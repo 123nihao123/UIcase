@@ -55,7 +55,11 @@ public class Excute
 	
 	private static void checkObject(int objectType, int operation, Object uiObject)
 	{
-		if (isNeedCheckObject(objectType, operation)) 
+		if( uiObject==null )
+		{
+			Assert.assertTrue("Not find the object with object type: " + objectType + ", opration type: " + operation, false);
+		}
+		else if (isNeedCheckObject(objectType, operation))
 		{			
 			Assert.assertTrue("Not find the object with object type: " + objectType + ", opration type: " + operation, ((UiObject) uiObject).exists());
 		}
