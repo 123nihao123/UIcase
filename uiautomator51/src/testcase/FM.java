@@ -32,8 +32,7 @@ public class FM extends UiAutomatorTestCase
 		ClearBackgroundApp();
 		Wait(1000);
 		DeviceCommon.enterApp(Devices_Text_Fm);	
-		check(Object_Description,Operation_WaitForExists,"停止播放 FM 电台","30000");
-		
+		excute(Object_Description,Operation_WaitForExists,"停止播放 FM 电台","30000");
    }
 	       
 	
@@ -46,7 +45,7 @@ public class FM extends UiAutomatorTestCase
 	public static void test_001() 
 	{
 		//主体
-		check(Object_Description,Operation_WaitForExists,"停止播放 FM 电台","10000");
+		excute(Object_Description,Operation_WaitForExists,"停止播放 FM 电台","10000");
 	}
 	/**
 	 * 查看数字的变化
@@ -122,7 +121,7 @@ public class FM extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_station_list");
 		if((Boolean) excute(Object_Text,Operation_Exists,"正在搜索电台"))
 		{	
-			check(Object_ResIdInstance,Operation_WaitForExists,"com.android.fmradio:id/lv_station_type","50000");
+			excute(Object_ResIdInstance,Operation_WaitForExists,"com.android.fmradio:id/lv_station_type","50000");
 		} //如果是第一次，等待搜索完毕
 		check(Object_ResIdInstance,Operation_checkExist,"com.android.fmradio:id/lv_station_type","0");
 	}
@@ -240,7 +239,7 @@ public class FM extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_headset");
-		check(Object_Text,Operation_ClickWait,"耳机");
+		check(Object_Text,Operation_checkExist,"耳机");
 	}
 	/**
 	 * 耳机/外放切换
@@ -249,7 +248,7 @@ public class FM extends UiAutomatorTestCase
 	{
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.fmradio:id/fm_headset");
-		check(Object_Text,Operation_ClickWait,"扬声器");
+		check(Object_Text,Operation_checkExist,"扬声器");
 	}
 	/**
 	 * 菜单
