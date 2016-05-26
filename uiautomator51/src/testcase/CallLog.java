@@ -140,7 +140,7 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_006() 
 	{
 		//主体
-		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/call_account_label","中国移动");
+		check(Object_ResIdContainsText,Operation_checkExist,"com.android.dialer:id/call_account_label","中国移动");
 	}
 	
 	/**
@@ -149,7 +149,7 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_007() 
 	{
 		//主体
-		check(Object_ResourceId,Operation_checkExist,"com.android.dialer:id/call_account_label","SIM1");
+		check(Object_ResIdContainsText,Operation_checkExist,"com.android.dialer:id/call_account_label","SIM1");
 	}
 	
 	/**
@@ -168,8 +168,7 @@ public class CallLog extends UiAutomatorTestCase
 	public static void test_010() throws UiObjectNotFoundException 
 	{
 		//主体
-		UiObject a = (UiObject) excute(Object_ResourceId,Operate_ReturnObject,"com.android.dialer:id/recycler_view");
-		String [] list = {"111111","222222","333333","444444","555555","10000","10001","10010","10086"};
+		String [] list = {"111111","222222","333333","444444","555555","10000","10001","10010","10086"};//list的内容要跟fillCallLogData()添加的记录保持一致
 		for(int i=0;i<list.length;i++)
 			check(Object_TextScroll,Operation_checkExist,list[i],"vertical");
 	}
@@ -570,7 +569,7 @@ public class CallLog extends UiAutomatorTestCase
 	  //主体
 	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 	  excute(Object_Text,Operation_ClickWait,"新建联系人");
-	  check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/add_account_button","添加新帐户");
+	  check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/add_account_button");
 	 }
 	 
 	 /**
