@@ -167,9 +167,18 @@ public class Gallery extends UiAutomatorTestCase
 		 excute(Object_Text ,Operation_ClickWait,"选择相册");
 		 excute(Object_Text, Operation_ClickWait,"选中了 0 项");
  		 excute(Object_Text, Operation_ClickWait,"全选");
- 		 excute(Object_Description, Operation_ClickWait,"更多选项");
- 		 check(Object_Text,Operation_checkExist,"删除");
- 	     check(Object_Text,Operation_checkExist,"详细信息");
+ 		 Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+		 excute(Object_Description,Operation_ClickWait,"更多选项");
+		 if (bool)
+			 check(Object_Text,Operation_checkExist,"详细信息");
+		 else
+		 {
+			 check(Object_Text,Operation_checkExist,"删除");
+			 check(Object_Text,Operation_checkExist,"详细信息");
+		 }
+ 		 //excute(Object_Description, Operation_ClickWait,"更多选项");
+ 		 //check(Object_Text,Operation_checkExist,"删除");
+ 	     //check(Object_Text,Operation_checkExist,"详细信息");
 	}
 	/**
 	 *分享
@@ -209,6 +218,7 @@ public class Gallery extends UiAutomatorTestCase
 	    { 
 	    	excute(Object_Text,Operation_ClickWait,"蓝牙");
 	    }
+	    excute(Object_Text,Operation_WaitForExists,"开启","5000");
 	    check(Object_Text,Operation_checkExist,"开启");
 	}
 	/**
@@ -232,6 +242,7 @@ public class Gallery extends UiAutomatorTestCase
 	    { 
 	    	excute(Object_Text,Operation_ClickWait,"电子邮件");
 	    }
+	    excute(Object_Text,Operation_WaitForExists,"帐户设置","5000");
 	    check(Object_ResourceId,Operation_checkExist,"com.android.email:id/setup_fragment_content");
 	}
 	/**
@@ -255,7 +266,7 @@ public class Gallery extends UiAutomatorTestCase
 	    { 
 	    	excute(Object_Text,Operation_ClickWait,"信息");
 	    }
-	    Wait(2000);
+	    excute(Object_Text,Operation_WaitForExists,"新消息","5000");
 	    check(Object_ResourceId,Operation_checkExist,"android:id/list");
 	}
 	/**
@@ -269,9 +280,15 @@ public class Gallery extends UiAutomatorTestCase
 	    GalleryCommon.clickGroup();
 	    //主体
 	    excute(Object_Description ,Operation_WaitForExists,"更多选项","10000");
-	    excute(Object_Description ,Operation_ClickWait,"更多选项");
-	    excute(Object_Text,Operation_ClickWait,"删除");
-	    check(Object_ResourceId ,Operation_checkExist,"android:id/content");
+	    Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+		if (bool)
+			excute(Object_Description,Operation_ClickWait,"删除");
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text, Operation_ClickWait,"删除");
+		}
+		check(Object_Text,Operation_checkExist,"要删除所选内容吗？");
 	}
 	/**
 	 *群组的删除与取消
@@ -284,8 +301,14 @@ public class Gallery extends UiAutomatorTestCase
 	    GalleryCommon.clickGroup();
 	    //主体
 	    excute(Object_Description ,Operation_WaitForExists,"更多选项","10000");
-	    excute(Object_Description ,Operation_ClickWait,"更多选项");
-	    excute(Object_Text,Operation_ClickWait,"删除");
+	    Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+		if (bool)
+			excute(Object_Description,Operation_ClickWait,"删除");
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text, Operation_ClickWait,"删除");
+		}
 	    excute(Object_Text,Operation_ClickWait,"取消");
 	    check(Object_Text ,Operation_checkNoExist,"取消");
 	 }
@@ -300,8 +323,14 @@ public class Gallery extends UiAutomatorTestCase
 	    GalleryCommon.clickGroup();
 	    //主体
 	    excute(Object_Description ,Operation_WaitForExists,"更多选项","10000");
-	    excute(Object_Description ,Operation_ClickWait,"更多选项");
-	    excute(Object_Text,Operation_ClickWait,"删除");
+	    Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+		if (bool)
+			excute(Object_Description,Operation_ClickWait,"删除");
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text, Operation_ClickWait,"删除");
+		}
 	    excute(Object_Text,Operation_ClickWait,"确定");
 	    check(Object_Text, Operation_checkExist,"相机");
 	 }
@@ -503,8 +532,14 @@ public class Gallery extends UiAutomatorTestCase
 		GalleryCommon.deleteMoreGallery();
 		GalleryCommon.clickGallery();
 		//主体
-		excute(Object_Description, Operation_ClickWait,"更多选项");
-		excute(Object_Text,Operation_ClickWait,"删除");
+		Boolean bool=(Boolean)excute(Object_Description,Operation_Exists,"删除");
+		if (bool)
+			excute(Object_Description,Operation_ClickWait,"删除");
+		else
+		{
+			excute(Object_Description,Operation_ClickWait,"更多选项");
+			excute(Object_Text, Operation_ClickWait,"删除");
+		}
 		excute(Object_Text,Operation_ClickWait,"确定");
 		excute(Object_Description, Operation_ClickWait,"更多选项");
 		excute(Object_Text, Operation_ClickWait,"选择相册");
@@ -712,6 +747,7 @@ public class Gallery extends UiAutomatorTestCase
 	    { 
 	    	excute(Object_Text,Operation_ClickWait,"蓝牙");
 	    }
+	    excute(Object_Text,Operation_WaitForExists,"开启","5000");
 	    check(Object_Text,Operation_checkExist,"开启");
 	}
 	/**
@@ -734,6 +770,7 @@ public class Gallery extends UiAutomatorTestCase
 	    { 
 	    	excute(Object_Text,Operation_ClickWait,"信息");
 	    }
+	    excute(Object_Text,Operation_WaitForExists,"新消息","5000");
 	    check(Object_ResourceId,Operation_checkExist,"android:id/list");
 	}
 	/**
@@ -756,6 +793,7 @@ public class Gallery extends UiAutomatorTestCase
 	    { 
 	    	excute(Object_Text,Operation_ClickWait,"电子邮件");
 	    }
+	    excute(Object_Text,Operation_WaitForExists,"帐户设置","5000");
 	    check(Object_ResourceId,Operation_checkExist,"com.android.email:id/setup_fragment_content");
 	}
 	/**
