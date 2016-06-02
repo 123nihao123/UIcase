@@ -631,7 +631,7 @@ public class CallLog extends UiAutomatorTestCase
 	 {
 	  //主体
 	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
-	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
+	  excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/primary_action_view");
 	  check(Object_ResourceId,Operation_checkNoExist,"com.android.dialer:id/create_new_contact_action");
 	 }
 	/**
@@ -707,14 +707,14 @@ public class CallLog extends UiAutomatorTestCase
 	 * 进入通话详情
 	 * @throws UiObjectNotFoundException
 	 * @throws RemoteException
-	 */
+	 
 	public static void test_050() throws UiObjectNotFoundException, RemoteException 
 	{
 		//主体
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
 		check(Object_Text,Operation_checkExist,"通话详情");
-	}
+	}*/
 	/**
 	 * 查看通话记录详情界面内容
 	 * @throws UiObjectNotFoundException
@@ -766,7 +766,7 @@ public class CallLog extends UiAutomatorTestCase
 		excute(Object_Text,Operation_ClickWait,"全部");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
-		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_back_button");
+		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/ip_call_icon");
 		CallCommon.makeCall();
 		CallCommon.endCall();
 		//清场
@@ -849,7 +849,7 @@ public class CallLog extends UiAutomatorTestCase
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/call_log_row");
 		excute(Object_Text,Operation_ClickWait,"通话详情");
 		excute(Object_ResourceId,Operation_ClickWait,"com.android.dialer:id/quick_contact_photo");
-		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/third_icon");
+		check(Object_ResourceId,Operation_checkExist,"com.android.contacts:id/photo_touch_intercept_overlay");
 	}
 	/**
 	 * 删除单条联系人

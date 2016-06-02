@@ -393,7 +393,7 @@ public class CallFireWall extends UiAutomatorTestCase
 	}
 	
 	/**
-	 * 进入短信记录-长按一条记录
+	 * 进入短信记录-一条记录
 	 */
 	public static void test_030()
 	{
